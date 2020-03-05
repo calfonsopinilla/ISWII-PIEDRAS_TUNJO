@@ -1,0 +1,7 @@
+{
+  "name": "piedras-del-tunjo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
