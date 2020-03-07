@@ -2,5 +2,5 @@
 <app-header titulo="Inicio"></app-header>
 
 <ion-content class="ion-padding" [fullscreen]>
-  InicioPage works !
+  <app-item-info *ngFor="let item of itemsInfo" [itemInfo]="item"></app-item-info>
 </ion-content>
