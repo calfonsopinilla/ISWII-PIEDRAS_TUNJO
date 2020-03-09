@@ -9,7 +9,7 @@ import { ItemInfo } from '../interfaces/item-info.interface';
 
 export class InfoParqueService {
 
-  itemsInfo: ItemInfo[] = [
+  private itemsInfo: ItemInfo[] = [
     { id: 1,
       property: 'Descripción del parque',
       text: 'Este es el ejemplo de un texto de información',
@@ -38,5 +38,10 @@ export class InfoParqueService {
 
   obtenerInfoParque(): Observable<ItemInfo[]> {
     return of(this.itemsInfo);
+  }
+
+  obtenerItemInfo(id: any): Observable<ItemInfo> {
+    const item = this.itemsInfo.find(i => i.id === id);
+    return of(item);
   }
 }

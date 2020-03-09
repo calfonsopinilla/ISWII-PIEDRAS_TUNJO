@@ -2,5 +2,6 @@
 <app-header titulo="Inicio"></app-header>
 
 <ion-content class="ion-padding" [fullscreen]>
-  <app-item-info *ngFor="let item of itemsInfo" [itemInfo]="item"></app-item-info>
+  <app-item-info *ngFor="let item of itemsInfo; let i = index;" [itemInfo]="item" 
+                [ruta]="rutas[i]"></app-item-info>
 </ion-content>

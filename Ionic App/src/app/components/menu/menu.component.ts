@@ -29,6 +29,11 @@ export class MenuComponent implements OnInit {
       icon: 'location-outline'
     },
     {
+      label: 'Piedras',
+      ruta: '/piedras-parque',
+      icon: 'aperture-outline'
+    },
+    {
       label: 'Preguntas frecuentes (PQR)',
       ruta: '/pqr-parque',
       icon: 'help-circle-outline'

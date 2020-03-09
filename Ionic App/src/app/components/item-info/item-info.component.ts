@@ -3,6 +3,8 @@ import { ItemInfo } from 'src/app/interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
 
 declare var mapboxgl: any;
+const LONGITUD = -74.3460000;
+const LATITUD = 4.8164000;
 
 @Component({
   selector: 'app-item-info',
@@ -12,6 +14,7 @@ declare var mapboxgl: any;
 export class ItemInfoComponent implements AfterViewInit {
 
   @Input() itemInfo: ItemInfo;
+  @Input() ruta: string;
   @ViewChild('map', { static: false }) map: any;
 
   slidesOptions = {
@@ -26,7 +29,7 @@ export class ItemInfoComponent implements AfterViewInit {
         // container: 'map',
         container: this.map.nativeElement,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-74.3450000, 4.8164000],
+        center: [LONGITUD, LATITUD],
         zoom: 15
       });
 
@@ -36,7 +39,7 @@ export class ItemInfoComponent implements AfterViewInit {
 
       // Agregar el marcador del centro del parque
       const marker = new mapboxgl.Marker({draggable: false})
-                                  .setLngLat([-74.3457000, 4.8164000])
+                                  .setLngLat([LONGITUD, LATITUD])
                                   .setPopup(popup)
                                   .addTo(map);
 

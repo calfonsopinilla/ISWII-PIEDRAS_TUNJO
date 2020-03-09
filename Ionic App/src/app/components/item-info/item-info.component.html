@@ -11,13 +11,14 @@
 
   <div *ngIf="esItemUbicacion()" id="map" #map ></div>
 
-  <!-- Header común -->
+  <!-- header y content común -->
   <ion-card-header>
     <ion-label>{{ itemInfo.property }}</ion-label>
   </ion-card-header>
 
   <ion-card-content>
     {{ itemInfo.text }}
+    <ion-button [routerLink]="ruta" expand="full"  color="primary" size="small">Ver más</ion-button>
   </ion-card-content>
 
 </ion-card>
