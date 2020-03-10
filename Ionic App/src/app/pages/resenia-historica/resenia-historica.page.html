@@ -1,0 +1,20 @@
+<ion-header [translucent]>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Piedras del parque</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]>
+  <ion-slides [options]="{}" pager="true">
+    <ion-slide *ngFor="let image of itemInfo.images" class="image-slide"
+                [style]="image | domSanitizer" ></ion-slide>
+  </ion-slides>
+  <ion-card class="ion-margin-top">
+    <ion-card-content>
+      {{ itemInfo.text }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
