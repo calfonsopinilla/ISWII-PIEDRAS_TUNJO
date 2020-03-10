@@ -1,0 +1,38 @@
+<ion-menu start="start" contentId="principal" menuId="first">
+    <ion-header>
+        <ion-toolbar color="tertiary">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <!-- Piedras del tunjo -->
+            <ion-list-header>Piedras del Tunjo</ion-list-header>
+            <ion-menu-toggle autoHide="false" *ngFor="let item of itemsParque">
+                <ion-item detail [routerLink]="item.ruta" detail>
+                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-label>{{ item.label }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+
+            <!-- Servicios -->
+            <ion-list-header>Servicios</ion-list-header>
+            <ion-menu-toggle autoHide="false" *ngFor="let item of itemsServicios">
+                <ion-item [routerLink]="item.ruta" detail>
+                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-label>{{ item.label }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+
+            <!-- Cuenta -->
+            <ion-list-header>Cuenta</ion-list-header>
+            <ion-menu-toggle autoHide="false" *ngFor="let item of itemsCuenta">
+                <ion-item [routerLink]="item.ruta" detail>
+                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-label>{{ item.label }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+    </ion-content>
+</ion-menu>
