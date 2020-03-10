@@ -32,7 +32,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>http://localhost:50826/usuarios</StartExternalURL>
+          <StartExternalURL>http://localhost:50826/eventos</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>

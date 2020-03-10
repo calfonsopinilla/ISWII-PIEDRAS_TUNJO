@@ -13,8 +13,7 @@ namespace Data
         public Mapeo() : base("name=PostgresConnection")
         {
         }
-
-        public DbSet<UUser> Usuarios { get; set; }
+        public DbSet<UEvento> Eventos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

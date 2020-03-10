@@ -169,7 +169,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +184,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\Eventos\evento1.jpg" />
+    <Content Include="Imagenes\Eventos\evento2.jpg" />
+    <Content Include="Imagenes\Eventos\evento3.jpg" />
+    <Content Include="Imagenes\Eventos\evento4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

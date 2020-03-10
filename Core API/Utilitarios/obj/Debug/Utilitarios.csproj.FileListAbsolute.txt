@@ -33,3 +33,11 @@ C:\Users\black\Desktop\PiedrasDelTunjo\Utilitarios\obj\Debug\Utilitarios.csproj.
 C:\Users\black\Desktop\PiedrasDelTunjo\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\black\Desktop\PiedrasDelTunjo\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\black\Desktop\PiedrasDelTunjo\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\bin\Debug\Utilitarios.dll.config
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\Core API\Utilitarios\obj\Debug\Utilitarios.pdb

@@ -87,12 +87,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UUser.cs" />
+    <Compile Include="UCabana.cs" />
+    <Compile Include="UComentario.cs" />
+    <Compile Include="UComentarioCabana.cs" />
+    <Compile Include="UComentarioEvento.cs" />
+    <Compile Include="UComentarioNoticia.cs" />
+    <Compile Include="UComentarioPictograma.cs" />
+    <Compile Include="UEstadoPQR.cs" />
+    <Compile Include="UEvento.cs" />
+    <Compile Include="UInformacionParque.cs" />
+    <Compile Include="UNoticia.cs" />
+    <Compile Include="UPictograma.cs" />
+    <Compile Include="UPQR.cs" />
+    <Compile Include="UReserva.cs" />
+    <Compile Include="UReservaCabana.cs" />
+    <Compile Include="URol.cs" />
+    <Compile Include="UUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Utilitarios.dll.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Utilitarios.csproj.CopyComplete" />
+    <None Include="obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Utilitarios.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\EntityFramework6.Npgsql.dll" />
+    <Content Include="bin\Debug\EntityFramework6.Npgsql.xml" />
+    <Content Include="bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="bin\Debug\Npgsql.dll" />
+    <Content Include="bin\Debug\Npgsql.pdb" />
+    <Content Include="bin\Debug\Npgsql.xml" />
+    <Content Include="bin\Debug\System.Buffers.dll" />
+    <Content Include="bin\Debug\System.Buffers.xml" />
+    <Content Include="bin\Debug\System.Memory.dll" />
+    <Content Include="bin\Debug\System.Memory.xml" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Debug\System.Text.Encodings.Web.dll" />
+    <Content Include="bin\Debug\System.Text.Encodings.Web.xml" />
+    <Content Include="bin\Debug\System.Text.Json.dll" />
+    <Content Include="bin\Debug\System.Text.Json.xml" />
+    <Content Include="bin\Debug\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\Debug\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\Debug\System.ValueTuple.dll" />
+    <Content Include="bin\Debug\System.ValueTuple.xml" />
+    <Content Include="bin\Debug\Utilitarios.dll" />
+    <Content Include="bin\Debug\Utilitarios.pdb" />
+    <Content Include="obj\Debug\Utilitarios.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Utilitarios.dll" />
+    <Content Include="obj\Debug\Utilitarios.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
