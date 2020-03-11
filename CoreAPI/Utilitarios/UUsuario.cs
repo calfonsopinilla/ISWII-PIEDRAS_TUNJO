@@ -46,7 +46,7 @@ namespace Utilitarios {
         public bool VerificacionCuenta { get => verificacionCuenta; set => verificacionCuenta = value; }
         [Column("estado_cuenta")]
         public bool EstadoCuenta { get => estadoCuenta; set => estadoCuenta = value; }
-        [ForeignKey("RolId")]
+        //[ForeignKey("RolId")]
         [Column("rol_id")]
         public int RolId { get => rolId; set => rolId = value; }
         [NotMapped]

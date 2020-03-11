@@ -14,8 +14,10 @@ namespace Data
         {
         }
 
+        //private readonly string schema;
+
         public DbSet<UEvento> Eventos { get; set; }
-        //public DbSet<UUsuario> Usuarios { get; set; }
+        public DbSet<UUsuario> Usuarios { get; set; }
         //public DbSet<URol> Roles { get; set; }
         //public DbSet<UNoticia> Noticias { get; set; }
         //public DbSet<UInformacionParque> InformacionParque { get; set; }
@@ -23,6 +25,7 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //modelBuilder.HasDefaultSchema(this.schema);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -100,6 +100,7 @@
     <Compile Include="UNoticia.cs" />
     <Compile Include="UPictograma.cs" />
     <Compile Include="UPQR.cs" />
+    <Compile Include="URegistroUser.cs" />
     <Compile Include="UReserva.cs" />
     <Compile Include="UReservaCabana.cs" />
     <Compile Include="URol.cs" />
