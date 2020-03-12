@@ -1,0 +1,17 @@
+// #map-container {
+//     height: 100vh;
+//     width: auto;
+// }
+
+#map {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #f6f5f4;
+}
+
+.btn-regresar {
+    position: fixed;
+    top: 20px;
+    right: 8px;
+    font-size: 25px !important;
+}
