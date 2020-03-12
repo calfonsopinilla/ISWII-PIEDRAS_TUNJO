@@ -12,6 +12,8 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { ContactanosComponent } from './componentes/contactanos/contactanos.component';
 import { GaleriaComponent } from './componentes/galeria/galeria.component';
 import { SeccionInformativaComponent } from './componentes/seccion-informativa/seccion-informativa.component';
+import { EventosComponent } from './componentes/eventos/eventos.component';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { SeccionInformativaComponent } from './componentes/seccion-informativa/s
     ConfiguracionComponent,
     ContactanosComponent,
     GaleriaComponent,
-    SeccionInformativaComponent
+    SeccionInformativaComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
