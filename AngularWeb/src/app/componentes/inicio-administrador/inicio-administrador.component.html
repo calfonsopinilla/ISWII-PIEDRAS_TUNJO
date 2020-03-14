@@ -1,0 +1,94 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Administrador
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section id ="clientes">
+	<div class="container">
+		<div class="row">
+		 <div class="col-md-9">
+		 	<div class="card">
+		 		<h4>listado de clientes</h4>
+
+		 	</div>
+		 	<div>
+		 		<table class="table table-striped">
+		 			<thead class="thead-dark">
+		 				<tr>
+		 					<th>#Id</th>
+		 				   <th>nombre</th>
+		 					<th>tipoDocumento</th>
+		 					<th>numeroDocumento</th>
+		 					<th>lugarExpedicion</th>
+		 					<th>CorreoElectronico</th>
+		 					<th>Clave</th>
+		 					<th>Rol_id</th>
+		 					<th>Rol_Nombre</th>
+                            <th></th>
+		 				</tr>
+		 			</thead>
+		 			<!--<tbody>
+		 				 <tr *ngFor="let cliente of clientes; let i =index">
+		 				 	<td>{{i+1}}</td>
+		 				 	<td>{{cliente.nombre}}</td>
+		 				 	<td>{{cliente.apellido}}</td>
+		 				 	<td>{{cliente.cedula}}</td>
+		 				 	<td>{{cliente.correo }}</td>
+		 				 	<td>
+		 				 		<a routerLink="/cliente/editar/{{cliente.id}}"class="btn btn-secundary"></a>
+		 				 	</td>
+		 				 </tr>
+		 			</tbody>-->
+		 		</table>
+		 	</div>
+		 </div>	
+		</div>
+	</div>
+
+</section>
+<!--<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-3">
+     	<a href="#" class="btn btn-primary btn-block" data-toggle="modal"data-target="agregarcliente">Agregar Usuario</a>
+     </div>
+    </div>
+  </div>
+</section>-->
+
+	<!--<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-3" >
+     	<a href="#" class="btn btn-primary btn-block" data-toggle="modal"data-target="EditarCliente">Editar Usuario</a>
+     </div>
+    </div>
+  </div>
+</section>-->
+<section>
+	    
+
+  
+
+	<div align="center">
+		 <a class="btn btn-primary" href="/Editar" role="button">Editar</a>
+		  <a class="btn btn-primary" href="/Agregar" role="button">Agregar</a>
+		  <a class="btn btn-primary" href="/" role="button">Eliminar</a>
+		  
+
+
+ 
+
+
+</div>
+</section>
+
