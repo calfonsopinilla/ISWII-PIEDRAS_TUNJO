@@ -92,7 +92,7 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(3)
+    this.infoParqueService.obtenerItemInfo(5)
                           .subscribe((resp: any) => this.itemInfo = resp);
   }
 

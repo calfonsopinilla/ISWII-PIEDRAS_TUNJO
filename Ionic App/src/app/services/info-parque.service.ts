@@ -17,16 +17,10 @@ export class InfoParqueService {
   ) { }
 
   obtenerInfoParque(): Observable<ItemInfo[]> {
-    return this.http.get<ItemInfo[]>(`${ servicesApi }/informacion/enviarInformacion`)
+    return this.http.get<ItemInfo[]>(`${ servicesApi }/informacion`);
   }
 
   obtenerItemInfo(id: any): Observable<ItemInfo> {
-    let item = null;
-    this.obtenerInfoParque()
-                  .subscribe((resp: ItemInfo[]) => {
-                    item = resp.find(x => x.id === id);
-                    return of(item);
-                  });
-    return of(item);
+    return this.http.get<ItemInfo>(`${ servicesApi }/informacion/${ id }`);
   }
 }

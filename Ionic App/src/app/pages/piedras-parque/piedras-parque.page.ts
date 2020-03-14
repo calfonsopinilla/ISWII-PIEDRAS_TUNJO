@@ -16,7 +16,7 @@ export class PiedrasParquePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(4)
+    this.infoParqueService.obtenerItemInfo(6)
                         .subscribe((resp: any) => this.itemInfo = resp);
   }
 

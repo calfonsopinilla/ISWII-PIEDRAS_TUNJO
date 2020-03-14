@@ -16,8 +16,10 @@ export class ReseniaHistoricaPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(2)
-                          .subscribe((resp: any) => this.itemInfo = resp);
+    this.infoParqueService.obtenerItemInfo(4)
+                          .subscribe((resp: any) => {
+                            this.itemInfo = resp;
+                          });
   }
 
 }

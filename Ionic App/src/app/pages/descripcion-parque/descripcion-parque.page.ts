@@ -20,8 +20,10 @@ export class DescripcionParquePage implements OnInit {
   ngOnInit() {
     // this.route.paramMap
     //           .subscribe(params => console.log(params));
-    this.infoParqueService.obtenerItemInfo(1)
-                          .subscribe((resp: any) => this.itemInfo = resp);
+    this.infoParqueService.obtenerItemInfo(2)
+                          .subscribe((resp: any) => {
+                            this.itemInfo = resp;
+                          });
   }
 
 }
