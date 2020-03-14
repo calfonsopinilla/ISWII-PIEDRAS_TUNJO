@@ -18,6 +18,12 @@ namespace Data
 
         public DbSet<UEvento> Eventos { get; set; }
         public DbSet<UUsuario> Usuarios { get; set; }
+
+        public DbSet<UToken> token { get; set; }
+
+        public DbSet<UInformacionParque> informacionParque{ get; set; }
+
+
         //public DbSet<URol> Roles { get; set; }
         //public DbSet<UNoticia> Noticias { get; set; }
         //public DbSet<UInformacionParque> InformacionParque { get; set; }

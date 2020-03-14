@@ -67,8 +67,6 @@ namespace PiedrasDelTunjo.Controllers
             {
                 resultadoVal = false;
             }
-
-
             return resultadoVal;
         }
 

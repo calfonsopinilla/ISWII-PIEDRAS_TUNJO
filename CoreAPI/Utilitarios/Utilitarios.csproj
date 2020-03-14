@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UBusqueda.cs" />
     <Compile Include="UCabana.cs" />
     <Compile Include="UComentario.cs" />
     <Compile Include="UComentarioCabana.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="UReserva.cs" />
     <Compile Include="UReservaCabana.cs" />
     <Compile Include="URol.cs" />
+    <Compile Include="UToken.cs" />
     <Compile Include="UUsuario.cs" />
   </ItemGroup>
   <ItemGroup>

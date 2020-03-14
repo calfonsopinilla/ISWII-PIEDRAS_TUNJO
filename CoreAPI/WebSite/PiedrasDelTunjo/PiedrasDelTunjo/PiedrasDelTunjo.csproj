@@ -169,7 +169,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdministradorUsuarioController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
+    <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +14,7 @@ namespace Utilitarios {
         private string property;
         private string descripcion;
         private string imagenesUrl;
+        private List<string> listaImagenesUrl; 
 
         [Key]
         [Column("id")]
@@ -23,5 +25,7 @@ namespace Utilitarios {
         public string Descripcion { get => descripcion; set => descripcion = value; }
         [Column("imagenes_url")]
         public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
+        [NotMapped]
+        public List<string> ListaImagenesUrl { get => listaImagenesUrl; set => listaImagenesUrl = value; }
     }
 }
