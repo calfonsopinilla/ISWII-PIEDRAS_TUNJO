@@ -106,6 +106,7 @@
     <Compile Include="UReservaCabana.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="UToken.cs" />
+    <Compile Include="UTokenCorreo.cs" />
     <Compile Include="UUsuario.cs" />
   </ItemGroup>
   <ItemGroup>

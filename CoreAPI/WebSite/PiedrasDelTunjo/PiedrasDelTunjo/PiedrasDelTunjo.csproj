@@ -179,6 +179,7 @@
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\TokenCorreoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
