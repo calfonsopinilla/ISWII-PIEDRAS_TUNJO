@@ -24,10 +24,11 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("informacion/enviarInformacion")]
 
-        public string enviarInformacion() {
+        public IHttpActionResult EnviarInformacion() {
             try
             {
-                return new LInformacion().informacionParque();
+                var informacion = JsonConvert.DeserializeObject<List<UInformacionParque>>(new LInformacion().informacionParque());
+                return Ok(informacion);
             }
             catch (Exception ex)
             {

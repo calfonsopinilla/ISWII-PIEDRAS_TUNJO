@@ -34,14 +34,14 @@ namespace PiedrasDelTunjo.Controllers
             }
             if (valDocumento.ToString() == null || valDocumento.ToString() == "")
             {
-                validacion.NumDocumento = " ";
+                validacion.NumDocumento = 0;
                 contValidacion++;
             }
 
             if (contValidacion == 0)
             {
                 validacion.CorreoElectronico = valCorreo;
-                validacion.NumDocumento = valDocumento;
+                validacion.NumDocumento = Convert.ToDouble(valDocumento);
                 json_EmailYCC = JsonConvert.SerializeObject(validacion);
             }
             else

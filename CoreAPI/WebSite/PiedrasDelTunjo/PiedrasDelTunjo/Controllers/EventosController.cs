@@ -12,8 +12,15 @@ namespace PiedrasDelTunjo.Controllers
     [RoutePrefix("eventos")]
     public class EventosController : ApiController
     {
+        /*
+            Steven Cruz
+            Parámetros: Ninguno
+            Retorna: Lista de eventos desde la fecha actual hasta dentro de un mes.
+        */
+
         [HttpGet]
         [Route("")]
+        // GET: eventos/
         public IHttpActionResult ObtenerEventos()
         {
             var eventos = new LEvento().ObtenerEventos();
@@ -22,9 +29,15 @@ namespace PiedrasDelTunjo.Controllers
             return Ok(eventos); // Status 200 OK
         }
 
+
+        /*
+            Steven Cruz
+            Parámetros: Nombre de la imagen del evento.
+            Retorna: La imagen con el nombre especificado en la ruta.
+        */
         [HttpGet]
         [Route("obtenerImagen")]
-        // GET: /obtenerImagen/?nombre=imageName.jpg
+        // GET: eventos/obtenerImagen/?nombre=imageName.jpg
         public HttpResponseMessage ObtenerImagen([FromUri] string nombre)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);

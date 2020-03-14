@@ -31,7 +31,8 @@ namespace Logica
                 }
                 else
                 {
-                    for (int x = 0; x < informacion.Count(); x++) {
+                    for (int x = 0; x < informacion.Count(); x++)
+                    {
 
                         if (!String.IsNullOrEmpty(informacion[x].ImagenesUrl))
                         {

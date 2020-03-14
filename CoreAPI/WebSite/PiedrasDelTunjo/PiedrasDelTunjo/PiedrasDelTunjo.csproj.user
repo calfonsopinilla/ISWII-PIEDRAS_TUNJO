@@ -32,7 +32,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>http://localhost:61629/Registro/Val_EmailYCC</StartExternalURL>
+          <StartExternalURL>http://localhost:61629/informacion/enviarInformacion</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>

@@ -14,7 +14,7 @@ namespace Utilitarios {
         private string property;
         private string descripcion;
         private string imagenesUrl;
-        private List<string> listaImagenesUrl; 
+        private List<string> listaImagenesUrl;
 
         [Key]
         [Column("id")]

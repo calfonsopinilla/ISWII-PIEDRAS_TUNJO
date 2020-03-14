@@ -9,7 +9,7 @@ namespace Utilitarios
     { //variables
         private string nombre; // guarda el valor del nombre del usuario
         private string apellido; // guarda el valor del apellido del usuario
-        private string numDocumento; // guarda el valor del documento del usuario
+        private double numDocumento; // guarda el valor del documento del usuario
         private string tipoDocumento; // guarda el valor del tipo de documento del usuario
         private string lugarExpedicion; // guarda el valor del lugar de expedicion del documento del usuario
         private string correoElectronico; // guarda el valor del correo electronico del usuario
@@ -26,7 +26,7 @@ namespace Utilitarios
         public bool EmailExistente { get => emailExistente; set => emailExistente = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
-        public string NumDocumento { get => numDocumento; set => numDocumento = value; }
+        public double NumDocumento { get => numDocumento; set => numDocumento = value; }
         public string TipoDocumento { get => tipoDocumento; set => tipoDocumento = value; }
         public string LugarExpedicion { get => lugarExpedicion; set => lugarExpedicion = value; }
         public string CorreoElectronico { get => correoElectronico; set => correoElectronico = value; }
