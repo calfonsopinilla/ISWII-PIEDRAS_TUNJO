@@ -1,6 +1,7 @@
 export interface ItemInfo {
     id: number;
     property: string;
-    text: string;
-    images: string[];
+    descripcion: string;
+    imagenesUrl: string;
+    listImagenesUrl: string[];
 }

@@ -81,7 +81,7 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
 
     map.on('click', (e: any) => {
       const { lng, lat } = e.lngLat;
-      console.log(`${lng}, ${lat}`);
+      // console.log(`${lng}, ${lat}`);
     });
 
     const popup = new mapboxgl.Popup({offset: 25}).setText('Piedras del Tunjo');

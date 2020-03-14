@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, ViewChild } from '@angular/core';
-import { ItemInfo } from 'src/app/interfaces/item-info.interface';
+import { ItemInfo } from '../../interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
 
 declare var mapboxgl: any;
