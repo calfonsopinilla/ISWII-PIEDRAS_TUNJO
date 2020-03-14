@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using Utilitarios;
 
 namespace Data
 {
-
-
-
         /*
         @Autor : Jose Luis Soriano Roa
         *Fecha de creación: 11/03/2020
@@ -100,11 +98,52 @@ namespace Data
 
             }
         }
+        /*
+       @Autor : Carlos Alfonso Pinilla Garzón
+       *Fecha de creación: 13/03/2020
+       *Descripcion: Metodo para cambiar estado de la cuenta del ususario
+       *Este metodo recibe: 
+       *Retorna:
+       */
+       public void cambiarEstado(double cedula)
+        {
+            using (var db = new Mapeo())
+            {
+                var user = db.Usuarios.Find(cedula);
+                user.EstadoCuenta = false;
+                db.SaveChanges();
+            }
+        }
+        /*
+       @Autor : Carlos Alfonso Pinilla Garzón
+       *Fecha de creación: 13/03/2020
+       *Descripcion: Metodo para cambiar actualizar los datos del usuario
+       *Este metodo recibe: el objeto tipo UUsuario
+       *Retorna:
+       */
+       public void actualizarUsuario(UUsuario user)
+        {
+            using (var db = new Mapeo())
+            {
+                UUsuario usuario = db.Usuarios.Where(x => x.Id == user.Id).First();
+                usuario.Nombre = user.Nombre;
+                usuario.Apellido = user.Apellido;
+                usuario.Clave = user.Clave;
+                usuario.CorreoElectronico = user.CorreoElectronico;
+                usuario.TipoDocumento = user.TipoDocumento;
+                usuario.NumeroDocumento = user.NumeroDocumento;
+                usuario.LugarExpedicion = user.LugarExpedicion;
+                usuario.Imagen_documento = user.Imagen_documento;
+                usuario.Icono_url = user.Icono_url;
 
+                db.Usuarios.Attach(usuario);
+
+                var entry = db.Entry(usuario);
+                entry.State = EntityState.Modified;
+
+                db.SaveChanges();
+            }
+        }
 
     }
-
-
-   
-
 }

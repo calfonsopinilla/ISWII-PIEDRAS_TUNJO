@@ -68,8 +68,46 @@ namespace PiedrasDelTunjo.Controllers
 
         }
 
-
-        
-
+        /*
+        @Autor: Carlos Alfonso Pinilla Garzón
+        *Fecha de creación: 13/03/2020
+        *Descripcion: Servicio que cambia el estado de cuenta del usuario
+        *Recibe: 
+        *Retorna: 
+        */
+        [HttpGet]
+        [Route("administrador/cambiarEstado")]
+        public bool cambiarEstado(string cedula)
+        {
+            try
+            {
+                LAdministradorUsuario usuario = new LAdministradorUsuario();
+                return usuario.cambiarEstado(cedula);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /*
+        @Autor: Carlos Alfonso Pinilla Garzón
+        *Fecha de creación: 13/03/2020
+        *Descripcion: Servicio que cambia el estado de cuenta del usuario
+        *Recibe: El objeto de tipo UUsuario en un json
+        *Retorna: 
+        */
+        [HttpGet]
+        [Route("administrador/actualizarUsuario")]
+        public void actualizarUsuario(string datosJson)
+        {
+            try
+            {
+                LAdministradorUsuario usuario = new LAdministradorUsuario();
+                usuario.actualizarUsuario(datosJson);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
