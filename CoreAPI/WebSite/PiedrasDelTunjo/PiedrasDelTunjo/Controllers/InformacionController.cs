@@ -7,9 +7,11 @@ using System.Web.Http;
 using Utilitarios;
 using Logica;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class InformacionController : ApiController
     {
 
@@ -22,7 +24,7 @@ namespace PiedrasDelTunjo.Controllers
          */
 
         [HttpGet]
-        [Route("informacion/enviarInformacion")]
+        [Route("informacion")]
 
         public IHttpActionResult EnviarInformacion() {
             try
@@ -37,6 +39,13 @@ namespace PiedrasDelTunjo.Controllers
 
         }
 
+        [HttpGet]
+        [Route("informacion/{id}")]
+        public IHttpActionResult GetInfoById([FromUri] int id)
+        {
+            var item = new LInformacion().ObtenerInfoById(id);
+            return Ok(item);
+        }
 
 
         /*

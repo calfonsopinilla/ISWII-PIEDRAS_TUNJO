@@ -470,3 +470,6 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\Piedr
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Data.pdb
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Data.dll.config
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.csproj.CopyComplete
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\System.Web.Cors.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\System.Web.Http.Cors.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\System.Web.Http.Cors.xml

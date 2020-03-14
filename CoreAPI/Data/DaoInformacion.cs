@@ -52,5 +52,20 @@ namespace Data
                 }
             }
         }
+
+        public UInformacionParque ObtenerInfoById(int id)
+        {
+            using (var db = new Mapeo())
+            {
+                try
+                {
+                    return db.informacionParque.Where(x => x.Id == id).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }
 }

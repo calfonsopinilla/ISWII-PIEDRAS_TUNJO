@@ -49,6 +49,14 @@ namespace Logica
         }
 
         /*
+         * Steven Cruz
+        */
+        public UInformacionParque ObtenerInfoById(int id)
+        {
+            return new DaoInformacion().ObtenerInfoById(id);
+        }
+
+        /*
         @Autor : Jose Luis Soriano Roa
         *Fecha de creación: 11/03/2020
         *Descripcion : Metodo que resive los datos de 

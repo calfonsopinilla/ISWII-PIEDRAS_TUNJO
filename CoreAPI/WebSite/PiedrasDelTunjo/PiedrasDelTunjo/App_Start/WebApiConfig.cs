@@ -14,6 +14,9 @@ namespace PiedrasDelTunjo
             config.Formatters.JsonFormatter.SupportedMediaTypes
                  .Add(new MediaTypeHeaderValue("text/html"));
 
+            // Enabel CORS
+            config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
