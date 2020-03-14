@@ -22,6 +22,7 @@ namespace Data
         public DbSet<UToken> token { get; set; }
 
         public DbSet<UInformacionParque> informacionParque{ get; set; }
+        public DbSet<UTokenCorreo> TokenCorreo { get; set; }
 
 
         //public DbSet<URol> Roles { get; set; }

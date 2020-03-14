@@ -23,6 +23,7 @@ namespace Utilitarios {
         private int rolId; // Se guarda el Id del rol de los usuarios
         private string rolNombre; // Se guarda el nombre del rol dependiendo del Id del rol
         private string imagen_documento;
+        private string token;
         [Key]
         [Column("id")]
         public int Id { get => id; set => id = value; }
@@ -53,6 +54,6 @@ namespace Utilitarios {
         public string Imagen_documento { get => imagen_documento; set => imagen_documento = value; }
         [NotMapped]
         public string RolNombre { get => rolNombre; set => rolNombre = value; }
-      
+        public string Token { get => token; set => token = value; }
     }
 }
