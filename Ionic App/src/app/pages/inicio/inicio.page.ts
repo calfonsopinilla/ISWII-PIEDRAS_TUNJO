@@ -9,7 +9,7 @@ import { InfoParqueService } from '../../services/info-parque.service';
 })
 export class InicioPage implements OnInit {
 
-  rutas = ['/descripcion-parque', '/resenia-historica', '/ubicacion-parque', '/piedras-parque'];
+  rutas = ['/descripcion-parque', '/ubicacion-parque', '/piedras-parque', '/resenia-historica'];
   itemsInfo: ItemInfo[] = [];
 
   constructor(

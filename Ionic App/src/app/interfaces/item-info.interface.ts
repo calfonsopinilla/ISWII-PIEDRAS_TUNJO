@@ -3,5 +3,5 @@ export interface ItemInfo {
     property: string;
     descripcion: string;
     imagenesUrl: string;
-    listImagenesUrl: string[];
+    listaImagenesUrl: string[];
 }

@@ -8,6 +8,7 @@ export class ImgServerPipe implements PipeTransform {
 
   transform(img: string, service: string): any {
     const url = `${ environment.servicesAPI }/${ service }/?nombre=${img}`;
+    // console.log(url);
     return url;
   }
 
