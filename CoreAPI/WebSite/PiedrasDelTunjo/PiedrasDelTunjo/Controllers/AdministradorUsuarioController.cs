@@ -6,8 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using Utilitarios;
 using Logica;
+using System.Web.Http.Cors;
+
 namespace PiedrasDelTunjo.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AdministradorUsuarioController : ApiController{
 
 

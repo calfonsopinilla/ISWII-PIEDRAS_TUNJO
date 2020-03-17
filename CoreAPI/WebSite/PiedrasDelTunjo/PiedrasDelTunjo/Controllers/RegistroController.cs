@@ -7,9 +7,11 @@ using System.Web.Http;
 using Utilitarios;
 using Logica;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RegistroController : ApiController
     {
         [HttpGet]
