@@ -13,7 +13,7 @@ namespace Utilitarios {
         private string nombre; // Guarda el nombre de el usuario
         private string apellido; // Guarda el apellido de el usuario
         private string tipoDocumento; // Guarda el tipo de documento TI, CC, CE
-        private double numeroDocumento; // Guarda el numero de documento de el usuario
+        private string numeroDocumento; // Guarda el numero de documento de el usuario
         private string lugarExpedicion; // Guarda el lugar de expedición del documento de identidad
         private string correoElectronico; // Guarda el correo electronico
         private string clave; // Guarda la clave del usuario para iniciar sesion
@@ -34,7 +34,7 @@ namespace Utilitarios {
         [Column("tipo_documento")]
         public string TipoDocumento { get => tipoDocumento; set => tipoDocumento = value; }
         [Column("numero_documento")]
-        public double NumeroDocumento { get => numeroDocumento; set => numeroDocumento = value; }
+        public string NumeroDocumento { get => numeroDocumento; set => numeroDocumento = value; }
         [Column("lugar_expedicion")]
         public string LugarExpedicion { get => lugarExpedicion; set => lugarExpedicion = value; }
         [Column("correo_electronico")]
@@ -52,8 +52,12 @@ namespace Utilitarios {
         public int RolId { get => rolId; set => rolId = value; }
         [Column("imagen_documento")]
         public string Imagen_documento { get => imagen_documento; set => imagen_documento = value; }
+
+        [Column("token")]
+        public string Token { get => token; set => token = value; }
+
         [NotMapped]
         public string RolNombre { get => rolNombre; set => rolNombre = value; }
-        public string Token { get => token; set => token = value; }
+       
     }
 }

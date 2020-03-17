@@ -23,23 +23,20 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("administrador/informacionUsuarios")]
 
-        public string informacionUsuarios(string datosJson)
+        public IHttpActionResult EnviarInformacion()
         {
-            
-
             try
             {
-                return new LAdministradorUsuario().informacionUsuarios(datosJson);
+                var informacion = new LAdministradorUsuario().informacionUsuarios();
+                return Ok(informacion);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
-   
-
         /*
+         * 
      @Autor : Jose Luis Soriano Roa
      *Fecha de creación: 11/03/2020
      *Descripcion : Servicio que resive el registro de un usuario 
@@ -49,25 +46,21 @@ namespace PiedrasDelTunjo.Controllers
      
      */
 
-
         [HttpGet]
         [Route("administrador/agregarUsuario")]
 
-        public void agregarUsuarios(string datosJson)
+        public string agregarUsuarios(string datosJson)
         {
             try
             {
                 LAdministradorUsuario usuario = new LAdministradorUsuario();
-                
-                 usuario.agregarUsuario(datosJson);
+                 return usuario.agregarUsuario(datosJson);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
-
         /*
         @Autor: Carlos Alfonso Pinilla Garzón
         *Fecha de creación: 13/03/2020

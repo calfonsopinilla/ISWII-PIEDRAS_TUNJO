@@ -8,3 +8,6 @@ CoreAPI/WebSite/PiedrasDelTunjo/.vs/PiedrasDelTunjo/v15/Server/sqlite3/storage.i
 CoreAPI/WebSite/PiedrasDelTunjo/.vs/PiedrasDelTunjo/v15/Server/sqlite3/storage.ide
 CoreAPI/WebSite/PiedrasDelTunjo/.vs/PiedrasDelTunjo/v15/.suo
 CoreAPI/WebSite/PiedrasDelTunjo/.vs/config/applicationhost.config
+*.ide-shm
+*.ide-wal
+*.ide

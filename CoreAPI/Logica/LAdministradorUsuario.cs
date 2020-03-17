@@ -21,37 +21,14 @@ namespace Logica
        * Retorna: lista de la informacion de los usuarios filtrada por cedula y rol en json 
        */
 
-        public string informacionUsuarios(string datosJson)
+        public  List<UUsuario>    informacionUsuarios()
         {
             try
             {
                 //deserializar lo que llegue 
-                UBusqueda busqueda = JsonConvert.DeserializeObject<UBusqueda>(datosJson);
 
-                List<UUsuario> usuarios = new DaoAdministradorUsuario().informacionUsuarios();
+                return new DaoAdministradorUsuario().informacionUsuarios();
 
-                if (!String.IsNullOrEmpty(busqueda.RolId) && !String.IsNullOrEmpty(busqueda.NumeroDocumento))
-                {
-
-                    return JsonConvert.SerializeObject(usuarios.Where(x => x.RolId.Equals(busqueda.RolId) && x.NumeroDocumento.Equals(busqueda.NumeroDocumento)).ToList());
-
-                }
-                else if (!String.IsNullOrEmpty(busqueda.RolId) && String.IsNullOrEmpty(busqueda.NumeroDocumento))
-                {
-
-                    return JsonConvert.SerializeObject(usuarios.Where(x => x.RolId.Equals(busqueda.RolId)).ToList());
-
-                }
-                else if (String.IsNullOrEmpty(busqueda.RolId) && !String.IsNullOrEmpty(busqueda.NumeroDocumento))
-                {
-
-                    return JsonConvert.SerializeObject(usuarios.Where(x => x.NumeroDocumento.Equals(busqueda.NumeroDocumento)).ToList());
-                }
-                else
-                {
-                    return JsonConvert.SerializeObject(usuarios);
-
-                }
             }
             catch (Exception ex)
             {
@@ -102,7 +79,8 @@ namespace Logica
             try
             {
                 DaoAdministradorUsuario user = new DaoAdministradorUsuario();
-                if (user.buscarCedula(double.Parse(cedula)) != false)
+                //if (user.buscarCedula(double.Parse(cedula)) != false)
+                if (user.buscarCedula(cedula) != false)
                 {
                     user.cambiarEstado(double.Parse(cedula));
                     return true;
