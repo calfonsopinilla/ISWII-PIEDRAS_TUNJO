@@ -1,6 +1,7 @@
 ﻿using Logica;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers {
 
@@ -9,6 +10,7 @@ namespace PiedrasDelTunjo.Controllers {
         Fecha creación: 11/03/2020
         Descripción: Clase que contiene los servicios de generar token para validar correo electronico
     */
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TokenCorreoController : ApiController {
 
         /*
