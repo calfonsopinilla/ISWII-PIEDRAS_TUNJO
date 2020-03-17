@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { ItemInfo } from '../../interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
@@ -18,7 +19,8 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   itemInfo: ItemInfo;
 
   constructor(
-    private infoParqueService: InfoParqueService
+    private infoParqueService: InfoParqueService,
+    private route: ActivatedRoute
   ) { }
 
   ngAfterViewInit() {
@@ -92,7 +94,8 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(5)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.infoParqueService.obtenerItemInfo(id)
                           .subscribe((resp: any) => this.itemInfo = resp);
   }
 

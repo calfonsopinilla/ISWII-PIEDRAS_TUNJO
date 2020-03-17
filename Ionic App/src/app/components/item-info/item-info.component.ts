@@ -11,7 +11,7 @@ const LATITUD = 4.8164000;
   templateUrl: './item-info.component.html',
   styleUrls: ['./item-info.component.scss'],
 })
-export class ItemInfoComponent implements AfterViewInit {
+export class ItemInfoComponent implements AfterViewInit, OnInit {
 
   @Input() itemInfo: ItemInfo;
   @Input() ruta: string;
@@ -44,6 +44,10 @@ export class ItemInfoComponent implements AfterViewInit {
                                   .addTo(map);
 
     }
+  }
+
+  ngOnInit() {
+    // console.log(this.itemInfo);
   }
 
   esItemUbicacion() {

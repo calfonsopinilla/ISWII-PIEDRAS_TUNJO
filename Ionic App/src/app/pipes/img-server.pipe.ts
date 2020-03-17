@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 export class ImgServerPipe implements PipeTransform {
 
   transform(img: string, service: string): any {
-    const url = `${environment.servicesAPI}/${service}/?nombre=${img}`;
+    const url = `${ environment.servicesAPI }/${ service }/?nombre=${img}`;
     return url;
   }
 
