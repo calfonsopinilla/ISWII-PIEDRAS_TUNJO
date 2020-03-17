@@ -53,7 +53,12 @@ namespace Logica
         */
         public UInformacionParque ObtenerInfoById(int id)
         {
-            return new DaoInformacion().ObtenerInfoById(id);
+            var itemInfo = new DaoInformacion().ObtenerInfoById(id);
+            if (itemInfo != null)
+            {
+                itemInfo.ListaImagenesUrl = JsonConvert.DeserializeObject<List<string>>(itemInfo.ImagenesUrl);
+            }
+            return itemInfo;
         }
 
         /*

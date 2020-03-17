@@ -21,7 +21,9 @@ namespace Data
 
             using (var db = new Mapeo()) {
                 try {
-                    return db.informacionParque.ToList();
+                    return db.informacionParque
+                                .OrderBy(x => x.Id)
+                                .ToList();
                 }
                 catch (  Exception ex ) {
                     throw ex; 
@@ -59,7 +61,9 @@ namespace Data
             {
                 try
                 {
-                    return db.informacionParque.Where(x => x.Id == id).FirstOrDefault();
+                    return db.informacionParque
+                             .Where(x => x.Id == id)
+                             .FirstOrDefault();
                 }
                 catch (Exception ex)
                 {
