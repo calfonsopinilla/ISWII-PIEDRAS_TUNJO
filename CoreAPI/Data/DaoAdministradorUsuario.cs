@@ -57,8 +57,8 @@ namespace Data
 
 
 
-
-        public bool buscarCedula(double cedula)
+        //public bool buscarCedula(double cedula)
+        public bool buscarCedula(string cedula)
         {
             using (var db = new Mapeo())
             {

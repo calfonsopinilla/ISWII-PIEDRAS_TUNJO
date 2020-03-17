@@ -102,7 +102,8 @@ namespace Logica
             try
             {
                 DaoAdministradorUsuario user = new DaoAdministradorUsuario();
-                if (user.buscarCedula(double.Parse(cedula)) != false)
+                //if (user.buscarCedula(double.Parse(cedula)) != false)
+                if (user.buscarCedula(cedula) != false)
                 {
                     user.cambiarEstado(double.Parse(cedula));
                     return true;
