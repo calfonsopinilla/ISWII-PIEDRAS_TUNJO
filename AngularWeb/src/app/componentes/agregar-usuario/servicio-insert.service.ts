@@ -27,6 +27,9 @@ private Url: string = 'http://piedrasdeltunjo.tk/administrador/agregarUsuario';
       return of(result as T)
     };
   }
+  registro(){
+
+  }
 
   async insertUsuario(usuario): Promise<any> {
 
