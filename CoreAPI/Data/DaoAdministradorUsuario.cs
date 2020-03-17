@@ -105,7 +105,7 @@ namespace Data
        *Este metodo recibe: 
        *Retorna:
        */
-       public void cambiarEstado(double cedula)
+       public void cambiarEstado(string cedula)
         {
             using (var db = new Mapeo())
             {
