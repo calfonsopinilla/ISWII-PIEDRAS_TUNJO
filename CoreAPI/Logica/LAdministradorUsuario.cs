@@ -74,22 +74,23 @@ namespace Logica
        *Este metodo recibe: 
        *Retorna:
        */
-       public bool cambiarEstado(string cedula)
+        public bool cambiarEstado(string cedula)
         {
             try
             {
-                DaoAdministradorUsuario user = new DaoAdministradorUsuario();
-                //if (user.buscarCedula(double.Parse(cedula)) != false)
-                if (user.buscarCedula(cedula) != false)
-                {
-                    user.cambiarEstado(cedula);
-                    return true;
-                }
-                else
+                bool validar = new DaoAdministradorUsuario().buscarCedula(cedula);
+                if (validar == true)
                 {
                     return false;
                 }
-            }catch(Exception ex)
+                else
+                {
+                    DaoAdministradorUsuario dao = new DaoAdministradorUsuario();
+                    dao.cambiarEstado(cedula);
+                    return true;
+                }
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -106,23 +107,15 @@ namespace Logica
             try
             {
                 UUsuario usuario = JsonConvert.DeserializeObject<UUsuario>(datosJson);
-                if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == true && new DaoAdministradorUsuario().buscarCorreo(usuario.CorreoElectronico) == true)
+                if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == true)
                 {
                     DaoAdministradorUsuario daoAdministradorUsuario = new DaoAdministradorUsuario();
                     daoAdministradorUsuario.actualizarUsuario(usuario);
                     return "1";//Lo datos se actualizan
                 }
-                else if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == true && new DaoAdministradorUsuario().buscarCorreo(usuario.CorreoElectronico) == false)
-                {
-                    return "2";//EL correo ya esta registrado
-                }
-                else if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == false && new DaoAdministradorUsuario().buscarCorreo(usuario.CorreoElectronico) == false)
-                {
-                    return "3";//La cedula ya esta registrada
-                }
                 else
                 {
-                    return "4";//La cedula y el correo ya estan registrado
+                    return "2";//La cedula ya esta registrada
                 }
             }
             catch (Exception ex)

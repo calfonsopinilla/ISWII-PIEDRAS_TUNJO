@@ -105,12 +105,20 @@ namespace Data
        *Este metodo recibe: 
        *Retorna:
        */
-       public void cambiarEstado(string cedula)
+        public void cambiarEstado(string cedula)
         {
             using (var db = new Mapeo())
             {
-                var user = db.Usuarios.Find(cedula);
-                user.EstadoCuenta = false;
+                var user = db.Usuarios.Where(x => x.NumeroDocumento.Equals(cedula)).FirstOrDefault();
+                if (user.EstadoCuenta == false)
+                {
+                    user.EstadoCuenta = true;
+                }
+                else
+                {
+                    user.EstadoCuenta = false;
+                }
+                
                 db.SaveChanges();
             }
         }
