@@ -197,6 +197,15 @@
     <Content Include="Imagenes\Eventos\evento2.jpg" />
     <Content Include="Imagenes\Eventos\evento3.jpg" />
     <Content Include="Imagenes\Eventos\evento4.jpg" />
+    <Content Include="Imagenes\Informacion\descripcion.jpg" />
+    <Content Include="Imagenes\Informacion\descripcion1.jpg" />
+    <Content Include="Imagenes\Informacion\piedras_del_parque 1.jpg" />
+    <Content Include="Imagenes\Informacion\piedras_del_parque2.jpg" />
+    <Content Include="Imagenes\Informacion\piedras_del_parque3.jpg" />
+    <Content Include="Imagenes\Informacion\piedras_del_parque4.jpg" />
+    <Content Include="Imagenes\Informacion\reseña_historica1.jpg" />
+    <Content Include="Imagenes\Informacion\reseña_historica2.jpg" />
+    <Content Include="Imagenes\Informacion\ubicacion1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

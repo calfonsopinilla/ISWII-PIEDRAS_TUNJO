@@ -25,7 +25,6 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("informacion")]
-
         public IHttpActionResult EnviarInformacion() {
             try
             {
@@ -36,7 +35,6 @@ namespace PiedrasDelTunjo.Controllers
             {
                 throw ex;
             }
-
         }
 
         [HttpGet]
