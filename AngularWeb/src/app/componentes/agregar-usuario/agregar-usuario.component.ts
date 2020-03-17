@@ -33,6 +33,9 @@ public InsertarU() {
     this.servi.insertUsuario(cadena).then(res => {console.log(res)}).catch(err => 
       {console.log(err)});
   }
+  registro(){
+    
+  }
   ngOnInit(): void {
   }
 
