@@ -20,19 +20,28 @@ export class EventosComponent implements OnInit {
     public maxDate: Date = new Date ("08/27/2020");
      public value: Date = new Date (this.fecha);
   Eventos:any;
-
+  descripcion:any;
  constructor(private servicioeventoservice:ServicioEventoService) { this.ObtenerEventos}
    ObtenerEventos(){
  this.servicioeventoservice.ObtenerJson().subscribe(resultado =>{
    this.Eventos=resultado;
+  // this.descripcion=this.Eventos.descripcion;
    console.log("evntos ya tiene resultado");
+
+  console.log("k es false");
+  console.log(resultado);
+   console.log(this.Eventos);
+   console.log(this.descripcion);
  },
  error=>{
 console.log(JSON.stringify(error));
 
  }); 
    }
+  
   ngOnInit(): void {
+    this.ObtenerEventos();
+    
   }
 
 }

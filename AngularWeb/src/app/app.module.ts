@@ -24,6 +24,8 @@ import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
 import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
 
 import { ServicioEventoService } from './componentes/eventos/servicio-evento.service';
+import { ServicioInsertService } from './componentes/agregar-usuario/servicio-insert.service';
+import { ServicioInfoService } from './componentes/seccion-informativa/servicio-info.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 @NgModule({
@@ -57,7 +59,7 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
      HttpModule
   ],
-  providers: [ ServicioEventoService],
+  providers: [ ServicioEventoService , ServicioInfoService , ServicioInsertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,78 +10,27 @@
     </div>
   </div>
 </header>
+  
 <!--
-<div align="center">
-	<form>
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Primer nombre</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Segundo nombre</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3">
-    </div>
-  </div>
- <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Primer Apellido</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Segundo apellido</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-  <div align="center">
-  	<div class="form-group col-md-6">
-      <label for="inputState">Tipo de documento</label>
-      <select id="inputState" class="form-control">
-        <option selected>CC</option>
-        <option>CE</option>
-        <option>TI</option>
-      </select>
-    </div>
-  </div>
-  
-    <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Numero de documento</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-     <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Lugar de Expedicion</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-    <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Correo Electronico</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-    <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Clave usuario</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Ingresar</button>
-    </div>
-  </div>
-</form>
-</div>-->
+        <form (ngSubmit)="InsertarU()" [formGroup]="InsertarUsuario">
+            <li>
+              <br><br>primer nombre
+              <input type="text"  formControlName="nombre">
+              <br><br>
+              primer apellido: <input type="text" formControlName="apellido">
+               <div *ngIf="submitted && g.nombre.errors && g.apellido.error" class="invalid-feedback">
+                <div *ngIf="g.nombre.errors.required && g.apellido.errors.required" class="error-validate"> Id requerido</div>
+              </div>
+                   
+             
 
+            <button type="submit" >Insertar persona</button>
+            </li>
+        
+          </form>
+      -->
+ <!-- 
 
-  
   <section id="registro">
     <div class="container">
       <div class="row">
@@ -148,3 +97,4 @@
       </div>
     </div>
   </section>
+  -->

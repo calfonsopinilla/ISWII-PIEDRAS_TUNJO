@@ -11,7 +11,5 @@ export class InicioAdministradorComponent implements OnInit {
  
   ngOnInit(): void {
   }
-editar(){
-	//this.router.navigateByUrl('/Editar');
-}
+
 }
