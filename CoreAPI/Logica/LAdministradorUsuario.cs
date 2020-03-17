@@ -82,7 +82,7 @@ namespace Logica
                 //if (user.buscarCedula(double.Parse(cedula)) != false)
                 if (user.buscarCedula(cedula) != false)
                 {
-                    user.cambiarEstado(double.Parse(cedula));
+                    user.cambiarEstado(cedula);
                     return true;
                 }
                 else
