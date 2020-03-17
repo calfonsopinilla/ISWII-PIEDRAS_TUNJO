@@ -16,7 +16,9 @@ namespace Data
             List<UEvento> eventos = null;
             try
             {
-                eventos = db.Eventos.ToList();
+                eventos = db.Eventos
+                            .OrderBy(x => x.Id)
+                            .ToList();
             } catch(Exception ex)
             {
                 throw ex;
