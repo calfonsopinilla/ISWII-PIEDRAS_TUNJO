@@ -2,13 +2,13 @@
 
   <!-- Imagen para item que NO es ubicacion ni piedras -->
   <img *ngIf="!esItemUbicacion() && !esItemPiedras()" 
-              [src]="itemInfo.listaImagenesUrl[0] | imgServer:'informacion/obtenerImagen'" 
+              [src]="itemInfo.listaImagenesUrl[0] | imgServer:'info'" 
               width="100%" height="250px"/>
   
   <!-- Slide para item que NO es ubicación pero si piedras donde debe mostrar varias imagenes -->
   <ion-slides *ngIf="!esItemUbicacion() && esItemPiedras()" pager="true" [options]="slidesOptions">
     <ion-slide *ngFor="let image of itemInfo.listaImagenesUrl" class="image-slide"
-                [style]="(image | imgServer: 'informacion/obtenerImagen') | domSanitizer" ></ion-slide>
+                [style]="(image | imgServer: 'info') | domSanitizer" ></ion-slide>
   </ion-slides>
 
   <div *ngIf="esItemUbicacion()" id="map" #map ></div>

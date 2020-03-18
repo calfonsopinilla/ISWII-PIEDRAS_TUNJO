@@ -10,7 +10,7 @@
 <ion-content class="ion-padding" [fullscreen] *ngIf="itemInfo">
   <ion-slides [options]="{}" pager="true">
     <ion-slide *ngFor="let image of itemInfo.listaImagenesUrl" class="image-slide"
-                [style]="(image | imgServer: 'informacion/obtenerImagen') | domSanitizer" ></ion-slide>
+                [style]="(image | imgServer: 'info') | domSanitizer" ></ion-slide>
   </ion-slides>
   <ion-card class="ion-margin-top">
     <ion-card-content>
