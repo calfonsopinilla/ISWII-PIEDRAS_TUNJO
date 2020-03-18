@@ -177,6 +177,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministradorUsuarioController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
+    <Compile Include="Controllers\ImagenesController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\TokenCorreoController.cs" />
@@ -185,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilitarios\Mapeo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -199,6 +201,12 @@
     <Content Include="Imagenes\Eventos\evento4.jpg" />
     <Content Include="Imagenes\Informacion\descripcion.jpg" />
     <Content Include="Imagenes\Informacion\descripcion1.jpg" />
+    <Content Include="Imagenes\Informacion\galeria1.jpeg" />
+    <Content Include="Imagenes\Informacion\galeria2.jpeg" />
+    <Content Include="Imagenes\Informacion\galeria3.jpeg" />
+    <Content Include="Imagenes\Informacion\galeria4.jpeg" />
+    <Content Include="Imagenes\Informacion\galeria5.jpeg" />
+    <Content Include="Imagenes\Informacion\galeria6.jpeg" />
     <Content Include="Imagenes\Informacion\piedras_del_parque1.jpg" />
     <Content Include="Imagenes\Informacion\piedras_del_parque2.jpg" />
     <Content Include="Imagenes\Informacion\piedras_del_parque3.jpg" />
@@ -209,6 +217,7 @@
     <Content Include="Plantilla\mailer.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -226,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Usuarios\Identificaciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

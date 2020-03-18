@@ -8,6 +8,7 @@ using Utilitarios;
 using Logica;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
+using System.Web;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -73,6 +74,25 @@ namespace PiedrasDelTunjo.Controllers
             return resultadoVal;
         }
 
+        /*
+         Autor: Steven Cruz
+         Desc: Servicio para registrar un usuario.
+         Parms: Desde el body de un formulario del frontend viene un json con los atributos de usuario
+         Return: boolean registrado
+        */
+
+        [HttpPost]
+        [Route("registro")]
+        public HttpResponseMessage Registro([FromBody] UUsuario usuario)
+        {
+            if (usuario == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            var registrado = new LRegistro().Registrar(usuario);
+            return Request.CreateResponse(HttpStatusCode.OK, registrado);
+        }
 
     }
 }

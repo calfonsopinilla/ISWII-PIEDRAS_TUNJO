@@ -24,6 +24,27 @@ namespace Data {
             }
 
             return true;
-        }        
+        }
+        
+        /*
+         Autor: Steven Cruz
+         Fecha Modificación: 18/03/2020
+         */
+        public bool Registrar(UUsuario usuario)
+        {
+            try
+            {
+                using (var db = new Mapeo())
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

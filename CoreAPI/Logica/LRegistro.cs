@@ -15,9 +15,10 @@ namespace Logica
             return new DAORegistro().Validacion_ExistenciaCorreoYCC(json_EmailYCC);
         }
 
-
-
-
+        public bool Registrar(UUsuario usuario)
+        {
+            return new DAOUsuario().Registrar(usuario);
+        }
     }
 }
 
