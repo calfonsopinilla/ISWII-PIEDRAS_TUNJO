@@ -17,7 +17,7 @@ namespace Utilitarios {
         private string descripcion;
         private double calificacion;
         private string imagenesUrl;
-        private List<string> comentariosId;
+        private string comentariosId;
         private List<UComentarioEvento> listaComentariosEvento;
 
         [Key]
@@ -36,7 +36,9 @@ namespace Utilitarios {
         [Column("imagenes_url")]
         public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
         [Column("comentarios_id")]
-        public List<string> ComentariosId { get => comentariosId; set => comentariosId = value; }
+        public string ComentariosId { get => comentariosId; set => comentariosId = value; }
+        [Column("token")]
+        public string Token { get; set; }
         [NotMapped]
         public List<UComentarioEvento> ListaComentariosEvento { get => listaComentariosEvento; set => listaComentariosEvento = value; }
     }
