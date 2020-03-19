@@ -16,10 +16,12 @@ namespace PiedrasDelTunjo.Controllers
     public class RegistroController : ApiController
     {
         [HttpGet]
-        [Route("Registro/Val_EmailYCC")]
+        [Route("Registro/Val_EmailYCC")]       
         /**
-         * Metodo para la validacion de la existencia del correo electronico y la cedula
+         * Autor: Gabriel Zapata
+         * Desc: Metodo para la validacion de la existencia del correo electronico y la cedula
          * en la bd
+         * Return: boolean resultadoVal
          */
         //
         public Boolean Val_EmailYCC(string valCorreo, string valDocumento)

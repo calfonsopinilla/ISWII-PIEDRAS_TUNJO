@@ -96,6 +96,7 @@
     <Compile Include="LEvento.cs" />
     <Compile Include="LInformacion.cs" />
     <Compile Include="LRegistro.cs" />
+    <Compile Include="LSubscripcion.cs" />
     <Compile Include="LTokenCorreo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
