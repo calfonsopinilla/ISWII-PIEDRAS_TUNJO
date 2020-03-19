@@ -22,32 +22,43 @@ namespace PiedrasDelTunjo.Controllers
              */
         [HttpPost]
         [Route("uploadImage")]
+        // POST: images/uploadImage?tipo=identficacion
         public HttpResponseMessage UploadImage([FromUri] string tipo)
         {
-            string imageName = null;
             string carpeta = ObtenerCarpetaPorTipo(tipo);
-
-            if (carpeta == null)
+            if (string.IsNullOrEmpty(carpeta))
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Tipo de imagen no valido");
             }
 
             try
             {
-                // Guardar la imagen en el servidor
-                var postedFile = HttpContext.Current.Request.Files["image"];
-                imageName = postedFile.FileName;
-                //imageName = Path.GetFileNameWithoutExtension(postedFile.FileName);
-                // imageName = $"{ imageName.Replace(" ", "_") }{ DateTime.Now.ToString("yymmssfff") }{ Path.GetExtension(postedFile.FileName) }";
-                string filePath = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ imageName }");
-                postedFile.SaveAs(filePath);
+                var request = HttpContext.Current.Request;
+
+                if (Request.Content.IsMimeMultipartContent())
+                {
+                    if (request.Files.Count > 0)
+                    {
+                        var postedFile = request.Files.Get("image");
+                        var title = request.Params["title"];
+                        string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
+                        postedFile.SaveAs(root);
+                        //Save post to DB
+                        return Request.CreateResponse(HttpStatusCode.Found, new
+                        {
+                            error = false,
+                            status = "created",
+                            path = root
+                        });
+
+                    }
+                }
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return null;
         }
 
 
