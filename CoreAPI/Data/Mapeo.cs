@@ -27,6 +27,7 @@ namespace Data
         public DbSet<USubscripcion> infoSubscripcion { get; set; }
         public DbSet<UPreguntas_frecuentes> preguntas_Frecuentes { get; set; }
         public DbSet<UPromocion> promocion { get; set; }
+        public DbSet<UCabana> Cabana { get; set; }
 
 
         //public DbSet<URol> Roles { get; set; }

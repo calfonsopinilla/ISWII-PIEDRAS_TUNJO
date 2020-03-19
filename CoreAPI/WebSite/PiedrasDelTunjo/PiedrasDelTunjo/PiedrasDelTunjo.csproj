@@ -176,6 +176,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministradorUsuarioController.cs" />
+    <Compile Include="Controllers\CabanaController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ImagenesController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
@@ -236,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Cabana\" />
     <Folder Include="Imagenes\Usuarios\Identificaciones\" />
   </ItemGroup>
   <ItemGroup>
