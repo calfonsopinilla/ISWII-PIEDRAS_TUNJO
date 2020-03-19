@@ -24,10 +24,13 @@ import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
 import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
 
 import { ServicioEventoService } from './componentes/eventos/servicio-evento.service';
+import { ServicioAdminService } from './componentes/inicio-administrador/servicio-admin.service';
 import { ServicioInsertService } from './componentes/agregar-usuario/servicio-insert.service';
 import { ServicioInfoService } from './componentes/seccion-informativa/servicio-info.service';
+import { ServicioxService } from './componentes/componentex/serviciox.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { ComponentexComponent } from './componentes/componentex/componentex.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,7 @@ import { HttpModule } from '@angular/http';
     CabeceroAdministradorComponent,
     ModuloQrComponent,
     ModuloCComponent,
+    ComponentexComponent,
 
 
      //ServicioEventoService
@@ -59,7 +63,7 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
      HttpModule
   ],
-  providers: [ ServicioEventoService , ServicioInfoService , ServicioInsertService],
+  providers: [ ServicioEventoService , ServicioInfoService , ServicioInsertService,ServicioAdminService,ServicioxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

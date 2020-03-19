@@ -6,10 +6,10 @@ import { map, catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicioAdminService {
+export class ServicioxService {
 
   constructor(private http: HttpClient) { }
-  ObtenerJson():Observable<any>{
- return this.http.get("http://piedrasdeltunjo.tk/administrador/informacionUsuarios")
+   ObtenerJson():Observable<any>{
+ return this.http.get("http://piedrasdeltunjo.tk/informacion/4")
   }
 }

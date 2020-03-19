@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import{Router} from '@angular/router';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule , FormsModule } from '@angular/forms';
+import { ServicioAdminService } from './servicio-admin.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-inicio-administrador',
   templateUrl: './inicio-administrador.component.html',
@@ -7,9 +10,23 @@ import{Router} from '@angular/router';
 })
 export class InicioAdministradorComponent implements OnInit {
 
-  constructor(private router:Router) { }
- 
+  constructor(private servicioinfoservice:ServicioAdminService) {  this.ObtenerUsuarios}
+
+  User:any;
+  ObtenerUsuarios(){
+ this.servicioinfoservice.ObtenerJson().subscribe(resultado =>{
+   this.User=resultado;
+   
+   console.log("Informacion ya tiene resultado");
+  
+ },
+ error=>{
+console.log(JSON.stringify(error));
+
+ }); 
+   }
   ngOnInit(): void {
+  	this.ObtenerUsuarios();
   }
 
 }

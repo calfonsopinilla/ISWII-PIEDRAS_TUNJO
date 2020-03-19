@@ -26,6 +26,7 @@
 		 				<tr>
 		 					<th>#Id</th>
 		 				   <th>nombre</th>
+		 				    <th>apellido</th>
 		 					<th>tipoDocumento</th>
 		 					<th>numeroDocumento</th>
 		 					<th>lugarExpedicion</th>
@@ -36,18 +37,16 @@
                             <th></th>
 		 				</tr>
 		 			</thead>
-		 			<!--<tbody>
-		 				 <tr *ngFor="let cliente of clientes; let i =index">
+		 			<tbody>
+		 				 <tr *ngFor="let cliente of User; let i =index">
 		 				 	<td>{{i+1}}</td>
 		 				 	<td>{{cliente.nombre}}</td>
 		 				 	<td>{{cliente.apellido}}</td>
 		 				 	<td>{{cliente.tipo_documento}}</td>
 		 				 	<td>{{cliente.correo }}</td>
-		 				 	<td>
-		 				 		<a routerLink="/cliente/editar/{{cliente.id}}"class="btn btn-secundary"></a>
-		 				 	</td>
+		 				 	
 		 				 </tr>
-		 			</tbody>-->
+		 			</tbody>
 		 		</table>
 		 	</div>
 		 </div>	

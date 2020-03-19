@@ -9,6 +9,7 @@ import  {AgregarUsuarioComponent} from './componentes/agregar-usuario/agregar-us
 import  {ContactanosComponent} from './componentes/contactanos/contactanos.component';
 import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
 import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
+import  {ComponentexComponent} from './componentes/componentex/componentex.component';
 
 import  {InicioAdministradorComponent} from './componentes/inicio-administrador/inicio-administrador.component';
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
 {path:'Agregar',component:AgregarUsuarioComponent},
 {path:'Modulocabaña',component:ModuloCComponent},
 {path:'ModuloQr',component:ModuloQrComponent},
+{path:'ModuloQr',component:ModuloQrComponent},
+{path:'componentex',component:ComponentexComponent},
 ];
 
 

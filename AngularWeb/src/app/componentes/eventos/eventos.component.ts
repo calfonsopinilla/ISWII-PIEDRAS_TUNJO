@@ -25,10 +25,8 @@ export class EventosComponent implements OnInit {
    ObtenerEventos(){
  this.servicioeventoservice.ObtenerJson().subscribe(resultado =>{
    this.Eventos=resultado;
-  // this.descripcion=this.Eventos.descripcion;
-   console.log("evntos ya tiene resultado");
+  this.descripcion=resultado.descripcion;
 
-  console.log("k es false");
   console.log(resultado);
    console.log(this.Eventos);
    console.log(this.descripcion);
