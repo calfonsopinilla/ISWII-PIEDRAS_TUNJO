@@ -116,6 +116,8 @@ namespace PiedrasDelTunjo.Controllers
                     return "Eventos";
                 case "identificacion":
                     return "Usuarios/Identificaciones";
+                case "cabana":
+                    return "Cabana";
             }
             return null;
         }

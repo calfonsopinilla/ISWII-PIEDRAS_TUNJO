@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LAdministradorUsuario.cs" />
+    <Compile Include="LCabana.cs" />
     <Compile Include="LCorreo.cs" />
     <Compile Include="LEncriptar.cs" />
     <Compile Include="LEvento.cs" />

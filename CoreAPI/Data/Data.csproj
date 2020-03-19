@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoAdministradorUsuario.cs" />
+    <Compile Include="DAOCabana.cs" />
     <Compile Include="DaoEvento.cs" />
     <Compile Include="DaoInformacion.cs" />
     <Compile Include="DAORegistro.cs" />
