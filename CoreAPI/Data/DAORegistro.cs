@@ -11,6 +11,11 @@ namespace Data
 {
     public class DAORegistro
     {
+        /**
+         * Autor: Gabriel Zapata
+         * Parametro de recepcion: json con cedula y correo
+         * 
+         **/
         public URegistroUser Validacion_ExistenciaCorreoYCC(string json_ValidaEmailYCC)
         {
             using (var db = new Mapeo())
