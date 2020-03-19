@@ -18,7 +18,7 @@ namespace PiedrasDelTunjo.Controllers
          Autor: Steven Cruz
          Desc: Servicio para almacenar imágenes en el servidor
          Params: el tipo de imagen, ya sea de evento, informacion, identificaciones, etc
-         Return: 200 OK Status
+         Return: object { error, status, path }
              */
         [HttpPost]
         [Route("uploadImage")]
