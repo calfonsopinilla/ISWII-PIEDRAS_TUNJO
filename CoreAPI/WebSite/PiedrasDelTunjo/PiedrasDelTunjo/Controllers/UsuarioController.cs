@@ -25,22 +25,18 @@ namespace PiedrasDelTunjo.Controllers
 
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("usuario/iniciaSesion")]
-        public IHttpActionResult EnviarInformacion(string datosLogin){
+        public HttpResponseMessage IniciarSesion([FromBody] UUsuario usuario){
             try
             {
-
-                var informacion = new LUsuario().iniciarSesion(datosLogin);
-                if (!informacion.Equals("2") && !informacion.Equals("1"))
+                var userLogin = new LUsuario().IniciarSesion(usuario.CorreoElectronico, usuario.Clave);
+                if (userLogin == null)
                 {
-                    var informacion2 = JsonConvert.DeserializeObject<UUsuario>(informacion);
-                    return Ok(informacion2);
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "El Usuario no existe" });
                 }
-                else {
-                    return Ok(informacion);
-                }
-                
+
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, userLogin });
             }
             catch (Exception ex)
             {

@@ -101,6 +101,7 @@
     <Compile Include="LRegistro.cs" />
     <Compile Include="LSubscripcion.cs" />
     <Compile Include="LTokenCorreo.cs" />
+    <Compile Include="LUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

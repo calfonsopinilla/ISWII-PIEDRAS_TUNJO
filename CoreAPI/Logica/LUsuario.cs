@@ -22,20 +22,11 @@ namespace Logica
       * la verificacion del correo retorna 1 y si el usuario no esta registrado retorna 2
       */
 
-        public string iniciarSesion(string datosLogin) {
+        public UUsuario IniciarSesion(string correo, string clave) {
 
             try
             {
-                UUsuario usuario = new DAOUsuario().iniciarSesion(JsonConvert.DeserializeObject<ULogin>(datosLogin));
-
-                if (usuario == null) {
-                    return "2";
-                } else if (usuario != null && usuario.VerificacionCuenta == true) {
-                    return JsonConvert.SerializeObject(usuario);
-                } else  {
-                    return "1";
-                }
-
+                return new DAOUsuario().IniciarSesion(correo, clave);
             } catch (Exception ex) {
                 throw ex;
             }

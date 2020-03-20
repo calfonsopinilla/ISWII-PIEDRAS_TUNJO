@@ -46,5 +46,14 @@ namespace Data {
                 throw ex;
             }
         }
+
+        /**/
+        public UUsuario IniciarSesion(string correo, string clave)
+        {
+            using (var db = new Mapeo())
+            {
+                return db.Usuarios.Where(x => x.CorreoElectronico == correo && x.Clave == clave).FirstOrDefault();
+            }
+        }
     }
 }
