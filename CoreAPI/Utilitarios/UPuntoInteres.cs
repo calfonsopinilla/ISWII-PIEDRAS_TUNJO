@@ -12,7 +12,7 @@ namespace Utilitarios
     public class UPuntoInteres
     {
         [Key]
-        [Column("if")]
+        [Column("id")]
         public int Id { get; set; }
         [Column("descripcion")]
         public string Descripcion { get; set; }

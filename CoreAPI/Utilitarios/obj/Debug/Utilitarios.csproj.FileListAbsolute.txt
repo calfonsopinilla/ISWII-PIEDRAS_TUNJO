@@ -172,3 +172,4 @@ C:\Users\jhona\Downloads\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utili
 C:\Users\jhona\Downloads\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\jhona\Downloads\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\jhona\Downloads\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
