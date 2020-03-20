@@ -16,7 +16,7 @@ namespace Logica
            * Autor: Gabriel Zapata
            * fecha: 18/03/2019
            * Parametro de recepcion: json tipo USubscripcion
-           * Return: int estado registro de la subscripcion
+           * Return: string estado registro de la subscripcion
         **/
         public string RegistroSubscripcion(string jsonRegistroSub)
         {
@@ -67,6 +67,108 @@ namespace Logica
             }
         }
 
+        /**
+         * Autor: Gabriel Zapata
+         * fecha: 19/03/2019
+         * Return: string json con lista de tipo USubscripcion que contiene
+         * todos las subscripciones 
+        **/
+        public string Mostrar_Subscripciones(int estadoFiltro)
+        {
+            try
+            {
+                return (JsonConvert.SerializeObject((List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro))).ToString();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+            
+
+        }
+
+        /**
+         * Autor: Gabriel Zapata
+         * fecha: 19/03/2019
+         * Return: string con mensaje de edicion exitosa
+        **/
+        public string EditarSubscripcion(string json_InfoNueva)
+        {
+            try
+            {
+                string validacionCoincidencia = "";
+                //int id_InformacionAnt = int.Parse(id_InfoAnterior);
+                USubscripcion infoNueva = JsonConvert.DeserializeObject<USubscripcion>(json_InfoNueva);
+
+                //string validacionCoincidencia = new DAOSubscripcion().Valida_CoincidenciaEdicion(id_InformacionAnt, infoNueva);
+                if (infoNueva == null)
+                {
+                    validacionCoincidencia = "Los campos estan vacios";
+                    return validacionCoincidencia;
+                }
+                else
+                {
+                    new DAOSubscripcion().EditarSubscripcion(infoNueva);
+                    validacionCoincidencia = "Subscripcion Editada Satisfactoriamente";
+
+
+                }                
+                /*switch (validacionCoincidencia)
+                {
+                    case "Los datos a modificar no han cambiado ó intenta modificar una subscripcion que ya esta registrada en otro registro":
+                        return validacionCoincidencia;                    
+                    case "Se puede editar":
+                       // new DAOSubscripcion().EditarSubscripcion(infoNueva);
+                       // validacionCoincidencia = "Subscripcion Editada Satisfactoriamente";
+                        break;
+                }*/
+
+                return validacionCoincidencia;
+
+
+            }catch(Exception ex)
+            {
+                throw ex;
+                
+            }
+
+
+        }
+        /**
+         * Autor: Gabriel Zapata
+         * fecha: 19/03/2019
+         * 
+         * Return: string con mensaje del cambio de estado
+        **/
+        public string CambiarEstado_Subscripcion(string json_Info)
+        {
+            try
+            {
+                string validacion = "";                
+                USubscripcion infoCambiar = JsonConvert.DeserializeObject<USubscripcion>(json_Info);
+
+                if (infoCambiar == null)
+                {
+                    validacion = "Los campos estan vacios";
+                    return validacion;
+                }
+                else
+                {
+                    new DAOSubscripcion().CambiarEstado_Subscripcion(infoCambiar);
+                    validacion = "Subscripcion Editada Satisfactoriamente";
+
+
+                }
+
+
+                return validacion;
+
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }

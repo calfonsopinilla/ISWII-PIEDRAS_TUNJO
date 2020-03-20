@@ -24,6 +24,8 @@ namespace Data
         public DbSet<UInformacionParque> informacionParque{ get; set; }
         public DbSet<UTokenCorreo> TokenCorreo { get; set; }
 
+        public DbSet<UNoticia> Noticias { get; set; }
+
         public DbSet<USubscripcion> infoSubscripcion { get; set; }
         public DbSet<UPreguntas_frecuentes> preguntas_Frecuentes { get; set; }
         public DbSet<UPromocion> promocion { get; set; }

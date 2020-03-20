@@ -107,15 +107,15 @@ namespace Logica
             try
             {
                 UUsuario usuario = JsonConvert.DeserializeObject<UUsuario>(datosJson);
-                if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == true)
+                if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == false)
                 {
                     DaoAdministradorUsuario daoAdministradorUsuario = new DaoAdministradorUsuario();
                     daoAdministradorUsuario.actualizarUsuario(usuario);
-                    return "1";//Lo datos se actualizan
+                    return "1";
                 }
                 else
                 {
-                    return "2";//La cedula ya esta registrada
+                    return "2";//usuario no encontrado
                 }
             }
             catch (Exception ex)
