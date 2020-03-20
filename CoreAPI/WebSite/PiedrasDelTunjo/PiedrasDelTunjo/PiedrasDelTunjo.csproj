@@ -181,6 +181,8 @@
     <Compile Include="Controllers\ImagenesController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
+    <Compile Include="Controllers\Preguntas_frecuentesController.cs" />
+    <Compile Include="Controllers\PromocionController.cs" />
     <Compile Include="Controllers\PuntosInteresController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SubscripcionController.cs" />

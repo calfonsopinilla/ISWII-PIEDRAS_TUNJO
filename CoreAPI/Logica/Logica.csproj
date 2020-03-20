@@ -97,6 +97,8 @@
     <Compile Include="LEvento.cs" />
     <Compile Include="LInformacion.cs" />
     <Compile Include="LNoticia.cs" />
+    <Compile Include="LPreguntas_frecuentes.cs" />
+    <Compile Include="LPromocion.cs" />
     <Compile Include="LPuntoInteres.cs" />
     <Compile Include="LRegistro.cs" />
     <Compile Include="LSubscripcion.cs" />
