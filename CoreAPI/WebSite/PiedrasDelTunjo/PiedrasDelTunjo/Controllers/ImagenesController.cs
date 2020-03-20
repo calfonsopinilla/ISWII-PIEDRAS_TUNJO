@@ -22,7 +22,7 @@ namespace PiedrasDelTunjo.Controllers
              */
         [HttpPost]
         [Route("uploadImage")]
-        // POST: images/uploadImage?tipo=identficacion
+        // POST: images/uploadImage?tipo=identficacion/evento/info/etc...
         public HttpResponseMessage UploadImage([FromUri] string tipo)
         {
             string carpeta = ObtenerCarpetaPorTipo(tipo);
@@ -34,31 +34,29 @@ namespace PiedrasDelTunjo.Controllers
             try
             {
                 var request = HttpContext.Current.Request;
-
-                if (Request.Content.IsMimeMultipartContent())
+                if (request.Files.Count > 0)
                 {
-                    if (request.Files.Count > 0)
+                    var postedFile = request.Files.Get("image");
+                    var title = request.Params["title"];
+                    string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
+                    postedFile.SaveAs(root);
+                    //Save post to DB
+                    return Request.CreateResponse(HttpStatusCode.OK, new
                     {
-                        var postedFile = request.Files.Get("image");
-                        var title = request.Params["title"];
-                        string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
-                        postedFile.SaveAs(root);
-                        //Save post to DB
-                        return Request.CreateResponse(HttpStatusCode.Found, new
-                        {
-                            error = false,
-                            status = "created",
-                            path = root
-                        });
+                        error = false,
+                        status = "created",
+                        path = root
+                    });
 
-                    }
+                } else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No has enviado ninguna imagen");
                 }
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-            return null;
         }
 
 
