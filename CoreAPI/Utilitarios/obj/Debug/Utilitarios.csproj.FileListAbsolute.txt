@@ -133,7 +133,6 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Debug\System.
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Debug\System.Text.Json.xml
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Debug\System.ValueTuple.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.dll

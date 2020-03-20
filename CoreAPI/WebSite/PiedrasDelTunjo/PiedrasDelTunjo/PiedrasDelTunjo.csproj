@@ -180,6 +180,7 @@
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ImagenesController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
+    <Compile Include="Controllers\PuntosInteresController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SubscripcionController.cs" />
     <Compile Include="Controllers\TokenCorreoController.cs" />

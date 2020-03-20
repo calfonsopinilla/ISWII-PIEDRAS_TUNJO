@@ -103,6 +103,7 @@
     <Compile Include="UPQR.cs" />
     <Compile Include="UPreguntas_frecuentes.cs" />
     <Compile Include="UPromocion.cs" />
+    <Compile Include="UPuntoInteres.cs" />
     <Compile Include="URegistroUser.cs" />
     <Compile Include="UReserva.cs" />
     <Compile Include="UReservaCabana.cs" />

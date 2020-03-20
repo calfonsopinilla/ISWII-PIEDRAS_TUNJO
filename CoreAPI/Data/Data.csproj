@@ -94,6 +94,7 @@
     <Compile Include="DAOCabana.cs" />
     <Compile Include="DaoEvento.cs" />
     <Compile Include="DaoInformacion.cs" />
+    <Compile Include="DaoPuntoInteres.cs" />
     <Compile Include="DAORegistro.cs" />
     <Compile Include="DAORol.cs" />
     <Compile Include="DAOSubscripcion.cs" />
