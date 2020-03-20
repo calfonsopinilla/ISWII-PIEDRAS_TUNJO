@@ -36,8 +36,25 @@ namespace PiedrasDelTunjo.Controllers
 
             try
             {
-                StringBuilder sb = new StringBuilder();
-                await Request.Content.ReadAsMultipartAsync(provider);
+                Stream reqStream = Request.Content.ReadAsStreamAsync().Result;
+                MemoryStream tempStream = new MemoryStream();
+                reqStream.CopyTo(tempStream);
+
+                tempStream.Seek(0, SeekOrigin.End);
+                StreamWriter writer = new StreamWriter(tempStream);
+                writer.WriteLine();
+                writer.Flush();
+                tempStream.Position = 0;
+
+                StreamContent streamContent = new StreamContent(tempStream);
+                foreach (var header in Request.Content.Headers)
+                {
+                    streamContent.Headers.Add(header.Key, header.Value);
+                }
+
+                // Read the form data and return an async task.
+                await streamContent.ReadAsMultipartAsync(provider);
+                //await Request.Content.ReadAsMultipartAsync(provider);
 
                 foreach(var file in provider.FileData)
                 {

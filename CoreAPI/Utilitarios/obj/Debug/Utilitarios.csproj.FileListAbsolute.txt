@@ -32,3 +32,4 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilita
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
