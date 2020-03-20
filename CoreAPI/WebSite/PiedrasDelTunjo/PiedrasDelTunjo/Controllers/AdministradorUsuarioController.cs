@@ -93,12 +93,12 @@ namespace PiedrasDelTunjo.Controllers
         */
         [HttpGet]
         [Route("administrador/actualizarUsuario")]
-        public void actualizarUsuario(string datosJson)
+        public string actualizarUsuario(string datosJson)
         {
             try
             {
                 LAdministradorUsuario usuario = new LAdministradorUsuario();
-                usuario.actualizarUsuario(datosJson);
+                return usuario.actualizarUsuario(datosJson);
             }
             catch (Exception ex)
             {

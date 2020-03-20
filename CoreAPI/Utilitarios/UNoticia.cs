@@ -14,10 +14,12 @@ namespace Utilitarios {
         private string titulo;
         private string descripcion;
         private DateTime fechaPublicacion;
-        private List<string> imagenesUrl;
+        private string imagenesUrl;
         private List<string> comentariosId;
         private double calificacion;
         private List<UComentarioNoticia> listaComentariosNoticia;
+        private List<string> listaImagenes;
+        private string token;
 
         [Key]
         [Column("id")]
@@ -28,14 +30,18 @@ namespace Utilitarios {
         public string Descripcion { get => descripcion; set => descripcion = value; }
         [Column("fecha_publicacion")]
         public DateTime FechaPublicacion { get => fechaPublicacion; set => fechaPublicacion = value; }
-        [Column("imagenes_url")]
-        public List<string> ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
+        [Column("imagen_url")]
+        public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
         [Column("comentarios_id")]
         public List<string> ComentariosId { get => comentariosId; set => comentariosId = value; }
         [Column("calificacion")]
         public double Calificacion { get => calificacion; set => calificacion = value; }
+        [Column("token")]
+        public string Token { get => token; set => token = value; }
+
         [NotMapped]
         public List<UComentarioNoticia> ListaNoticias { get => listaComentariosNoticia; set => listaComentariosNoticia = value; }
+        public List<string> ListaImagenes { get => listaImagenes; set => listaImagenes = value; }
         
     }
 }

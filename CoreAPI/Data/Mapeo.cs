@@ -24,14 +24,14 @@ namespace Data
         public DbSet<UInformacionParque> informacionParque{ get; set; }
         public DbSet<UTokenCorreo> TokenCorreo { get; set; }
 
+        public DbSet<UNoticia> Noticias { get; set; }
+
         public DbSet<USubscripcion> infoSubscripcion { get; set; }
-
-
-        //public DbSet<URol> Roles { get; set; }
-        //public DbSet<UNoticia> Noticias { get; set; }
-        //public DbSet<UInformacionParque> InformacionParque { get; set; }
-        //public DbSet<UComentarioNoticia> ComentariosNoticia { get; set; }
-
+        public DbSet<UPreguntas_frecuentes> preguntas_Frecuentes { get; set; }
+        public DbSet<UPromocion> promocion { get; set; }
+        public DbSet<UCabana> Cabana { get; set; }
+        public DbSet<UPuntoInteres> PuntosInteres { get; set; }
+   
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.HasDefaultSchema(this.schema);
