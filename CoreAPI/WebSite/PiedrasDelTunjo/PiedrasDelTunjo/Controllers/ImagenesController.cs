@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -23,41 +25,86 @@ namespace PiedrasDelTunjo.Controllers
         [HttpPost]
         [Route("uploadImage")]
         // POST: images/uploadImage?tipo=identficacion/evento/info/etc...
-        public HttpResponseMessage UploadImage([FromUri] string tipo)
+        public async Task<HttpResponseMessage> UploadImage([FromUri] string tipo)
         {
-            string carpeta = ObtenerCarpetaPorTipo(tipo);
-            if (string.IsNullOrEmpty(carpeta))
+            if (!Request.Content.IsMimeMultipartContent())
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Tipo de imagen no valido");
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
+            string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new MultipartFormDataStreamProvider(root);
 
             try
             {
-                var request = HttpContext.Current.Request;
-                if (request.Files.Count > 0)
-                {
-                    var postedFile = request.Files.Get("image");
-                    var title = request.Params["title"];
-                    string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
-                    postedFile.SaveAs(root);
-                    //Save post to DB
-                    return Request.CreateResponse(HttpStatusCode.OK, new
-                    {
-                        error = false,
-                        status = "created",
-                        path = root
-                    });
+                StringBuilder sb = new StringBuilder();
+                await Request.Content.ReadAsMultipartAsync(provider);
 
-                } else
+                foreach(var file in provider.FileData)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No has enviado ninguna imagen");
+                    //FileInfo fileInfo = new FileInfo(file.LocalFileName);
+                    //sb.Append(string.Format("Uploaded file: {0} ({1} bytes)\n", fileInfo.Name, fileInfo.Length));
+                    string fileName = ClearFileName( file.Headers.ContentDisposition.FileName );
+                    string carpeta = ObtenerCarpetaPorTipo(tipo);
+                    string path = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ fileName }");
+                    File.Move(file.LocalFileName, path);
                 }
-            }
-            catch(Exception ex)
+
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Upload Image" });
+            }catch(Exception ex)
             {
-                throw ex;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
+
         }
+
+        private string ClearFileName(string fileName)
+        {
+            if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
+            {
+                fileName = fileName.Trim('"');
+            }
+            if (fileName.Contains(@"/") || fileName.Contains(@"\"))
+            {
+                fileName = Path.GetFileName(fileName);
+            }
+            return fileName;
+        }
+
+        //public HttpResponseMessage UploadImage([FromUri] string tipo)
+        //{
+        //    string carpeta = ObtenerCarpetaPorTipo(tipo);
+        //    if (string.IsNullOrEmpty(carpeta))
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Tipo de imagen no valido");
+        //    }
+
+        //    try
+        //    {
+        //        var request = HttpContext.Current.Request;
+        //        if (request.Files.Count > 0)
+        //        {
+        //            var postedFile = request.Files.Get("image");
+        //            var title = request.Params["title"];
+        //            string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
+        //            postedFile.SaveAs(root);
+        //            //Save post to DB
+        //            return Request.CreateResponse(HttpStatusCode.OK, new
+        //            {
+        //                error = false,
+        //                status = "created",
+        //                path = root
+        //            });
+
+        //        } else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No has enviado ninguna imagen");
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
 
         /*
