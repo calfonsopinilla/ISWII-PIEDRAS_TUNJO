@@ -53,7 +53,7 @@ namespace Logica
                 {
                     return "2"; //el correo ya esta registrado 
                 }
-                else if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == false && new DaoAdministradorUsuario().buscarCorreo(usuario.CorreoElectronico) == false)
+                else if ((new DaoAdministradorUsuario().buscarCedula(usuario.NumeroDocumento)) == false && new DaoAdministradorUsuario().buscarCorreo(usuario.CorreoElectronico) ==true)
                 {
                     // 
                     return "3"; // la cedula ya esta registrada
