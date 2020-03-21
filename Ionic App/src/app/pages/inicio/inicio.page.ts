@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemInfo } from 'src/app/interfaces/item-info.interface';
 import { InfoParqueService } from '../../services/info-parque.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-inicio',
@@ -22,6 +23,9 @@ export class InicioPage implements OnInit {
                               // console.log(resp);
                               this.itemsInfo = resp;
                             });
+    // // auth
+    // this.authService.isAuthenticated()
+    //                 .then(ok => console.log(ok));
   }
 
 }

@@ -27,10 +27,18 @@
 
             <!-- Cuenta -->
             <ion-list-header>Cuenta</ion-list-header>
+            <!-- Login y registro -->
             <ion-menu-toggle autoHide="false" *ngFor="let item of itemsCuenta">
-                <ion-item [routerLink]="item.ruta" detail>
+                <ion-item *ngIf="auth===false" [routerLink]="item.ruta" detail>
                     <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
                     <ion-label>{{ item.label }}</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <!-- Cerrar sesión -->
+            <ion-menu-toggle autoHide="false" *ngIf="auth===true">
+                <ion-item detail (click)="logout()">
+                    <ion-icon slot="start" name="log-out-outline" color="parning"></ion-icon>
+                    <ion-label>Cerrar sesión</ion-label>
                 </ion-item>
             </ion-menu-toggle>
         </ion-list>
