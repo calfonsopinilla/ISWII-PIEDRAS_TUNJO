@@ -95,6 +95,8 @@
     <Compile Include="DaoEvento.cs" />
     <Compile Include="DaoInformacion.cs" />
     <Compile Include="DAONoticia.cs" />
+    <Compile Include="DaoPreguntas_frecuentes.cs" />
+    <Compile Include="DaoPromocion.cs" />
     <Compile Include="DaoPuntoInteres.cs" />
     <Compile Include="DAORegistro.cs" />
     <Compile Include="DAORol.cs" />
