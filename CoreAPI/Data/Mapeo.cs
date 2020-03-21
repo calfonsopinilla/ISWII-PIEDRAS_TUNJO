@@ -31,7 +31,7 @@ namespace Data
         public DbSet<UPromocion> promocion { get; set; }
         public DbSet<UCabana> Cabana { get; set; }
         public DbSet<UPuntoInteres> PuntosInteres { get; set; }
-   
+        public DbSet<UPictograma> Pictograma { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.HasDefaultSchema(this.schema);
