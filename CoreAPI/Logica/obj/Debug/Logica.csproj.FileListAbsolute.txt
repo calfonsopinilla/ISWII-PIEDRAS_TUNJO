@@ -297,3 +297,46 @@ C:\Users\daniel\Desktop\CA\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.c
 C:\Users\daniel\Desktop\CA\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\daniel\Desktop\CA\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
 C:\Users\daniel\Desktop\CA\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
+C:\Users\JUEGOS\Desktop\proyecto 2\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
