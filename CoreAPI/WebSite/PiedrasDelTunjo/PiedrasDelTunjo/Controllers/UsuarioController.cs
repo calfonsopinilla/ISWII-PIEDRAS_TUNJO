@@ -7,12 +7,13 @@ using System.Web.Http;
 using Utilitarios;
 using Logica;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers
 {
+    [EnableCors(origins: "*", methods: "*", headers: "*")]
     public class UsuarioController : ApiController
     {
-
 
         /*
       @Autor : Jose Luis Soriano Roa
