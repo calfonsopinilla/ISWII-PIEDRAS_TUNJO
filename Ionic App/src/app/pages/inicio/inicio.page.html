@@ -3,5 +3,5 @@
 
 <ion-content class="ion-padding" [fullscreen]>
   <app-item-info *ngFor="let item of itemsInfo; let i = index;" [itemInfo]="item" 
-                [ruta]="rutas[i]"></app-item-info>
+                [ruta]="rutas[i] + '/' + item.id"></app-item-info>
 </ion-content>

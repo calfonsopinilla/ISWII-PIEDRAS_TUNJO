@@ -1,0 +1,37 @@
+<ion-header [translucent]>
+  <ion-toolbar>
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] class="ion-padding">
+
+  <img src="assets/mock-images/ionic-logo.png" id="logo"/>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input type="text" formControlName="correoElectronico"></ion-input>
+
+        <span class="text-danger"
+          *ngIf="correo.touched && correo.dirty && correo.errors?.required">El correo es requerido</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="clave"></ion-input>
+
+        <span class="text-danger" 
+          *ngIf="clave.touched && clave.dirty && clave.errors?.required">La contraseña es requerida</span>
+        <span class="text-danger" 
+          *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
+            La contraseña requiere minimo {{ clave.errors?.minlength.requiredLength }} caracteres
+        </span>
+      </ion-item>
+
+      <ion-button [disabled]="loginForm.invalid" id="button-submit" type="submit" 
+            expand="full">Ingresar</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

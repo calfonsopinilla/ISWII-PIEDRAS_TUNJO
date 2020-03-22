@@ -11,27 +11,30 @@ const routes: Routes = [
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundPageModule)
   },
   {
-    path: 'descripcion-parque',
+    path: 'descripcion-parque/:id',
     loadChildren: () => import('./pages/descripcion-parque/descripcion-parque.module').then( m => m.DescripcionParquePageModule)
   },
   {
-    path: 'resenia-historica',
+    path: 'resenia-historica/:id',
     loadChildren: () => import('./pages/resenia-historica/resenia-historica.module').then( m => m.ReseniaHistoricaPageModule)
   },
   {
-    path: 'ubicacion-parque',
+    path: 'ubicacion-parque/:id',
     loadChildren: () => import('./pages/ubicacion-parque/ubicacion-parque.module').then( m => m.UbicacionParquePageModule)
   },
   {
-    path: 'piedras-parque',
+    path: 'piedras-parque/:id',
     loadChildren: () => import('./pages/piedras-parque/piedras-parque.module').then( m => m.PiedrasParquePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
-
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -71,8 +73,25 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  auth: boolean;
 
-  ngOnInit() {}
+  constructor(
+    public authService: AuthService,
+    private toastCtrl: ToastController
+  ) { }
+
+  async ngOnInit() {
+    this.auth = await this.authService.isAuthenticated();
+    console.log('Logged: ', this.auth);
+  }
+
+  async logout() {
+    const toast = await this.toastCtrl.create({
+      message: 'Sesión cerrada',
+      duration: 3000
+    });
+    this.authService.logout();
+    await toast.present();
+  }
 
 }

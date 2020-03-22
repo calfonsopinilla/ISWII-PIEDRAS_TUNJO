@@ -18,10 +18,15 @@ export class DescripcionParquePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    // console.log(id);
     // this.route.paramMap
     //           .subscribe(params => console.log(params));
-    this.infoParqueService.obtenerItemInfo(1)
-                          .subscribe((resp: any) => this.itemInfo = resp);
+    this.infoParqueService.obtenerItemInfo(id)
+                          .subscribe((resp: any) => {
+                            this.itemInfo = resp;
+                            console.log(this.itemInfo);
+                          });
   }
 
 }

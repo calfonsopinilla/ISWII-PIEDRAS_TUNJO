@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { ItemInfo } from '../../interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
@@ -18,7 +19,8 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   itemInfo: ItemInfo;
 
   constructor(
-    private infoParqueService: InfoParqueService
+    private infoParqueService: InfoParqueService,
+    private route: ActivatedRoute
   ) { }
 
   ngAfterViewInit() {
@@ -81,7 +83,7 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
 
     map.on('click', (e: any) => {
       const { lng, lat } = e.lngLat;
-      console.log(`${lng}, ${lat}`);
+      // console.log(`${lng}, ${lat}`);
     });
 
     const popup = new mapboxgl.Popup({offset: 25}).setText('Piedras del Tunjo');
@@ -92,7 +94,8 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(3)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.infoParqueService.obtenerItemInfo(id)
                           .subscribe((resp: any) => this.itemInfo = resp);
   }
 

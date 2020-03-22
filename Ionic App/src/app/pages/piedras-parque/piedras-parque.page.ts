@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemInfo } from '../../interfaces/item-info.interface';
 import { InfoParqueService } from '../../services/info-parque.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-piedras-parque',
@@ -12,11 +13,13 @@ export class PiedrasParquePage implements OnInit {
   itemInfo: ItemInfo;
 
   constructor(
-    private infoParqueService: InfoParqueService
+    private infoParqueService: InfoParqueService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(4)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.infoParqueService.obtenerItemInfo(id)
                         .subscribe((resp: any) => this.itemInfo = resp);
   }
 

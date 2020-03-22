@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { ItemInfo } from '../../interfaces/item-info.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-resenia-historica',
@@ -12,12 +13,16 @@ export class ReseniaHistoricaPage implements OnInit {
   itemInfo: ItemInfo;
 
   constructor(
-    private infoParqueService: InfoParqueService
+    private infoParqueService: InfoParqueService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.infoParqueService.obtenerItemInfo(2)
-                          .subscribe((resp: any) => this.itemInfo = resp);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.infoParqueService.obtenerItemInfo(id)
+                          .subscribe((resp: any) => {
+                            this.itemInfo = resp;
+                          });
   }
 
 }
