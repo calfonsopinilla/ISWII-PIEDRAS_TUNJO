@@ -12,6 +12,8 @@ import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
 import  {ComponentexComponent} from './componentes/componentex/componentex.component';
 
 import  {InicioAdministradorComponent} from './componentes/inicio-administrador/inicio-administrador.component';
+import { PictogramasComponent } from './componentes/pictogramas/pictogramas.component';
+import { SubscripcionesComponent } from './componentes/subscripciones/subscripciones.component';
 const routes: Routes = [
 {path:'',component:TableroComponent},
 {path:'galeria',component:GaleriaComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
 {path:'ModuloQr',component:ModuloQrComponent},
 {path:'ModuloQr',component:ModuloQrComponent},
 {path:'componentex',component:ComponentexComponent},
+{path:'pictogramas',component:PictogramasComponent},
+{path:'subscripciones',component:SubscripcionesComponent},
 ];
 
 

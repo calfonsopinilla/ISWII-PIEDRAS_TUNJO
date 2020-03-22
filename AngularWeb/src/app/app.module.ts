@@ -31,6 +31,9 @@ import { ServicioxService } from './componentes/componentex/serviciox.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { ComponentexComponent } from './componentes/componentex/componentex.component';
+import { PictogramasComponent } from './componentes/pictogramas/pictogramas.component';
+import { SubscripcionesComponent } from './componentes/subscripciones/subscripciones.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +53,8 @@ import { ComponentexComponent } from './componentes/componentex/componentex.comp
     ModuloQrComponent,
     ModuloCComponent,
     ComponentexComponent,
+    PictogramasComponent,
+    SubscripcionesComponent,
 
 
      //ServicioEventoService
