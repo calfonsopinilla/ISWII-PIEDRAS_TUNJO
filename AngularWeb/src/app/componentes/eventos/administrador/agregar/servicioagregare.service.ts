@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-
 const httpOptions =
 {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,10 +9,8 @@ const httpOptions =
 @Injectable({
   providedIn: 'root'
 })
-export class ServicioInsertService {
-//private Url: string = 'http://piedrasdeltunjo.tk/administrador/agregarUsuario';
-//private Url: string = 'http://localhost:61629/Usuarios';
-private Url: string = 'http://piedrasdeltunjo.tk/Usuarios';
+export class ServicioagregareService {
+private Url: string = 'http://piedrasdeltunjo.tk/Eventos';
   constructor(private http: HttpClient) { }
    private extractData(res: Response) {
 

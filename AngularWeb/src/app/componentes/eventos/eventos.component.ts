@@ -21,12 +21,13 @@ export class EventosComponent implements OnInit {
      public value: Date = new Date (this.fecha);
   Eventos:any;
   descripcion:any;
+  nombre:any;
  constructor(private servicioeventoservice:ServicioEventoService) { this.ObtenerEventos}
    ObtenerEventos(){
  this.servicioeventoservice.ObtenerJson().subscribe(resultado =>{
    this.Eventos=resultado;
-  this.descripcion=resultado.descripcion;
-
+  this.descripcion=this.Eventos.Descripcion;
+this.nombre=this.Eventos.Nombre;
   console.log(resultado);
    console.log(this.Eventos);
    console.log(this.descripcion);

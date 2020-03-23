@@ -13,11 +13,11 @@
 
 
 <section id ="clientes">
-	<div class="container">
+
 		<div class="row">
 		 <div class="col-md-9">
 		 	<div class="card">
-		 		<h4>listado de clientes</h4>
+		 		<h4>listado de Usuarios</h4>
 
 		 	</div>
 		 	<div>
@@ -27,52 +27,61 @@
 		 					<th>#Id</th>
 		 				   <th>nombre</th>
 		 				    <th>apellido</th>
-		 					<th>tipoDocumento</th>
-		 					<th>numeroDocumento</th>
-		 					<th>lugarExpedicion</th>
-		 					<th>CorreoElectronico</th>
+		 					<th>tipo
+		 					Documento</th>
+		 					<th>numero
+		 					Documento</th>
+		 					<th>lugar
+		 					Expedicion</th>
+		 					<th>Correo</th>
 		 					<th>Clave</th>
-		 					<th>Rol_id</th>
-		 					<th>Rol_Nombre</th>
-                            <th></th>
+		 					<th>icono </th>
+		 					<th>Verificacion 
+		 					cuenta</th>
+		 					<th>Estado 
+		 					cuenta</th>
+		 					<th>Rol 
+		 					id</th>
+		 					<th>Rol
+		 					Nombre</th>
+		 					<th>imagen 
+		 					documento</th>
+		 				
+		 					
+                            
 		 				</tr>
 		 			</thead>
 		 			<tbody>
 		 				 <tr *ngFor="let cliente of User; let i =index">
-		 				 	<td>{{i+1}}</td>
+		 				 	<td>{{cliente.id}}</td>
 		 				 	<td>{{cliente.nombre}}</td>
 		 				 	<td>{{cliente.apellido}}</td>
-		 				 	<td>{{cliente.tipo_documento}}</td>
-		 				 	<td>{{cliente.correo }}</td>
+		 				 	<td>{{cliente.tipoDocumento}}</td>
+		 				 	<td>{{cliente.numeroDocumento}}</td>
+		 				 	<td>{{cliente.lugarExpedicion}}</td>
+		 				 	<td>{{cliente.correoElectronico}}</td>
+		 				 	<td>{{cliente.clave}}</td>
+		 				 	<td>{{cliente.icono_url}}</td>
+		 				 	<td>{{cliente.verificacionCuenta}}</td>
+		 				 	<td>{{cliente.estadoCuenta}}</td>
+		 				 	<td>{{cliente.rolId}}</td>
+		 				 	<td>{{cliente.rolNombre}}</td>
+		 				 	<td>{{cliente.imagen_documento}}</td>
+		 				 	
+		 				
+		 				 	
+		 				 
 		 				 	
 		 				 </tr>
 		 			</tbody>
 		 		</table>
 		 	</div>
-		 </div>	
+		 
 		</div>
 	</div>
 
 </section>
-<!--<section id="actions" class="py-4 mb-4 bg-light">
-  <div class="container">
-    <div class="row">
-     <div class="col-md-3">
-     	<a href="#" class="btn btn-primary btn-block" data-toggle="modal"data-target="agregarcliente">Agregar Usuario</a>
-     </div>
-    </div>
-  </div>
-</section>-->
 
-	<!--<section id="actions" class="py-4 mb-4 bg-light">
-  <div class="container">
-    <div class="row">
-     <div class="col-md-3" >
-     	<a href="#" class="btn btn-primary btn-block" data-toggle="modal"data-target="EditarCliente">Editar Usuario</a>
-     </div>
-    </div>
-  </div>
-</section>-->
 <section>
 	    
 
@@ -81,7 +90,7 @@
 	<div align="center">
 		 <a class="btn btn-primary" href="/Editar" role="button">Editar</a>
 		  <a class="btn btn-primary" href="/Agregar" role="button">Agregar</a>
-		  <a class="btn btn-primary" href="/" role="button">Eliminar</a>
+		  <a class="btn btn-primary" href="/eliminar" role="button">Eliminar</a>
 		  
 
 

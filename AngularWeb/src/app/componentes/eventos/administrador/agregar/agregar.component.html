@@ -1,0 +1,89 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Agregar Evento
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<div>
+       <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4>Agregar Evento</h4>
+
+              <form (ngSubmit)="InsertarUser()" [formGroup]="InsertarUsuario">
+            <li>
+              <div>
+                <label > Nombre</label>
+              </div>
+                  
+                  
+                   
+               <input type="text" formControlName="textn" class="col-md-10 mx-auto" >
+          
+                <br><br>
+              <!--Nombre <input type="text" formControlName="textn">-->
+                <div>
+                   <label> FechaPublicacion</label>
+                </div>
+             
+              <input type="date"  formControlName="texta" class="col-md-10 mx-auto" >
+              <br><br>
+
+              <div>
+                   <label> Fecha</label>
+                </div>
+              <input type="date"  formControlName="textTd" class="col-md-10 mx-auto" >
+                <br><br>
+              <div>
+                   <label> Descripcion</label>
+                </div>
+              <input type="text"  formControlName="textNd" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Calificacion</label>
+                </div>
+              <input type="text"  formControlName="textLe" class="col-md-10 mx-auto" >
+                <br><br>
+                <div> <label>ImagenesUrl</label></div>
+     
+              <input type="text"  formControlName="textCe" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label>ComentariosId</label>
+                </div>
+              <input type="text"  formControlName="textc" class="col-md-10 mx-auto" >
+                <br><br>
+             <div>
+                   <label> ListaComentariosEvento</label>
+                </div>
+              <input type="text"  formControlName="textIu" class="col-md-10 mx-auto" >
+                <br><br>
+               
+              
+              
+             
+              
+
+              <br><br>
+            </li>
+            <br>
+            <!--<button type="submit" >Insertar Usuario</button>-->
+            <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+          </form>
+      
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

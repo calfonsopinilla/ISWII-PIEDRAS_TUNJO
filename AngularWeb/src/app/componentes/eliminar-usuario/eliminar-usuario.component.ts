@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {  ServicioEditarService } from './servicio-editar.service';
+import { ServicioeliminarUService } from './servicioeliminar-u.service';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-editar-cliente',
-  templateUrl: './editar-cliente.component.html',
-  styleUrls: ['./editar-cliente.component.css']
+  selector: 'app-eliminar-usuario',
+  templateUrl: './eliminar-usuario.component.html',
+  styleUrls: ['./eliminar-usuario.component.css']
 })
-export class EditarClienteComponent implements OnInit {
-
+export class EliminarUsuarioComponent implements OnInit {
 ActualizarU: FormGroup;
-
-
-
-
   constructor(private formBuilder: FormBuilder,
-      private servi: ServicioEditarService,
+      private servi:  ServicioeliminarUService,
       Router: Router) { }
-
   User:any;
+
   nombre:any;
    apellido:any;
    tipoDocumento:any;
@@ -64,28 +60,11 @@ console.log(JSON.stringify(error));
 
     var Id = this.ActualizarU.getRawValue()['textfiltro'];
     
-    var nombre = this.ActualizarU.getRawValue()['textn'];
-    var apellido = this.ActualizarU.getRawValue()['texta'];
-    var tipoDocumento = this.ActualizarU.getRawValue()['textTd'];
-    var numeroDocumento = this.ActualizarU.getRawValue()['textNd'];
-     var lugarExpedicion = this.ActualizarU.getRawValue()['textLe'];
-    var correoElectronico = this.ActualizarU.getRawValue()['textCe'];
-    var clave = this.ActualizarU.getRawValue()['textc'];
-    var icono_url = this.ActualizarU.getRawValue()['textIu'];
-     var verificacionCuenta = this.ActualizarU.getRawValue()['textVc'];
-    var estadoCuenta = this.ActualizarU.getRawValue()['textEc'];
-    var rolId = this.ActualizarU.getRawValue()['textRi'];
-    var rolNombre = this.ActualizarU.getRawValue()['textRn'];
-    var imagen_documento = this.ActualizarU.getRawValue()['textId'];
-    var token = this.ActualizarU.getRawValue()['textT'];
+   
 
-    var cadena = { "id": Id,"nombre":nombre,
-    "apellido":apellido,"tipoDocumento":tipoDocumento,"numeroDocumento":numeroDocumento,
-    "lugarExpedicion":lugarExpedicion,"correoElectronico":correoElectronico,"clave":clave,
-  "icono_url":icono_url,"verificacionCuenta":verificacionCuenta,"estadoCuenta":estadoCuenta,
-"rolId":rolId,"rolNombre":rolNombre,"imagen_documento":imagen_documento};
+   
     
-    this.servi.updateUsuario(cadena,Id).then
+    this.servi.updateUsuario(Id).then
       (
         res => {
           console.log("res",res)
@@ -94,9 +73,8 @@ console.log(JSON.stringify(error));
         console.log(err)
       })
   } 
-     
   ngOnInit(): void {
-    this.ActualizarU = this.formBuilder.group(
+  this.ActualizarU = this.formBuilder.group(
     {
       textfiltro: [],
       textn: [],
@@ -115,7 +93,6 @@ console.log(JSON.stringify(error));
       textT: [],
     }); 
     this.formBuilder.group
- 
+  }
 
-}
 }

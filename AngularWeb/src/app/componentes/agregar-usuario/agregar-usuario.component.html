@@ -10,6 +10,118 @@
     </div>
   </div>
 </header>
+    <div>
+       <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4>Agregar usuarios</h4>
+
+              <form (ngSubmit)="InsertarUser()" [formGroup]="InsertarUsuario">
+            <li>
+              <div>
+                <label > Nombre</label>
+              </div>
+                  
+                  
+                   
+               <input type="text" formControlName="textn" class="col-md-10 mx-auto" >
+          
+                <br><br>
+              <!--Nombre <input type="text" formControlName="textn">-->
+                <div>
+                   <label> Apellido</label>
+                </div>
+             
+              <input type="text"  formControlName="texta" class="col-md-10 mx-auto" >
+              <br><br>
+              <div>
+                   <label> TipoDocumento</label>
+                </div>
+              <select id="inputState"  formControlName="textTd" class="col-md-10 mx-auto"  >
+        <option selected>CC</option>
+        <option>CE</option>
+        <option>TI</option>
+      </select>
+      <br><br>
+
+              <div>
+                   <label> NumeroDocumento</label>
+                </div>
+              <input type="text"  formControlName="textNd" class="col-md-10 mx-auto" >
+                <br><br>
+              <div>
+                   <label> LugarExpedicion</label>
+                </div>
+              <input type="text"  formControlName="textLe" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Correo Electronico</label>
+                </div>
+              <input type="text"  formControlName="textCe" class="col-md-10 mx-auto" >
+                <br><br>
+                <div> <label>clave</label></div>
+     
+              <input type="text"  formControlName="textc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label>Icono url</label>
+                </div>
+              <input type="text"  formControlName="textIu" class="col-md-10 mx-auto" >
+                <br><br>
+             <div>
+                   <label> Verificacion cuenta</label>
+                </div>
+              <input type="text"  formControlName="textVc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Estado cuenta</label>
+                </div>
+              <input type="text"  formControlName="textEc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> RolId</label>
+                </div>
+              <input type="text"  formControlName="textRi" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Rol Nombre</label>
+                </div>
+              <input type="text"  formControlName="textRn" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> imagen_documento</label>
+                </div>
+              <input type="text"  formControlName="textId" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Token</label>
+                </div>      
+              <input type="text"  formControlName="textT" class="col-md-10 mx-auto" >
+              
+              
+             
+              
+
+              <br><br>
+            </li>
+            <br>
+            <!--<button type="submit" >Insertar Usuario</button>-->
+            <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+          </form>
+      
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      
+     
+       
   
 <!--
         <form (ngSubmit)="InsertarU()" [formGroup]="InsertarUsuario">
@@ -29,7 +141,7 @@
         
           </form>
     -->
-
+<!--
   <section id="registro">
     <div class="container">
       <div class="row">
@@ -96,4 +208,4 @@
       </div>
     </div>
   </section>
- 
+ -->

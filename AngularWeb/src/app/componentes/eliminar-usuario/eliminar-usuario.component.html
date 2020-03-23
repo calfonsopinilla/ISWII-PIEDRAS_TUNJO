@@ -4,30 +4,28 @@
     <div class="row">
       <div class="col-md-6">
         <h1>
-           Editar Usuario
+           Eliminar Usuario
         </h1>
       </div>
     </div>
   </div>
 </header>
 
-  
+   
 
     <form (ngSubmit)="ObtenerUsuario()" [formGroup]="ActualizarU">
-     
-         <div>
+    	      <div>
        <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card">
             <div class="card-header">
-              <h4>Escriba el id del usuario a editar</h4>
-                 <input type="text"  formControlName="textfiltro">
+            	 <h2>Escriba el ID del Usuario a eliminar</h2>
+      <input type="text"  formControlName="textfiltro">
      
       <button class="btn btn-primary" type="submit" >Buscar Usuario</button>
       <br><br>
-             
-            <li>
+      <li>
               <div>
                 <label > Nombre</label>
               </div>
@@ -114,24 +112,15 @@
 
               <br><br>
             </li>
-            <br>
-            <!--<button type="submit" >Insertar Usuario</button>-->
-            <!--<input type="submit" value="Agregar" class="btn btn-primary btn-block">-->
-              <button   class="btn btn-primary"(click)="ActualizarUsuario()">Actualizar</button>
-      
-      
 
-            </div>
-          </div>
-        </div>
+      <div>
+      	<button  class="btn btn-primary" (click)="ActualizarUsuario()">Eliminar</button>
       </div>
-    </div>
-  </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
-
-     
-   
-    <br>
-
-    
-      </form>
+</form>

@@ -11,7 +11,7 @@ export class ServicioEventoService {
 constructor(private http: HttpClient) { }
  //private url: string = "http://localhost:61629/Eventos";
   ObtenerJson():Observable<any>{
- return this.http.get("http://piedrasdeltunjo.tk/Eventos")
+ return this.http.get("http://piedrasdeltunjo.tk/Eventos/16")
   }
 
 

@@ -9,9 +9,14 @@ import  {AgregarUsuarioComponent} from './componentes/agregar-usuario/agregar-us
 import  {ContactanosComponent} from './componentes/contactanos/contactanos.component';
 import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
 import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
-import  {ComponentexComponent} from './componentes/componentex/componentex.component';
-
+import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
+import { PreguntasFrecuentesComponent } from './componentes/preguntas-frecuentes/preguntas-frecuentes.component';
 import  {InicioAdministradorComponent} from './componentes/inicio-administrador/inicio-administrador.component';
+import { InicioAComponent } from './componentes/eventos/administrador/inicio-a/inicio-a.component';
+import { AgregarComponent } from './componentes/eventos/administrador/agregar/agregar.component';
+import { EditarComponent } from './componentes/eventos/administrador/editar/editar.component';
+import { EliminarComponent } from './componentes/eventos/administrador/eliminar/eliminar.component';
+
 const routes: Routes = [
 {path:'',component:TableroComponent},
 {path:'galeria',component:GaleriaComponent},
@@ -24,7 +29,13 @@ const routes: Routes = [
 {path:'Modulocabaña',component:ModuloCComponent},
 {path:'ModuloQr',component:ModuloQrComponent},
 {path:'ModuloQr',component:ModuloQrComponent},
-{path:'componentex',component:ComponentexComponent},
+{path:'eliminar',component:EliminarUsuarioComponent},
+{path:'preguntasfrecuentes',component:PreguntasFrecuentesComponent},
+{path:'inicioeventos',component:InicioAComponent},
+{path:'agregarevento',component:AgregarComponent},
+{path:'editarevento',component:EditarComponent},
+{path:'eliminarevento',component:EliminarComponent},
+
 ];
 
 

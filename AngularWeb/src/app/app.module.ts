@@ -27,10 +27,23 @@ import { ServicioEventoService } from './componentes/eventos/servicio-evento.ser
 import { ServicioAdminService } from './componentes/inicio-administrador/servicio-admin.service';
 import { ServicioInsertService } from './componentes/agregar-usuario/servicio-insert.service';
 import { ServicioInfoService } from './componentes/seccion-informativa/servicio-info.service';
-import { ServicioxService } from './componentes/componentex/serviciox.service';
+import { ServiciologinService} from './componentes/login/serviciologin.service';
+import { ServicioEditarService } from './componentes/editar-cliente/servicio-editar.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { ComponentexComponent } from './componentes/componentex/componentex.component';
+import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
+import { ServicioeliminarUService } from './componentes/eliminar-usuario/servicioeliminar-u.service';
+import { PreguntasFrecuentesComponent } from './componentes/preguntas-frecuentes/preguntas-frecuentes.component';
+import { InicioAComponent } from './componentes/eventos/administrador/inicio-a/inicio-a.component';
+import { ServiciomostrareService } from './componentes/eventos/administrador/inicio-a/serviciomostrare.service';
+import { AgregarComponent } from './componentes/eventos/administrador/agregar/agregar.component';
+import { ServicioagregareService } from './componentes/eventos/administrador/agregar/servicioagregare.service';
+import { EditarComponent } from './componentes/eventos/administrador/editar/editar.component';
+import { ServicioeditareService } from './componentes/eventos/administrador/editar/servicioeditare.service';
+import { EliminarComponent } from './componentes/eventos/administrador/eliminar/eliminar.component';
+import { ServicioeliminareService } from './componentes/eventos/administrador/eliminar/servicioeliminare.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +62,14 @@ import { ComponentexComponent } from './componentes/componentex/componentex.comp
     CabeceroAdministradorComponent,
     ModuloQrComponent,
     ModuloCComponent,
-    ComponentexComponent,
+    EliminarUsuarioComponent,
+    PreguntasFrecuentesComponent,
+    InicioAComponent,
+    AgregarComponent,
+    EditarComponent,
+    EliminarComponent,
+  
+   
 
 
      //ServicioEventoService
@@ -63,7 +83,10 @@ import { ComponentexComponent } from './componentes/componentex/componentex.comp
     HttpClientModule,
      HttpModule
   ],
-  providers: [ ServicioEventoService , ServicioInfoService , ServicioInsertService,ServicioAdminService,ServicioxService],
+  providers: [ ServicioEventoService , ServicioInfoService , 
+  ServicioInsertService,ServicioAdminService,ServiciologinService
+  ,ServicioEditarService,ServicioeliminarUService,ServiciomostrareService
+  ,ServicioagregareService , ServicioeditareService,ServicioeliminareService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,8 @@ export class ServicioAdminService {
 
   constructor(private http: HttpClient) { }
   ObtenerJson():Observable<any>{
- return this.http.get("http://piedrasdeltunjo.tk/administrador/informacionUsuarios")
+ //return this.http.get("http://piedrasdeltunjo.tk/administrador/informacionUsuarios")
+ return this.http.get("http://piedrasdeltunjo.tk/Usuarios")
+ //return this.http.get("http://localhost:61629/Usuarios")
   }
 }
