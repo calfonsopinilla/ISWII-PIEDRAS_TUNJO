@@ -31,6 +31,7 @@ import { ServiciologinService} from './componentes/login/serviciologin.service';
 import { ServicioEditarService } from './componentes/editar-cliente/servicio-editar.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+<<<<<<< HEAD
 import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
 import { ServicioeliminarUService } from './componentes/eliminar-usuario/servicioeliminar-u.service';
 import { PreguntasFrecuentesComponent } from './componentes/preguntas-frecuentes/preguntas-frecuentes.component';
@@ -43,6 +44,11 @@ import { ServicioeditareService } from './componentes/eventos/administrador/edit
 import { EliminarComponent } from './componentes/eventos/administrador/eliminar/eliminar.component';
 import { ServicioeliminareService } from './componentes/eventos/administrador/eliminar/servicioeliminare.service';
 
+=======
+import { ComponentexComponent } from './componentes/componentex/componentex.component';
+import { PictogramasComponent } from './componentes/pictogramas/pictogramas.component';
+import { SubscripcionesComponent } from './componentes/subscripciones/subscripciones.component';
+>>>>>>> be5cd15fbb092c4b8663914997a7b5e188c12281
 
 @NgModule({
   declarations: [
@@ -62,6 +68,7 @@ import { ServicioeliminareService } from './componentes/eventos/administrador/el
     CabeceroAdministradorComponent,
     ModuloQrComponent,
     ModuloCComponent,
+<<<<<<< HEAD
     EliminarUsuarioComponent,
     PreguntasFrecuentesComponent,
     InicioAComponent,
@@ -70,6 +77,11 @@ import { ServicioeliminareService } from './componentes/eventos/administrador/el
     EliminarComponent,
   
    
+=======
+    ComponentexComponent,
+    PictogramasComponent,
+    SubscripcionesComponent,
+>>>>>>> be5cd15fbb092c4b8663914997a7b5e188c12281
 
 
      //ServicioEventoService
