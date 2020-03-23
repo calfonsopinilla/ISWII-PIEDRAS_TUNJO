@@ -14,6 +14,7 @@ namespace Utilitarios
         private string nombre;
         private string descripcion;
         private int precio;
+        private string token;
 
 
         [Key]
@@ -26,7 +27,7 @@ namespace Utilitarios
         [Column("precio")]
         public int Precio { get => precio; set => precio = value; }
         [Column("token")]
-        public string Token { get; set; }
+        public string Token { get => token; set => token = value; }
 
     }
 }
