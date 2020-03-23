@@ -186,7 +186,7 @@
     <Compile Include="Controllers\PuntosInteresController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SubscripcionController.cs" />
-    <Compile Include="Controllers\TokenCorreoController.cs" />
+    <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
