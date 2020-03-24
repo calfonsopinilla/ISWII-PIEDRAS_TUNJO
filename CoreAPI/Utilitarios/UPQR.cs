@@ -15,7 +15,7 @@ namespace Utilitarios {
         private string respuesta;
         private int usuarioId;
         private int estadoId;
-        private string estadoNombre;
+        private bool estado;
 
         [Key]
         [Column("id")]
@@ -32,7 +32,14 @@ namespace Utilitarios {
         [ForeignKey("EstadoId")]
         [Column("estado_id")]
         public int EstadoId { get => estadoId; set => estadoId = value; }
-        [NotMapped]
-        public string EstadoNombre { get => estadoNombre; set => estadoNombre = value; }
+        [Column("token")]
+        public string Token { get; set; }
+        [Column("last_nodification")]
+        public string LastModificacion { get; set; }
+        [Column("estado")]
+        public bool Estado { get => estado; set => estado = value; }
+
+
+
     }
 }

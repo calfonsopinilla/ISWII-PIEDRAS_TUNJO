@@ -97,6 +97,7 @@
     <Compile Include="DaoImagen.cs" />
     <Compile Include="DaoInformacion.cs" />
     <Compile Include="DAONoticia.cs" />
+    <Compile Include="DaoPqr.cs" />
     <Compile Include="DaoPreguntas_frecuentes.cs" />
     <Compile Include="DaoPromocion.cs" />
     <Compile Include="DaoPuntoInteres.cs" />

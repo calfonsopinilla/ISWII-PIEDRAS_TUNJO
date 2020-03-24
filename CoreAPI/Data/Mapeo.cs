@@ -32,6 +32,11 @@ namespace Data
         public DbSet<UCabana> Cabana { get; set; }
         public DbSet<UPuntoInteres> PuntosInteres { get; set; }
         public DbSet<UPictograma> Pictograma { get; set; }
+
+        public DbSet<UPQR> pqr { get; set; }
+
+        public DbSet<UEstadoPQR> EstadoPqr { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.HasDefaultSchema(this.schema);

@@ -101,6 +101,7 @@
     <Compile Include="UNoticia.cs" />
     <Compile Include="UPictograma.cs" />
     <Compile Include="UPQR.cs" />
+    <Compile Include="UpqrInformacion.cs" />
     <Compile Include="UPreguntas_frecuentes.cs" />
     <Compile Include="UPromocion.cs" />
     <Compile Include="UPuntoInteres.cs" />
