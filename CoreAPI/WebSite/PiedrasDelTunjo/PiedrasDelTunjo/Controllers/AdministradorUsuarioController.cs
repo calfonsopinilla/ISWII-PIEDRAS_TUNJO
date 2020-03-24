@@ -11,6 +11,7 @@ using System.Web.Http.Cors;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("Usuarios")]
     public class AdministradorUsuarioController : ApiController{
 
 
@@ -24,7 +25,8 @@ namespace PiedrasDelTunjo.Controllers
 
 
         [HttpGet]
-        [Route("administrador/informacionUsuarios")]
+       // [Route("administrador/informacionUsuarios")]
+        [Route("")]
 
         public IHttpActionResult EnviarInformacion()
         {
@@ -48,22 +50,87 @@ namespace PiedrasDelTunjo.Controllers
       3 cuando la cedula que se esta ingresando ya esta registrada y cuatro cuando la cedula y a la vez el correo ya estan registrados 
      
      */
+        /*
+           [HttpGet]
+           [Route("administrador/agregarUsuario")]
+
+           public string agregarUsuarios(string datosJson)
+           {
+               try
+               {
+                   LAdministradorUsuario usuario = new LAdministradorUsuario();
+                    return usuario.agregarUsuario(datosJson);
+               }
+               catch (Exception ex)
+               {
+                   throw ex;
+               }
+           }
+           */
+
+        [HttpPost]
+        //[Route("administrador/agregarUsuario")]
+        [Route("")]
+        // POST: Usuarios/
+        public HttpResponseMessage agregarUsuario([FromBody] UUsuario Usuario)
+        {
+            if (Usuario == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+            }
+
+
+           Usuario.Token = "";
+            bool creado = new LAdministradorUsuario().agregarUsuario(Usuario);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
+        }
 
         [HttpGet]
-        [Route("administrador/agregarUsuario")]
-
-        public string agregarUsuarios(string datosJson)
+        [Route("{id}")]
+        // GET: Usuarios/id
+        public HttpResponseMessage Buscar([FromUri] int id)
         {
-            try
+            var usuario = new LAdministradorUsuario().Buscar(id);
+            if (usuario == null)
             {
-                LAdministradorUsuario usuario = new LAdministradorUsuario();
-                 return usuario.agregarUsuario(datosJson);
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Usuario no encontrado");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return Request.CreateResponse(HttpStatusCode.OK, usuario);
         }
+        [HttpPut]
+        [Route("{id}")]
+        // PUT: Usuarios/id
+        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UUsuario usuario)
+        {
+            if (id != usuario.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            usuario.Token = "";
+            bool actualizado = new LAdministradorUsuario().Actualizar(id, usuario);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: Usuarios/id
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var usuario = new LAdministradorUsuario().Buscar(id);
+            if (usuario == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound,  "Usuario no encontrado");
+            }
+            var eliminado = new LAdministradorUsuario().Eliminar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
+
+
+
+
+
+
+
         /*
         @Autor: Carlos Alfonso Pinilla Garzón
         *Fecha de creación: 13/03/2020

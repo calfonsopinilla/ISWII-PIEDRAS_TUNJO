@@ -37,8 +37,12 @@ namespace Logica
 
         }
 
+        public bool agregarUsuario(UUsuario Usuarios)
+        {
+            return new DaoAdministradorUsuario().agregarUsuario(Usuarios);
+        }
 
-        public string agregarUsuario(string datosJson) {
+        /*public string agregarUsuario(string datosJson) {
             try {
                 
                 UUsuario usuario = JsonConvert.DeserializeObject<UUsuario>(datosJson);
@@ -66,8 +70,25 @@ namespace Logica
             } catch (Exception ex) {
                 throw ex;
             }
+        }*/
+        public UUsuario Buscar(int id)
+        {
+            return new DaoAdministradorUsuario().Buscar(id);
+        }
+        public bool Actualizar(int id, UUsuario usuarios)
+        {
+            return new DaoAdministradorUsuario().Actualizar(id, usuarios);
+        }
+
+        public bool Eliminar(int id)
+        {
+            return new DaoAdministradorUsuario().Eliminar(id);
         }
         /*
+         
+       
+
+
        @Autor : Carlos Alfonso Pinilla Garzón
        *Fecha de creación: 13/03/2020
        *Descripcion: Metodo para cambia el estado de la cuenta del usuario
