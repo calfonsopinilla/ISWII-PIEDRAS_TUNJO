@@ -29,12 +29,20 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  }, 
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'foto-documento',
+    loadChildren: () => import('./pages/foto-documento/foto-documento.module').then( m => m.FotoDocumentoPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  }
+  }  
 ];
 
 @NgModule({
