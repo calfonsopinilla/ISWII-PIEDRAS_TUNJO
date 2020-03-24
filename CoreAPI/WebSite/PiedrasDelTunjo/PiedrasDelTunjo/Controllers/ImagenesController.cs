@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,53 +26,12 @@ namespace PiedrasDelTunjo.Controllers
         [HttpPost]
         [Route("uploadImage")]
         // POST: images/uploadImage?tipo=identficacion/evento/info/etc...
-        public async Task<HttpResponseMessage> UploadImage([FromUri] string tipo)
+        public HttpResponseMessage UploadImage([FromUri] string tipo)
         {
-            if (!Request.Content.IsMimeMultipartContent())
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
-            var provider = new MultipartFormDataStreamProvider(root);
+            string carpeta = ObtenerCarpetaPorTipo(tipo);
+            object objectResponse = new LImagen().UploadImages(HttpContext.Current.Request, carpeta);
 
-            try
-            {
-                Stream reqStream = Request.Content.ReadAsStreamAsync().Result;
-                MemoryStream tempStream = new MemoryStream();
-                reqStream.CopyTo(tempStream);
-
-                tempStream.Seek(0, SeekOrigin.End);
-                StreamWriter writer = new StreamWriter(tempStream);
-                writer.WriteLine();
-                writer.Flush();
-                tempStream.Position = 0;
-
-                StreamContent streamContent = new StreamContent(tempStream);
-                foreach (var header in Request.Content.Headers)
-                {
-                    streamContent.Headers.Add(header.Key, header.Value);
-                }
-
-                // Read the form data and return an async task.
-                await streamContent.ReadAsMultipartAsync(provider);
-                //await Request.Content.ReadAsMultipartAsync(provider);
-
-                foreach(var file in provider.FileData)
-                {
-                    //FileInfo fileInfo = new FileInfo(file.LocalFileName);
-                    //sb.Append(string.Format("Uploaded file: {0} ({1} bytes)\n", fileInfo.Name, fileInfo.Length));
-                    string fileName = ClearFileName( file.Headers.ContentDisposition.FileName );
-                    string carpeta = ObtenerCarpetaPorTipo(tipo);
-                    string path = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ fileName }");
-                    File.Move(file.LocalFileName, path);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Upload Image" });
-            }catch(Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-            }
-
+            return Request.CreateResponse(objectResponse);
         }
 
         private string ClearFileName(string fileName)
