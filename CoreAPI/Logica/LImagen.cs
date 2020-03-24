@@ -25,10 +25,11 @@ namespace Logica
                         string extension = Path.GetExtension(postedFile.FileName);
                         if ( ValidExtension(extension) )
                         {
-                            bool upload = new DaoImagen().UploadImage(postedFile, carpeta);
-                            if (!upload)
+                            string uploadMessage = new DaoImagen().UploadImage(postedFile, carpeta);
+                            if (uploadMessage != "ok")
                             {
-                                messageError = $"Ha ocurrido un error subiendo la imagen { postedFile.FileName }";
+                                // messageError = $"Ha ocurrido un error subiendo la imagen { postedFile.FileName }\n";
+                                messageError = $"{ postedFile.FileName } => { uploadMessage }";
                                 break;
                             }
                         } else
