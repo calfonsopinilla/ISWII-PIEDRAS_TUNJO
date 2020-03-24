@@ -24,7 +24,7 @@ namespace PiedrasDelTunjo.Controllers
          * Return: boolean resultadoVal
          */
         //
-        public Boolean Val_EmailYCC(string valCorreo, string valDocumento)
+        public Boolean Val_EmailYCC([FromUri] string valCorreo, [FromUri] string valDocumento)
         {
 
             URegistroUser validacion = new URegistroUser();
