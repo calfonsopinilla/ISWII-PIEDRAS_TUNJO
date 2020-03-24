@@ -24,12 +24,12 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("")]
         // GET: eventos/
-        public IHttpActionResult ObtenerEventos()
+        public HttpResponseMessage ObtenerEventos()
         {
             var eventos = new LEvento().ObtenerEventos();
             eventos = eventos.Where(x => x.Fecha <= DateTime.Now.AddMonths(1))
                             .ToList();
-            return Ok(eventos); // Status 200 OK
+            return Request.CreateResponse(HttpStatusCode.OK, eventos); // Status 200 OK
         }
 
         [HttpGet]
