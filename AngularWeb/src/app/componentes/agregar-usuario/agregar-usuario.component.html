@@ -1,0 +1,211 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Agregar Usuario
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+    <div>
+       <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4>Agregar usuarios</h4>
+
+              <form (ngSubmit)="InsertarUser()" [formGroup]="InsertarUsuario">
+            <li>
+              <div>
+                <label > Nombre</label>
+              </div>
+                  
+                  
+                   
+               <input type="text" formControlName="textn" class="col-md-10 mx-auto" >
+          
+                <br><br>
+              <!--Nombre <input type="text" formControlName="textn">-->
+                <div>
+                   <label> Apellido</label>
+                </div>
+             
+              <input type="text"  formControlName="texta" class="col-md-10 mx-auto" >
+              <br><br>
+              <div>
+                   <label> TipoDocumento</label>
+                </div>
+              <select id="inputState"  formControlName="textTd" class="col-md-10 mx-auto"  >
+        <option selected>CC</option>
+        <option>CE</option>
+        <option>TI</option>
+      </select>
+      <br><br>
+
+              <div>
+                   <label> NumeroDocumento</label>
+                </div>
+              <input type="text"  formControlName="textNd" class="col-md-10 mx-auto" >
+                <br><br>
+              <div>
+                   <label> LugarExpedicion</label>
+                </div>
+              <input type="text"  formControlName="textLe" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Correo Electronico</label>
+                </div>
+              <input type="text"  formControlName="textCe" class="col-md-10 mx-auto" >
+                <br><br>
+                <div> <label>clave</label></div>
+     
+              <input type="text"  formControlName="textc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label>Icono url</label>
+                </div>
+              <input type="text"  formControlName="textIu" class="col-md-10 mx-auto" >
+                <br><br>
+             <div>
+                   <label> Verificacion cuenta</label>
+                </div>
+              <input type="text"  formControlName="textVc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Estado cuenta</label>
+                </div>
+              <input type="text"  formControlName="textEc" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> RolId</label>
+                </div>
+              <input type="text"  formControlName="textRi" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Rol Nombre</label>
+                </div>
+              <input type="text"  formControlName="textRn" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> imagen_documento</label>
+                </div>
+              <input type="text"  formControlName="textId" class="col-md-10 mx-auto" >
+                <br><br>
+               <div>
+                   <label> Token</label>
+                </div>      
+              <input type="text"  formControlName="textT" class="col-md-10 mx-auto" >
+              
+              
+             
+              
+
+              <br><br>
+            </li>
+            <br>
+            <!--<button type="submit" >Insertar Usuario</button>-->
+            <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+          </form>
+      
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      
+     
+       
+  
+<!--
+        <form (ngSubmit)="InsertarU()" [formGroup]="InsertarUsuario">
+            <li>
+              <br><br>primer nombre
+              <input type="text"  formControlName="nombre">
+              <br><br>
+              primer apellido: <input type="text" formControlName="apellido">
+               <div *ngIf="submitted && g.nombre.errors && g.apellido.error" class="invalid-feedback">
+                <div *ngIf="g.nombre.errors.required && g.apellido.errors.required" class="error-validate"> Id requerido</div>
+              </div>
+                   
+             
+
+            <button type="submit" >Insertar persona</button>
+            </li>
+        
+          </form>
+    -->
+<!--
+  <section id="registro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4>Agregar usuarios</h4>
+            </div>
+            <div class="card-body">
+              <form (submit)="registro()">   
+                <div class="form-group">
+                  <label for="primerNombre"> primer nombre</label>
+                  <input type="text" class="form-control" name="primerNombre" [(ngModel)]="primerNombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="segundoNombre">segundo nombre</label>
+                  <input type="text" class="form-control" name="segundoNombre" [(ngModel)]="segundoNombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="primerApellido">primer apellido</label>
+                  <input type="text" class="form-control" name="primerApellido" [(ngModel)]="primerApellido" required>
+                </div>
+                <div class="form-group">
+                  <label for="segundoApellido">segundo apellido</label>
+                  <input type="text" class="form-control" name="segundoApellido" [(ngModel)]="segundoApellido" required>
+                </div>
+                <div class="form-group ">
+      <label for="inputState">Tipo de documento</label>
+      <select id="inputState" class="form-control" name="tipoDocumento" >
+        <option selected>CC</option>
+        <option>CE</option>
+        <option>TI</option>
+      </select>
+    </div>
+     <div class="form-group">
+                  <label for="numeroDocumento">numero de documento</label>
+                  <input type="text" class="form-control" name="numeroDocumento" [(ngModel)]="numeroDocumento" required>
+                </div>
+                <div class="form-group">
+                  <label for="LugarE">Lugar de expedicion</label>
+                  <input type="text" class="form-control" name="LugarE" [(ngModel)]="LugarE" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">correo electronico</label>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="clave">clave</label>
+                  <input type="text" class="form-control" name="clave" [(ngModel)]="clave" required>
+                </div>
+                <div class="form-group">
+                  <label for="RolId">RolID</label>
+                  <input type="number" class="form-control" name="RolId" [(ngModel)]="RolId" required>
+                </div>
+                <div class="form-group">
+                  <label for="NombreRol">Nombre de Rol</label>
+                  <input type="text" class="form-control" name="NombreRol" [(ngModel)]="NombreRol" required>
+                </div>
+                <input type="submit" value="Agregar" class="btn btn-primary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ -->

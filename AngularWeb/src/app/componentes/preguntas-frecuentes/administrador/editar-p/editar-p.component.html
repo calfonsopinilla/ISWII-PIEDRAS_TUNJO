@@ -1,0 +1,82 @@
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Editar Preguntas
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<form #clienteForm="ngForm" (ngSubmit)="guardar(clienteForm)"> 
+
+
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/inicioaPf" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success btn-block">
+             Guardar cambios
+          </button>
+        </div>
+        <div class="col-md-3">
+          <a href="/inicioaPf"   (click)="eliminar()" class="btn btn-danger btn-block">
+             Eliminar Pregunta
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Editar </h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="pregunta.nombre"
+                  [ngClass]="{'is-invalid': nombre.errors && nombre.touched}" required minlength="2">
+                <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                  Nombre requerido
+                </div>
+                <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="descripcion">Decripcion</label>
+                <input type="text" name="descripcion" class="form-control" #descripcion="ngModel" [(ngModel)]="pregunta.descripcion"
+                  [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}" required minlength="2">
+                <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
+                  Decripcion requerida
+                </div>
+                <div [hidden]="!descripcion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+             
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</form>
+
