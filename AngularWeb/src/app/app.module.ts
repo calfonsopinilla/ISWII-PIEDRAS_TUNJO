@@ -31,7 +31,6 @@ import { ServiciologinService} from './componentes/login/serviciologin.service';
 import { ServicioEditarService } from './componentes/editar-cliente/servicio-editar.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-<<<<<<< HEAD
 import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
 import { ServicioeliminarUService } from './componentes/eliminar-usuario/servicioeliminar-u.service';
 import { PreguntasFrecuentesComponent } from './componentes/preguntas-frecuentes/preguntas-frecuentes.component';
@@ -43,12 +42,15 @@ import { EditarComponent } from './componentes/eventos/administrador/editar/edit
 import { ServicioeditareService } from './componentes/eventos/administrador/editar/servicioeditare.service';
 import { EliminarComponent } from './componentes/eventos/administrador/eliminar/eliminar.component';
 import { ServicioeliminareService } from './componentes/eventos/administrador/eliminar/servicioeliminare.service';
+import { ServicioLService } from './componentes/preguntas-frecuentes/servicio-l.service';
 
-=======
-import { ComponentexComponent } from './componentes/componentex/componentex.component';
+
 import { PictogramasComponent } from './componentes/pictogramas/pictogramas.component';
 import { SubscripcionesComponent } from './componentes/subscripciones/subscripciones.component';
->>>>>>> be5cd15fbb092c4b8663914997a7b5e188c12281
+import { InicioPComponent } from './componentes/preguntas-frecuentes/administrador/inicio-p/inicio-p.component';
+import { AgregarPComponent } from './componentes/preguntas-frecuentes/administrador/agregar-p/agregar-p.component';
+import { EditarPComponent } from './componentes/preguntas-frecuentes/administrador/editar-p/editar-p.component';
+
 
 @NgModule({
   declarations: [
@@ -68,7 +70,7 @@ import { SubscripcionesComponent } from './componentes/subscripciones/subscripci
     CabeceroAdministradorComponent,
     ModuloQrComponent,
     ModuloCComponent,
-<<<<<<< HEAD
+
     EliminarUsuarioComponent,
     PreguntasFrecuentesComponent,
     InicioAComponent,
@@ -77,11 +79,14 @@ import { SubscripcionesComponent } from './componentes/subscripciones/subscripci
     EliminarComponent,
   
    
-=======
-    ComponentexComponent,
+
+    
     PictogramasComponent,
     SubscripcionesComponent,
->>>>>>> be5cd15fbb092c4b8663914997a7b5e188c12281
+    InicioPComponent,
+    AgregarPComponent,
+    EditarPComponent,
+
 
 
      //ServicioEventoService
@@ -98,7 +103,8 @@ import { SubscripcionesComponent } from './componentes/subscripciones/subscripci
   providers: [ ServicioEventoService , ServicioInfoService , 
   ServicioInsertService,ServicioAdminService,ServiciologinService
   ,ServicioEditarService,ServicioeliminarUService,ServiciomostrareService
-  ,ServicioagregareService , ServicioeditareService,ServicioeliminareService ],
+  ,ServicioagregareService , ServicioeditareService,ServicioeliminareService
+  ,ServicioLService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

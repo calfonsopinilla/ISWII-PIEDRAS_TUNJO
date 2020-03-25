@@ -32,7 +32,7 @@ public InsertarUser() {
     var rolId = this.InsertarUsuario.getRawValue()['textRi'];
     var rolNombre = this.InsertarUsuario.getRawValue()['textRn'];
     var imagen_documento = this.InsertarUsuario.getRawValue()['textId'];
-    var token = this.InsertarUsuario.getRawValue()['textT'];
+    //var token = this.InsertarUsuario.getRawValue()['textT'];
 
     var cadena = {"nombre":nombre,
     "apellido":apellido,"tipoDocumento":tipoDocumento,"numeroDocumento":numeroDocumento,
@@ -43,6 +43,7 @@ public InsertarUser() {
     this.servi.insertUsuario(cadena).then(res => {console.log(res)}).catch(err => 
       {console.log(err)});
     console.log(cadena);
+  
 
   }
 
