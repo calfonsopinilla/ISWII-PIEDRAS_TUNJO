@@ -29,20 +29,32 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  }, 
+  },
   {
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
     path: 'foto-documento',
-    loadChildren: () => import('./pages/foto-documento/foto-documento.module').then( m => m.FotoDocumentoPageModule)
+    loadChildren: () => import('../../foto-documento/foto-documento.module').then( m => m.FotoDocumentoPageModule)
+  },
+  {
+    path: 'tickets',
+    loadChildren: () => import('./pages/tickets/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'pqr-parque',
+    loadChildren: () => import('./pages/pqr-parque/pqr-parque.module').then( m => m.PqrParquePageModule)
+  },
+  {
+    path: 'actualizar-usuario/:id',
+    loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  }  
+  }
 ];
 
 @NgModule({

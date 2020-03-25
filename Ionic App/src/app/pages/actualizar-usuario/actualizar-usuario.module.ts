@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReseniaHistoricaPageRoutingModule } from './resenia-historica-routing.module';
+import { ActualizarUsuarioPageRoutingModule } from './actualizar-usuario-routing.module';
 
-import { ReseniaHistoricaPage } from './resenia-historica.page';
-import { PipesModule } from '../../pipes/pipes.module';
+import { ActualizarUsuarioPage } from './actualizar-usuario.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReseniaHistoricaPageRoutingModule,
-    PipesModule,
+    ActualizarUsuarioPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ReseniaHistoricaPage]
+  declarations: [ActualizarUsuarioPage]
 })
-export class ReseniaHistoricaPageModule {}
+export class ActualizarUsuarioPageModule {}

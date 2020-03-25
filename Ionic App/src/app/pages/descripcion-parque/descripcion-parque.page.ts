@@ -25,7 +25,7 @@ export class DescripcionParquePage implements OnInit {
     this.infoParqueService.obtenerItemInfo(id)
                           .subscribe((resp: any) => {
                             this.itemInfo = resp;
-                            console.log(this.itemInfo);
+                            // console.log(this.itemInfo);
                           });
   }
 

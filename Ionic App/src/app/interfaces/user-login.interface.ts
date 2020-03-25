@@ -1,4 +1,4 @@
-export class UserLogin {
+export interface UserLogin {
     correoElectronico: string;
     clave: string;
 }

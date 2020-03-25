@@ -17,26 +17,26 @@ export class MenuComponent implements OnInit {
     },
     {
       label: 'Descripción',
-      ruta: '/descripcion-parque',
+      ruta: '/descripcion-parque/2',
       icon: 'book-outline'
     },
     {
       label: 'Reseña histórica',
-      ruta: '/resenia-historica',
+      ruta: '/resenia-historica/4',
       icon: 'book-outline'
     },
     {
       label: 'Ubicación',
-      ruta: '/ubicacion-parque',
+      ruta: '/ubicacion-parque/5',
       icon: 'location-outline'
     },
     {
       label: 'Piedras',
-      ruta: '/piedras-parque',
+      ruta: '/piedras-parque/6',
       icon: 'aperture-outline'
     },
     {
-      label: 'Preguntas frecuentes (PQR)',
+      label: 'PQR´s',
       ruta: '/pqr-parque',
       icon: 'help-circle-outline'
     }

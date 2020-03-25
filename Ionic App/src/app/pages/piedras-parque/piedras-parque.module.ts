@@ -8,6 +8,7 @@ import { PiedrasParquePageRoutingModule } from './piedras-parque-routing.module'
 
 import { PiedrasParquePage } from './piedras-parque.page';
 import { PipesModule } from '../../pipes/pipes.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { PipesModule } from '../../pipes/pipes.module';
     FormsModule,
     IonicModule,
     PiedrasParquePageRoutingModule,
-    PipesModule
+    PipesModule,
+    ComponentsModule
   ],
   declarations: [PiedrasParquePage]
 })

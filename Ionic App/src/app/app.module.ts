@@ -32,7 +32,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
-    Camera        
+    Camera
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,4 @@
 export class UserRegister {
-    
     id: number; // Quemado
     token: string; // Quemado
     correoElectronico: string;
@@ -12,5 +11,5 @@ export class UserRegister {
     tipoDocumento: string; // Quemado
     numeroDocumento: string;
     iconoUrl: string; // Quemado
-    rolId: number; // Quemado                                  
+    rolId: number; // Quemado
 };

@@ -12,6 +12,7 @@ export class InicioPage implements OnInit {
 
   rutas = ['/descripcion-parque', '/resenia-historica', '/ubicacion-parque', '/piedras-parque'];
   itemsInfo: ItemInfo[] = [];
+  horarioInfo: any;
 
   constructor(
     private infoParqueService: InfoParqueService
@@ -20,12 +21,10 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.infoParqueService.obtenerInfoParque()
                             .subscribe(resp => {
-                              // console.log(resp);
                               this.itemsInfo = resp;
+                              this.horarioInfo = (resp as ItemInfo[])
+                                                  .find(x => x.id === 7); // find horario item
                             });
-    // // auth
-    // this.authService.isAuthenticated()
-    //                 .then(ok => console.log(ok));
   }
 
 }

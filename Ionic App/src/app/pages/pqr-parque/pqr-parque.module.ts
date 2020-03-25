@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReseniaHistoricaPageRoutingModule } from './resenia-historica-routing.module';
+import { PqrParquePageRoutingModule } from './pqr-parque-routing.module';
 
-import { ReseniaHistoricaPage } from './resenia-historica.page';
-import { PipesModule } from '../../pipes/pipes.module';
+import { PqrParquePage } from './pqr-parque.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReseniaHistoricaPageRoutingModule,
-    PipesModule,
+    PqrParquePageRoutingModule,
     ComponentsModule
   ],
-  declarations: [ReseniaHistoricaPage]
+  declarations: [PqrParquePage]
 })
-export class ReseniaHistoricaPageModule {}
+export class PqrParquePageModule {}
