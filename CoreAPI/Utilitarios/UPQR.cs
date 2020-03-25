@@ -26,10 +26,10 @@ namespace Utilitarios {
         public string Pregunta { get => pregunta; set => pregunta = value; }
         [Column("respuesta")]
         public string Respuesta { get => respuesta; set => respuesta = value; }
-        [ForeignKey("UsuarioId")]
+        //[ForeignKey("UsuarioId")]
         [Column("usuario_id")]
         public int UsuarioId { get => usuarioId; set => usuarioId = value; }
-        [ForeignKey("EstadoId")]
+        //[ForeignKey("EstadoId")]
         [Column("estado_id")]
         public int EstadoId { get => estadoId; set => estadoId = value; }
         [Column("token")]

@@ -26,7 +26,7 @@ namespace Utilitarios {
         [ForeignKey("UsuarioId")]
         [Column("usuario_id")]
         public int UsuarioId { get => usuarioId; set => usuarioId = value; }
-        [ForeignKey("EstadoId")]
+        //[ForeignKey("EstadoId")]
         [Column("estado_id")]
         public int EstadoId { get => estadoId; set => estadoId = value; }
         [NotMapped]

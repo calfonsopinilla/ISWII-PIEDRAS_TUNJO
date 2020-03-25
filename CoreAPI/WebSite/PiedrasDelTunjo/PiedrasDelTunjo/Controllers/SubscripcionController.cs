@@ -49,7 +49,7 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Ver_Subscripciones")]
-        public string MostrarSubscripciones([FromUri]int estadoFiltro)
+        public List<USubscripcion> MostrarSubscripciones([FromUri]int estadoFiltro)
         {
             try
             {
