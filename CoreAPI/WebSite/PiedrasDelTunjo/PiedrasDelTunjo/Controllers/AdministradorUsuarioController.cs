@@ -44,32 +44,32 @@ namespace PiedrasDelTunjo.Controllers
          * 
      @Autor : Jose Luis Soriano Roa
      *Fecha de creación: 11/03/2020
-     *Descripcion : Servicio que resive el registro de un usuario 
-     *Resive: objeto de tipo UUsuario 
+     *Descripcion : Servicio que recibe el registro de un usuario 
+     *Recibe: objeto de tipo UUsuario 
      *Retorna: devuelve 1 cuando el usuario fue registrado con exito ,2  reporta que el correo que se esta ingresando ya esta en uso
       3 cuando la cedula que se esta ingresando ya esta registrada y cuatro cuando la cedula y a la vez el correo ya estan registrados 
      
      */
-        /*
-           [HttpGet]
+        
+        /*   [HttpGet]
            [Route("administrador/agregarUsuario")]
 
-           public string agregarUsuarios(string datosJson)
+           public string agregareUsuarios(string datosJson)
            {
                try
                {
                    LAdministradorUsuario usuario = new LAdministradorUsuario();
-                    return usuario.agregarUsuario(datosJson);
+                    return usuario.agregarUsuarioo(datosJson);
                }
                catch (Exception ex)
                {
                    throw ex;
                }
-           }
-           */
+           }*/
+           
 
         [HttpPost]
-        //[Route("administrador/agregarUsuario")]
+        
         [Route("")]
         // POST: Usuarios/
         public HttpResponseMessage agregarUsuario([FromBody] UUsuario Usuario)

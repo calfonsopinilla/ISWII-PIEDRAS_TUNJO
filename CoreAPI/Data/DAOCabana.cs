@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Utilitarios;
 
 namespace Data {
@@ -16,6 +20,7 @@ namespace Data {
         private Mapeo conexionBD;
         private UCabana cabana;
         private List<UCabana> listaCabanas;
+        private readonly Mapeo db = new Mapeo();
 
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
@@ -24,7 +29,7 @@ namespace Data {
             Recibe: UCabana cabana - Objeto de tipo cabaña con las especificaciones ya validadas
             Retorna: Booleano true
         */
-        public bool CrearCabana(UCabana cabana) {
+        /*public bool CrearCabana(UCabana cabana) {
 
             try {
 
@@ -39,6 +44,20 @@ namespace Data {
 
                 throw ex;
             }            
+        }*/
+        //mod
+        public bool CrearCabana(UCabana cabana)
+        {
+            try
+            {
+                db.Cabana.Add(cabana);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -150,7 +169,7 @@ namespace Data {
             Recibe: UCabana cabana - Objeto que contiene los datos que se quieren modificar
             Retorna: Booleano true
         */
-        public bool ActualizarCabana(UCabana cabana) {
+        public bool ActualizarCabana( UCabana cabana) {
 
             try {
 
@@ -174,6 +193,32 @@ namespace Data {
 
                 throw ex;
             }               
+        }
+
+
+        public bool Actualizar(int id, UCabana cabana)
+        {
+            try
+            {
+                db.Entry(cabana).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Existe(id))
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        public bool Existe(int id)
+        {
+            return db.Cabana.Any(x => x.Id == id);
         }
     }
 }

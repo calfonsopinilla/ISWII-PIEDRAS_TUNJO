@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Utilitarios;
-
+using System.Web.Http.Cors;
 namespace PiedrasDelTunjo.Controllers {
 
     /*
@@ -14,6 +14,8 @@ namespace PiedrasDelTunjo.Controllers {
         Fecha creación: 18/03/2020
         Descripción: Controlador que sirve para hacer CRUD de cabañas
     */
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("cabana")]
     public class CabanaController : ApiController {
 
         // Variables
@@ -28,7 +30,7 @@ namespace PiedrasDelTunjo.Controllers {
             Recibe: String datosJson - JSON de tipo cabaña con las especificaciones ya validadas
             Retorna: String con mensaje de confirmación o de error
         */
-        [HttpGet]
+       /* [HttpGet]
         [Route("cabana/crear")]
         public string CrearCabana(string datosJson, [FromUri] string tipo) {            
 
@@ -50,6 +52,21 @@ namespace PiedrasDelTunjo.Controllers {
             } catch (Exception ex) {
                 throw ex;
             }
+        }*/
+        //modificacion
+        [HttpPost]
+        [Route("")]
+        // POST: Cabana/
+        public HttpResponseMessage Agregar([FromBody] UCabana cabana)
+        {
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+            }
+
+            cabana.Token = "";
+            bool creado = new LCabana().Agregar(cabana);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
 
         [HttpGet]
@@ -68,6 +85,19 @@ namespace PiedrasDelTunjo.Controllers {
             } catch (Exception ex) {
                 throw ex;
             }
+        }
+        //mod
+        [HttpGet]
+        [Route("{id}")]
+        // GET: cabana/id
+        public HttpResponseMessage Buscar([FromUri] int id)
+        {
+            var cabana = new LCabana().LeerCabana(id);
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cabana no encontrada");
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, cabana);
         }
 
         [HttpGet]
@@ -89,7 +119,7 @@ namespace PiedrasDelTunjo.Controllers {
         }
 
         [HttpGet]
-        [Route("cabana/leer")]
+        [Route("")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -123,6 +153,20 @@ namespace PiedrasDelTunjo.Controllers {
                 throw ex;
             }
         }
+        //modificacion
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: cabana/id
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var cabana= new LCabana().LeerCabana(id);
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
+            }
+            var eliminado = new LCabana().BorrarCabana(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
 
         [HttpGet]
         [Route("cabana/actualizar")]
@@ -153,6 +197,20 @@ namespace PiedrasDelTunjo.Controllers {
             } catch (Exception ex) {
                 throw ex;
             }
+        }
+        //mod
+        [HttpPut]
+        [Route("{id}")]
+        // PUT: cabana/n
+        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UCabana cabana)
+        {
+            if (id != cabana.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            cabana.Token = "";
+            bool actualizado = new LCabana().Actualizar(id, cabana);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
     }
 }
