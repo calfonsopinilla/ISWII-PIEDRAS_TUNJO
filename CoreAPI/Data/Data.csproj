@@ -106,6 +106,7 @@
     <Compile Include="DAORegistro.cs" />
     <Compile Include="DAORol.cs" />
     <Compile Include="DAOSubscripcion.cs" />
+    <Compile Include="DaoTicket.cs" />
     <Compile Include="DaoToken.cs" />
     <Compile Include="DAOTokenCorreo.cs" />
     <Compile Include="DAOUsuario.cs" />

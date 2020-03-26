@@ -4,123 +4,118 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Logica;
+using System.Web.Http.Cors;
+
 using Utilitarios;
+using Logica;
 namespace PiedrasDelTunjo.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("pqr")]
     public class AdministradorPqrController : ApiController
     {
-
-
-
-
         /*
-        @Autor : Jose Luis Soriano Roa
-        *Fecha de creación: 19/03/2020
-        *Descripcion : metodo que envia la informacion de los pqr
-        *Este metodo recibe : No resive parametros
-        * Retorna: lista de la informacion delos pqr un objeto de tipo UPqrInformacion 
+            Jose Luis Soriano
+            Parámetros: Ninguno
+            Retorna: Lista de pqr
         */
 
-
-
         [HttpGet]
-        [Route("administrador/informacionPqr")]
+        [Route("")]
+        // GET: pqr/
+        public HttpResponseMessage ObtenerPqr() {
 
-        public IHttpActionResult EnviarInformacion()
-        {
-            try
-            {
-                var informacion = new LPqr().informacionPqr();
-
-                return Ok(informacion);
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        /*
-          @Autor : Jose Luis Soriano Roa
-          *Fecha de creación: 19/03/2020
-          *Descripcion : metodo que modifica el estado del pqr
-          *Este metodo recibe : resive el id del registro 
-          * Retorna:True si el registro fue modificado con exito, false si el registro ya esta inacticvo 
-          */
-
-        [HttpGet]
-        [Route("administrador/cambiarEstadoPqr")]
-
-        public IHttpActionResult cambiarEstado(string id)
-        {
-            try
-            {
-                var informacion = new LPqr().cambiarEstado(id);
-                return Ok(informacion);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var pqr = new LPqr().ObtenerPqr();
+            return Request.CreateResponse(HttpStatusCode.OK, pqr);
         }
 
 
-        /*
-         @Autor : Jose Luis Soriano Roa
-         *Fecha de creación: 19/03/2020
-         *Descripcion : metodo que inserta un pqr
-         *Este metodo recibe : resive objeto de tipo Upqr 
-         * Retorna:True si el registro fue insertado con exito, false si el registro no fue insertado
-         */
 
         [HttpGet]
-        [Route("administrador/agregarPqr")]
-
-        public IHttpActionResult agregarPqr(string datosJson)
+        [Route("{id}")]
+        // GET: buscar/5
+        public HttpResponseMessage BuscarPqr([FromUri] int id)
         {
-            try
+            var evento = new LPqr().BuscarPqr(id);
+
+            if (evento == null)
             {
-                var informacion = new LPqr().agregarPqr(datosJson);
-                return Ok(informacion);
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "pqr no encontrado");
             }
-            catch (Exception ex)
-            {
-                throw ex;
+            else {
+                return Request.CreateResponse(HttpStatusCode.OK, evento);
             }
         }
 
 
 
+        /*
+        Jose Luis Soriano
+        Parámetros: objeto UPQr
+        Retorna: true si fue agregado false si no  
+        */
 
+        [HttpPost]
+        [Route("")]
+        // POST: pqr/
+        public HttpResponseMessage Agregar([FromBody] UPQR upqr)
+        {
+            if (upqr == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+            }
+            
+            upqr.FechaPublicacion = DateTime.Now;
+            upqr.Token = "";
+            bool respuesta = new LPqr().agregarPqr(upqr);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = respuesta });
+        }
+        /*
+        Jose Luis Soriano
+        Parámetros: ojeto UPQr y id 
+        Retorna: true si fue actualizado false si no  
+        */
+
+        [HttpPut]
+        [Route("{id}")]
+        // PUT: pqr/5
+        public HttpResponseMessage ActualizarPqr([FromUri] int id, [FromBody] UPQR pqr)
+        {
+            if (id != pqr.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            pqr.Token = "";
+            pqr.LastModificacion = DateTime.Now;
+            bool actualizado = new LPqr().actualizaPqr(id, pqr);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
 
         /*
-       @Autor : Jose Luis Soriano Roa
-       *Fecha de creación: 19/03/2020
-       *Descripcion : metodo que modifica pqr-- 
-       *Este metodo recibe : resive objeto de tipo upqr en json
-       * Retorna: true si el objeto se modifico , false si el registro su estado ya esta en falso
+       Jose Luis Soriano
+       Parámetros:  id 
+       Retorna: true si fue eliminado false si no  
        */
 
-        [HttpGet]
-        [Route("administrador/editarPqr")]
-
-        public IHttpActionResult editarPqr(string datosJson)
+        // DELETE: pqr/5
+        public HttpResponseMessage EliminarPqr([FromUri] int id)
         {
-            try
+            var pqr = new LPqr().BuscarPqr(id);
+
+            if (pqr == null)
             {
-                var informacion = new LPqr().editarPqr(datosJson);
-                return Ok(informacion);
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
             }
-            catch (Exception ex)
-            {
-                throw ex;
+            else {
+                var eliminado = new LPqr().eliminarPqr(id);
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
             }
+            
         }
-
-
-
 
     }
 }

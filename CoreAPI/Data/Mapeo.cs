@@ -30,7 +30,12 @@ namespace Data
         public DbSet<UPictograma> Pictograma { get; set; }
         public DbSet<UPuntuacion> Puntuacion { get; set; }
         public DbSet<UPQR> pqr { get; set; }
-        public DbSet<UPQR> EstadoPqr { get; set; }        
+        public DbSet<UEstadoPQR> EstadoPqr { get; set; }
+        public DbSet<UTicket> Tickets { get; set; }
+
+        //public DbSet<UEstadoPQR> EstadoPqr { get; set; }        
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
