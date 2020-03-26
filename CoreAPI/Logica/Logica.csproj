@@ -99,9 +99,12 @@
     <Compile Include="LImagen.cs" />
     <Compile Include="LInformacion.cs" />
     <Compile Include="LNoticia.cs" />
+    <Compile Include="LPictograma.cs" />
+    <Compile Include="LPqr.cs" />
     <Compile Include="LPreguntas_frecuentes.cs" />
     <Compile Include="LPromocion.cs" />
     <Compile Include="LPuntoInteres.cs" />
+    <Compile Include="LPuntuacion.cs" />
     <Compile Include="LRegistro.cs" />
     <Compile Include="LSubscripcion.cs" />
     <Compile Include="LTokenCorreo.cs" />

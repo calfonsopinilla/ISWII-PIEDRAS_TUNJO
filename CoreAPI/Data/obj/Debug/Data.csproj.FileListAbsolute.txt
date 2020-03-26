@@ -38,3 +38,7 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.csproj.Co
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.pdb
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.csprojAssemblyReference.cache
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.dll
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.pdb

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\Preguntas_frecuentesController.cs" />
     <Compile Include="Controllers\PromocionController.cs" />
     <Compile Include="Controllers\PuntosInteresController.cs" />
+    <Compile Include="Controllers\PuntuacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SubscripcionController.cs" />
     <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
@@ -264,6 +265,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\Data.csproj">
+      <Project>{6CB511CE-5827-4B01-9680-F43EAABC95A0}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Logica\Logica.csproj">
       <Project>{1cce1bac-c128-4728-8dad-efed9b02c7de}</Project>
       <Name>Logica</Name>

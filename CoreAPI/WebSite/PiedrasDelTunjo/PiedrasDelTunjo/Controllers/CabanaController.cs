@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Utilitarios;
 
 namespace PiedrasDelTunjo.Controllers {
@@ -14,6 +15,7 @@ namespace PiedrasDelTunjo.Controllers {
         Fecha creación: 18/03/2020
         Descripción: Controlador que sirve para hacer CRUD de cabañas
     */
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CabanaController : ApiController {
 
         // Variables

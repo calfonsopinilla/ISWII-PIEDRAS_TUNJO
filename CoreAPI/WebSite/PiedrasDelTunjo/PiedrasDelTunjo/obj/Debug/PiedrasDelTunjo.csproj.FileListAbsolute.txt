@@ -119,3 +119,7 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\Piedr
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.pdb
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.csprojAssemblyReference.cache
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.csprojAssemblyReference.cache
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.csproj.CoreCompileInputs.cache
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.dll
+C:\Users\jhona\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.pdb
