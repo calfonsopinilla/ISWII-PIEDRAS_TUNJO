@@ -34,5 +34,8 @@ namespace Logica
         {
             return new DaoEvento().Eliminar(id);
         }
+
+        
+
     }
 }

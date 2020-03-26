@@ -97,7 +97,10 @@
     <Compile Include="DaoImagen.cs" />
     <Compile Include="DaoInformacion.cs" />
     <Compile Include="DAONoticia.cs" />
+<<<<<<< HEAD
     <Compile Include="DAOPictograma.cs" />
+=======
+>>>>>>> 9d9b6c5cd282910e3ba7d92c366d37dd060f7552
     <Compile Include="DaoPqr.cs" />
     <Compile Include="DaoPreguntas_frecuentes.cs" />
     <Compile Include="DaoPromocion.cs" />
