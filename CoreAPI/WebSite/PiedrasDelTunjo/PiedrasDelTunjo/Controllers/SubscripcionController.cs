@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Web.Http;
 using Utilitarios;
 using Logica;
-using System.Web.Http.Cors;
+
 
 namespace PiedrasDelTunjo.Controllers
-{
+{   
     /**
          * Autor: Gabriel Zapata
          * fecha: 18/03/2019
@@ -17,7 +17,6 @@ namespace PiedrasDelTunjo.Controllers
          * 
          */
     //
-    [EnableCors(origins: "*", methods: "*", headers: "*")]
     public class SubscripcionController : ApiController
     {
         /**
@@ -29,7 +28,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("Subscripcion/Registro")]
-        public string RegistroSubscripcion([FromUri]string jsonRegistroSub)
+        public string RegistroSubscripcion(string jsonRegistroSub)
         {
             try
             {                
@@ -49,7 +48,7 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Ver_Subscripciones")]
-        public List<USubscripcion> MostrarSubscripciones([FromUri]int estadoFiltro)
+        public string MostrarSubscripciones(int estadoFiltro)
         {
             try
             {
@@ -68,7 +67,7 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Editar_Subscripciones")]
-        public string Editar_Subscripciones([FromUri]string json_InfoNueva)
+        public string Editar_Subscripciones(string json_InfoNueva)
         {
             try
             {
@@ -87,7 +86,7 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Remover_Subscripciones")]
-        public string Remover_Subscripciones([FromUri]string json_Info)
+        public string Remover_Subscripciones(string json_Info)
         {
             try
             {

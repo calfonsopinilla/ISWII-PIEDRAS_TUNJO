@@ -73,19 +73,19 @@ namespace Logica
          * Return: string json con lista de tipo USubscripcion que contiene
          * todos las subscripciones 
         **/
-        //public string Mostrar_Subscripciones(int estadoFiltro)
-        public List<USubscripcion> Mostrar_Subscripciones(int estadoFiltro)
+        public string Mostrar_Subscripciones(int estadoFiltro)
         {
             try
             {
-                //return (JsonConvert.SerializeObject((List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro))).ToString();
-                return (List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro);
+                return (JsonConvert.SerializeObject((List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro))).ToString();
             }
             catch(Exception ex)
             {
                 throw ex;
             }
-                   
+
+            
+
         }
 
         /**

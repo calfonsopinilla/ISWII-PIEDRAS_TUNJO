@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-    public class UpqrInformacion
+    public class UPqrInformacion
     {
+
+
         private int id;
         private string pregunta;
         private string respuesta;
         private DateTime fechaPublicacion;
-        private bool estado;
+        private bool estado; 
         private string nombreUsuario;
         private string EstadoPqrU;
         private int estadoIdU;
@@ -21,11 +23,14 @@ namespace Utilitarios
         public int Id { get => id; set => id = value; }
         public string Pregunta { get => pregunta; set => pregunta = value; }
         public string Respuesta { get => respuesta; set => respuesta = value; }
-        public DateTime FechaPublicacion { get => fechaPublicacion; set => fechaPublicacion = value; }
-        public bool Estado { get => estado; set => estado = value; }
+        
+        
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
+        
+        public DateTime FechaPublicacion { get => fechaPublicacion; set => fechaPublicacion = value; }
         public string EstadoPqrU1 { get => EstadoPqrU; set => EstadoPqrU = value; }
-        public int EstadoIdU { get => estadoIdU; set => estadoIdU = value; }
         public string ApellidoUsuarioU1 { get => ApellidoUsuarioU; set => ApellidoUsuarioU = value; }
+        public bool Estado { get => estado; set => estado = value; }
+        public int EstadoIdU { get => estadoIdU; set => estadoIdU = value; }
     }
 }
