@@ -64,7 +64,7 @@ namespace Data
         {
             using (var db = new Mapeo())
             {
-                return db.pqr.Any(x => x.Id == id);
+                return db.Tickets.Any(x => x.Id == id);
             }
         }
 

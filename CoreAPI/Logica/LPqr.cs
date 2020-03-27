@@ -10,12 +10,12 @@ namespace Logica
     public class LPqr
     {
 
-        public IEnumerable<UpqrInformacion> ObtenerPqr()
+        public IEnumerable<UPQR> ObtenerPqr()
         {
-            return new DaoPqr().listaPqr();
+            return new DaoPqr().ListaPQR();
         }
 
-        public UpqrInformacion BuscarPqr(int id)
+        public UPQR BuscarPqr(int id)
         {
             return new DaoPqr().BuscarPqr(id);
         }
@@ -29,16 +29,10 @@ namespace Logica
             return new DaoPqr().actualizarPqr(id, pqr);
 
         }
-
         public bool eliminarPqr (int id)
         {
             return new DaoPqr().eliminarPqr(id);
         }
-
-
-
-
-
 
     }
 }

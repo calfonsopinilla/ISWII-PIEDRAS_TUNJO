@@ -10,7 +10,7 @@ using Utilitarios;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("ticket")]
+    [RoutePrefix("tickets")]
     public class TicketController : ApiController
     {
 
@@ -22,7 +22,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("")]
-        // GET: ticket/
+        // GET: tickets/
         public HttpResponseMessage ObtenerTickets()
         {
             var ticket = new LTicktet().ObtenerTicktes();
@@ -32,14 +32,14 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        // GET: buscar/5
+        // GET: tickets/5
         public HttpResponseMessage BuscarTicket([FromUri] int id)
         {
             var ticket = new LTicktet().BuscarTicket(id);
 
             if (ticket== null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "pqr no encontrado");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "ticket no encontrado");
             }
             else
             {
@@ -57,7 +57,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpPost]
         [Route("")]
-        // POST: ticket/
+        // POST: tickets/
         public HttpResponseMessage Agregarticket([FromBody] UTicket ticket)
         {
             if (ticket== null)
@@ -78,7 +78,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        // PUT: ticket/3
+        // PUT: tickets/3
         public HttpResponseMessage ActualizarTicket([FromUri] int id, [FromBody] UTicket ticket)
         {
             if (id != ticket.Id)
@@ -100,7 +100,7 @@ namespace PiedrasDelTunjo.Controllers
        Retorna: true si fue eliminado false si no  
        */
 
-        // DELETE: pqr/5
+        // DELETE: tickets/5
         public HttpResponseMessage EliminarTicket([FromUri] int id)
         {
             var ticket = new LTicktet().BuscarTicket(id);

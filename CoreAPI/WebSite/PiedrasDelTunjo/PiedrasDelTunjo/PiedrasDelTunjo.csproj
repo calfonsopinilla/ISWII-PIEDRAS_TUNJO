@@ -175,8 +175,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdministradorPqrController.cs" />
-    <Compile Include="Controllers\AdministradorUsuarioController.cs" />
+    <Compile Include="Controllers\PqrController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\CabanaController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ImagenesController.cs" />
@@ -190,7 +190,7 @@
     <Compile Include="Controllers\SubscripcionController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

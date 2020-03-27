@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Utilitarios {
 
-    [Serializable] // Se declara que la clase U Usuario se puede expresar en formato JSON
     [Table("usuario", Schema = "parque")] // Se específica la tabla con la que se relaciona la clase U Usuario
     public class UUsuario {
 
@@ -24,40 +23,39 @@ namespace Utilitarios {
         private string rolNombre; // Se guarda el nombre del rol dependiendo del Id del rol
         private string imagen_documento;
         private string token;
+
         [Key]
         [Column("id")]
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
         [Column("nombre")]
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre { get; set; }
         [Column("apellido")]
-        public string Apellido { get => apellido; set => apellido = value; }
+        public string Apellido { get; set; }
         [Column("tipo_documento")]
-        public string TipoDocumento { get => tipoDocumento; set => tipoDocumento = value; }
+        public string TipoDocumento { get; set; }
         [Column("numero_documento")]
-        public string NumeroDocumento { get => numeroDocumento; set => numeroDocumento = value; }
+        public string NumeroDocumento { get; set; }
         [Column("lugar_expedicion")]
-        public string LugarExpedicion { get => lugarExpedicion; set => lugarExpedicion = value; }
+        public string LugarExpedicion { get; set; }
         [Column("correo_electronico")]
-        public string CorreoElectronico { get => correoElectronico; set => correoElectronico = value; }
+        public string CorreoElectronico { get; set; }
         [Column("clave")]
-        public string Clave { get => clave; set => clave = value; }
+        public string Clave { get; set; }
         [Column("icono_url")]
-        public string Icono_url { get => icono_url; set => icono_url = value; }
+        public string Icono_url { get; set; }
         [Column("verificacion_cuenta")]
-        public bool VerificacionCuenta { get => verificacionCuenta; set => verificacionCuenta = value; }
+        public bool VerificacionCuenta { get; set; } = false;
         [Column("estado_cuenta")]
-        public bool EstadoCuenta { get => estadoCuenta; set => estadoCuenta = value; }
-        //[ForeignKey("RolId")]
+        public bool EstadoCuenta { get; set; } = false;
         [Column("rol_id")]
-        public int RolId { get => rolId; set => rolId = value; }
+        public int RolId { get; set; }
         [Column("imagen_documento")]
-        public string Imagen_documento { get => imagen_documento; set => imagen_documento = value; }
-
+        public string Imagen_documento { get; set; }
         [Column("token")]
-        public string Token { get => token; set => token = value; }
+        public string Token { get; set; } = "";
 
         [NotMapped]
-        public string RolNombre { get => rolNombre; set => rolNombre = value; }
+        public string RolNombre { get; set; }
        
     }
 }
