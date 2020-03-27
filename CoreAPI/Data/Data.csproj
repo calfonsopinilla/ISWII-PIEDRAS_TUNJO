@@ -91,7 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DaoAdministradorUsuario.cs" />
+    <Compile Include="DaoUsuario.cs" />
     <Compile Include="DAOCabana.cs" />
     <Compile Include="DaoEvento.cs" />
     <Compile Include="DaoImagen.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="DaoTicket.cs" />
     <Compile Include="DaoToken.cs" />
     <Compile Include="DAOTokenCorreo.cs" />
-    <Compile Include="DAOUsuario.cs" />
+    <Compile Include="DAOCuenta.cs" />
     <Compile Include="Mapeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

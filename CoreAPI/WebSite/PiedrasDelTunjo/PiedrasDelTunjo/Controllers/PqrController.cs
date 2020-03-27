@@ -13,7 +13,7 @@ namespace PiedrasDelTunjo.Controllers
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("pqr")]
-    public class AdministradorPqrController : ApiController
+    public class PqrController : ApiController
     {
         /*
             Jose Luis Soriano
@@ -30,25 +30,21 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, pqr);
         }
 
-
-
         [HttpGet]
         [Route("{id}")]
-        // GET: buscar/5
+        // GET: pqr/5
         public HttpResponseMessage BuscarPqr([FromUri] int id)
         {
             var evento = new LPqr().BuscarPqr(id);
 
             if (evento == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "pqr no encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "pqr no encontrado" });
             }
             else {
                 return Request.CreateResponse(HttpStatusCode.OK, evento);
             }
         }
-
-
 
         /*
         Jose Luis Soriano
@@ -63,11 +59,9 @@ namespace PiedrasDelTunjo.Controllers
         {
             if (upqr == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "PQR null" });
             }
-            
-            upqr.FechaPublicacion = DateTime.Now;
-            upqr.Token = "";
+
             bool respuesta = new LPqr().agregarPqr(upqr);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = respuesta });
         }
@@ -84,10 +78,8 @@ namespace PiedrasDelTunjo.Controllers
         {
             if (id != pqr.Id)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
             }
-            pqr.Token = "";
-            pqr.LastModificacion = DateTime.Now;
             bool actualizado = new LPqr().actualizaPqr(id, pqr);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
@@ -108,7 +100,7 @@ namespace PiedrasDelTunjo.Controllers
 
             if (pqr == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Pqr no encontrado" });
             }
             else {
                 var eliminado = new LPqr().eliminarPqr(id);

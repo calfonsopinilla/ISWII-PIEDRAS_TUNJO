@@ -6,38 +6,30 @@ using System.Net.Http;
 using System.Web.Http;
 using Utilitarios;
 using Logica;
-using Newtonsoft.Json;
 using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers
 {
-    [EnableCors(origins: "*", methods: "*", headers: "*")]
-    public class UsuarioController : ApiController
-    {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("Usuarios")]
+    public class UsuarioController : ApiController{
 
         /*
-      @Autor : Jose Luis Soriano Roa
-      *Fecha de creación: 18/03/2020
-      *Descripcion : Metodo que trae la informacion del usuario que va a iniciar sesion.
-      *Este metodo recibe : Resive un objeto de tipo Ulogin quien incorpora correoElectronico y clave en json 
-      * Retorna: Si el usuario es encontrado retorna toda la informacion de el, si el usuario no ha realizado
-      * la verificacion del correo retorna 1 y si el usuario no esta registrado retorna 2.
-      */
+        @Autor : Jose Luis Soriano Roa
+        *Fecha de creación: 11/03/2020
+        *Descripcion : Servicio que envia la informacion de los usuarios del sistema
+        *Resive parametro de tipo UBusqueda en json con rolId y cedula de estructura de utilitario UBUSQUEDA
+        *Retorna: lista de la informacion de los usuarios registrados en formato json de tipo UUsuario
+        */
 
-
-
-        [HttpPost]
-        [Route("usuario/iniciaSesion")]
-        public HttpResponseMessage IniciarSesion([FromBody] UUsuario usuario){
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult ObtenerUsuarios()
+        {
             try
             {
-                var userLogin = new LUsuario().IniciarSesion(usuario.CorreoElectronico, usuario.Clave);
-                if (userLogin == null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "El Usuario no existe" });
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, userLogin });
+                var informacion = new LUsuario().informacionUsuarios();
+                return Ok(informacion);
             }
             catch (Exception ex)
             {
@@ -45,6 +37,79 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("")]
+        // POST: usuarios/
+        public HttpResponseMessage agregarUsuario([FromBody] UUsuario Usuario)
+        {
+            if (Usuario == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Usuario null" });
+            }
 
+            bool creado = new LUsuario().agregarUsuario(Usuario);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        // GET: Usuarios/id
+        public HttpResponseMessage Buscar([FromUri] int id)
+        {
+            var usuario = new LUsuario().Buscar(id);
+            if (usuario == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Usuario no encontrado" });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, usuario);
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        // PUT: Usuarios/id
+        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UUsuario usuario)
+        {
+            if (id != usuario.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+            }
+            bool actualizado = new LUsuario().Actualizar(id, usuario);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: Usuarios/id
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var usuario = new LUsuario().Buscar(id);
+            if (usuario == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Usuario no encontrado" });
+            }
+            var eliminado = new LUsuario().Eliminar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
+
+        /*
+        @Autor: Carlos Alfonso Pinilla Garzón
+        *Fecha de creación: 13/03/2020
+        *Descripcion: Servicio que cambia el estado de cuenta del usuario
+        *Recibe: 
+        *Retorna: 
+        */
+        [HttpGet]
+        [Route("administrador/cambiarEstado")]
+        public bool cambiarEstado(string cedula)
+        {
+            try
+            {
+                LUsuario usuario = new LUsuario();
+                return usuario.cambiarEstado(cedula);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

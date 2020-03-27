@@ -29,13 +29,10 @@ namespace Data
         public DbSet<UPuntoInteres> PuntosInteres { get; set; }
         public DbSet<UPictograma> Pictograma { get; set; }
         public DbSet<UPuntuacion> Puntuacion { get; set; }
-        public DbSet<UPQR> pqr { get; set; }
+        public DbSet<UPQR> PQR { get; set; }
         public DbSet<UEstadoPQR> EstadoPqr { get; set; }
         public DbSet<UTicket> Tickets { get; set; }
-
         //public DbSet<UEstadoPQR> EstadoPqr { get; set; }        
-
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

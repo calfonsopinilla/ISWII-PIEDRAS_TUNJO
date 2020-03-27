@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-
-
-    [Serializable]
     [Table("ticket", Schema = "parque")]
 
     public class UTicket

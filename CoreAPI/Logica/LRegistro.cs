@@ -17,7 +17,7 @@ namespace Logica
 
         public bool Registrar(UUsuario usuario)
         {
-            return new DAOUsuario().Registrar(usuario);
+            return new DAOCuenta().Registrar(usuario);
         }
     }
 }
