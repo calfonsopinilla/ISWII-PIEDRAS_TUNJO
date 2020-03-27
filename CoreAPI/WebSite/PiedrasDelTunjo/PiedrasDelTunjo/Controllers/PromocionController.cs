@@ -18,7 +18,7 @@ namespace PiedrasDelTunjo.Controllers
         /*
         Daniel Zambrano
            Parámetros: Ninguno
-           Retorna: Lista de preguntasfrecuentes.
+           Retorna: Lista de promociones.
        */
 
         [HttpGet]

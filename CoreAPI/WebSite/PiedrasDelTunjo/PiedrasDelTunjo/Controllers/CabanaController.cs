@@ -16,8 +16,9 @@ namespace PiedrasDelTunjo.Controllers {
         Descripción: Controlador que sirve para hacer CRUD de cabañas
     */
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("cabana")]
     public class CabanaController : ApiController {
-
+       
         // Variables
         private string imageName;
         private string filePath;
@@ -31,7 +32,7 @@ namespace PiedrasDelTunjo.Controllers {
             Retorna: String con mensaje de confirmación o de error
         */
         [HttpGet]
-        [Route("cabana/crear")]
+        [Route("crear")]
         public string CrearCabana(string datosJson, [FromUri] string tipo) {            
 
             try {
@@ -54,8 +55,24 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
+        //////
+        ///[HttpPost]
+        [Route("")]
+        // POST: 
+        public HttpResponseMessage Agregar([FromBody] UCabana cabana)
+        {
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+            }
+
+
+            cabana.Token = "";
+            bool creado = new LCabana().Agregar(cabana);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
+        }
         [HttpGet]
-        [Route("cabana/leer_id")]
+        [Route("leer_id")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -72,8 +89,21 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
+
         [HttpGet]
-        [Route("cabana/leer_nombre")]
+        [Route("{id}")]
+        // GET: 
+        public HttpResponseMessage Buscar([FromUri] int id)
+        {
+            var cabana = new LCabana().LeerCabana(id);
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cabana no encontrado");
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, cabana);
+        }
+        [HttpGet]
+        [Route("leer_nombre")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -91,7 +121,7 @@ namespace PiedrasDelTunjo.Controllers {
         }
 
         [HttpGet]
-        [Route("cabana/leer")]
+        [Route("")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -109,7 +139,7 @@ namespace PiedrasDelTunjo.Controllers {
         }
 
         [HttpGet]
-        [Route("cabana/borrar")]
+        [Route("borrar")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -126,8 +156,23 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
+        //////
+        ///
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: 
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var cabana = new LCabana().LeerCabana(id);
+            if (cabana == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cabana no encontrado");
+            }
+            var eliminado = new LCabana().BorrarCabana(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
         [HttpGet]
-        [Route("cabana/actualizar")]
+        [Route("actualizar")]
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -155,6 +200,21 @@ namespace PiedrasDelTunjo.Controllers {
             } catch (Exception ex) {
                 throw ex;
             }
+        }
+
+        /////
+        [HttpPut]
+        [Route("{id}")]
+        // PUT: 
+        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UCabana cabana)
+        {
+            if (id != cabana.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            cabana.Token = "";
+            bool actualizado = new LCabana().Actualizar(id, cabana);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
     }
 }
