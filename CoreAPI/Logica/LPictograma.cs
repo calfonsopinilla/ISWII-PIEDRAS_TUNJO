@@ -24,18 +24,18 @@ namespace Logica
             {
                 UPictograma datosPic = JsonConvert.DeserializeObject<UPictograma>(jsonRegistroPic);
 
-                
+
                 string existencia = new DAOPictograma().Valida_ExistenciaPictograma(datosPic.Id_parque, datosPic.Nombre);
 
 
 
-                 switch (existencia)
-                 {
-                     case "Ya exite un pictograma con el mismo nombre y el mismo id, eliminelo o actualicelo":
-                         return existencia;
-                     case "Ya exite un pictograma con el mismo id, eliminelo o actualicelo":
-                         return existencia;                
-                     case "Ya exite un pictograma con el mismo nombre, eliminelo o actualicelo":
+                switch (existencia)
+                {
+                    case "Ya exite un pictograma con el mismo nombre y el mismo id, eliminelo o actualicelo":
+                        return existencia;
+                    case "Ya exite un pictograma con el mismo id, eliminelo o actualicelo":
+                        return existencia;
+                    case "Ya exite un pictograma con el mismo nombre, eliminelo o actualicelo":
                         return existencia;
                     case "El pictograma no ha sido creado":
                         try
@@ -52,7 +52,7 @@ namespace Logica
 
                 }
 
-               return existencia;
+                return existencia;
             }
             catch (Exception ex)
             {
@@ -66,11 +66,11 @@ namespace Logica
         * Return: string json con lista de tipo UPictogramas que contiene
         * todos los pictogramas 
        **/
-        public string Mostrar_Pictogramas(int estadoFiltro)
+        public List<UPictograma> Mostrar_Pictogramas(int estadoFiltro)
         {
             try
             {
-                return JsonConvert.SerializeObject((List<UPictograma>)new DAOPictograma().Mostrar_Pictograma(estadoFiltro)).ToString();
+                return (List<UPictograma>)new DAOPictograma().Mostrar_Pictograma(estadoFiltro);
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace Logica
                 string validacionCoincidencia = "";
                 UPictograma infoNueva = JsonConvert.DeserializeObject<UPictograma>(json_InfoNueva);
 
-               if (infoNueva == null)
+                if (infoNueva == null)
                 {
                     validacionCoincidencia = "Los campos estan vacios";
                     return validacionCoincidencia;
@@ -106,7 +106,7 @@ namespace Logica
 
 
                 }
-                
+
                 return validacionCoincidencia;
             }
             catch (Exception ex)

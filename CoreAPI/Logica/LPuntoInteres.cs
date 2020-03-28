@@ -62,5 +62,9 @@ namespace Logica
 
             return new DaoPuntoInteres().ActualizarPuntoInteres(puntoInteres);
         }
+        public bool Actualizar(int id, UPuntoInteres puntoInteres)
+        {
+            return new DaoPuntoInteres().Actualizar(id, puntoInteres);
+        }
     }
 }

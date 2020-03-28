@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
-
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 namespace Data
 {
     public class DaoPuntoInteres
@@ -83,6 +84,7 @@ namespace Data
 
                     this.puntoInteres = this.db.PuntosInteres.Find(id);
                     this.db.PuntosInteres.Remove(this.puntoInteres);
+                    db.SaveChanges();
                     return true;
 
                 } catch (Exception ex) { throw ex; }
@@ -116,6 +118,31 @@ namespace Data
 
                 } catch (Exception ex) { throw ex; }
             }
+        }
+
+        public bool Actualizar(int id, UPuntoInteres puntoInteres)
+        {
+            try
+            {
+                db.Entry(puntoInteres).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Existe(id))
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        public bool Existe(int id)
+        {
+            return db.PuntosInteres.Any(x => x.Id == id);
         }
     }
 }

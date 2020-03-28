@@ -29,8 +29,8 @@ namespace Logica {
 
                 this.cabana = new UCabana();
                 this.cabana = JsonConvert.DeserializeObject<UCabana>(datosCabana);
-                this.cabana.ImagenesUrl = new List<string>();
-                this.cabana.ImagenesUrl = listaUrls;
+                //this.cabana.ImagenesUrl = new List<string>();
+                //this.cabana.ImagenesUrl = listaUrls;
 
                 if (new DAOCabana().LeerCabanaNombre(this.cabana.Nombre) == null) {
                     new DAOCabana().CrearCabana(this.cabana);
@@ -43,7 +43,10 @@ namespace Logica {
                 throw ex;
             }            
         }
-
+        public bool Agregar(UCabana cabana)
+        {
+            return new DAOCabana().CrearCabana(cabana);
+        }
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -125,8 +128,8 @@ namespace Logica {
 
                 this.cabana = new UCabana();
                 this.cabana = JsonConvert.DeserializeObject<UCabana>(datosCabana);
-                this.cabana.ImagenesUrl = new List<string>();
-                this.cabana.ImagenesUrl = listaUrls;
+               // this.cabana.ImagenesUrl = new List<string>();
+                //this.cabana.ImagenesUrl = listaUrls;
 
                 if (new DAOCabana().LeerCabanaNombre(this.cabana.Nombre) == null) {
                     new DAOCabana().ActualizarCabana(this.cabana);
@@ -138,6 +141,10 @@ namespace Logica {
 
                 throw ex;
             }
+        }
+        public bool Actualizar(int id, UCabana cabana)
+        {
+            return new DAOCabana().Actualizar(id, cabana);
         }
     }
 }

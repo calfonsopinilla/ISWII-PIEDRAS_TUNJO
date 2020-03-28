@@ -16,8 +16,8 @@ namespace Data
        * Parametro de recepcion: int id a buscar y string nombre a buscar
        * return string busqueda
        **/
-       //
-        public string Valida_ExistenciaPictograma( int id_parque,string nombre)
+        //
+        public string Valida_ExistenciaPictograma(int id_parque, string nombre)
         {
             string busqueda = "";
 

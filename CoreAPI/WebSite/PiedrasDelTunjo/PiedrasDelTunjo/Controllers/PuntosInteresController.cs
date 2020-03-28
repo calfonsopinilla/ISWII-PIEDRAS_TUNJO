@@ -33,9 +33,11 @@ namespace PiedrasDelTunjo.Controllers
             Retorna: Booleano y mensaje desriptivo
         */
         [HttpPost]
-        [Route("crear")]
+        //[Route("crear")]
+        [Route("")]
         public HttpResponseMessage CrearPuntoInteres([FromBody] UPuntoInteres puntoInteres) {
-
+            puntoInteres.LastModification = DateTime.Now;
+            puntoInteres.Token = "";
             if (new LPuntoInteres().CrearPuntoInteres(puntoInteres)) {
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Punto de interes CREADO satisfactoriamente"});
             } else
@@ -49,16 +51,25 @@ namespace PiedrasDelTunjo.Controllers
             Recibe: Integer id - Id del punto de interes que se desea buscar
             Retorna: Objeto de tipo UPuntoInteres con los datos filtrados y booleano
         */
-        [HttpGet]
-        [Route("{id}")]
-        public HttpResponseMessage LeerPuntoInteres([FromUri] int id) {
+        /*public HttpResponseMessage LeerPuntoInteres([FromUri] int id) {
 
             this.puntoInteres = new LPuntoInteres().LeerPuntoInteres(id);
 
             if (this.puntoInteres != null) // Se valida si el punto de interes SI se encontro
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, this.puntoInteres ,message=""});
+                return Request.CreateResponse(HttpStatusCode.OK/*, new { ok = true, this.puntoInteres ,message=""});
             else
                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { ok = false , message = "ERROR" });
+        }*/
+        [HttpGet]
+        [Route("{id}")]
+        public HttpResponseMessage LeerPuntoInteres([FromUri] int id)
+        {
+            var puntointeres = new LPuntoInteres().LeerPuntoInteres(id);
+            if (puntointeres == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "puntointeres no encontrado");
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, puntointeres);
         }
 
         /*
@@ -78,6 +89,20 @@ namespace PiedrasDelTunjo.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { ok = false, message = "ERROR" });
         }
 
+        //
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: 
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var puntoi = new LPuntoInteres().LeerPuntoInteres(id);
+            if (puntoi == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
+            }
+            var eliminado = new LPuntoInteres().BorrarPuntoInteres(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 26/03/2020
@@ -94,5 +119,22 @@ namespace PiedrasDelTunjo.Controllers
             } else
                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { ok = false, message = "ERROR" });
         }
+        ///
+        [HttpPut]
+        [Route("{id}")]
+       
+        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UPuntoInteres puntoInteres)
+        {
+            if (id != puntoInteres.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            puntoInteres.Token = "";
+            bool actualizado = new LPuntoInteres().Actualizar(id, puntoInteres);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+
+
     }
 }
