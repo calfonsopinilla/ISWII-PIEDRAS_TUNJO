@@ -39,6 +39,11 @@ export class MenuComponent implements OnInit {
       label: 'PQR´s',
       ruta: '/pqr-parque',
       icon: 'help-circle-outline'
+    },
+    {
+      label: 'Preguntas frecuentes',
+      ruta: '/preguntas-frecuentes',
+      icon: 'help-circle-outline'
     }
   ];
 
@@ -47,6 +52,11 @@ export class MenuComponent implements OnInit {
       label: 'Tickets',
       ruta: '/tickets',
       icon: 'map-outline'
+    },
+    {
+      label: 'Suscripciones',
+      ruta: '/suscripciones',
+      icon: 'ribbon-outline'
     },
     {
       label: 'Reserva de Cabañas',
