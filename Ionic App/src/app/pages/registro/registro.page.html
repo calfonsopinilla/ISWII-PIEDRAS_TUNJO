@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] class="ion-padding">
+  <form (ngSubmit)="crearUsuario()" *ngIf="usuario">
+    <!-- <ion-item *ngFor="let image of images">
+      <img src="http://www.piedrasdeltunjo.tk/images/getImage?tipo=identificacion&nombre=1.png">
+    </ion-item> -->
+    <!--<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario['nombre']" name="nombre"></ion-input>      
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario['apellido']" name="apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tipo Documento</ion-label>
+      <ion-select name="tipo_documento" [(ngModel)]="usuario['tipoDocumento']" placeholder="-- Seleccionar --">
+        <ion-select-option value="TI">Tarjeta Identidad</ion-select-option>
+        <ion-select-option value="CC">Cédula</ion-select-option>
+        <ion-select-option value="CE">Cédula Extranjería</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Numero Documento</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario['numeroDocumento']" name="numeroDocumento"></ion-input>      
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correo Electronico</ion-label>
+      <ion-input type="e-mail" [(ngModel)]="usuario['correoElectronico']" name="correoElectronico"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Clave</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario['clave']" name="clave"></ion-input>      
+    </ion-item>    
+    <ion-button color="secondary" type="submit" expand="full" style="margin-top: 25px">Crear Usuario</ion-button>    
+  </form>
+</ion-content>

@@ -1,0 +1,14 @@
+<!-- Component header -->
+<app-header titulo="Inicio" tipo="menu"></app-header>
+
+<ion-content class="ion-padding" [fullscreen]>
+  <app-item-info *ngFor="let item of itemsInfo.slice(0, 4); let i = index;" [itemInfo]="item" 
+                [ruta]="rutas[i] + '/' + item.id"></app-item-info>
+
+  <ion-card *ngIf="horarioInfo">
+    <ion-card-header>
+      <ion-card-title>{{ horarioInfo.property }}</ion-card-title>
+      <ion-card-subtitle> {{ horarioInfo.descripcion }} </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
