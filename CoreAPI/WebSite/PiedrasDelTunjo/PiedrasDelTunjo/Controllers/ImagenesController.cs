@@ -21,7 +21,6 @@ namespace PiedrasDelTunjo.Controllers
          Autor: Steven Cruz
          Desc: Servicio para almacenar imágenes en el servidor
          Params: el tipo de imagen, ya sea de evento, informacion, identificaciones, etc
-         Return: object { error, status, path }
              */
         [HttpPost]
         [Route("uploadImage")]
@@ -33,56 +32,6 @@ namespace PiedrasDelTunjo.Controllers
 
             return Request.CreateResponse(objectResponse);
         }
-
-        private string ClearFileName(string fileName)
-        {
-            if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
-            {
-                fileName = fileName.Trim('"');
-            }
-            if (fileName.Contains(@"/") || fileName.Contains(@"\"))
-            {
-                fileName = Path.GetFileName(fileName);
-            }
-            return fileName;
-        }
-
-        //public HttpResponseMessage UploadImage([FromUri] string tipo)
-        //{
-        //    string carpeta = ObtenerCarpetaPorTipo(tipo);
-        //    if (string.IsNullOrEmpty(carpeta))
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Tipo de imagen no valido");
-        //    }
-
-        //    try
-        //    {
-        //        var request = HttpContext.Current.Request;
-        //        if (request.Files.Count > 0)
-        //        {
-        //            var postedFile = request.Files.Get("image");
-        //            var title = request.Params["title"];
-        //            string root = HttpContext.Current.Server.MapPath($"~/Imagenes/{ carpeta }/{ postedFile.FileName }");
-        //            postedFile.SaveAs(root);
-        //            //Save post to DB
-        //            return Request.CreateResponse(HttpStatusCode.OK, new
-        //            {
-        //                error = false,
-        //                status = "created",
-        //                path = root
-        //            });
-
-        //        } else
-        //        {
-        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No has enviado ninguna imagen");
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
 
         /*
             Autor: Steven Cruz

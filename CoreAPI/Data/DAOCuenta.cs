@@ -8,8 +8,6 @@ using Utilitarios;
 namespace Data {
 
     public class DAOCuenta {
-
-        private Mapeo conexionBD;
         
         /*
          Autor: Steven Cruz

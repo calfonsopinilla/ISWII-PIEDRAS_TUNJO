@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaoReservaTicket.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="DAOCabana.cs" />
     <Compile Include="DaoEvento.cs" />

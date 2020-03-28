@@ -10,7 +10,7 @@ namespace Utilitarios {
         // Variables
         private int cabanaId;
 
-        [ForeignKey("CabanaId")]
+        //[ForeignKey("CabanaId")]
         [Column("cabana_id")]
         public int CabanaId { get => cabanaId; set => cabanaId = value; }
     }

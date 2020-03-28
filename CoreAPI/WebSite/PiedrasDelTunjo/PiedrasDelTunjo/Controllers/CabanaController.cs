@@ -66,7 +66,6 @@ namespace PiedrasDelTunjo.Controllers {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
             }
 
-
             cabana.Token = "";
             bool creado = new LCabana().Agregar(cabana);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });

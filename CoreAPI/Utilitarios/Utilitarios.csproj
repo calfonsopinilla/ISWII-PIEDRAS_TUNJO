@@ -107,8 +107,8 @@
     <Compile Include="UPuntoInteres.cs" />
     <Compile Include="UPuntuacion.cs" />
     <Compile Include="URegistroUser.cs" />
-    <Compile Include="UReserva.cs" />
     <Compile Include="UReservaCabana.cs" />
+    <Compile Include="UReservaTicket.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="USubscripcion.cs" />
     <Compile Include="UTicket.cs" />

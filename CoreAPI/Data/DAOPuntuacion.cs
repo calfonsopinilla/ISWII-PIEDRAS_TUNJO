@@ -16,7 +16,6 @@ namespace Data {
 
         // Variables
         private Mapeo conexionBD;
-        private UPuntuacion puntuacion;
         private List<UPuntuacion> listaPuntuaciones;
 
         /*
