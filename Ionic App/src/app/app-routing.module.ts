@@ -50,6 +50,15 @@ const routes: Routes = [
     path: 'actualizar-usuario/:id',
     loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
+  {
+    path: 'preguntas-frecuentes',
+    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule)
+  },
+  ,
+  {
+    path: 'suscripciones',
+    loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',

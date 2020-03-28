@@ -11,8 +11,9 @@ import { UserRegister } from '../../interfaces/user-regster.interface';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-    
-  private usuario : UserRegister = new UserRegister();
+  
+  // Variables
+  private usuario : UserRegister = new UserRegister();      
 
   constructor(    
     private userService: UserService,
@@ -23,7 +24,7 @@ export class RegistroPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    
   }
 
   // Registrar usuario y enviar Token
@@ -32,11 +33,10 @@ export class RegistroPage implements OnInit {
     this.usuario.id = 0;   
     this.usuario.token = null;
     this.usuario.fechaGeneracion = null;
-    this.usuario.fechaVencimiento = null;   
-    this.usuario.iconoUrl = "Imagen.jpg";
+    this.usuario.fechaVencimiento = null;    
     this.usuario.rolId = 2;  
-    this.usuario.aplicacionId = 1;      
-
+    this.usuario.aplicacionId = 1;          
+    
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();    
 
