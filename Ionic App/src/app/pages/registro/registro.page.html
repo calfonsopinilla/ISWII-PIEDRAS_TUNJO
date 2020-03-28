@@ -6,6 +6,10 @@
 
 <ion-content [fullscreen] class="ion-padding">
   <form (ngSubmit)="crearUsuario()">
+    <ion-item *ngFor="let image of images"> <!-- Slider -->
+      <img src="http://www.piedrasdeltunjo.tk/images/getImage?tipo=identificacion&nombre=1.png">
+      <!--<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
+    </ion-item>
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="usuario['nombre']" name="nombre"></ion-input>      
