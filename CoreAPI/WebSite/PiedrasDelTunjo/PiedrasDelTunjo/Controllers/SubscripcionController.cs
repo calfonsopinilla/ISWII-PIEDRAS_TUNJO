@@ -48,12 +48,13 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Ver_Subscripciones")]
-        public string MostrarSubscripciones(int estadoFiltro)
+        //public List<USubscripcion> MostrarSubscripciones([FromUri]int estadoFiltro)
+        public IHttpActionResult MostrarSubscripciones([FromUri]int estadoFiltro)
         {
             try
             {
-
-                return new LSubscripcion().Mostrar_Subscripciones( estadoFiltro);
+                var informacion = new LSubscripcion().Mostrar_Subscripciones(estadoFiltro);
+                return Ok(informacion);
 
             }catch(Exception ex)
             {
