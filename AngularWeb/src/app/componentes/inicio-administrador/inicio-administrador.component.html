@@ -12,91 +12,111 @@
 </header>
 
 
-<section id ="clientes">
 
-		<div class="row">
-		 <div class="col-md-9">
-		 	<div class="card">
-		 		<h4>listado de Usuarios</h4>
+<br><br>
+<br><br>
 
-		 	</div>
-		 	<div>
-		 		<table class="table table-striped">
-		 			<thead class="thead-dark">
-		 				<tr>
-		 					<th>#Id</th>
-		 				   <th>nombre</th>
-		 				    <th>apellido</th>
-		 					<th>tipo
-		 					Documento</th>
-		 					<th>numero
-		 					Documento</th>
-		 					<th>lugar
-		 					Expedicion</th>
-		 					<th>Correo</th>
-		 					<th>Clave</th>
-		 					<th>icono </th>
-		 					<th>Verificacion 
-		 					cuenta</th>
-		 					<th>Estado 
-		 					cuenta</th>
-		 					<th>Rol 
-		 					id</th>
-		 					<th>Rol
-		 					Nombre</th>
-		 					<th>imagen 
-		 					documento</th>
-		 				
-		 					
-                            
-		 				</tr>
-		 			</thead>
-		 			<tbody>
-		 				 <tr *ngFor="let cliente of User; let i =index">
-		 				 	<td>{{cliente.id}}</td>
-		 				 	<td>{{cliente.nombre}}</td>
-		 				 	<td>{{cliente.apellido}}</td>
-		 				 	<td>{{cliente.tipoDocumento}}</td>
-		 				 	<td>{{cliente.numeroDocumento}}</td>
-		 				 	<td>{{cliente.lugarExpedicion}}</td>
-		 				 	<td>{{cliente.correoElectronico}}</td>
-		 				 	<td>{{cliente.clave}}</td>
-		 				 	<td>{{cliente.icono_url}}</td>
-		 				 	<td>{{cliente.verificacionCuenta}}</td>
-		 				 	<td>{{cliente.estadoCuenta}}</td>
-		 				 	<td>{{cliente.rolId}}</td>
-		 				 	<td>{{cliente.rolNombre}}</td>
-		 				 	<td>{{cliente.imagen_documento}}</td>
-		 				 	
-		 				
-		 				 	
-		 				 
-		 				 	
-		 				 </tr>
-		 			</tbody>
-		 		</table>
-		 	</div>
-		 
-		</div>
-	</div>
+<div class="container">
+      <div class="row">
+      
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/usuario.jpg" class="card-img-top" width="100" height="200" >
+      <!--class="d-block w-50"-->
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Usuarios</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar usuarios , tambien ver los usuarios existentes</p>
+         <a href="/iniciou" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/suscripciones.png" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de subscripciones</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar subscripciones , tambien ver las subscripciones existentes.</p>
+         <a href="/" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/7.jpg" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Pictogramas</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar pictogramas , tambien ver los pictogramas existentes.</p>
+         <a href="/" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/qr.png" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Qr</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar QR , tambien ver los Qr existentes.</p>
+         <a href="/" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/4.jpg" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Eventos</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar eventos , tambien ver los eventos existentes.</p>
+         <a href="/inicioeventos" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+    <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/pregunta.jpg" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Preguntas Frecuentes</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar Preguntas Frecuentes , tambien ver las Preguntas Frecuentes existentes.</p>
+         <a href="/inicioaPf" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+    <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/cabana.jpg" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Cabañas</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar cabañas , tambien ver las Cabañas existentes.  </p>
+         <a href="/" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+    <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/1.jpg" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Puntos de interes</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar Puntos de interes , tambien ver los Puntos de interes existentes.</p>
+         <a href="/iniciopi" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>
+    <!--<div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/imagenes/suscripciones.png" class="card-img-top" width="100" height="200">
+      <div class="card-body">
+        <h5 class="card-title">Gestion de Usuarios</h5>
+        <p class="card-text">En este modulo se puede crear, eliminar,editar subscripciones , tambien ver las subscripciones existentes.</p>
+         <a href="#" class="btn btn-primary">Ir al modulo</a>
+      </div>
+    </div>
+  </div>-->
 
-</section>
-
-<section>
-	    
-
-  
-
-	<div align="center">
-		 <a class="btn btn-primary" href="/Editar" role="button">Editar</a>
-		  <a class="btn btn-primary" href="/Agregar" role="button">Agregar</a>
-		  <a class="btn btn-primary" href="/eliminar" role="button">Eliminar</a>
-		  
-
-
- 
+</div>
 
 
 </div>
-</section>
+
+</div>
+
 

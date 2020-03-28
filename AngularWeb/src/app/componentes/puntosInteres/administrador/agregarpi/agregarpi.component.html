@@ -1,0 +1,110 @@
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Agregar Punto de interes
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<div>
+
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/iniciopi" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+<form #puntosiForm="ngForm" (ngSubmit)="agregar(puntosiForm)"> 
+        <div class="modal-body">
+          <div class="form-group">
+                <label for="Descripcion">Descripcion</label>
+                <input type="text" name="Descripcion" class="form-control" #Descripcion="ngModel" [(ngModel)]="puntoi.Descripcion"
+                  [ngClass]="{'is-invalid': Descripcion.errors && Descripcion.touched}" required minlength="2">
+                <div [hidden]="!Descripcion.errors?.required" class="invalid-feedback">
+                  Descripcion requerida
+                </div>
+                <div [hidden]="!Descripcion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="Latitud">Latitud</label>
+                <input type="text" name="Latitud" class="form-control" #Latitud="ngModel" [(ngModel)]="puntoi.Latitud"
+                  [ngClass]="{'is-invalid': Latitud.errors && Latitud.touched}">
+                <div [hidden]="!Latitud.errors?.required" class="invalid-feedback">
+                  Latitud requerida
+                </div>
+               
+              </div>
+
+              <div class="form-group">
+                <label for="Longitud">Longitud</label>
+                <input type="text" name="Longitud" class="form-control" #Longitud="ngModel" [(ngModel)]="puntoi.Longitud"
+                  [ngClass]="{'is-invalid': Longitud.errors && Longitud.touched}" required minlength="2">
+                <div [hidden]="!Longitud.errors?.required" class="invalid-feedback">
+                  Longitud requerida
+                </div>
+                <div [hidden]="!Longitud.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+              <!--<div class="form-group">
+                <label for="Token">Token</label>
+                <input type="text" name="Token" class="form-control" #Token="ngModel" [(ngModel)]="puntoi.Token"
+                  [ngClass]="{'is-invalid': Token.errors && Token.touched}" required minlength="2">
+                <div [hidden]="!Token.errors?.required" class="invalid-feedback">
+                  Token requerida
+                </div>
+                <div [hidden]="!Token.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="LastModification">LastModification</label>
+                <input type="text" name="LastModification" class="form-control" #LastModification="ngModel" [(ngModel)]="puntoi.LastModification"
+                  [ngClass]="{'is-invalid': LastModification.errors && LastModification.touched}" required minlength="2">
+                <div [hidden]="!LastModification.errors?.required" class="invalid-feedback">
+                  LastModification requerida
+                </div>
+                <div [hidden]="!LastModification.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>-->
+
+
+          
+          
+        
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </div>
+
+      </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    

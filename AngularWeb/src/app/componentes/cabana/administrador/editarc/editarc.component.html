@@ -1,0 +1,149 @@
+
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Editar Cabaña
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<form #cabanaForm="ngForm" (ngSubmit)="guardar(cabanaForm)"> 
+
+
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/inicioc" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success btn-block">
+             Guardar cambios
+          </button>
+        </div>
+        <div class="col-md-3">
+          <a href="/inicioc"   (click)="eliminar()" class="btn btn-danger btn-block">
+             Eliminar 
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Editar </h4>
+            </div>
+            <div class="card-body">
+
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="cabana.nombre"
+                  [ngClass]="{'is-invalid': nombre.errors && nombre.touched}" required minlength="2">
+                <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                  Nombre requerido
+                </div>
+                <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+                <div class="form-group">
+                <label for="capacidad">capacidad</label>
+                <input type="text" name="capacidad" class="form-control" #capacidad="ngModel" [(ngModel)]="cabana.capacidad"
+                  [ngClass]="{'is-invalid': capacidad.errors && capacidad.touched}">
+                <div [hidden]="!capacidad.errors?.required" class="invalid-feedback">
+                 capacidad requerido
+                </div>
+              
+              </div>
+                <div class="form-group">
+                <label for="precio">precio</label>
+                <input type="text" name="precio" class="form-control" #precio="ngModel" [(ngModel)]="cabana.precio"
+                  [ngClass]="{'is-invalid': precio.errors && precio.touched}" required minlength="2">
+                <div [hidden]="!precio.errors?.required" class="invalid-feedback">
+                  precio requerido
+                </div>
+                <div [hidden]="!precio.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+                <div class="form-group">
+                <label for="calificacion">calificacion</label>
+                <input type="text" name="calificacion" class="form-control" #calificacion="ngModel" [(ngModel)]="cabana.calificacion"
+                  [ngClass]="{'is-invalid': calificacion.errors && calificacion.touched}" required minlength="2">
+                <div [hidden]="!calificacion.errors?.required" class="invalid-feedback">
+                  calificacion requerido
+                </div>
+                <div [hidden]="!calificacion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+                <div class="form-group">
+                <label for="imagenesUrl">imagenesUrl</label>
+                <input type="text" name="imagenesUrl" class="form-control" #imagenesUrl="ngModel" [(ngModel)]="cabana.imagenesUrl"
+                  [ngClass]="{'is-invalid': imagenesUrl.errors && imagenesUrl.touched}" required minlength="2">
+                <div [hidden]="!imagenesUrl.errors?.required" class="invalid-feedback">
+                 imagenesUrl requerido
+                </div>
+                <div [hidden]="!imagenesUrl.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+                <div class="form-group">
+                <label for="comentariosId">comentariosId</label>
+                <input type="text" name="comentariosId" class="form-control" #comentariosId="ngModel" [(ngModel)]="cabana.comentariosId"
+                  [ngClass]="{'is-invalid': comentariosId.errors && comentariosId.touched}" required minlength="2">
+                <div [hidden]="!comentariosId.errors?.required" class="invalid-feedback">
+                  comentariosId requerido
+                </div>
+                <div [hidden]="!comentariosId.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+               <!-- <div class="form-group">
+                <label for="token">token</label>
+                <input type="text" name="token" class="form-control" #token="ngModel" [(ngModel)]="cabana.token"
+                  [ngClass]="{'is-invalid': token.errors && token.touched}" required minlength="2">
+                <div [hidden]="!token.errors?.required" class="invalid-feedback">
+                  token requerido
+                </div>
+                <div [hidden]="!token.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>-->
+
+
+
+             
+            
+
+
+             
+
+
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</form>

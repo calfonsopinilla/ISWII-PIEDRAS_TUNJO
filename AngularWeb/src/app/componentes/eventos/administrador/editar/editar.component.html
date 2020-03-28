@@ -1,4 +1,4 @@
-<app-cabecero-administrador></app-cabecero-administrador>
+
 
 <header id="main-header" class="py-2 bg-info text-white">
   <div class="container">
@@ -11,90 +11,154 @@
     </div>
   </div>
 </header>
+<form #eventoForm="ngForm" (ngSubmit)="guardar(eventoForm)"> 
 
 
-  <form (ngSubmit)="ObtenerUsuario()" [formGroup]="ActualizarU">
-     
-         <div>
-       <div class="container">
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-3">
+          <a routerLink="/inicioeventos" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success btn-block">
+             Guardar cambios
+          </button>
+        </div>
+        <div class="col-md-3">
+          <a href="/inicioeventos"   (click)="eliminar()" class="btn btn-danger btn-block">
+             Eliminar 
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
           <div class="card">
             <div class="card-header">
-              <h4>Escriba el id del usuario a editar</h4>
-                 <input type="text"  formControlName="textfiltro">
-     
-      <button class="btn btn-primary" type="submit" >Buscar Evento</button>
-      <br><br>
-             
-            <li>
-              <div>
-                <label > Nombre</label>
+              <h4>Editar </h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="evento.Nombre"
+                  [ngClass]="{'is-invalid': nombre.errors && nombre.touched}" required minlength="2">
+                <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                  Nombre requerido
+                </div>
+                <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
               </div>
-                  
-                  
-                   
-               <input type="text" [value]="Nombre" formControlName="textn" class="col-md-10 mx-auto" >
-          
-                <br><br>
-              <!--Nombre <input type="text" formControlName="textn">-->
-                <div>
-                   <label> FechaPublicacion</label>
-                </div>
-             
-              <input type="text"  [value]="FechaPublicacion"  formControlName="texta" class="col-md-10 mx-auto" >
-              <br><br>
-              <div>
-                   <label> Fecha del evento</label>
-                </div>
-                 <input type="text"  [value]="Fecha"  formControlName="textTd" class="col-md-10 mx-auto" >
-             
-              <br><br>
 
-              <div>
-                   <label> Descripcion</label>
+              <div class="form-group">
+                <label for="  FechaPublicacion">Fecha de publicacion</label>
+                <input type="text" name="FechaPublicacion" class="form-control" #FechaPublicacion="ngModel" [(ngModel)]="evento.FechaPublicacion"
+                  [ngClass]="{'is-invalid': FechaPublicacion.errors && FechaPublicacion.touched}" required minlength="2">
+                <div [hidden]="!FechaPublicacion.errors?.required" class="invalid-feedback">
+                  Fecha publicacion requerida
                 </div>
-              <input type="text"  [value]="Descripcion" formControlName="textNd" class="col-md-10 mx-auto" >
-                <br><br>
-              <div>
-                   <label> Calificacion</label>
+                <div [hidden]="!FechaPublicacion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
                 </div>
-              <input type="text" [value]="Calificacion" formControlName="textLe" class="col-md-10 mx-auto" >
-                <br><br>
-               <div>
-                   <label> Url Imagen</label>
-                </div>
-              <input type="text" [value]="ImagenesUrl" formControlName="textCe" class="col-md-10 mx-auto" >
-                <br><br>
-                <div> <label>Id de comentario</label></div>
-     
-              <input type="text" [value]="ComentariosId" formControlName="textc" class="col-md-10 mx-auto" >
-                <br><br>
-               <div>
-                   <label>Lista comentarios evento</label>
-                </div>
-              <input type="text"  [value]="ListaComentariosEvento" formControlName="textIu" class="col-md-10 mx-auto" >
-                <br><br>
-          
-            </li>
-            <br>
-            <!--<button type="submit" >Insertar Usuario</button>-->
-            <!--<input type="submit" value="Agregar" class="btn btn-primary btn-block">-->
-              <button   class="btn btn-primary"(click)="ActualizarUsuario()">Actualizar</button>
-      
-      
+              </div>
 
+            
+              <div class="form-group">
+                <label for="Fecha">Fecha del evento</label>
+                <input type="text" name="Fecha" class="form-control" #Fecha="ngModel" [(ngModel)]="evento.Fecha"
+                  [ngClass]="{'is-invalid': Fecha.errors && Fecha.touched}" required minlength="2">
+                <div [hidden]="!Fecha.errors?.required" class="invalid-feedback">
+                  Fecha requerida
+                </div>
+                <div [hidden]="!Fecha.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="  Descripcion">Descripcion</label>
+                <input type="text" name="Descripcion" class="form-control" #Descripcion="ngModel" [(ngModel)]="evento.Descripcion"
+                  [ngClass]="{'is-invalid': Descripcion.errors && Descripcion.touched}" required minlength="2">
+                <div [hidden]="!Descripcion.errors?.required" class="invalid-feedback">
+                  Decripcion requerida
+                </div>
+                <div [hidden]="!Descripcion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="  Calificacion">Calificacion</label>
+                <input type="text" name="Calificacion" class="form-control" #Calificacion="ngModel" [(ngModel)]="evento.Calificacion"
+                  [ngClass]="{'is-invalid': Calificacion.errors && Calificacion.touched}" required minlength="2">
+                <div [hidden]="!Calificacion.errors?.required" class="invalid-feedback">
+                  Calificacion requerida
+                </div>
+                <div [hidden]="!Calificacion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="ImagenesUrl">ImagenesUrl</label>
+                <input type="text" name="ImagenesUrl" class="form-control" #ImagenesUrl="ngModel" [(ngModel)]="evento.ImagenesUrl"
+                  [ngClass]="{'is-invalid': ImagenesUrl.errors && ImagenesUrl.touched}" required minlength="2">
+                <div [hidden]="!ImagenesUrl.errors?.required" class="invalid-feedback">
+                  ImagenesUrl requerida
+                </div>
+                <div [hidden]="!ImagenesUrl.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="ComentariosId">ComentariosId</label>
+                <input type="text" name="ComentariosId" class="form-control" #ComentariosId="ngModel" [(ngModel)]="evento.ComentariosId"
+                  [ngClass]="{'is-invalid':ComentariosId.errors && ComentariosId.touched}" required minlength="2">
+                <div [hidden]="!ComentariosId.errors?.required" class="invalid-feedback">
+                  ComentariosId requerida
+                </div>
+                <div [hidden]="!ComentariosId.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="ListaComentariosEvento">ListaComentariosEvento</label>
+                <input type="text" name="ListaComentariosEvento" class="form-control" #ListaComentariosEvento="ngModel" [(ngModel)]="evento.ListaComentariosEvento"
+                  [ngClass]="{'is-invalid': ListaComentariosEvento.errors && ListaComentariosEvento.touched}" required minlength="2">
+                <div [hidden]="!ListaComentariosEvento.errors?.required" class="invalid-feedback">
+                 ListaComentariosEvento requerida
+                </div>
+                <div [hidden]="!ListaComentariosEvento.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+             
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+</form>
 
 
-     
-   
-    <br>
-
-    
-      </form>
+  

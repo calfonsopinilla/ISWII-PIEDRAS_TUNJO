@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ServicioLService } from 'src/app/componentes/preguntas-frecuentes/servicio-l.service';
 import { Router , ActivatedRoute} from '@angular/router';
-import { Pregunta } from 'src/app/componentes/preguntas-frecuentes/administrador/inicio-p/cliente.model';
+import { Pregunta } from 'src/app/componentes/preguntas-frecuentes/administrador/inicio-p/pregunta.model';
 @Component({
   selector: 'app-editar-p',
   templateUrl: './editar-p.component.html',

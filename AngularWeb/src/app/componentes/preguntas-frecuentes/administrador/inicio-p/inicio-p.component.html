@@ -25,6 +25,7 @@
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
+                <th>opcion</th>
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
@@ -33,14 +34,15 @@
             </thead>
             <tbody>
               <tr *ngFor="let pregunta of preguntas; let i = index">
-                <td>{{i+1}}</td>
-                <td>{{pregunta.nombre}} </td>
-                <td>{{pregunta.descripcion }}</td>
-                <td>
+                 <td>
                   <a routerLink="/editarpf/{{pregunta.id}}" class="btn btn-secondary">
                    Editar
                   </a>
                 </td>
+                <td>{{i+1}}</td>
+                <td>{{pregunta.nombre}} </td>
+                <td>{{pregunta.descripcion }}</td>
+               
               </tr>
             </tbody>
           </table>

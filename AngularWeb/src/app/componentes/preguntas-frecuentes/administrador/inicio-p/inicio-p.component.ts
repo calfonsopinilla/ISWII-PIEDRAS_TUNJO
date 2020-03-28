@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pregunta } from './cliente.model';
+import { Pregunta } from './pregunta.model';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { ServicioLService } from 'src/app/componentes/preguntas-frecuentes/servicio-l.service';
 import { Router } from '@angular/router';

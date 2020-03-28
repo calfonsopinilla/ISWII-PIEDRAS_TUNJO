@@ -17,31 +17,29 @@ import { SeccionInformativaComponent } from './componentes/seccion-informativa/s
 import { EventosComponent } from './componentes/eventos/eventos.component';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { InicioAdministradorComponent } from './componentes/inicio-administrador/inicio-administrador.component';
-import { EditarClienteComponent } from './componentes/editar-cliente/editar-cliente.component';
-import { AgregarUsuarioComponent } from './componentes/agregar-usuario/agregar-usuario.component';
+
 import { CabeceroAdministradorComponent } from './componentes/cabecero-administrador/cabecero-administrador.component';
 import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
-import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
 
 import { ServicioEventoService } from './componentes/eventos/servicio-evento.service';
 import { ServicioAdminService } from './componentes/inicio-administrador/servicio-admin.service';
-import { ServicioInsertService } from './componentes/agregar-usuario/servicio-insert.service';
+
 import { ServicioInfoService } from './componentes/seccion-informativa/servicio-info.service';
 import { ServiciologinService} from './componentes/login/serviciologin.service';
-import { ServicioEditarService } from './componentes/editar-cliente/servicio-editar.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
-import { ServicioeliminarUService } from './componentes/eliminar-usuario/servicioeliminar-u.service';
+
+
 import { PreguntasFrecuentesComponent } from './componentes/preguntas-frecuentes/preguntas-frecuentes.component';
 import { InicioAComponent } from './componentes/eventos/administrador/inicio-a/inicio-a.component';
-import { ServiciomostrareService } from './componentes/eventos/administrador/inicio-a/serviciomostrare.service';
+
 import { AgregarComponent } from './componentes/eventos/administrador/agregar/agregar.component';
-import { ServicioagregareService } from './componentes/eventos/administrador/agregar/servicioagregare.service';
+
 import { EditarComponent } from './componentes/eventos/administrador/editar/editar.component';
-import { ServicioeditareService } from './componentes/eventos/administrador/editar/servicioeditare.service';
-import { EliminarComponent } from './componentes/eventos/administrador/eliminar/eliminar.component';
-import { ServicioeliminareService } from './componentes/eventos/administrador/eliminar/servicioeliminare.service';
+
+
+
 import { ServicioLService } from './componentes/preguntas-frecuentes/servicio-l.service';
 
 
@@ -50,10 +48,22 @@ import { SubscripcionesComponent } from './componentes/subscripciones/subscripci
 import { InicioPComponent } from './componentes/preguntas-frecuentes/administrador/inicio-p/inicio-p.component';
 import { AgregarPComponent } from './componentes/preguntas-frecuentes/administrador/agregar-p/agregar-p.component';
 import { EditarPComponent } from './componentes/preguntas-frecuentes/administrador/editar-p/editar-p.component';
+import { IniciocComponent } from './componentes/cabana/administrador/inicioc/inicioc.component';
+import { EditarcComponent } from './componentes/cabana/administrador/editarc/editarc.component';
+import { AgregarcComponent } from './componentes/cabana/administrador/agregarc/agregarc.component';
 
-
+import { ServiciocService } from './componentes/cabana/servicioc.service';
+import { IniciopiComponent } from './componentes/puntosInteres/administrador/iniciopi/iniciopi.component';
+import { EditarpiComponent } from './componentes/puntosInteres/administrador/editarpi/editarpi.component';
+import { AgregarpiComponent } from './componentes/puntosInteres/administrador/agregarpi/agregarpi.component';
+import { ServiciopiService } from './componentes/puntosInteres/serviciopi.service';
+import { InicioUComponent } from './componentes/Usuarios/administrador/inicio-u/inicio-u.component';
+import { EditarUComponent } from './componentes/Usuarios/administrador/editar-u/editar-u.component';
+import { AgregarUComponent } from './componentes/Usuarios/administrador/agregar-u/agregar-u.component';
+import { ServicioUService } from './componentes/Usuarios/servicio-u.service';
 @NgModule({
   declarations: [
+
     AppComponent,
     CabeceroComponent,
     LoginComponent,
@@ -65,31 +75,27 @@ import { EditarPComponent } from './componentes/preguntas-frecuentes/administrad
     SeccionInformativaComponent,
     EventosComponent,
     InicioAdministradorComponent,
-    EditarClienteComponent,
-    AgregarUsuarioComponent,
     CabeceroAdministradorComponent,
     ModuloQrComponent,
-    ModuloCComponent,
-
-    EliminarUsuarioComponent,
     PreguntasFrecuentesComponent,
     InicioAComponent,
     AgregarComponent,
     EditarComponent,
-    EliminarComponent,
-  
-   
-
-    
     PictogramasComponent,
     SubscripcionesComponent,
     InicioPComponent,
     AgregarPComponent,
     EditarPComponent,
+    IniciocComponent,
+    EditarcComponent,
+    AgregarcComponent,
+    IniciopiComponent,
+    EditarpiComponent,
+    AgregarpiComponent,
+    InicioUComponent,
+    EditarUComponent,
+    AgregarUComponent,
 
-
-
-     //ServicioEventoService
   ],
   imports: [
     BrowserModule,
@@ -101,10 +107,9 @@ import { EditarPComponent } from './componentes/preguntas-frecuentes/administrad
      HttpModule
   ],
   providers: [ ServicioEventoService , ServicioInfoService , 
-  ServicioInsertService,ServicioAdminService,ServiciologinService
-  ,ServicioEditarService,ServicioeliminarUService,ServiciomostrareService
-  ,ServicioagregareService , ServicioeditareService,ServicioeliminareService
-  ,ServicioLService ],
+  ServicioAdminService,ServiciologinService
+ ,ServicioLService ,ServiciocService , ServiciopiService,
+ ServicioUService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

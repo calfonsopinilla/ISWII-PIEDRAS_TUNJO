@@ -1,0 +1,103 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Inicio Usuarios
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section id ="clientes">
+
+		<div class="row">
+		 <div class="col-md-9">
+		 	<div class="card">
+		 		<h4>listado de Usuarios</h4>
+
+		 	</div>
+		 	<div>
+		 		<table class="table table-striped">
+		 			<thead class="thead-dark">
+		 				<tr>
+		 					<th>opcion</th>
+		 					<th>#</th>
+		 				   <th>nombre</th>
+		 				    <th>apellido</th>
+		 					<th>tipo
+		 					Documento</th>
+		 					<th>numero
+		 					Documento</th>
+		 					<th>lugar
+		 					Expedicion</th>
+		 					<th>correo
+		 					Electronico</th>
+		 					<th>clave</th>
+		 					<th>url
+		 					icono</th>
+		 					<th>verificacion
+		 					Cuenta</th>
+		 					<th>estado
+		 					Cuenta</th>
+		 					<th>rol
+		 					Id</th>
+		 					<!--<th>rol
+		 					Nombre</th>-->
+		 					<!--<th>imagen_documento</th>-->
+		 					
+		 				
+		 					
+                            
+		 				</tr>
+		 			</thead>
+		 			<tbody>
+		 				 <tr *ngFor="let usuario of usuarios; let i =index">
+		 				 	 	 <td>
+                  <a routerLink="/editaru/{{usuario.id}}" class="btn btn-secondary">
+                   Editar
+                  </a>
+                </td>
+		 				 	<td>{{i+1}}</td>
+		 				 	<td>{{usuario.nombre}}</td>
+		 				 	<td>{{usuario.apellido}}</td>
+		 				 	<td>{{usuario.tipoDocumento}}</td>
+		 				 	<td>{{usuario.numeroDocumento}}</td>
+		 				    <td>{{usuario.lugarExpedicion}}</td>
+		 				 	<td>{{usuario.correoElectronico }}</td>
+		 				 	<td>{{usuario.clave}}</td>
+		 				 	<td>{{usuario.icono_url}}</td>
+		 				 	<td>{{usuario.verificacionCuenta}}</td>
+		 				    <td>{{usuario.estadoCuenta}}</td>
+		 				 	<td>{{usuario.rolId }}</td>
+		 				 	<!--<td>{{usuario.rolNombre}}</td>-->
+		 				 	<!--<td>{{usuario.imagen_documento}}</td>-->
+		 				
+		 				 	
+		 				 
+		 				 	
+		 				 </tr>
+		 			</tbody>
+		 		</table>
+		 	</div>
+		 
+		</div>
+	</div>
+
+</section>
+
+<section>
+	 <div align="center">
+<section id="actions" class="py-6 mb-6 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="btn btn-primary" href="/agregaru" role="button">Nuevo Usuario</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+</div>   

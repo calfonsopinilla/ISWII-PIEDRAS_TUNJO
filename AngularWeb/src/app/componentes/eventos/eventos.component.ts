@@ -24,7 +24,7 @@ export class EventosComponent implements OnInit {
   nombre:any;
  constructor(private servicioeventoservice:ServicioEventoService) { this.ObtenerEventos}
    ObtenerEventos(){
- this.servicioeventoservice.ObtenerJson().subscribe(resultado =>{
+ this.servicioeventoservice.ObtenerJson1().subscribe(resultado =>{
    this.Eventos=resultado;
   this.descripcion=this.Eventos.Descripcion;
 this.nombre=this.Eventos.Nombre;

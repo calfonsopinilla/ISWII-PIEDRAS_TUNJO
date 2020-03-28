@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule , FormsModule } from '@angular/forms';
-import { ServiciomostrareService} from './serviciomostrare.service';
+import { Evento } from './evento.model';
+import { ServicioEventoService  } from 'src/app/componentes/eventos/servicio-evento.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-inicio-a',
@@ -8,13 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio-a.component.css']
 })
 export class InicioAComponent implements OnInit {
+eventos: Evento[];
+  evento: Evento ={
+    Nombre: '',
+    FechaPublicacion: '',
+     Fecha: '',
+    Descripcion: '',
+     Calificacion: '',
+    ImagenesUrl: '',
+     ComentariosId: '',
+    ListaComentariosEvento: '',
 
- constructor(private servicioinfoservice:ServiciomostrareService) {  this.ObtenerEventos}
+   
+  }
+ constructor(private servi:ServicioEventoService) {  this.ObtenerEventos}
 
-  User:any;
+
   ObtenerEventos(){
- this.servicioinfoservice.ObtenerJson().subscribe(resultado =>{
-   this.User=resultado;
+ this.servi.ObtenerJson().subscribe(resultado =>{
+   this.eventos=resultado;
    
    console.log("Informacion ya tiene resultado");
   

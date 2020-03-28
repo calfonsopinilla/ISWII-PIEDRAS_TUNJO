@@ -12,7 +12,7 @@
   </div>
 </header>
 
-<section id ="clientes">
+<section id ="eventos">
 
 		<div class="row">
 		 <div class="col-md-9">
@@ -24,7 +24,8 @@
 		 		<table class="table table-striped">
 		 			<thead class="thead-dark">
 		 				<tr>
-		 					<th>#Id</th>
+		 					<th>opcion</th>
+		 					<th>#</th>
 		 				   <th>Nombre</th>
 		 				    <th>FechaPublicacion</th>
 		 					<th>Fecha</th>
@@ -40,17 +41,22 @@
 		 				</tr>
 		 			</thead>
 		 			<tbody>
-		 				 <tr *ngFor="let cliente of User; let i =index">
-		 				 	<td>{{cliente.Id}}</td>
-		 				 	<td>{{cliente.Nombre}}</td>
-		 				 	<td>{{cliente.FechaPublicacion}}</td>
-		 				 	<td>{{cliente.Fecha}}</td>
-		 				 	<td>{{cliente.Descripcion }}</td>
-		 				    <td>{{cliente.Calificacion}}</td>
-		 				 	<td>{{cliente.ImagenesUrl }}</td>
-		 				 	<td>{{cliente.ComentariosId}}</td>
-		 				 	<td>{{cliente.ListaComentariosEvento}}</td>
-		 				 	
+		 				 <tr *ngFor="let evento of eventos; let i =index">
+		 				 	 	 <td>
+                  <a routerLink="/editarevento/{{evento.Id}}" class="btn btn-secondary">
+                   Editar
+                  </a>
+                </td>
+		 				 	<td>{{i+1}}</td>
+		 				 	<td>{{evento.Nombre}}</td>
+		 				 	<td>{{evento.FechaPublicacion}}</td>
+		 				 	<td>{{evento.Fecha}}</td>
+		 				 	<td>{{evento.Descripcion }}</td>
+		 				    <td>{{evento.Calificacion}}</td>
+		 				 	<td>{{evento.ImagenesUrl }}</td>
+		 				 	<td>{{evento.ComentariosId}}</td>
+		 				 	<td>{{evento.ListaComentariosEvento}}</td>
+		 				
 		 				 	
 		 				 
 		 				 	
@@ -65,11 +71,19 @@
 </section>
 
 <section>
-	    
+	 <div align="center">
+<section id="actions" class="py-6 mb-6 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="btn btn-primary" href="/agregarevento" role="button">Nuevo Evento</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+</div>   
 
   
 
-	<div align="center">
-		 <a class="btn btn-primary" href="/editarevento" role="button">Editar</a>
-		  <a class="btn btn-primary" href="/agregarevento" role="button">Agregar</a>
-		  <a class="btn btn-primary" href="/eliminarevento" role="button">Eliminar</a>
+	

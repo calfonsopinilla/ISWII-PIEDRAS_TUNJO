@@ -1,0 +1,86 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Inicio cabanas
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section id ="cabanas">
+
+		<div class="row">
+		 <div class="col-md-9">
+		 	<div class="card">
+		 		<h4>listado de Cabanas</h4>
+
+		 	</div>
+		 	<div>
+		 		<table class="table table-striped">
+		 			<thead class="thead-dark">
+		 				<tr>
+		 					<th>opcion</th>
+		 					<th>#</th>
+		 				   <th>nombre</th>
+		 				    <th>capacidad</th>
+		 					<th>precio</th>
+		 					<th>calificacion</th>
+		 					<th>imagenesUrl</th>
+		 					<th>comentariosId</th>
+		 					<!--<th>token</th>
+		 					<th>listaComentariosCabana </th>-->
+		 					
+		 				
+		 					
+                            
+		 				</tr>
+		 			</thead>
+		 			<tbody>
+		 				 <tr *ngFor="let cabana of cabanas; let i =index">
+		 				 	 	 <td>
+                  <a routerLink="/editarc/{{cabana.id}}" class="btn btn-secondary">
+                   Editar
+                  </a>
+                </td>
+		 				 	<td>{{i+1}}</td>
+		 				 	<td>{{cabana.nombre}}</td>
+		 				 	<td>{{cabana.capacidad}}</td>
+		 				 	<td>{{cabana.precio}}</td>
+		 				 	<td>{{cabana.calificacion }}</td>
+		 				    <td>{{cabana.imagenesUrl}}</td>
+		 				 	<td>{{cabana.comentariosId }}</td>
+		 				 	<!--<td>{{cabana.token}}</td>
+		 				 	<td>{{cabana.listaComentariosCabana}}</td>-->
+		 				
+		 				 	
+		 				 
+		 				 	
+		 				 </tr>
+		 			</tbody>
+		 		</table>
+		 	</div>
+		 
+		</div>
+	</div>
+
+</section>
+
+<section>
+	 <div align="center">
+<section id="actions" class="py-6 mb-6 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="btn btn-primary" href="/agregarc" role="button">Agregar Cabana</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+</div>   
+
+  
