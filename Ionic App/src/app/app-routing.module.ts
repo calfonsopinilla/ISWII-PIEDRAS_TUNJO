@@ -51,14 +51,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'preguntas-frecuentes',
     loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule)
   },
   ,
+=======
+    path: 'cuenta',
+    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+  },
+>>>>>>> 4ee2411ee5db71dbb7c9a4b9ca0fc00b3b533a8d
   {
     path: 'suscripciones',
     loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule)
   },
+<<<<<<< HEAD
+=======
+  {
+    path: 'preguntas-frecuentes',
+    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule)
+  },
+>>>>>>> 4ee2411ee5db71dbb7c9a4b9ca0fc00b3b533a8d
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',

@@ -1,12 +1,19 @@
-<app-header titulo="Tus tickets" tipo="menu"></app-header>
+<app-header titulo="Tus reservas de Tickets" tipo="menu"></app-header>
 
-<ion-content [fullscreen]>
+<ion-content [fullscreen] class="ion-padding">
   <ion-list>
     <ion-list-header>
-      <ion-label>Tickets</ion-label>
+      <ion-label><strong>Tus reservas</strong></ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let item of tickets">
-      <!-- item properties -->
+    <ion-item *ngFor="let item of reservas">
+      <ion-label>
+        <h4>{{ item.FechaIngreso | date: 'fullDate' }}</h4>
+        <p><strong>Cantidad: </strong>{{ item.Cantidad }} </p>
+        <p><strong>Precio: </strong>{{ item.Precio }}</p>
+      </ion-label>
+      <ion-button slot="end" color="secondary" (click)="verDetalles(item.Id)">
+        <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

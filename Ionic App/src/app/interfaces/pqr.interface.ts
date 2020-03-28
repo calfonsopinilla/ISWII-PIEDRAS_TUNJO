@@ -1,9 +1,19 @@
-export interface PQR {
-    id: number;
-    fechaPublicacion: Date;
-    pregunta: string;
-    respuesta: string;
-    usuarioId: number;
-    estadoId: number;
-    estado: boolean;
+import { Usuario } from './usuario.interface';
+
+export interface Pqr {
+    Id?: number;
+    FechaPublicacion?: Date;
+    Pregunta?: string;
+    Respuesta?: string;
+    Token?: string;
+    LastModification?: Date;
+    UEstadoPQRId?: number;
+    UEstadoPQR?: UEstadoPQR;
+    UUsuarioId?: number;
+    UUsuario?: Usuario;
+}
+
+export interface UEstadoPQR {
+    Id: number;
+    Nombre: string;
 }

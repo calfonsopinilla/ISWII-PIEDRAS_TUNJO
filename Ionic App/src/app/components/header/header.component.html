@@ -2,11 +2,11 @@
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-menu-button *ngIf="tipo === 'menu'" color="light" menu="first"></ion-menu-button>
-      <ion-back-button defaultHref="/inicio" *ngIf="tipo === 'back'"></ion-back-button>
+      <ion-back-button [defaultHref]="defaultH || '/inicio'" *ngIf="tipo === 'back'"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ titulo }}</ion-title>
     <ion-buttons slot="end" *ngIf="tipo === 'menu'">
-      <ion-button routerLink="/user-cuenta">
+      <ion-button routerLink="/user-cuenta" routerLink="/cuenta">
         <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>

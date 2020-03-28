@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { CompraPageRoutingModule } from './compra-routing.module';
-
-import { CompraPage } from './compra.page';
-import { ComponentsModule } from '../../../components/components.module';
+import { CuentaPageRoutingModule } from './cuenta-routing.module';
+import { CuentaPage } from './cuenta.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
@@ -15,9 +12,9 @@ import { ComponentsModule } from '../../../components/components.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    CompraPageRoutingModule,
+    CuentaPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [CompraPage]
+  declarations: [CuentaPage]
 })
-export class CompraPageModule {}
+export class CuentaPageModule {}

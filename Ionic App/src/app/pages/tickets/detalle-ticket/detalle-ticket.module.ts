@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CompraPageRoutingModule } from './compra-routing.module';
+import { DetalleTicketPageRoutingModule } from './detalle-ticket-routing.module';
 
-import { CompraPage } from './compra.page';
+import { DetalleTicketPage } from './detalle-ticket.page';
 import { ComponentsModule } from '../../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
-    CompraPageRoutingModule,
+    DetalleTicketPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [CompraPage]
+  declarations: [DetalleTicketPage]
 })
-export class CompraPageModule {}
+export class DetalleTicketPageModule {}
