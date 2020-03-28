@@ -51,16 +51,25 @@ namespace PiedrasDelTunjo.Controllers
             Recibe: Integer id - Id del punto de interes que se desea buscar
             Retorna: Objeto de tipo UPuntoInteres con los datos filtrados y booleano
         */
-        [HttpGet]
-        [Route("{id}")]
-        public HttpResponseMessage LeerPuntoInteres([FromUri] int id) {
+        /*public HttpResponseMessage LeerPuntoInteres([FromUri] int id) {
 
             this.puntoInteres = new LPuntoInteres().LeerPuntoInteres(id);
 
             if (this.puntoInteres != null) // Se valida si el punto de interes SI se encontro
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, this.puntoInteres ,message=""});
+                return Request.CreateResponse(HttpStatusCode.OK/*, new { ok = true, this.puntoInteres ,message=""});
             else
                 return Request.CreateResponse(HttpStatusCode.NotAcceptable, new { ok = false , message = "ERROR" });
+        }*/
+        [HttpGet]
+        [Route("{id}")]
+        public HttpResponseMessage LeerPuntoInteres([FromUri] int id)
+        {
+            var puntointeres = new LPuntoInteres().LeerPuntoInteres(id);
+            if (puntointeres == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "puntointeres no encontrado");
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, puntointeres);
         }
 
         /*
