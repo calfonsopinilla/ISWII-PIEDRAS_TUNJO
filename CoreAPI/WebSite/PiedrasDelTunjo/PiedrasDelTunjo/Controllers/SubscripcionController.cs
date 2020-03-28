@@ -17,6 +17,7 @@ namespace PiedrasDelTunjo.Controllers
          * 
          */
     //
+    [EnableCors(origins: "*", methods: "*", headers: "*")]
     public class SubscripcionController : ApiController
     {
         /**
