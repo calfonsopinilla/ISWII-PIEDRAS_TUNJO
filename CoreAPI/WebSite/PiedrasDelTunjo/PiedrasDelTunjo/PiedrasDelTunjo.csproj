@@ -331,10 +331,10 @@
     <Content Include="Imagenes\Informacion\resena_historica1.jpg" />
     <Content Include="Imagenes\Informacion\resena_historica2.jpg" />
     <Content Include="Imagenes\Informacion\ubicacion1.jpg" />
-    <Content Include="Imagenes\Usuarios\Avatars\1.png" />
-    <Content Include="Imagenes\Usuarios\Avatars\2.png" />
-    <Content Include="Imagenes\Usuarios\Avatars\3.png" />
-    <Content Include="Imagenes\Usuarios\Avatars\4.png" />
+    <Content Include="Imagenes\Usuarios\Avatars\av-1.png" />
+    <Content Include="Imagenes\Usuarios\Avatars\av-2.png" />
+    <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
+    <Content Include="Imagenes\Usuarios\Avatars\av-4.png" />
     <Content Include="obj\Debug\PiedrasDelTunjo.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\PiedrasDelTunjo.dll" />
     <Content Include="obj\Debug\PiedrasDelTunjo.pdb" />
