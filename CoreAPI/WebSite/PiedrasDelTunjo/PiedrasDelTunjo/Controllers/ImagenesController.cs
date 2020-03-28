@@ -89,6 +89,8 @@ namespace PiedrasDelTunjo.Controllers
                     return "Usuarios/Identificaciones";
                 case "cabana":
                     return "Cabana";
+                case "avatar":
+                    return "Usuarios/Avatars";
             }
             return null;
         }
