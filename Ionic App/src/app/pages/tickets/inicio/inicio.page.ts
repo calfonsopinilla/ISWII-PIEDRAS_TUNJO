@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Ticket } from 'src/app/interfaces/ticket.interface';
-import { TicketService } from 'src/app/services/ticket.service';
+import { ReservaTicketService } from 'src/app/services/reserva-tickets.service';
+import { ReservaTicket } from 'src/app/interfaces/reserva-ticket.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -9,13 +10,34 @@ import { TicketService } from 'src/app/services/ticket.service';
 })
 export class InicioPage implements OnInit {
 
-  tickets: Ticket[] = [];
+  reservas: ReservaTicket[] = [];
 
   constructor(
-    private ticketService: TicketService
+    private reservaTicketService: ReservaTicketService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    // Reserva eliminada
+    this.reservaTicketService.reservaEliminada$.subscribe((id: number) => {
+      // console.log(id);
+      this.obtenerReservas();
+    });
+    // Nueva reserva
+    this.reservaTicketService.nuevaReserva$.subscribe((res: ReservaTicket) => {
+      this.obtenerReservas();
+    });
+
+    this.obtenerReservas();
+  }
+
+  async obtenerReservas() {
+    this.reservas = await this.reservaTicketService.getTicketsUser();
+  }
+
+  verDetalles(id: number) {
+    // console.log(id);
+    this.router.navigate(['/tickets', 'detalle-ticket', id]);
   }
 
 }

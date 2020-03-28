@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
+import { Usuario } from '../interfaces/usuario.interface';
+import { LoadingController } from '@ionic/angular';
 
 const urlApi = environment.servicesAPI;
 
@@ -14,7 +16,8 @@ const urlApi = environment.servicesAPI;
 
     constructor(
         private http: HttpClient,
-        private storage: Storage
+        private storage: Storage,
+        private loadingCtrl: LoadingController
     ) { }
 
     crearUsuario(user: UserRegister) {
@@ -24,10 +27,28 @@ const urlApi = environment.servicesAPI;
                 }));
     }
 
-    validarNumeroDocumentoCorreoElectronico(user: UserRegister) {        
+    validarNumeroDocumentoCorreoElectronico(user: UserRegister) {
         return this.http.get(`${ urlApi }/Registro/Val_EmailYCC?valCorreo=${user.correoElectronico}&valDocumento=${user.numeroDocumento}`)
                 .pipe(catchError(err => {
                     return of( err.error );
                 }));
+    }
+
+    actualizarDatos(usuario: Usuario) {
+        return new Promise(async resolve => {
+            const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+            await loading.present();
+            this.http.put(`${ urlApi }/usuarios/${ usuario.Id }`, usuario)
+                        .subscribe(async res => {
+                            if (res['ok'] === true) {
+                                await this.storage.clear();
+                                await this.storage.set('usuario', usuario);
+                            }
+                            resolve(res['ok']);
+                        },
+                        (err) => {},
+                        () => loading.dismiss()
+                    );
+        });
     }
 }

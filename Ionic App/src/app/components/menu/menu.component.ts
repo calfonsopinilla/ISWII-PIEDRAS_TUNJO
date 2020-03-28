@@ -82,7 +82,7 @@ export class MenuComponent implements OnInit {
 
   async ngOnInit() {
     this.auth = await this.authService.isAuthenticated();
-    console.log('Logged: ', this.auth);
+    // console.log('Logged: ', this.auth);
   }
 
   async logout() {

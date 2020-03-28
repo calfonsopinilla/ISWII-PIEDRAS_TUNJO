@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../compra/compra.module').then(mod => mod.CompraPageModule)
       },
       {
+        path: 'detalle-ticket/:id',
+        loadChildren: () => import('../detalle-ticket/detalle-ticket.module').then( m => m.DetalleTicketPageModule)
+      },
+      {
         path: '', pathMatch: 'full', redirectTo: 'inicio'
       },
       {

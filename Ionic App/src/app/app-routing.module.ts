@@ -50,11 +50,16 @@ const routes: Routes = [
     path: 'actualizar-usuario/:id',
     loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
+  {
+    path: 'cuenta',
+    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
+
 ];
 
 @NgModule({

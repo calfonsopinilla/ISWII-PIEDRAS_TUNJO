@@ -28,17 +28,17 @@ export class RegistroPage implements OnInit {
 
   // Registrar usuario y enviar Token
   async crearUsuario() {
-    
+
     this.usuario.id = 0;   
     this.usuario.token = null;
     this.usuario.fechaGeneracion = null;
     this.usuario.fechaVencimiento = null;   
     this.usuario.iconoUrl = "Imagen.jpg";
     this.usuario.rolId = 2;  
-    this.usuario.aplicacionId = 1;      
+    this.usuario.aplicacionId = 1;
 
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();    
+    await loading.present();
 
     // Servicio para validar numero documento y correo electronico
     if (await !this.validarNumeroDocumentoCorreoElectronico(this.usuario)) {

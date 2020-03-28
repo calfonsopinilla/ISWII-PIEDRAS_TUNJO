@@ -15,11 +15,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private navCtrl: NavController,
-    private toastCtrl: ToastController,
-    private storage: Storage,
-    private loadingCtrl: LoadingController
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -30,35 +26,7 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
-    this.authService.login(this.loginForm.value)
-                    .subscribe(
-                      async (res) => {
-                        setTimeout(_ => {}, 5000);
-                        if (res['ok'] === true) {
-                          this.storage.clear();
-                          const ok = await this.storage.set('usuario', res['userLogin']);
-                          console.log(ok);
-                          if (ok) {
-                            this.navCtrl.navigateRoot('/inicio');
-                          }
-                        } else {
-                          this.presentToast(res['message']);
-                        }
-                      },
-                      (err) => {},
-                      () => loading.dismiss()
-                    );
-  }
-
-  async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({
-      message,
-      position: 'top',
-      duration: 3000
-    });
-    await toast.present();
+    this.authService.login(this.loginForm.value);
   }
 
   get correo() {
