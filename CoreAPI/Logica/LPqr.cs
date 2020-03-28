@@ -14,6 +14,11 @@ namespace Logica
         {
             return new DaoPqr().ListaPQR();
         }
+        
+        public IEnumerable<UPQR> ObtenerPorUser(int user_id)
+        {
+            return new DaoPqr().ObtenerPorUsuario(user_id);
+        }
 
         public UPQR BuscarPqr(int id)
         {

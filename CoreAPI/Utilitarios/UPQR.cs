@@ -10,7 +10,7 @@ namespace Utilitarios {
         [Column("id")]
         public int Id { get; set; }
         [Column("fecha_publicacion")]
-        public DateTime FechaPublicacion { get; set; } = DateTime.Now;
+        public DateTime FechaPublicacion { get; set; }
         [Column("pregunta")]
         public string Pregunta { get; set; }
         [Column("respuesta")]

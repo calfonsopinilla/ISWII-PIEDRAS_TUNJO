@@ -18,12 +18,33 @@ namespace Data
                 try
                 {
                     var pqrs = db.PQR
-                                 .Include("Uusuario")
+                                 .Include("UUsuario")
                                  .Include("UEstadoPQR")
+                                 .OrderByDescending(x => x.Id)
                                  .ToList(); // Lazy Loading para traer los datos del usuario
                     return pqrs;
                 }
                 catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public IEnumerable<UPQR> ObtenerPorUsuario(int user_id)
+        {
+            using (var db = new Mapeo())
+            {
+                try
+                {
+                    var pqrs = db.PQR
+                                 .Include("UUsuario")
+                                 .Include("UEstadoPQR")
+                                 .Where(x => x.UUsuarioId == user_id)
+                                 .OrderByDescending(x => x.Id)
+                                 .ToList();
+                    return pqrs;
+                }catch(Exception ex)
                 {
                     throw ex;
                 }

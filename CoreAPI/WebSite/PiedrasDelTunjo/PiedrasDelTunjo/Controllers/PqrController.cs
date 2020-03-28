@@ -26,8 +26,17 @@ namespace PiedrasDelTunjo.Controllers
         // GET: pqr/
         public HttpResponseMessage ObtenerPqr() {
 
-            var pqr = new LPqr().ObtenerPqr();
-            return Request.CreateResponse(HttpStatusCode.OK, pqr);
+            var pqrs = new LPqr().ObtenerPqr();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = pqrs });
+        }
+
+        [HttpGet]
+        [Route("")]
+        // GET: pqr?userId=5
+        public HttpResponseMessage ObtenerPorUser([FromUri] int userId)
+        {
+            var pqrs = new LPqr().ObtenerPorUser(userId);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = pqrs });
         }
 
         [HttpGet]
@@ -35,14 +44,14 @@ namespace PiedrasDelTunjo.Controllers
         // GET: pqr/5
         public HttpResponseMessage BuscarPqr([FromUri] int id)
         {
-            var evento = new LPqr().BuscarPqr(id);
+            var pqr = new LPqr().BuscarPqr(id);
 
-            if (evento == null)
+            if (pqr == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "pqr no encontrado" });
             }
             else {
-                return Request.CreateResponse(HttpStatusCode.OK, evento);
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, pqr });
             }
         }
 
@@ -61,7 +70,7 @@ namespace PiedrasDelTunjo.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "PQR null" });
             }
-
+            upqr.FechaPublicacion = DateTime.Now;
             bool respuesta = new LPqr().agregarPqr(upqr);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = respuesta });
         }
