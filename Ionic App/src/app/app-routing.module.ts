@@ -35,10 +35,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
-    path: 'foto-documento',
-    loadChildren: () => import('../../foto-documento/foto-documento.module').then( m => m.FotoDocumentoPageModule)
-  },
-  {
     path: 'tickets',
     loadChildren: () => import('./pages/tickets/tabs/tabs.module').then( m => m.TabsPageModule)
   },

@@ -12,7 +12,7 @@ import { UserRegister } from '../../interfaces/user-regster.interface';
 })
 export class RegistroPage implements OnInit {
     
-  private usuario : UserRegister = new UserRegister();
+  usuario : UserRegister = new UserRegister();
 
   constructor(    
     private userService: UserService,
