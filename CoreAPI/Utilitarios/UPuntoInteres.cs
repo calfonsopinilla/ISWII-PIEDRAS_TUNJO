@@ -11,18 +11,24 @@ namespace Utilitarios
     [Table("punto_interes", Schema = "parque")]
     public class UPuntoInteres
     {
+        private int id;
+        private string descripcion;
+        private string latitud;
+        private string longitud;
+        private string token;
+        private DateTime last_modificacion;
         [Key]
         [Column("id")]
-        public int Id { get; set; }
+        public int Id { get =>id; set=> id=value; }
         [Column("descripcion")]
-        public string Descripcion { get; set; }
+        public string Descripcion { get=>descripcion; set=> descripcion=value; }
         [Column("latitud")]
-        public string Latitud { get; set; }
+        public string Latitud { get=>latitud; set=>latitud=value; }
         [Column("longitud")]
-        public string Longitud { get; set; }
+        public string Longitud { get=>longitud; set=>longitud=value; }
         [Column("token")]
-        public string Token { get; set; }
+        public string Token { get=>token; set=>token=value; }
         [Column("last_modification")]
-        public DateTime LastModification { get; set; }
+        public DateTime LastModification { get=>last_modificacion; set=>last_modificacion=value; }
     }
 }

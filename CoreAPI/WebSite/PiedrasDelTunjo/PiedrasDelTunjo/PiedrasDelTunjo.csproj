@@ -175,8 +175,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdministradorPqrController.cs" />
-    <Compile Include="Controllers\AdministradorUsuarioController.cs" />
+    <Compile Include="Controllers\PqrController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\CabanaController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\ImagenesController.cs" />
@@ -185,10 +185,12 @@
     <Compile Include="Controllers\Preguntas_frecuentesController.cs" />
     <Compile Include="Controllers\PromocionController.cs" />
     <Compile Include="Controllers\PuntosInteresController.cs" />
+    <Compile Include="Controllers\PuntuacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SubscripcionController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +267,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\Data.csproj">
+      <Project>{6CB511CE-5827-4B01-9680-F43EAABC95A0}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Logica\Logica.csproj">
       <Project>{1cce1bac-c128-4728-8dad-efed9b02c7de}</Project>
       <Name>Logica</Name>

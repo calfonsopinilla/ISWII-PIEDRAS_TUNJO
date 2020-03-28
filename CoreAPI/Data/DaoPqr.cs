@@ -10,42 +10,18 @@ namespace Data
 {
     public class DaoPqr
     {
-        public IEnumerable<UpqrInformacion> listaPqr() {
+
+        public IEnumerable<UPQR> ListaPQR() {
 
             using (var db = new Mapeo())
             {
                 try
                 {
-                    List<UpqrInformacion> informacion = new List<UpqrInformacion>();
-                    var lista = (from pqr in db.pqr
-                                 join Epqr in db.EstadoPqr on pqr.EstadoId equals Epqr.Id
-                                 join uu in db.Usuarios on pqr.UsuarioId equals uu.Id
-                                 select new
-                                 {
-                                     Id = pqr.Id,
-                                     Pregunta = pqr.Pregunta,
-                                     Respuesta = pqr.Respuesta,
-                                     FechaPublicacion = pqr.FechaPublicacion,
-                                     Estado = pqr.Estado,
-                                     EstadoPQR = Epqr.Nombre,
-                                     EstadoId = pqr.EstadoId,
-                                     NombreUsuario = uu.Nombre,
-                                     ApellidoUsuario = uu.Apellido,
-                                 }).ToList();
-                    informacion = lista.AsEnumerable().Select(p => new UpqrInformacion()
-                    {
-                        Id = p.Id,
-                        Pregunta = p.Pregunta,
-                        Respuesta = p.Respuesta,
-                        FechaPublicacion = p.FechaPublicacion,
-                        ApellidoUsuarioU1 = p.ApellidoUsuario,
-                        EstadoPqrU1 = p.EstadoPQR,
-                        Estado = p.Estado,
-                        NombreUsuario = p.NombreUsuario,
-                        EstadoIdU = p.EstadoId
-
-                    }).ToList();
-                    return informacion;
+                    var pqrs = db.PQR
+                                 .Include("Uusuario")
+                                 .Include("UEstadoPQR")
+                                 .ToList(); // Lazy Loading para traer los datos del usuario
+                    return pqrs;
                 }
                 catch (Exception ex)
                 {
@@ -58,7 +34,7 @@ namespace Data
 
             using (var db = new Mapeo()){
                 try{
-                    db.pqr.Add(pqr);
+                    db.PQR.Add(pqr);
                     db.SaveChanges();
                     return true;
                 }
@@ -68,13 +44,13 @@ namespace Data
                 }
             }
         }
-        public bool actualizarPqr(int id, UPQR pqr) {
+        public bool actualizarPqr(int id, UPQR PQR) {
 
             using (var db = new Mapeo())
             {
                 try
                 {
-                    db.Entry(pqr).State = EntityState.Modified;
+                    db.Entry(PQR).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
                 }
@@ -98,8 +74,8 @@ namespace Data
             using (var db = new Mapeo()){
                 try
                 {
-                    var pqr = db.pqr.Find(id);
-                    db.pqr.Remove(pqr);
+                    var PQR = db.PQR.Find(id);
+                    db.PQR.Remove(PQR);
                     db.SaveChanges();
                     return true;
                 }
@@ -114,44 +90,23 @@ namespace Data
         public bool Existe(int id)
         {
             using (var db = new Mapeo()) { 
-                return db.pqr.Any(x => x.Id == id);
+                return db.PQR.Any(x => x.Id == id);
             }
         }
 
-        public UpqrInformacion BuscarPqr(int id)
+        public UPQR BuscarPqr(int id)
         {
             using (var db = new Mapeo())
             {
-                UpqrInformacion informacion = new UpqrInformacion();
-                var lista = (from pqr in db.pqr
-                             join Epqr in db.EstadoPqr on pqr.EstadoId equals Epqr.Id
-                             join uu in db.Usuarios on pqr.UsuarioId equals uu.Id
-                             select new
-                             {
-                                 Id = pqr.Id,
-                                 Pregunta = pqr.Pregunta,
-                                 Respuesta = pqr.Respuesta,
-                                 FechaPublicacion = pqr.FechaPublicacion,
-                                 Estado = pqr.Estado,
-                                 EstadoPQR = Epqr.Nombre,
-                                 EstadoId = pqr.EstadoId,
-                                 NombreUsuario = uu.Nombre,
-                                 ApellidoUsuario = uu.Apellido,
-                             }).Where(x => x.Id ==id ).First();
-                informacion.Id = lista.Id;
-                informacion.Pregunta = lista.Pregunta;
-                informacion.Respuesta = lista.Respuesta;
-                informacion.FechaPublicacion = lista.FechaPublicacion;
-                informacion.Estado = lista.Estado;
-                informacion.EstadoIdU = lista.EstadoId;
-                informacion.EstadoPqrU1 = lista.EstadoPQR;
-                informacion.NombreUsuario = lista.NombreUsuario;
-                informacion.ApellidoUsuarioU1 = lista.ApellidoUsuario;
-                return informacion;
-
+                var pqrs = db.PQR
+                             .Include("UUsuario")
+                             .Include("UEstadoPQR")
+                             .ToList();
+                return pqrs.Find(x => x.Id == id);
             }
         }
 
 
     }
-}
+    
+    }

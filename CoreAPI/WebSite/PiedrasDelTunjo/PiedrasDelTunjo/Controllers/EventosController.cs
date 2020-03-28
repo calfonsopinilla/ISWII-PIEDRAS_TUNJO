@@ -24,12 +24,12 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("")]
         // GET: eventos/
-        public HttpResponseMessage ObtenerEventos()
+        public IHttpActionResult ObtenerEventos()
         {
             var eventos = new LEvento().ObtenerEventos();
             eventos = eventos.Where(x => x.Fecha <= DateTime.Now.AddMonths(1))
                             .ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, eventos); // Status 200 OK
+            return Ok(eventos); // Status 200 OK
         }
 
         [HttpGet]
@@ -40,7 +40,7 @@ namespace PiedrasDelTunjo.Controllers
             var evento = new LEvento().Buscar(id);
             if (evento == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Evento no encontrado" });
             }
             return Request.CreateResponse(HttpStatusCode.OK, evento);
         }
@@ -52,11 +52,8 @@ namespace PiedrasDelTunjo.Controllers
         {
             if (evento == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Bad request");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Evento null" });
             }
-
-            evento.FechaPublicacion = DateTime.Now;
-            evento.Token = "";
             bool creado = new LEvento().Agregar(evento);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
@@ -68,9 +65,8 @@ namespace PiedrasDelTunjo.Controllers
         {
             if (id != evento.Id)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
             }
-            evento.Token = "";
             bool actualizado = new LEvento().Actualizar(id, evento);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
@@ -83,7 +79,7 @@ namespace PiedrasDelTunjo.Controllers
             var evento = new LEvento().Buscar(id);
             if (evento == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Evento no encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Evento no encontrado" });
             }
             var eliminado = new LEvento().Eliminar(id);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });

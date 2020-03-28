@@ -8,38 +8,26 @@ namespace Utilitarios {
     
     [Table("evento", Schema = "parque")] // Se específica la tabla con la que se relaciona la clase U Usuario
     public class UEvento {
-
-        // Variables
-        private int id;
-        private string nombre;
-        private DateTime fechaPublicacion;
-        private DateTime fecha;
-        private string descripcion;
-        private double calificacion;
-        private string imagenesUrl;
-        private string comentariosId;
-        private List<UComentarioEvento> listaComentariosEvento;
-
         [Key]
         [Column("id")]
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
         [Column("nombre")]
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre { get; set; }
         [Column("fecha_publicacion")]
-        public DateTime FechaPublicacion { get => fechaPublicacion; set => fechaPublicacion = value; }
+        public DateTime FechaPublicacion { get; set; } = DateTime.Now;
         [Column("fecha")]
-        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public DateTime Fecha { get; set; }
         [Column("descripcion")]
-        public string Descripcion { get => descripcion; set => descripcion = value; }
+        public string Descripcion { get; set; }
         [Column("calificacion")]
-        public double Calificacion { get => calificacion; set => calificacion = value; }
+        public double Calificacion { get; set; }
         [Column("imagenes_url")]
-        public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
+        public string ImagenesUrl { get; set; }
         [Column("comentarios_id")]
-        public string ComentariosId { get => comentariosId; set => comentariosId = value; }
+        public string ComentariosId { get; set; }
         [Column("token")]
-        public string Token { get; set; }
+        public string Token { get; set; } = "";
         [NotMapped]
-        public List<UComentarioEvento> ListaComentariosEvento { get => listaComentariosEvento; set => listaComentariosEvento = value; }
+        public List<UComentarioEvento> ListaComentariosEvento { get; set; }
     }
 }

@@ -91,7 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LAdministradorUsuario.cs" />
+    <Compile Include="LUsuario.cs" />
     <Compile Include="LCabana.cs" />
     <Compile Include="LCorreo.cs" />
     <Compile Include="LEncriptar.cs" />
@@ -99,14 +99,17 @@
     <Compile Include="LImagen.cs" />
     <Compile Include="LInformacion.cs" />
     <Compile Include="LNoticia.cs" />
+    <Compile Include="LPictograma.cs" />
     <Compile Include="LPqr.cs" />
     <Compile Include="LPreguntas_frecuentes.cs" />
     <Compile Include="LPromocion.cs" />
     <Compile Include="LPuntoInteres.cs" />
+    <Compile Include="LPuntuacion.cs" />
     <Compile Include="LRegistro.cs" />
     <Compile Include="LSubscripcion.cs" />
+    <Compile Include="LTicktet.cs" />
     <Compile Include="LTokenCorreo.cs" />
-    <Compile Include="LUsuario.cs" />
+    <Compile Include="LCuenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

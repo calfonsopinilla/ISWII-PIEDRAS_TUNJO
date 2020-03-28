@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Utilitarios;
-
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 namespace Data {
 
     /*
@@ -16,7 +17,7 @@ namespace Data {
         private Mapeo conexionBD;
         private UCabana cabana;
         private List<UCabana> listaCabanas;
-
+        private readonly Mapeo db = new Mapeo();
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 18/03/2020
@@ -174,6 +175,31 @@ namespace Data {
 
                 throw ex;
             }               
+        }
+
+        public bool Actualizar(int id, UCabana cabana)
+        {
+            try
+            {
+                db.Entry(cabana).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Existe(id))
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        public bool Existe(int id)
+        {
+            return db.Cabana.Any(x => x.Id == id);
         }
     }
 }

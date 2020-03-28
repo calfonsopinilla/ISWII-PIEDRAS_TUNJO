@@ -1,4 +1,4 @@
-﻿using System;
+﻿        using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,8 +15,8 @@ namespace Utilitarios {
         private int capacidad;
         private double precio;
         private double calificacion;
-        private List<string> imagenesUrl;
-        private List<string> comentariosId;
+        private string imagenesUrl;
+        private string comentariosId;
         private List<UComentarioCabana> listaComentariosCabana;
 
         [Key]
@@ -31,9 +31,11 @@ namespace Utilitarios {
         [Column("calificacion")]
         public double Calificacion { get => calificacion; set => calificacion = value; }
         [Column("imagenes_url")]
-        public List<string> ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
+        public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
         [Column("comentarios_id")]
-        public List<string> ComentariosId { get => comentariosId; set => comentariosId = value; }
+        public string ComentariosId { get => comentariosId; set => comentariosId = value; }
+        [Column("token")]
+        public string Token { get; set; }
         [NotMapped]
         public List<UComentarioCabana> ListaComentariosCabana { get => listaComentariosCabana; set => listaComentariosCabana = value; }
     }
