@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Utilitarios;
 using Logica;
+using System.Web.Http.Cors;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -16,6 +17,7 @@ namespace PiedrasDelTunjo.Controllers
          * Desc: Controller para el CRUD de Pictogramas
          * 
          */
+    [EnableCors(origins: "*", methods: "*", headers: "*")]
     public class PictogramasController : ApiController
     {
         /**
@@ -27,11 +29,12 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("Pictograma/Registro")]
-        public string RegistroPictograma(string jsonRegistroPic)
+        //public string RegistroPictograma([FromUri]string jsonRegistroPic)
+        public IHttpActionResult RegistroPictograma([FromUri]string jsonRegistroPic)
         {
             try
             {
-                return new LPictograma().RegistroPictograma(jsonRegistroPic);
+                return Ok(new LPictograma().RegistroPictograma(jsonRegistroPic));
             }
 
             catch (Exception ex)
@@ -49,12 +52,13 @@ namespace PiedrasDelTunjo.Controllers
         **/
         [HttpGet]
         [Route("Pictograma/Ver_Pictogramas")]
-        public string MostrarPictogramas(int estadoFiltro)
+        public IHttpActionResult MostrarPictogramas([FromUri]int estadoFiltro)
         {
             try
             {
+                var informacion = new LPictograma().Mostrar_Pictogramas(estadoFiltro);
 
-                return new LPictograma().Mostrar_Pictogramas(estadoFiltro);
+                return Ok(informacion);
 
             }
             catch (Exception ex)
@@ -70,11 +74,12 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Pictograma/Editar_Pictograma")]
-        public string Editar_Pictograma(string json_InfoNueva)
+        //public string Editar_Pictograma([FromUri]string json_InfoNueva)
+        public IHttpActionResult Editar_Pictograma([FromUri]string json_InfoNueva)
         {
             try
             {
-                return new LPictograma().EditarPictograma(json_InfoNueva);
+                return Ok(new LPictograma().EditarPictograma(json_InfoNueva));
 
             }
             catch (Exception ex)
@@ -90,11 +95,12 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Pictograma/Remover_Pictograma")]
-        public string Remover_Pictograma(string json_Info)
+        //public string Remover_Pictograma([FromUri]string json_Info)
+        public IHttpActionResult Remover_Pictograma([FromUri]string json_Info)
         {
             try
             {
-                return new LPictograma().CambiarEstado_Pictograma(json_Info);
+                return Ok(new LPictograma().CambiarEstado_Pictograma(json_Info));
 
             }
             catch (Exception ex)

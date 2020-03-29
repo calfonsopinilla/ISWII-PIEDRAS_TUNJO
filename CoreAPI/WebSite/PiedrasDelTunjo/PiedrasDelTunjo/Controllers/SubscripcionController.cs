@@ -29,11 +29,12 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("Subscripcion/Registro")]
-        public string RegistroSubscripcion(string jsonRegistroSub)
+        //public string RegistroSubscripcion([FromUri]string jsonRegistroSub)
+        public IHttpActionResult RegistroSubscripcion([FromUri]string jsonRegistroSub)
         {
             try
             {                
-                return new LSubscripcion().RegistroSubscripcion(jsonRegistroSub);
+                return Ok(new LSubscripcion().RegistroSubscripcion(jsonRegistroSub));
             }
             catch(Exception ex)
             {
@@ -69,11 +70,12 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Editar_Subscripciones")]
-        public string Editar_Subscripciones(string json_InfoNueva)
+        //public string Editar_Subscripciones([FromUri]string json_InfoNueva)
+        public IHttpActionResult Editar_Subscripciones([FromUri]string json_InfoNueva)
         {
             try
             {
-                return new LSubscripcion().EditarSubscripcion(json_InfoNueva);
+                return Ok(new LSubscripcion().EditarSubscripcion(json_InfoNueva));
                     
             }catch(Exception ex)
             {
@@ -88,11 +90,12 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Subscripcion/Remover_Subscripciones")]
-        public string Remover_Subscripciones(string json_Info)
+        //public string Remover_Subscripciones([FromUri]string json_Info)
+        public IHttpActionResult Remover_Subscripciones([FromUri]string json_Info)
         {
             try
             {
-                return new LSubscripcion().CambiarEstado_Subscripcion(json_Info);
+                return Ok(new LSubscripcion().CambiarEstado_Subscripcion(json_Info));
 
             }
             catch (Exception ex)
