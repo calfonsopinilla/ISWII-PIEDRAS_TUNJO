@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ReservaTicket } from '../../../interfaces/reserva-ticket.interface';
 import { AuthService } from '../../../services/auth.service';
 import { ReservaTicketService } from '../../../services/reserva-tickets.service';
@@ -15,28 +16,34 @@ export class CompraPage implements OnInit {
   reserva = {
     fechaIngreso: undefined,
     cantidad: 1
-  };
+  };  
 
   precioTicket = 5000;
 
   constructor(
+    private route: ActivatedRoute,
     private reservaTicketsService: ReservaTicketService,
     private navCtrl: NavController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    
   }
 
   async onSubmit(form: NgForm) {
+
+    const id = this.route.snapshot.paramMap.get('id');    
     const { fechaIngreso, cantidad } = form.value;
+    
     const reserva: ReservaTicket = {
       FechaIngreso: fechaIngreso,
       Cantidad: cantidad,
       FechaCompra: new Date(),
-      Precio: this.precioTotal,
-      Qr: 'dfkadkfka'
+      Precio: this.precioTotal,      
     };
+    reserva.Qr = 'http://piedrasdeltunjo.tk/reserva-tickets?userId=' + Number(id) + "&fechaCompra=" + reserva.FechaCompra;
     // console.log(reserva);
     const ok = await this.reservaTicketsService.agregarReserva(reserva);
     if (ok) {
@@ -52,5 +59,4 @@ export class CompraPage implements OnInit {
   get precioTotal() {
     return this.reserva.cantidad >= 0 ? (this.reserva.cantidad * this.precioTicket) : 0;
   }
-
 }

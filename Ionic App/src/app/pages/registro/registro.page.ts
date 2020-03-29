@@ -31,6 +31,7 @@ export class RegistroPage implements OnInit {
     this.usuario.fechaGeneracion = null;
     this.usuario.fechaVencimiento = null; 
     this.usuario.rolId = 2;
+    this.usuario.iconoUrl = "fkodaa";
     this.usuario.aplicacionId = 1;
 
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });

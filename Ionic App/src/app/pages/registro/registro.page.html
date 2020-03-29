@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content [fullscreen] class="ion-padding">
+
+  <app-avatar-selector 
+        [current]="usuario.iconoUrl" (avatarSelected)="usuario.iconoUrl = $event"></app-avatar-selector>
+
   <form (ngSubmit)="crearUsuario()" *ngIf="usuario">
     <!-- <ion-item *ngFor="let image of images">
       <img src="http://www.piedrasdeltunjo.tk/images/getImage?tipo=identificacion&nombre=1.png">
