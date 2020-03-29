@@ -1,19 +1,26 @@
-﻿using Logica;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Data;
+using Logica;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
+using ZXing;
+using ZXing.Common;
+using ZXing.QrCode;
+using System.IO;
+using System.Drawing;
+using QRCoder;
+using System;
+using System.Drawing.Imaging;
 
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva-tickets")]
     public class ReservaTicketsController : ApiController
-    {
+    {        
+
         [HttpGet]
         [Route("")]
         // GET: reserva-tickets/
@@ -53,7 +60,8 @@ namespace PiedrasDelTunjo.Controllers
             if (reserva == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
-            }
+            }           
+            
             bool created = new LReservaTicket().NuevaReserva(reserva);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
         }
@@ -83,6 +91,6 @@ namespace PiedrasDelTunjo.Controllers
             }
             var removed = new LReservaTicket().EliminarReserva(id);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = removed });
-        }
+        }        
     }
 }
