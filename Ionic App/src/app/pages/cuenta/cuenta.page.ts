@@ -15,8 +15,7 @@ export class CuentaPage implements OnInit {
   editForm: FormGroup;
   updateUser = false;
   usuario: Usuario;
-  slidesOpts = {
-  };
+  avatar = undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -43,12 +42,17 @@ export class CuentaPage implements OnInit {
     const {nombre, apellido} = this.editForm.value;
     this.usuario.Nombre = nombre;
     this.usuario.Apellido = apellido;
+    if (this.avatar !== undefined) {
+      this.usuario.Icono_url = this.avatar;
+    }
     // console.log(this.usuario);
     const updated = await this.userService.actualizarDatos(this.usuario);
     if (updated) {
       this.updateUser = false;
       this.editForm.setValue({ nombre, apellido });
       this.presentToast('Datos actualizados!');
+      this.avatar = undefined;
+      this.crearForm();
     }
   }
 

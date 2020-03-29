@@ -9,7 +9,7 @@
   </ion-row>
 
   <app-avatar-selector *ngIf="updateUser && usuario" 
-        [current]="usuario.Icono_url" (avatarSelected)="usuario.Icono_url = $event"></app-avatar-selector>
+        [current]="usuario.Icono_url" (avatarSelected)="avatar = $event"></app-avatar-selector>
 
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngIf="editForm">
 
@@ -48,13 +48,18 @@
         <ion-input type="text" formControlName="apellido"></ion-input>
 
         <span class="text-danger"
-              *ngIf="apellido.touched && apellido.dirty && apellido.errors?.required">El apellido es requerido</span>
+              *ngIf="apellido.touched && apellido.dirty && apellido.errors?.required">
+              El apellido es requerido</span>
       </ion-item>
     </ion-list>
 
-    <ion-button expand="full" class="btn-form" (click)="crearForm(); updateUser = true;" *ngIf="!updateUser">Editar</ion-button>
-    <ion-button expand="full" class="btn-form" type="submit" [disabled]="editForm.invalid" *ngIf="updateUser">Actualizar</ion-button>
-    <ion-button expand="full" color="light" (click)="updateUser = false" *ngIf="updateUser">Cancelar</ion-button>
+    <ion-button expand="full" class="btn-form" (click)="crearForm(); updateUser = true;" 
+                *ngIf="!updateUser">Editar</ion-button>
+    <ion-button expand="full" class="btn-form" type="submit" [disabled]="editForm.invalid" 
+                *ngIf="updateUser">Actualizar</ion-button>
+    <ion-button expand="full" color="light" 
+                (click)="updateUser = false; avatar = undefined;"
+                *ngIf="updateUser">Cancelar</ion-button>
   </form>
 
 </ion-content>

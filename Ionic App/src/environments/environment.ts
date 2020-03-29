@@ -5,8 +5,13 @@
 export const environment = {
   production: false,
   mapboxToken: 'pk.eyJ1IjoiYmxhY2tqYWNrZXJzMTciLCJhIjoiY2s1dHc1ZzNnMDNhcDNsbjUxYzI3eXo1YyJ9.34CZ5ZvoyTBgpgw13CkFHw',
+<<<<<<< HEAD
   //servicesAPI: 'http://localhost:61629',
   servicesAPI: 'http://piedrasdeltunjo.tk'  
+=======
+  // servicesAPI: 'http://localhost:61629',
+  servicesAPI: 'http://piedrasdeltunjo.tk'
+>>>>>>> ad920e7c07819faa42f2f87ca55238b1687a28f2
 };
 
 /*
