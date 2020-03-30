@@ -31,6 +31,7 @@ export class RegistroPage implements OnInit {
     this.usuario.fechaGeneracion = null;
     this.usuario.fechaVencimiento = null; 
     this.usuario.rolId = 2;
+    this.usuario.iconoUrl = 'fkodaa';
     this.usuario.aplicacionId = 1;
 
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
@@ -46,14 +47,14 @@ export class RegistroPage implements OnInit {
           this.presentToast(res['message']);
         },
         (err) => { },
-        () => loading.dismiss() 
+        () => loading.dismiss()
       );
     } else {
       this.presentToast('ERROR: Ya existe el usuario con el mismo número de documento y/o con el mismo correo electrónico');
     }
   }
 
-  private validarNumeroDocumentoCorreoElectronico(user: UserRegister) : any {
+  private validarNumeroDocumentoCorreoElectronico(user: UserRegister): any {
     this.userService.validarNumeroDocumentoCorreoElectronico(user)
       .subscribe(
         async (res) => {

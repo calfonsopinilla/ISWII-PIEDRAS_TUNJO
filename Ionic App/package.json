@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ionic-native/barcode-scanner": "^5.23.0",
+    "@ionic-native/base64-to-gallery": "^5.23.0",
     "@ionic-native/camera": "^5.23.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/image-picker": "^5.23.0",
@@ -31,6 +33,7 @@
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-sqlite-storage": "^5.0.0",
     "core-js": "^2.5.4",
+    "ngx-qrcode2": "0.0.9",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

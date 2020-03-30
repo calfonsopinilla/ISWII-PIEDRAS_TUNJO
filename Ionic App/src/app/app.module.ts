@@ -15,6 +15,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,14 +27,16 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
-    Camera
+    Camera,
+    BarcodeScanner,
+    Base64ToGallery
   ],
   bootstrap: [AppComponent]
 })

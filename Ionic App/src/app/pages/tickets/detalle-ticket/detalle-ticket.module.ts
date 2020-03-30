@@ -8,6 +8,7 @@ import { DetalleTicketPageRoutingModule } from './detalle-ticket-routing.module'
 
 import { DetalleTicketPage } from './detalle-ticket.page';
 import { ComponentsModule } from '../../../components/components.module';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../../../components/components.module';
     FormsModule,
     IonicModule,
     DetalleTicketPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxQRCodeModule
   ],
   declarations: [DetalleTicketPage]
 })

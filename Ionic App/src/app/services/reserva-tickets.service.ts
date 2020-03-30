@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 import { ReservaTicket } from '../interfaces/reserva-ticket.interface';
+import { UserLogin } from '../interfaces/user-login.interface';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
