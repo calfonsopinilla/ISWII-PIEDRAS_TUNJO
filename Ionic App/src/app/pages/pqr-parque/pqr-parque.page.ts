@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PqrService } from 'src/app/services/pqr.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Pqr } from '../../interfaces/pqr.interface';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pqr-parque',
@@ -16,8 +15,7 @@ export class PqrParquePage implements OnInit {
   constructor(
     private pqrService: PqrService,
     private toastCtrl: ToastController,
-    private alertCtrl: AlertController,
-    private router: Router
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {

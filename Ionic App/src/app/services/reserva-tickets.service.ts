@@ -69,5 +69,19 @@ export class ReservaTicketService {
     });
   }
 
+  async obtenerPrecio(): Promise<number> {
+    const user = await this.auth.getUsuario();
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/obtenerPrecio?userId=${ user.Id }`)
+                .subscribe(res => {
+                  if (res['ok'] === true) {
+                    resolve(Number(res['precio']));
+                  } else {
+                    resolve(-1);
+                  }
+                });
+    });
+  }
+
 
 }

@@ -38,7 +38,7 @@ export class PqrService {
   }
 
   async agregarPqr(pqr: Pqr): Promise<boolean> {
-    console.log(pqr);
+    // console.log(pqr);
     const user = await this.auth.getUsuario();
     pqr.UUsuarioId = user.Id;
     return new Promise(resolve => {

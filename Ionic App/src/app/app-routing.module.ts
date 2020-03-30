@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -36,27 +37,28 @@ const routes: Routes = [
   },
   {
     path: 'tickets',
-    loadChildren: () => import('./pages/tickets/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/tickets/tabs/tabs.module').then( m => m.TabsPageModule),
+    canLoad: [ AuthGuard ]
   },
   {
     path: 'pqr-parque',
-    loadChildren: () => import('./pages/pqr-parque/pqr-parque.module').then( m => m.PqrParquePageModule)
-  },
-  {
-    path: 'actualizar-usuario/:id',
-    loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
+    loadChildren: () => import('./pages/pqr-parque/pqr-parque.module').then( m => m.PqrParquePageModule),
+    canLoad: [ AuthGuard ]
   },
   {
     path: 'preguntas-frecuentes',
-    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule)
+    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule),
+    canLoad: [ AuthGuard ]
   },
   {
     path: 'cuenta',
-    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule),
+    canLoad: [ AuthGuard ]
   },
   {
     path: 'suscripciones',
-    loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule)
+    loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule),
+    canLoad: [ AuthGuard ]
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {

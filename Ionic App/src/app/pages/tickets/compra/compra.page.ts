@@ -17,7 +17,7 @@ export class CompraPage implements OnInit {
     cantidad: 1
   };
 
-  precioTicket = 5000;
+  precioTicket = 0;
 
   constructor(
     private reservaTicketsService: ReservaTicketService,
@@ -26,6 +26,11 @@ export class CompraPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.obtenerPrecio();
+  }
+
+  async obtenerPrecio() {
+    this.precioTicket = await this.reservaTicketsService.obtenerPrecio();
   }
 
   async onSubmit(form: NgForm) {
@@ -35,7 +40,7 @@ export class CompraPage implements OnInit {
       Cantidad: cantidad,
       FechaCompra: new Date(),
       Precio: this.precioTotal,
-      Qr: 'dfkadkfka'
+      Qr: ''
     };
     // console.log(reserva);
     const ok = await this.reservaTicketsService.agregarReserva(reserva);

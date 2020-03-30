@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserLogin } from '../interfaces/user-login.interface';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 const urlApi = environment.servicesAPI;
 
@@ -14,11 +15,13 @@ const urlApi = environment.servicesAPI;
 })
 export class AuthService {
 
+  loginState$ = new EventEmitter<boolean>();
+
   constructor(
     private http: HttpClient,
     private storage: Storage,
     private loadingCtrl: LoadingController,
-    private navCtrl: NavController,
+    private router: Router,
     private toastCtrl: ToastController
   ) { }
 
@@ -39,7 +42,8 @@ export class AuthService {
                     const ok = await this.storage.set('usuario', res['userLogin']);
                     // console.log(ok);
                     if (ok) {
-                      this.navCtrl.navigateRoot('/inicio');
+                      this.loginState$.emit(true);
+                      this.router.navigateByUrl('/inicio');
                     }
                   } else {
                     this.presentToast(res['message']);
@@ -73,5 +77,7 @@ export class AuthService {
 
   logout() {
     this.storage.remove('usuario');
+    this.loginState$.emit(false);
+    this.router.navigate(['/inicio']);
   }
 }

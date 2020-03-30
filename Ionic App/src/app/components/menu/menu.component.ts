@@ -83,7 +83,7 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  auth: boolean;
+  auth = false;
 
   constructor(
     public authService: AuthService,
@@ -92,13 +92,15 @@ export class MenuComponent implements OnInit {
 
   async ngOnInit() {
     this.auth = await this.authService.isAuthenticated();
-    // console.log('Logged: ', this.auth);
+    // observable desde authService
+    this.authService.loginState$
+                    .subscribe((res: boolean) => this.auth = res);
   }
 
   async logout() {
     const toast = await this.toastCtrl.create({
       message: 'Sesión cerrada',
-      duration: 3000
+      duration: 2000
     });
     this.authService.logout();
     await toast.present();
