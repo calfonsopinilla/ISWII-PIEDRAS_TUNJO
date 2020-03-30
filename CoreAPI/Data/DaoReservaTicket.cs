@@ -108,5 +108,6 @@ namespace Data
         {
             return db.ReservaTickets.Any(x => x.Id == id);
         }
+
     }
 }

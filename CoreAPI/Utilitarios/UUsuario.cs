@@ -53,6 +53,8 @@ namespace Utilitarios {
         public string Imagen_documento { get; set; }
         [Column("token")]
         public string Token { get; set; } = "";
+        [Column("fecha_nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
 
         [NotMapped]
         public string RolNombre { get; set; }

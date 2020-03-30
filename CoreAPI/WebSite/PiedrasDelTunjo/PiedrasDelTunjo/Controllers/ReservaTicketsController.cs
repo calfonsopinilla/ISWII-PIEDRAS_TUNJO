@@ -19,7 +19,7 @@ namespace PiedrasDelTunjo.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva-tickets")]
     public class ReservaTicketsController : ApiController
-    {        
+    {
 
         [HttpGet]
         [Route("")]
@@ -60,8 +60,8 @@ namespace PiedrasDelTunjo.Controllers
             if (reserva == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
-            }           
-            
+            }
+
             bool created = new LReservaTicket().NuevaReserva(reserva);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
         }
@@ -91,6 +91,15 @@ namespace PiedrasDelTunjo.Controllers
             }
             var removed = new LReservaTicket().EliminarReserva(id);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = removed });
-        }        
+        }
+
+        [HttpGet]
+        [Route("obtenerPrecio")]
+        // GET: reserva-tickets/obtenerPrecio?userId
+        public HttpResponseMessage ObtenerPrecio([FromUri] int userId)
+        {
+            double precio = new LReservaTicket().CalcularPrecio(userId);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, precio });
+        }
     }
 }
