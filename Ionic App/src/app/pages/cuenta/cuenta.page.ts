@@ -4,7 +4,8 @@ import { Usuario } from '../../interfaces/usuario.interface';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { ToastController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
+ 
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',

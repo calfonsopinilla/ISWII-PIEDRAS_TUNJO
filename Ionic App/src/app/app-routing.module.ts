@@ -38,27 +38,32 @@ const routes: Routes = [
   {
     path: 'tickets',
     loadChildren: () => import('./pages/tickets/tabs/tabs.module').then( m => m.TabsPageModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivateChild: [ AuthGuard ]
   },
   {
     path: 'pqr-parque',
     loadChildren: () => import('./pages/pqr-parque/pqr-parque.module').then( m => m.PqrParquePageModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivateChild: [ AuthGuard ]
   },
   {
     path: 'preguntas-frecuentes',
     loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivateChild: [ AuthGuard ]
   },
   {
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'suscripciones',
     loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule),
-    canLoad: [ AuthGuard ]
+    canLoad: [ AuthGuard ],
+    canActivateChild: [ AuthGuard ]
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
