@@ -28,7 +28,7 @@ namespace PiedrasDelTunjo.Controllers
         {
             try
             {
-                var informacion = new LUsuario().informacionUsuarios();
+                var informacion = new LUsuario().ObtenerUsuarios();
                 return Ok(informacion);
             }
             catch (Exception ex)
@@ -40,15 +40,15 @@ namespace PiedrasDelTunjo.Controllers
         [HttpPost]
         [Route("")]
         // POST: usuarios/
-        public HttpResponseMessage agregarUsuario([FromBody] UUsuario Usuario)
+        public HttpResponseMessage agregarUsuario([FromBody] UUsuario usuario)
         {
-            if (Usuario == null)
+            if (usuario == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Usuario null" });
             }
 
-            bool creado = new LUsuario().agregarUsuario(Usuario);
-            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
+            object respuesta = new LUsuario().Agregar(usuario);
+            return Request.CreateResponse(HttpStatusCode.Created, respuesta);
         }
 
         [HttpGet]

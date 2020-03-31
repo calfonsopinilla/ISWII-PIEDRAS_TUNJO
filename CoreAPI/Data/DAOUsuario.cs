@@ -11,7 +11,7 @@ namespace Data
     public class DaoUsuario{
         private readonly Mapeo db = new Mapeo();
 
-        public List<UUsuario> informacionUsuarios(){
+        public List<UUsuario> ObtenerUsuarios(){
 
             using (var db = new Mapeo()){
                 try{
@@ -23,7 +23,7 @@ namespace Data
             }
         }
 
-        public bool agregarUsuario(UUsuario usuarios)
+        public bool Agregar(UUsuario usuarios)
         {
             try
             {

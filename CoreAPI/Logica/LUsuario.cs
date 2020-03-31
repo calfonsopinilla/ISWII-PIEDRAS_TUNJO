@@ -11,8 +11,6 @@ namespace Logica
 {
     public class LUsuario
     {
-
-
         /*
        @Autor : Jose Luis Soriano Roa
        *Fecha de creación: 11/03/2020
@@ -21,27 +19,80 @@ namespace Logica
        * Retorna: lista de la informacion de los usuarios filtrada por cedula y rol en json 
        */
 
-        public  List<UUsuario> informacionUsuarios()
+        public  List<UUsuario> ObtenerUsuarios()
         {
             try
             {
-                return new DaoUsuario().informacionUsuarios();
+                return new DaoUsuario().ObtenerUsuarios();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public bool agregarUsuario(UUsuario Usuarios)
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Descripción: Agregar usuario validando que el número de documento y correo no se repita
+         * Retorna un object { boolean, string }
+         */
+        public object Agregar(UUsuario usuario)
         {
-            return new DaoUsuario().agregarUsuario(Usuarios);
+            string errorMessage = string.Empty;
+            bool agregado = false;
+            try
+            {
+                if (BuscarPorNumeroDoc(usuario.NumeroDocumento) != null)
+                {
+                    errorMessage = "Ya existe una cuenta con ese número de documento";
+                } else if (BuscarPorCorreo(usuario.CorreoElectronico) != null)
+                {
+                    errorMessage = "Ya existe una cuenta con ese correo electrónico";
+                } else
+                {
+                    agregado = new DaoUsuario().Agregar(usuario);
+                }
+            }catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+            }
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                return new { ok = false, message = errorMessage };
+            } else
+            {
+                return new { ok = agregado };
+            }
         }
 
         public UUsuario Buscar(int id)
         {
             return new DaoUsuario().Buscar(id);
         }
+
+        /*
+        * Autor: Steven Cruz
+        * Fecha: 31/03/2020
+        * Descripción: Buscar usuario por cédula
+        */
+        public UUsuario BuscarPorNumeroDoc(string numeroDocumento)
+        {
+            var usuarios = ObtenerUsuarios();
+            return usuarios.Where(x => x.NumeroDocumento == numeroDocumento).FirstOrDefault();
+
+        }
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Descripción: Buscar usuario por correo
+         */
+        public UUsuario BuscarPorCorreo(string correo)
+        {
+            var usuarios = ObtenerUsuarios();
+            return usuarios.Where(x => x.CorreoElectronico == correo).FirstOrDefault();
+        }
+
         public bool Actualizar(int id, UUsuario usuarios)
         {
             return new DaoUsuario().Actualizar(id, usuarios);
