@@ -13,67 +13,20 @@ using System.Web;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("registro")]
     public class RegistroController : ApiController
     {
-        [HttpGet]
-        [Route("Registro/Val_EmailYCC")]       
-        /**
-         * Autor: Gabriel Zapata
-         * Desc: Metodo para la validacion de la existencia del correo electronico y la cedula
-         * en la bd
-         * Return: boolean resultadoVal
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el correo del registro ya existe
          */
-        //
-        public Boolean Val_EmailYCC([FromUri] string valCorreo, [FromUri] string valDocumento)
+        [HttpGet]
+        [Route("existeCorreo")]
+        public HttpResponseMessage ExisteCorreo([FromUri] string correo)
         {
-
-            URegistroUser validacion = new URegistroUser();
-            int contValidacion = 0;
-            string json_EmailYCC;
-            Boolean resultadoVal = false;
-
-            if (valCorreo.ToString() == null || valCorreo.ToString() == "")
-            {
-                validacion.CorreoElectronico = " ";
-                contValidacion++;
-            }
-            if (valDocumento.ToString() == null || valDocumento.ToString() == "")
-            {
-                validacion.NumDocumento = "";
-                contValidacion++;
-            }
-
-            if (contValidacion == 0)
-            {
-                validacion.CorreoElectronico = valCorreo;
-                validacion.NumDocumento = valDocumento;
-                //validacion.NumDocumento = Convert.ToDouble(valDocumento);
-                json_EmailYCC = JsonConvert.SerializeObject(validacion);
-            }
-            else
-            {
-                json_EmailYCC = JsonConvert.SerializeObject(validacion);
-            }
-
-            validacion = new LRegistro().Validacion_ExistenciaCorreoYCC(json_EmailYCC);
-
-            if (validacion != null)
-            {
-                if (validacion.EmailExistente == true || validacion.CedulaExistente == true)
-                {
-                    resultadoVal = true;// el metodo encontro un usuario con la misma cedula o e-mail ingresados
-                }
-                else
-                {
-                    resultadoVal = false; // el metodo no encontro un usuario con la misma cedula o e-mail ingresados
-                }
-
-            }
-            else
-            {
-                resultadoVal = false;
-            }
-            return resultadoVal;
+            bool existe = new LCuenta().ExisteCorreo(correo);
+            return Request.CreateResponse(HttpStatusCode.OK, new { existe });
         }
 
         /*
@@ -84,7 +37,7 @@ namespace PiedrasDelTunjo.Controllers
         */
 
         [HttpPost]
-        [Route("registro")]
+        [Route("")]
         public HttpResponseMessage Registro([FromBody] UUsuario usuario)
         {
             if (usuario == null)
@@ -92,7 +45,7 @@ namespace PiedrasDelTunjo.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            var registrado = new LRegistro().Registrar(usuario);
+            var registrado = new LCuenta().Registrar(usuario);
             return Request.CreateResponse(HttpStatusCode.OK, registrado);
         }
 

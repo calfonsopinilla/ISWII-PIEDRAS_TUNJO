@@ -32,12 +32,27 @@ namespace Data {
 
         /*
          Steven Cruz
+         Fecha: 18/03/2020
              */
         public UUsuario IniciarSesion(string correo, string clave)
         {
             using (var db = new Mapeo())
             {
                 return db.Usuarios.Where(x => x.CorreoElectronico == correo && x.Clave == clave).FirstOrDefault();
+            }
+        }
+
+
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el correo del registro ya existe
+         */
+        public bool ExisteCorreo(string correo)
+        {
+            using(var db = new Mapeo())
+            {
+                return db.Usuarios.Where(x => x.CorreoElectronico == correo).FirstOrDefault() != null;
             }
         }
     }

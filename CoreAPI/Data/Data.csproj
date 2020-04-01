@@ -104,7 +104,6 @@
     <Compile Include="DaoPromocion.cs" />
     <Compile Include="DaoPuntoInteres.cs" />
     <Compile Include="DAOPuntuacion.cs" />
-    <Compile Include="DAORegistro.cs" />
     <Compile Include="DAORol.cs" />
     <Compile Include="DAOSubscripcion.cs" />
     <Compile Include="DaoTicket.cs" />

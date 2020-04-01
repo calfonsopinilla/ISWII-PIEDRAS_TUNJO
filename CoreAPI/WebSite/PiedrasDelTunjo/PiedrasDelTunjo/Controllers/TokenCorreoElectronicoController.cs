@@ -59,7 +59,7 @@ namespace PiedrasDelTunjo.Controllers {
                 this.usuario.Imagen_documento = null;
                 this.usuario.Token = this.usuarioToken.Token;                
 
-                if (new LRegistro().Registrar(this.usuario)) {
+                if (new LCuenta().Registrar(this.usuario)) {
                     new LTokenCorreo().BorrarToken(this.usuarioToken.Id);
                     return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "VALIDACION EXITOSA: Ahora puede iniciar sesión" });
                 }                    

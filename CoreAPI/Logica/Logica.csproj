@@ -106,7 +106,6 @@
     <Compile Include="LPromocion.cs" />
     <Compile Include="LPuntoInteres.cs" />
     <Compile Include="LPuntuacion.cs" />
-    <Compile Include="LRegistro.cs" />
     <Compile Include="LSubscripcion.cs" />
     <Compile Include="LTicktet.cs" />
     <Compile Include="LTokenCorreo.cs" />

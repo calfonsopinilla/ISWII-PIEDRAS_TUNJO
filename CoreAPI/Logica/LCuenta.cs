@@ -32,8 +32,30 @@ namespace Logica
             }
         }
 
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Registro de un usuario
+         */
+
+        public bool Registrar(UUsuario usuario)
+        {
+            return new DAOCuenta().Registrar(usuario);
+        }
+
+
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el correo del registro ya existe
+         */
+        public bool ExisteCorreo(string correo)
+        {
+            return new DAOCuenta().ExisteCorreo(correo);
+        }
+
     }
-        
-               
+
+
 }
 
