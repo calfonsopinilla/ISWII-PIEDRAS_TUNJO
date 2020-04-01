@@ -27,7 +27,7 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    IonicStorageModule.forRoot(),    
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

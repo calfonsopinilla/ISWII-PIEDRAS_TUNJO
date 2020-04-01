@@ -7,9 +7,10 @@ export class UserRegister {
     aplicacionId: number; // Quemado
     nombre: string;
     apellido: string;
+    fechaNacimiento: Date;
     clave: string;
     tipoDocumento: string; // Quemado
     numeroDocumento: string;
     iconoUrl: string; // Quemado
     rolId: number; // Quemado
-};
+}

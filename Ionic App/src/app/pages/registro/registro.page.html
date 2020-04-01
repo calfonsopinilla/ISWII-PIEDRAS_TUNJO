@@ -6,42 +6,84 @@
 
 <ion-content [fullscreen] class="ion-padding">
 
-  <app-avatar-selector 
-        [current]="usuario.iconoUrl" (avatarSelected)="usuario.iconoUrl = $event"></app-avatar-selector>
+  <app-avatar-selector (avatarSelected)="avatar = $event"></app-avatar-selector>
 
-  <form (ngSubmit)="crearUsuario()" *ngIf="usuario">
-    <!-- <ion-item *ngFor="let image of images">
-      <img src="http://www.piedrasdeltunjo.tk/images/getImage?tipo=identificacion&nombre=1.png">
-    </ion-item> -->
-    <!--<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario['nombre']" name="nombre"></ion-input>      
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario['apellido']" name="apellido"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Tipo Documento</ion-label>
-      <ion-select name="tipo_documento" [(ngModel)]="usuario['tipoDocumento']" placeholder="-- Seleccionar --">
-        <ion-select-option value="TI">Tarjeta Identidad</ion-select-option>
-        <ion-select-option value="CC">Cédula</ion-select-option>
-        <ion-select-option value="CE">Cédula Extranjería</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Numero Documento</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario['numeroDocumento']" name="numeroDocumento"></ion-input>      
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correo Electronico</ion-label>
-      <ion-input type="e-mail" [(ngModel)]="usuario['correoElectronico']" name="correoElectronico"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Clave</ion-label>
-      <ion-input type="password" [(ngModel)]="usuario['clave']" name="clave"></ion-input>      
-    </ion-item>    
-    <ion-button color="secondary" type="submit" expand="full" style="margin-top: 25px">Crear Usuario</ion-button>    
+  <form [formGroup]="formUser" (ngSubmit)="crearUsuario()" *ngIf="formUser">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Registro</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+
+        <span class="text-danger" 
+                *ngIf="nombre.touched && nombre.dirty && nombre.errors?.required">El nombre es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" formControlName="apellido"></ion-input>
+
+        <span class="text-danger" 
+                *ngIf="apellido.touched && apellido.dirty && apellido.errors?.required">El apellido es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha Nacimiento</ion-label>
+        <ion-datetime displayFormat="DD MMMM YYYY" formControlName="fechaNacimiento"></ion-datetime>
+        
+        <span class="text-danger" 
+                *ngIf="fechaNac.touched && fechaNac.dirty && fechaNac.errors?.required">La fecha es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="text" formControlName="correoElectronico"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="correo.touched && correo.dirty && correo.errors?.required">El correo es requerido</span>
+        <span class="text-danger" 
+              *ngIf="correo.touched && correo.dirty && correo.errors?.emailExists">El correo ya existe</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="clave"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="clave.touched && clave.dirty && clave.errors?.required">La contraseña es requerida</span>
+        <span class="text-danger" 
+              *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
+            La contraseña requiere minimo {{ clave.errors?.minlength.requiredLength }} caracteres
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-item>
+          <ion-label>Tipo Documento</ion-label>
+          <ion-select formControlName="tipoDocumento">
+            <ion-select-option value="TI">Tarjeta Identidad</ion-select-option>
+            <ion-select-option value="CC">Cédula Ciudadania</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número Documento</ion-label>
+        <ion-input type="text" (keypress)="keypressNumDoc($event)" formControlName="numeroDocumento"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.required">
+              El número de documento es requerido</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.minlength">
+              Mínimo {{ numeroDoc.errors?.minlength.requiredLength }} caracteres</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.maxlength">
+              Máximo {{ numeroDoc.errors?.maxlength.requiredLength }} caracteres</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.numeroDocExists">
+              El número de documento ya existe</span>
+      </ion-item>
+
+      <ion-button [disabled]="formUser.invalid || formUser.pending" id="button-submit" type="submit" 
+                  expand="full">Registrarse</ion-button>
+    </ion-list>
   </form>
 </ion-content>

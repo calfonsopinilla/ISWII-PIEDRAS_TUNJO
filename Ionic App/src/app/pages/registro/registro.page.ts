@@ -1,79 +1,88 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, LoadingController, ToastController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 import { UserService } from '../../services/user.service';
 import { UserRegister } from '../../interfaces/user-regster.interface';
+import { EmailValidator } from '../../directives/email.directive';
+import { NumeroDocValidator } from '../../directives/numero-doc.directive';
 
 @Component({
   selector: 'app-registro',
-  templateUrl: './registro.page.html',  
+  templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
 
-  usuario: UserRegister = new UserRegister();
+  formUser: FormGroup;
+  userRegister = new UserRegister();
+  avatar = 'av-1.png';
 
   constructor(
     private userService: UserService,
-    private toastCtrl: ToastController,
-    private storage: Storage,
-    private loadingCtrl: LoadingController
+    private fb: FormBuilder,
+    private emailValidator: EmailValidator,
+    private numDocValidator: NumeroDocValidator
   ) { }
 
   ngOnInit() {
+    this.formUser = this.fb.group({
+      correoElectronico: ['', Validators.required, this.emailValidator.validate.bind(this.emailValidator)],
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      fechaNacimiento: [undefined, Validators.required],
+      clave: ['', [Validators.required, Validators.minLength(5)]],
+      tipoDocumento: ['TI', Validators.required],
+      numeroDocumento: [
+        '',
+        [Validators.required, Validators.minLength(7), Validators.maxLength(10)],
+        this.numDocValidator.validate.bind(this.numDocValidator)
+      ]
+    });
   }
 
-  // Registrar usuario y enviar Token
-  async crearUsuario() {
-    this.usuario.id = 0;
-    this.usuario.token = null;
-    this.usuario.fechaGeneracion = null;
-    this.usuario.fechaVencimiento = null; 
-    this.usuario.rolId = 2;
-    this.usuario.iconoUrl = 'fkodaa';
-    this.usuario.aplicacionId = 1;
+  crearUsuario() {
+    // console.log(this.formUser.value);
+    this.userRegister = {
+      ... this.formUser.value,
+      iconoUrl: this.avatar,
+      id: 0,
+      token: null,
+      fechaGeneracion: null,
+      fechaVencimiento: null,
+      rolId: 2,
+      aplicacionId: 1
+    };
+    this.userService.crearUsuario(this.userRegister);
+  }
 
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
-
-    // Servicio para validar numero documento y correo electronico
-    if (await !this.validarNumeroDocumentoCorreoElectronico(this.usuario)) {
-      // Servicio para crear usuario
-      this.userService.crearUsuario(this.usuario)
-      .subscribe(
-        async (res) => {
-          setTimeout(_ => { }, 5000);
-          this.presentToast(res['message']);
-        },
-        (err) => { },
-        () => loading.dismiss()
-      );
-    } else {
-      this.presentToast('ERROR: Ya existe el usuario con el mismo número de documento y/o con el mismo correo electrónico');
+  keypressNumDoc(e: any) {
+    const key = Number(e.key);
+    if (isNaN(key)) {
+      e.preventDefault();
     }
   }
 
-  private validarNumeroDocumentoCorreoElectronico(user: UserRegister): any {
-    this.userService.validarNumeroDocumentoCorreoElectronico(user)
-      .subscribe(
-        async (res) => {
-          setTimeout(_ => { }, 5000);
-          if ((res[0] === true)) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-      );
+  get correo() {
+    return this.formUser.get('correoElectronico');
   }
 
-  async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({
-      message,
-      position: 'top',
-      duration: 3000
-    });
-    await toast.present();
+  get nombre() {
+    return this.formUser.get('nombre');
   }
+
+  get apellido() {
+    return this.formUser.get('apellido');
+  }
+
+  get clave() {
+    return this.formUser.get('clave');
+  }
+
+  get numeroDoc() {
+    return this.formUser.get('numeroDocumento');
+  }
+
+  get fechaNac() {
+    return this.formUser.get('fechaNacimiento');
+  }
+
 }

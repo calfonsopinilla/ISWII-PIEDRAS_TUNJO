@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRegister } from '../interfaces/user-regster.interface';
-import { catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
 import { Usuario } from '../interfaces/usuario.interface';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { map, catchError } from 'rxjs/operators';
 
 const urlApi = environment.servicesAPI;
 
@@ -17,21 +17,25 @@ const urlApi = environment.servicesAPI;
     constructor(
         private http: HttpClient,
         private storage: Storage,
-        private loadingCtrl: LoadingController
+        private toastCtrl: ToastController,
+        private loadingCtrl: LoadingController,
     ) { }
 
-    public crearUsuario(user: UserRegister) {
+    async crearUsuario(user: any) {
+        const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+        await loading.present();
+        console.log(user);
         return this.http.post(`${ urlApi }/usuario/registro/generar_token`, user)
                 .pipe(catchError(err => {
                     return of( err.error );
-                }));
-    }
-
-    validarNumeroDocumentoCorreoElectronico(user: UserRegister) {
-        return this.http.get(`${ urlApi }/Registro/Val_EmailYCC?valCorreo=${user.correoElectronico}&valDocumento=${user.numeroDocumento}`)
-                .pipe(catchError(err => {
-                    return of( err.error );
-                }));
+                }))
+                .subscribe(res => {
+                    setTimeout(_ => {}, 2000);
+                    this.presentToast(res['message']);
+                },
+                (err) => {},
+                () => loading.dismiss()
+            );
     }
 
     actualizarDatos(usuario: Usuario) {
@@ -50,5 +54,23 @@ const urlApi = environment.servicesAPI;
                         () => loading.dismiss()
                     );
         });
+    }
+
+    existeCorreo(correo: string) {
+        return this.http.get(`${ urlApi }/registro/existeCorreo?correo=${ correo }`)
+                            .pipe(map(res => res['existe']));
+    }
+
+    existeNumeroDocumento(numeroDoc: string) {
+        return this.http.get(`${ urlApi }/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
+                        .pipe(map(res => res['existe']));
+    }
+
+    async presentToast(message: string) {
+        const toast = await this.toastCtrl.create({
+            message,
+            duration: 3000
+        });
+        toast.present();
     }
 }
