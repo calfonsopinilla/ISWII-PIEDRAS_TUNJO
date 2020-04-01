@@ -13,6 +13,7 @@ namespace Utilitarios {
         private string correoElectronico;
         private DateTime fechaGeneracion;
         private DateTime fechaVencimiento;
+        private DateTime fechaNacimiento;
         private int aplicacionId;
         private string nombre;
         private string apellido;
@@ -49,5 +50,7 @@ namespace Utilitarios {
         public string IconoUrl { get => iconoUrl; set => iconoUrl = value; }
         [Column("rol_id")]
         public int RolId { get => rolId; set => rolId = value; }
+        [Column("fecha_nacimiento")]
+        public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
     }
 }

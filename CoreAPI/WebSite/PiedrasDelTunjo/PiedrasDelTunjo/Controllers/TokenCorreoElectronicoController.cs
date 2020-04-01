@@ -47,6 +47,7 @@ namespace PiedrasDelTunjo.Controllers {
                 this.usuario = new UUsuario();
                 this.usuario.Nombre = this.usuarioToken.Nombre;
                 this.usuario.Apellido = this.usuarioToken.Apellido;
+                this.usuario.FechaNacimiento = this.usuarioToken.FechaNacimiento;
                 this.usuario.TipoDocumento = this.usuarioToken.TipoDocumento;
                 this.usuario.NumeroDocumento = this.usuarioToken.NumeroDocumento;
                 this.usuario.LugarExpedicion = null;

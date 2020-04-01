@@ -30,6 +30,19 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el número de documento del registro ya existe
+         */
+        [HttpGet]
+        [Route("existeNumeroDoc")]
+        public HttpResponseMessage ExisteNumeroDoc([FromUri] string numeroDoc)
+        {
+            bool existe = new LCuenta().ExisteNumeroDoc(numeroDoc);
+            return Request.CreateResponse(HttpStatusCode.OK, new { existe });
+        }
+
+        /*
          Autor: Steven Cruz
          Desc: Servicio para registrar un usuario.
          Parms: Desde el body de un formulario del frontend viene un json con los atributos de usuario

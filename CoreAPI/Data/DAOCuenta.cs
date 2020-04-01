@@ -55,5 +55,18 @@ namespace Data {
                 return db.Usuarios.Where(x => x.CorreoElectronico == correo).FirstOrDefault() != null;
             }
         }
+
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el número de documento del registro ya existe
+         */
+        public bool ExisteNumeroDoc(string numeroDoc)
+        {
+            using (var db = new Mapeo())
+            {
+                return db.Usuarios.Where(x => x.NumeroDocumento == numeroDoc).FirstOrDefault() != null;
+            }
+        }
     }
 }

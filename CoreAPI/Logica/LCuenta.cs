@@ -43,7 +43,6 @@ namespace Logica
             return new DAOCuenta().Registrar(usuario);
         }
 
-
         /*
          * Autor: Steven Cruz
          * Fecha: 31/03/2020
@@ -52,6 +51,16 @@ namespace Logica
         public bool ExisteCorreo(string correo)
         {
             return new DAOCuenta().ExisteCorreo(correo);
+        }
+
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 31/03/2020
+         * Desc: Validar si el número del documento del registro ya existe
+         */
+        public bool ExisteNumeroDoc(string numeroDoc)
+        {
+            return new DAOCuenta().ExisteNumeroDoc(numeroDoc);
         }
 
     }
