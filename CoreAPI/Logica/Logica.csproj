@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LComentarioNoticias.cs" />
     <Compile Include="LReservaTicket.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="LCabana.cs" />

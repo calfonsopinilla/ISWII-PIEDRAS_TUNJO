@@ -347,6 +347,10 @@
     <Content Include="Imagenes\Informacion\resena_historica1.jpg" />
     <Content Include="Imagenes\Informacion\resena_historica2.jpg" />
     <Content Include="Imagenes\Informacion\ubicacion1.jpg" />
+    <Content Include="Imagenes\Noticias\noticia1.jpg" />
+    <Content Include="Imagenes\Noticias\noticia2.jpg" />
+    <Content Include="Imagenes\Noticias\noticia3.jpg" />
+    <Content Include="Imagenes\Noticias\noticia4.jpg" />
     <Content Include="Imagenes\Usuarios\Avatars\av-1.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-2.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
