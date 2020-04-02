@@ -69,5 +69,31 @@ namespace PiedrasDelTunjo.Controllers {
             } else
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: URL Inválida, revise su correo nuevamente" });
         }
+
+        /*
+         * Autor: Jhonattan Alejandro Pulido Arenas
+         * Fecha: 02/04/2020
+         * Descripcion: Validar si el correo electrónico del registro ya existe en la tabla Token Correo
+         */
+        [HttpGet]
+        [Route("usuario/registro/existeCorreo")]
+        public HttpResponseMessage ExisteCorreo([FromUri] string correo) {
+
+            bool existe = new LTokenCorreo().ExisteCorreo(correo);
+            return Request.CreateResponse(HttpStatusCode.OK, new { existe });
+        }
+
+        /*
+         * Autor: Jhonattan Alejandro Pulido Arenas
+         * Fecha: 02/04/2020
+         * Descripcion: Validar si el número de documento del registro ya existe en la tabla Token Correo
+         */
+        [HttpGet]
+        [Route("usuario/registro/existeNumeroDoc")]
+        public HttpResponseMessage ExisteNumeroDoc([FromUri] string numeroDoc) {
+
+            bool existe = new LTokenCorreo().ExisteNumeroDoc(numeroDoc);
+            return Request.CreateResponse(HttpStatusCode.OK, new { existe });
+        }
     }
 }
