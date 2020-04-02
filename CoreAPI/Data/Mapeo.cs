@@ -33,6 +33,7 @@ namespace Data
         public DbSet<UEstadoPQR> EstadoPqr { get; set; }
         public DbSet<UTicket> Tickets { get; set; }
         public DbSet<UReservaTicket> ReservaTickets { get; set; }
+        public DbSet<UComentarioNoticia> ComentariosNoticias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
