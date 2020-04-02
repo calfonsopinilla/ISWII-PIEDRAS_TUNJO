@@ -67,6 +67,15 @@ export class MenuComponent implements OnInit {
       label: 'Reserva de Canoas',
       ruta: '/reserva-cabañas',
       icon: 'boat-outline'
+    },
+    {
+      label : 'Promociones',
+      ruta :'/promociones',
+      icon : 'clipboard'
+    },{
+      label : 'Noticias',
+      ruta :'/noticias',
+      icon : 'flash'
     }
   ];
 

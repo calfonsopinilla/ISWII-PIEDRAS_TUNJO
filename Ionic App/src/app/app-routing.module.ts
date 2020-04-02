@@ -65,11 +65,25 @@ const routes: Routes = [
     canLoad: [ AuthGuard ],
     canActivateChild: [ AuthGuard ]
   },
+
+  {
+    path: 'promociones',
+    loadChildren: () => import('./pages/promociones/promociones.module').then( m => m.PromocionesPageModule)
+  },
+  {
+    path: 'adquirir-promocion',
+    loadChildren: () => import('./pages/adquirir-promocion/adquirir-promocion.module').then( m => m.AdquirirPromocionPageModule)
+  },
+
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  }
+  },
+ 
+ 
+
+
 ];
 
 @NgModule({

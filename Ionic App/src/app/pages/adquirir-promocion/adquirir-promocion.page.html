@@ -1,0 +1,29 @@
+<ion-header >
+  <ion-toolbar color="primary">
+  <ion-buttons slot ="start">
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>Adquirir promoción</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+
+  <ion-card > 
+    <ion-card-header>
+        <ion-card-title class="titulo"> {{promocion.nombre }} </ion-card-title>
+        <ion-item>
+            <h6  class="item-titles">Descripcion :  </h6>
+            <h6 class="item-var"> {{ promocion.descripcion}}</h6>
+        </ion-item>
+         <ion-item>
+            <h6  class="item-titles">Precio :   </h6>
+            <h6 class="item-var"> {{ promocion.precio}}</h6>
+        </ion-item>                
+    </ion-card-header> 
+    <div style="text-align: center;" class="button-a">
+        <ion-button color="dark"  >Adquirir</ion-button>
+    </div>
+</ion-card>
+
+</ion-content>
