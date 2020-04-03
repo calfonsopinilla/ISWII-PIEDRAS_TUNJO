@@ -4,6 +4,9 @@ import { UserService } from '../../services/user.service';
 import { UserRegister } from '../../interfaces/user-regster.interface';
 import { EmailValidator } from '../../directives/email.directive';
 import { NumeroDocValidator } from '../../directives/numero-doc.directive';
+import { AlertController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { InfoParqueService } from '../../services/info-parque.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,18 +17,27 @@ export class RegistroPage implements OnInit {
 
   formUser: FormGroup;
   userRegister = new UserRegister();
-  avatar = 'av-1.png';
+  avatar = undefined;
+  terminosCondiciones: string;  
 
   constructor(
+    private infoParqueService: InfoParqueService,
     private userService: UserService,
     private fb: FormBuilder,
     private emailValidator: EmailValidator,
-    private numDocValidator: NumeroDocValidator
+    private numDocValidator: NumeroDocValidator,
+    public alertController: AlertController,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
     this.formUser = this.fb.group({
-      correoElectronico: ['', Validators.required, this.emailValidator.validate.bind(this.emailValidator)],
+      correoElectronico: ['', Validators.required,
+        [
+          this.emailValidator.validateToken.bind(this.emailValidator), // Validar tabla Token Correo
+          this.emailValidator.validate.bind(this.emailValidator)
+        ]
+      ],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       fechaNacimiento: [undefined, Validators.required],
@@ -34,9 +46,41 @@ export class RegistroPage implements OnInit {
       numeroDocumento: [
         '',
         [Validators.required, Validators.minLength(7), Validators.maxLength(10)],
-        this.numDocValidator.validate.bind(this.numDocValidator)
+        [
+          this.numDocValidator.validateToken.bind(this.numDocValidator), // Validar tabla Token Correo
+          this.numDocValidator.validate.bind(this.numDocValidator)     
+        ]
       ]
     });
+    this.infoParqueService.obtenerItemInfo(8)
+                            .subscribe(res => {
+                              this.terminosCondiciones = res['descripcion'];
+                            });
+  }
+
+  // Mostrar términos y condiciones
+  async mostrarTerminosCondiciones() {
+
+    const checkBox = document.querySelector('ion-checkbox');    
+    if (checkBox.getAttribute('aria-checked').toString() === 'false') {
+
+      const alert = await this.alertController.create({
+        header: 'Términos y Condiciones',      
+        message: this.terminosCondiciones,
+        buttons: ['Ok']
+      });    
+  
+      await alert.present();
+    }    
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      position: 'top',
+      duration: 3000
+    });
+    await toast.present();
   }
 
   crearUsuario() {
@@ -50,8 +94,18 @@ export class RegistroPage implements OnInit {
       fechaVencimiento: null,
       rolId: 2,
       aplicacionId: 1
-    };
-    this.userService.crearUsuario(this.userRegister);
+    };    
+
+    if (this.avatar !== undefined) {
+      this.userRegister.iconoUrl = this.avatar;
+    }
+
+    const checkBox = document.querySelector('ion-checkbox');    
+    if (checkBox.getAttribute('aria-checked').toString() === 'true') {
+      this.userService.crearUsuario(this.userRegister);
+    } else {
+      this.presentToast('ERROR: Debe aceptar los términos y condiciones');
+    }   
   }
 
   keypressNumDoc(e: any) {

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserRegister } from '../interfaces/user-regster.interface';
 import { of, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
@@ -21,10 +20,15 @@ const urlApi = environment.servicesAPI;
         private loadingCtrl: LoadingController,
     ) { }
 
+    leerUsuario(id: number) {
+        return this.http.get(`${ urlApi }/Usuarios?id=${ id }`);
+    }
+
     async crearUsuario(user: any) {
         const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
         await loading.present();
         console.log(user);
+              
         return this.http.post(`${ urlApi }/usuario/registro/generar_token`, user)
                 .pipe(catchError(err => {
                     return of( err.error );
@@ -35,7 +39,7 @@ const urlApi = environment.servicesAPI;
                 },
                 (err) => {},
                 () => loading.dismiss()
-            );
+            );    
     }
 
     actualizarDatos(usuario: Usuario) {
@@ -54,7 +58,7 @@ const urlApi = environment.servicesAPI;
                         () => loading.dismiss()
                     );
         });
-    }
+    }    
 
     existeCorreo(correo: string) {
         return this.http.get(`${ urlApi }/registro/existeCorreo?correo=${ correo }`)
@@ -64,6 +68,18 @@ const urlApi = environment.servicesAPI;
     existeNumeroDocumento(numeroDoc: string) {
         return this.http.get(`${ urlApi }/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
                         .pipe(map(res => res['existe']));
+    }    
+
+    // Validar si existe correo en la tabla Token Correo
+    existeCorreoToken(correo: string) {
+        return this.http.get(`${ urlApi }/usuario/registro/existeCorreo?correo=${ correo }`)
+                        .pipe(map(res => res['existe']));
+    }
+
+    // Validar si existe numero documento en la tabla Token Correo
+    existeNumeroDocumentoToken(numeroDoc: string) {
+        return this.http.get(`${ urlApi }/usuario/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
+                        .pipe(map(res => res['existe']));
     }
 
     async presentToast(message: string) {
@@ -72,5 +88,5 @@ const urlApi = environment.servicesAPI;
             duration: 3000
         });
         toast.present();
-    }
+    }    
 }
