@@ -7,7 +7,10 @@ import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { Usuario } from '../interfaces/usuario.interface';
+ 
 const urlApi = environment.servicesAPI;
 
 @Injectable({
@@ -15,14 +18,17 @@ const urlApi = environment.servicesAPI;
 })
 export class AuthService {
 
-  loginState$ = new EventEmitter<boolean>();
+  loginState$ = new EventEmitter<boolean>();  
+  user: any;
 
   constructor(
     private http: HttpClient,
+    private route: ActivatedRoute,
     private storage: Storage,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private userService: UserService
   ) { }
 
   async login(userLogin: UserLogin) {
@@ -41,9 +47,19 @@ export class AuthService {
                     // Almacenar el usuario en el localStorage
                     const ok = await this.storage.set('usuario', res['userLogin']);
                     // console.log(ok);
-                    if (ok) {
-                      this.loginState$.emit(true);
-                      this.router.navigateByUrl('/inicio');
+                    if (ok) {                                                                    
+
+                      if (!Boolean(res['userLogin']['VerificacionCuenta'])) {
+                        
+                        console.log("Foto Documento");
+                        this.router.navigate(['/registro', 'foto-documento']);
+
+                      } else {
+
+                        console.log("Inicio");
+                        this.loginState$.emit(true);
+                        this.router.navigateByUrl('/inicio');
+                      }                      
                     }
                   } else {
                     this.presentToast(res['message']);

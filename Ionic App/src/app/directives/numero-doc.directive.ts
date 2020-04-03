@@ -18,6 +18,14 @@ export class NumeroDocValidator implements AsyncValidator {
                       catchError(_ => null)
                   );
   }
+
+  validateToken(ctrl: AbstractControl) : Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return this.userService.existeNumeroDocumentoToken(ctrl.value)
+                            .pipe(
+                              map(exists => (exists ? {numeroDocTokenExists: true} : null)),
+                              catchError(_ => null)
+                            );
+  }
 }
 
 @Directive({

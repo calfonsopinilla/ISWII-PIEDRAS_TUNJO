@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: RegistroPage
+  },  {
+    path: 'foto-documento',
+    loadChildren: () => import('./foto-documento/foto-documento.module').then( m => m.FotoDocumentoPageModule)
   }
+
 ];
 
 @NgModule({
