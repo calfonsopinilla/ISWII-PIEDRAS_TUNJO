@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,LOCALE_ID } from '@angular/core';
 import { Noticias} from '../../interfaces/noticias';
 import {ServicioNoticiasService }  from '../../services/servicio-noticias.service';
 import {AuthService}  from '../../services/auth.service';
 import { NavController, LoadingController,NavParams} from '@ionic/angular';
-import { async } from '@angular/core/testing';
 import {Router,NavigationExtras} from '@angular/router';
 import { Pipe, PipeTransform } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -22,13 +21,16 @@ export class NoticiasPage implements OnInit {
     public authServicio : AuthService,
     private loadingCtrl: LoadingController,
     private router: Router
-   ) { }
+    
+    ) { 
+    }
    noticias : Noticias [] = [];
    noticiaSelect : Noticias ;
    session : boolean ; 
    fechaparse : Date; 
    registerUser = {comentar: ''};
    idNoticia  : string ;
+    
 
    async ngOnInit() {
       this.session = await this.authServicio.isAuthenticated();
