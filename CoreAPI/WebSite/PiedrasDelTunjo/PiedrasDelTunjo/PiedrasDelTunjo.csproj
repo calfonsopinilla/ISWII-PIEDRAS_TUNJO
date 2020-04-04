@@ -400,7 +400,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Cabana\" />
-    <Folder Include="Imagenes\Qr\" />
+    <Folder Include="Imagenes\Reserva\Tickets\" />
     <Folder Include="Imagenes\Usuarios\Identificaciones\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>

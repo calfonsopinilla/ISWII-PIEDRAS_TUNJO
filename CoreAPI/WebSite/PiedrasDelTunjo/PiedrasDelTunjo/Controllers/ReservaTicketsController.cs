@@ -1,18 +1,18 @@
-﻿using Data;
-using Logica;
+﻿using Logica;
+using System.Web.UI;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
-using ZXing;
-using ZXing.Common;
-using ZXing.QrCode;
 using System.IO;
 using System.Drawing;
-using QRCoder;
 using System;
-using System.Drawing.Imaging;
+using Newtonsoft.Json;
+using System.Text;
+using System.Security.Cryptography;
+using MessagingToolkit.QRCode.Codec;
+using System.Web;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -61,6 +61,20 @@ namespace PiedrasDelTunjo.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
             }
+            
+            reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
+            QRCodeEncoder encoder = new QRCodeEncoder();
+            Bitmap img = encoder.Encode(reserva.Token);
+            System.Drawing.Image QR = (System.Drawing.Image)img;
+
+            using (MemoryStream ms = new MemoryStream()) {
+                
+                QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Byte[] imageBytes = ms.ToArray();
+                string imagen = "data:image/gif;base64," + Convert.ToBase64String(imageBytes);
+                string path = HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpg");
+                File.Create(path);                
+            }
 
             bool created = new LReservaTicket().NuevaReserva(reserva);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
@@ -100,6 +114,46 @@ namespace PiedrasDelTunjo.Controllers
         {
             double precio = new LReservaTicket().CalcularPrecio(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, precio });
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripcion: Método que funciona para buscar una reserva filtrado por ticket
+         * Parametros: String token - Valor del token para filtrar
+         * Retorna: Objeto tipo reserva token
+         */
+        [HttpGet]
+        [Route("leerToken")]
+        public HttpResponseMessage LeerToken([FromUri] string token) {
+
+            UReservaTicket reserva = new LReservaTicket().LeerToken(token);
+
+            if (reserva != null)
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
+            else
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontro la reserva" });
+        }
+
+        /*
+            Autor: Jhonattan Alejandro Pulido Arenas
+            Fecha creación: 11/03/2020
+            Descripción: Método que sirve para encriptar una cadena de texto
+            Recibe: String input - Puede ser una clave, un token, etc.
+            Retorna: La cadena encriptada
+        */
+        public string Encriptar(string input) {
+
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
+
+            return output.ToString();
         }
     }
 }
