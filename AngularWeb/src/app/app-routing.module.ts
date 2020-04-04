@@ -10,23 +10,24 @@ import  {ContactanosComponent} from './componentes/contactanos/contactanos.compo
 import { ModuloQrComponent } from './componentes/modulo-qr/modulo-qr.component';
 import { ModuloCComponent } from './componentes/modulo-c/modulo-c.component';
 import  {ComponentexComponent} from './componentes/componentex/componentex.component';
-
 import  {InicioAdministradorComponent} from './componentes/inicio-administrador/inicio-administrador.component';
-const routes: Routes = [
-{path:'',component:TableroComponent},
-{path:'galeria',component:GaleriaComponent},
-{path:'login',component:LoginComponent},
-{path:'configuracion',component:ConfiguracionComponent},
-{path:'contactanos',component:ContactanosComponent},
-{path:'inicioadministrador',component:InicioAdministradorComponent},
-{path:'Editar',component:EditarClienteComponent},
-{path:'Agregar',component:AgregarUsuarioComponent},
-{path:'Modulocabaña',component:ModuloCComponent},
-{path:'ModuloQr',component:ModuloQrComponent},
-{path:'ModuloQr',component:ModuloQrComponent},
-{path:'componentex',component:ComponentexComponent},
-];
+import { PuntosInteresComponent } from './componentes/puntos-interes/puntos-interes.component';
 
+const routes: Routes = [
+  {path:'',component:TableroComponent},
+  {path:'galeria',component:GaleriaComponent},
+  {path:'login',component:LoginComponent},
+  {path:'configuracion',component:ConfiguracionComponent},
+  {path:'contactanos',component:ContactanosComponent},
+  {path:'inicioadministrador',component:InicioAdministradorComponent},
+  {path:'Editar',component:EditarClienteComponent},
+  {path:'Agregar',component:AgregarUsuarioComponent},
+  {path:'Modulocabaña',component:ModuloCComponent},
+  {path:'ModuloQr',component:ModuloQrComponent},
+  {path:'ModuloQr',component:ModuloQrComponent},
+  {path:'componentex',component:ComponentexComponent},
+  {path:'puntos-interes',component: PuntosInteresComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

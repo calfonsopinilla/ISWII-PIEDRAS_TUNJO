@@ -9,7 +9,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 export class ServicioxService {
 
   constructor(private http: HttpClient) { }
-   ObtenerJson():Observable<any>{
- return this.http.get("http://piedrasdeltunjo.tk/informacion/4")
+   ObtenerJson(): Observable<any> {
+      return this.http.get('http://piedrasdeltunjo.tk/informacion/4');
   }
 }

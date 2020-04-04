@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 
-import { ReactiveFormsModule} from '@angular/forms' 
+import { ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,8 +29,9 @@ import { ServicioInsertService } from './componentes/agregar-usuario/servicio-in
 import { ServicioInfoService } from './componentes/seccion-informativa/servicio-info.service';
 import { ServicioxService } from './componentes/componentex/serviciox.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { ComponentexComponent } from './componentes/componentex/componentex.component';
+import { PuntosInteresComponent } from './componentes/puntos-interes/puntos-interes.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,20 +51,19 @@ import { ComponentexComponent } from './componentes/componentex/componentex.comp
     ModuloQrComponent,
     ModuloCComponent,
     ComponentexComponent,
-
-
-     //ServicioEventoService
+    PuntosInteresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-     FormsModule,
+    FormsModule,
     CalendarModule,
     ReactiveFormsModule,
-    HttpClientModule,
-     HttpModule
+    HttpClientModule
   ],
-  providers: [ ServicioEventoService , ServicioInfoService , ServicioInsertService,ServicioAdminService,ServicioxService],
+  providers: [ServicioEventoService, ServicioInfoService , ServicioInsertService,
+    ServicioAdminService,
+    ServicioxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
