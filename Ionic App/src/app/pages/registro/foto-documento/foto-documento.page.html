@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>foto-documento</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Foto Documento" tipo="back"></app-header>
 
-<ion-content>
+<ion-content [fullscreen]>
+  <img *ngIf="this.img" [src]="this.img" alt="img1">
+  <ion-button (click)="openCamera()" expand="full" shape="round">
+    Tomar foto
+  </ion-button>
+  <ion-button *ngIf="this.imgData" (click)="sendImage()" expand="full" shape="round">
+    Subir imagen
+  </ion-button>
 
+  <p>
+    {{ response | json }}
+  </p>
 </ion-content>

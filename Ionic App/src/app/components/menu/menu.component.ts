@@ -44,6 +44,11 @@ export class MenuComponent implements OnInit {
       label: 'Preguntas frecuentes',
       ruta: '/preguntas-frecuentes',
       icon: 'help-circle-outline'
+    },
+    {
+      label: 'Foto documento',
+      ruta: '/registro/foto-documento',
+      icon: 'flash'
     }
   ];
 

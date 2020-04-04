@@ -18,6 +18,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -36,7 +38,8 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
     ImagePicker,
     Camera,
     BarcodeScanner,
-    Base64ToGallery
+    Base64ToGallery,
+    FileTransfer
   ],
   bootstrap: [AppComponent]
 })
