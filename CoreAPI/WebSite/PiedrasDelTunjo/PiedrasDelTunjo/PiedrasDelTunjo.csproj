@@ -399,7 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Imagenes\Cabana\" />
+    <Folder Include="Imagenes\Cabanas\" />
     <Folder Include="Imagenes\Qr\" />
     <Folder Include="Imagenes\Usuarios\Identificaciones\" />
     <Folder Include="obj\Debug\TempPE\" />
