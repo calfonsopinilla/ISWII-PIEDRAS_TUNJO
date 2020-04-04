@@ -15,16 +15,13 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-<<<<<<< HEAD
-=======
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { registerLocaleData } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
 
-
->>>>>>> 0ba57cb564777d135553c886dde3995065ad10d5
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,16 +40,10 @@ import { registerLocaleData } from '@angular/common';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
-<<<<<<< HEAD
     Camera,        
     WebView,    
-    BarcodeScanner
-=======
-    Camera,
     BarcodeScanner,
-    Base64ToGallery
-
->>>>>>> 0ba57cb564777d135553c886dde3995065ad10d5
+    TranslateService
   ],
   bootstrap: [AppComponent]
 })
