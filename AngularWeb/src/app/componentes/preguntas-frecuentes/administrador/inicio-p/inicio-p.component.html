@@ -1,0 +1,67 @@
+<app-cabecero-administrador></app-cabecero-administrador>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Preguntas Frecuentes
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<!--Listado Clientes-->
+<section id="clientes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h4>Listado de Preguntas Frecuentes</h4>
+          </div>
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>opcion</th>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pregunta of preguntas; let i = index">
+                 <td>
+                  <a routerLink="/editarpf/{{pregunta.id}}" class="btn btn-secondary">
+                   Editar
+                  </a>
+                </td>
+                <td>{{i+1}}</td>
+                <td>{{pregunta.nombre}} </td>
+                <td>{{pregunta.descripcion }}</td>
+               
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+
+    </div>
+  </div>
+</section>
+<div align="center">
+<section id="actions" class="py-6 mb-6 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="btn btn-primary" href="/agregarpf" role="button">Agregar</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+</div>

@@ -10,23 +10,13 @@ import { Router } from '@angular/router';
 })
 export class InicioAdministradorComponent implements OnInit {
 
-  constructor(private servicioinfoservice:ServicioAdminService) {  this.ObtenerUsuarios}
+  constructor(private servicioinfoservice:ServicioAdminService) {  }
 
-  User:any;
-  ObtenerUsuarios(){
- this.servicioinfoservice.ObtenerJson().subscribe(resultado =>{
-   this.User=resultado;
-   
-   console.log("Informacion ya tiene resultado");
+ 
   
- },
- error=>{
-console.log(JSON.stringify(error));
-
- }); 
-   }
+   
   ngOnInit(): void {
-  	this.ObtenerUsuarios();
+ 
   }
 
 }

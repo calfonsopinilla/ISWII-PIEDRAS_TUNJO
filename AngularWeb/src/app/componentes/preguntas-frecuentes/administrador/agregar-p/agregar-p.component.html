@@ -1,0 +1,86 @@
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Agregar 
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+<section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/inicioaPf" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+<form #preguntaForm="ngForm" (ngSubmit)="agregar(preguntaForm)"> 
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input 
+              type="text" 
+              name="nombre" 
+              class="form-control"
+              #nombre="ngModel"
+              [(ngModel)]="pregunta.nombre"
+              [ngClass]="{'is-invalid': nombre.errors && nombre.touched}"
+              required
+              minlength="2">
+              <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                Nombre requerido
+              </div> 
+              <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                Debe contener al menos 2 caracteres
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Descripcion</label>
+            <input 
+              type="text" 
+              name="descripcion" 
+              class="form-control"
+              #descripcion="ngModel"
+              [(ngModel)]="pregunta.descripcion"
+              [ngClass]="{'is-invalid': descripcion.errors && descripcion.touched}"
+              required
+              minlength="2">
+              <div [hidden]="!descripcion.errors?.required" class="invalid-feedback">
+                Apellido requerido
+              </div> 
+              <div [hidden]="!descripcion.errors?.minlength" class="invalid-feedback">
+                Debe contener al menos 2 caracteres
+              </div>
+          </div>
+
+          
+        
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </div>
+
+      </form>
+</div>
+</div>
+</div>
+</div>
+</div>

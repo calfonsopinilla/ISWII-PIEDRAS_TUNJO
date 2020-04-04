@@ -1,0 +1,153 @@
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+           Agregar Evento
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<div>
+
+
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/inicioeventos" class="btn btn-light btn-block">
+             Regresar al Inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header">
+<form #eventoForm="ngForm" (ngSubmit)="agregar(eventoForm)"> 
+        <div class="modal-body">
+          <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="evento.Nombre"
+                  [ngClass]="{'is-invalid': nombre.errors && nombre.touched}" required minlength="2">
+                <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                  Nombre requerido
+                </div>
+                <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="  FechaPublicacion">Fecha de publicacion</label>
+                <input type="date" name="FechaPublicacion" class="form-control" #FechaPublicacion="ngModel" [(ngModel)]="evento.FechaPublicacion"
+                  [ngClass]="{'is-invalid': FechaPublicacion.errors && FechaPublicacion.touched}" required minlength="2">
+                <div [hidden]="!FechaPublicacion.errors?.required" class="invalid-feedback">
+                  Fecha publicacion requerida
+                </div>
+                <div [hidden]="!FechaPublicacion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+            
+              <div class="form-group">
+                <label for="Fecha">Fecha del evento</label>
+                <input type="date" name="Fecha" class="form-control" #Fecha="ngModel" [(ngModel)]="evento.Fecha"
+                  [ngClass]="{'is-invalid': Fecha.errors && Fecha.touched}" required minlength="2">
+                <div [hidden]="!Fecha.errors?.required" class="invalid-feedback">
+                  Fecha requerida
+                </div>
+                <div [hidden]="!Fecha.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="  Descripcion">Descripcion</label>
+                <input type="text" name="Descripcion" class="form-control" #Descripcion="ngModel" [(ngModel)]="evento.Descripcion"
+                  [ngClass]="{'is-invalid': Descripcion.errors && Descripcion.touched}" required minlength="2">
+                <div [hidden]="!Descripcion.errors?.required" class="invalid-feedback">
+                  Decripcion requerida
+                </div>
+                <div [hidden]="!Descripcion.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="  Calificacion">Calificacion</label>
+                <input type="text" name="Calificacion" class="form-control" #Calificacion="ngModel" [(ngModel)]="evento.Calificacion"
+                  [ngClass]="{'is-invalid': Calificacion.errors && Calificacion.touched}" >
+                <div [hidden]="!Calificacion.errors?.required" class="invalid-feedback">
+                  Calificacion requerida
+                </div>
+               
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="ImagenesUrl">ImagenesUrl</label>
+                <input type="text" name="ImagenesUrl" class="form-control" #ImagenesUrl="ngModel" [(ngModel)]="evento.ImagenesUrl"
+                  [ngClass]="{'is-invalid': ImagenesUrl.errors && ImagenesUrl.touched}" required minlength="2">
+                <div [hidden]="!ImagenesUrl.errors?.required" class="invalid-feedback">
+                  ImagenesUrl requerida
+                </div>
+                <div [hidden]="!ImagenesUrl.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="ComentariosId">ComentariosId</label>
+                <input type="text" name="ComentariosId" class="form-control" #ComentariosId="ngModel" [(ngModel)]="evento.ComentariosId"
+                  [ngClass]="{'is-invalid':ComentariosId.errors && ComentariosId.touched}" >
+                <div [hidden]="!ComentariosId.errors?.required" class="invalid-feedback">
+                  ComentariosId requerida
+                </div>
+                
+              </div>
+
+
+              <div class="form-group">
+                <label for="ListaComentariosEvento">ListaComentariosEvento</label>
+                <input type="text" name="ListaComentariosEvento" class="form-control" #ListaComentariosEvento="ngModel" [(ngModel)]="evento.ListaComentariosEvento"
+                  [ngClass]="{'is-invalid': ListaComentariosEvento.errors && ListaComentariosEvento.touched}" required minlength="2">
+                <div [hidden]="!ListaComentariosEvento.errors?.required" class="invalid-feedback">
+                 ListaComentariosEvento requerida
+                </div>
+                <div [hidden]="!ListaComentariosEvento.errors?.minlength" class="invalid-feedback">
+                  Debe contener al menos 2 caracteres
+                </div>
+              </div>
+
+          
+        
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >Agregar</button>
+
+        </div>
+
+      </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    
