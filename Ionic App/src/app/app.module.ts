@@ -18,10 +18,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { registerLocaleData } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-
-
-
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,7 +41,10 @@ import { TranslateService } from '@ngx-translate/core';
     Camera,        
     WebView,    
     BarcodeScanner,
-    TranslateService
+    TranslateService,
+    FileTransfer,
+    FileTransferObject,
+    File,
   ],
   bootstrap: [AppComponent]
 })
