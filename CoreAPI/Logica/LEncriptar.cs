@@ -8,7 +8,7 @@ namespace Logic {
         Fecha creación: 11/03/2020
         Descripción: Clase que sirve para encriptar claves y tokens
     */
-    class LEncriptar {
+    public class LEncriptar {
 
         /*
             Autor: Jhonattan Alejandro Pulido Arenas

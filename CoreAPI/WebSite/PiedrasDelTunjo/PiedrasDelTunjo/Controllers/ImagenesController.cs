@@ -90,9 +90,15 @@ namespace PiedrasDelTunjo.Controllers
                 case "cabana":
                     return "Cabanas";
                 case "avatar":
+<<<<<<< HEAD
+                    return "Usuarios/Avatars";
+                case "reserva-tickets":
+                    return "Reserva/Tickets";
+=======
                     return "Usuarios/Avatars";
                 case "noticias":
                     return "Noticias";
+>>>>>>> 2d51991168c864e1982c9d22815e9b8e71b8c11f
             }
             return null;
         }

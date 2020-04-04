@@ -109,5 +109,23 @@ namespace Data
             return db.ReservaTickets.Any(x => x.Id == id);
         }
 
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripcion: Método que funciona para buscar una reserva filtrado por ticket
+         * Parametros: String token - Valor del token para filtrar
+         * Retorna: Objeto tipo reserva token
+         */
+        public UReservaTicket LeerToken(string token) {
+            try {
+
+                return db.ReservaTickets
+                        .Include("UUsuario")
+                        .Where(x => x.Token == token)
+                        .FirstOrDefault();
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
     }
 }

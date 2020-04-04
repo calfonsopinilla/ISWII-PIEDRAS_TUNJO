@@ -399,8 +399,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
     <Folder Include="Imagenes\Cabanas\" />
     <Folder Include="Imagenes\Qr\" />
+=======
+    <Folder Include="Imagenes\Cabana\" />
+    <Folder Include="Imagenes\Reserva\Tickets\" />
+>>>>>>> 9851862bed62c066fdec455d21d8cfba962d21d9
     <Folder Include="Imagenes\Usuarios\Identificaciones\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>

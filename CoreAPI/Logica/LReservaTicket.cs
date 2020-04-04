@@ -1,4 +1,6 @@
 ﻿using Data;
+using Logic;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,7 @@ namespace Logica
         }
 
         public bool NuevaReserva(UReservaTicket reserva)
-        {
+        {            
             return new DaoReservaTicket().NuevaReserva(reserva);
         }
 
@@ -76,6 +78,17 @@ namespace Logica
         public int CalcularEdad(DateTime fechaNac)
         {
             return DateTime.Today.AddTicks(-fechaNac.Ticks).Year - 1;
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripcion: Método que funciona para buscar una reserva filtrado por ticket
+         * Parametros: String token - Valor del token para filtrar
+         * Retorna: Objeto tipo reserva token
+         */
+        public UReservaTicket LeerToken(string token) {
+
+            return new DaoReservaTicket().LeerToken(token);
         }
     }
 }
