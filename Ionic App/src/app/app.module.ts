@@ -15,8 +15,10 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,16 +29,17 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    NgxQRCodeModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
-    Camera,
-    BarcodeScanner,
-    Base64ToGallery
+    Camera,        
+    WebView,    
+    BarcodeScanner
   ],
   bootstrap: [AppComponent]
 })

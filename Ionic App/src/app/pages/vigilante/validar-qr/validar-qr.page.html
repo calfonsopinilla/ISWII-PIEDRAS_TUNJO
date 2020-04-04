@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Validar QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button (click)="scanCode()">
+    <ion-icon name="scan-outline"></ion-icon>
+    Escanear Codigo
+  </ion-button>
+
+  <ion-card *ngIf="reservaTicket">
+    <ion-card-header>
+      <ion-card-subtitle>Descripcion</ion-card-subtitle>
+      <ion-card-title>{{ reservaTicket.UUsuario.Nombre }} {{ reservaTicket.UUsuario.Apellido }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>N. Documento: {{ reservaTicket.UUsuario.NumeroDocumento }}</p>
+      <p>Cantidad: {{ reservaTicket.Cantidad }}</p>      
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

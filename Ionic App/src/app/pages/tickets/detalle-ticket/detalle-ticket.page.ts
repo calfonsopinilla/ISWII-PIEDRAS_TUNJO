@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ReservaTicket } from '../../../interfaces/reserva-ticket.interface';
 import { ReservaTicketService } from '../../../services/reserva-tickets.service';
 import { NavController, AlertController, ToastController } from '@ionic/angular';
-// import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-// import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
 @Component({
   selector: 'app-detalle-ticket',
@@ -13,18 +11,13 @@ import { NavController, AlertController, ToastController } from '@ionic/angular'
 })
 export class DetalleTicketPage implements OnInit {
 
-  reserva: ReservaTicket;
-  qrCode: string;
-  scannedCode = null;
-  elementType: 'url' | 'canvas' | 'img' = 'img';
+  reserva: ReservaTicket;    
 
   constructor(
     private route: ActivatedRoute,
     private reservaTicketService: ReservaTicketService,
     private alertCtrl: AlertController,
-    private navCtrl: NavController,
-    // private barcodeScanner: BarcodeScanner,
-    // private base64ToGallery: Base64ToGallery,
+    private navCtrl: NavController,    
     private toastCntrl: ToastController
   ) { }
 
@@ -32,8 +25,7 @@ export class DetalleTicketPage implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.reservaTicketService.buscarReserva(Number(id))
                             .subscribe(res => {
-                              this.reserva = res['reserva'];
-                              this.qrCode = this.reserva.Qr;
+                              this.reserva = res['reserva'];                              
                             });
   }
 

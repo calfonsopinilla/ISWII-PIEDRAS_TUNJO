@@ -47,7 +47,8 @@ export class CompraPage implements OnInit {
       FechaCompra: new Date(),
       Precio: this.precioTotal
     };
-    reserva.Qr = 'http://piedrasdeltunjo.tk/reserva-tickets?userId=' + Number(id) + '&fechaCompra=' + reserva.FechaCompra;
+    reserva.Qr = '';
+    reserva.Token = '';
     // console.log(reserva);
     const ok = await this.reservaTicketsService
                           .agregarReserva(reserva);
