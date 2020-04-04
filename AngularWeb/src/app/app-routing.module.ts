@@ -31,6 +31,7 @@ import { AgregarpiComponent } from './componentes/puntosInteres/administrador/ag
 import { InicioUComponent } from './componentes/Usuarios/administrador/inicio-u/inicio-u.component';
 import { EditarUComponent } from './componentes/Usuarios/administrador/editar-u/editar-u.component';
 import { AgregarUComponent } from './componentes/Usuarios/administrador/agregar-u/agregar-u.component';
+import { PuntosInteresComponent } from './componentes/puntos-interes/puntos-interes.component';
 
 const routes: Routes = [
 
@@ -58,7 +59,8 @@ const routes: Routes = [
 {path:'editarpi/:id',component:EditarpiComponent},
 {path:'iniciou',component:InicioUComponent},
 {path:'agregaru',component:AgregarUComponent},
-{path:'editaru/:id',component:EditarUComponent}
+{path:'editaru/:id',component:EditarUComponent},
+{path:'puntos-interes',component: PuntosInteresComponent}
 ];
 
 @NgModule({

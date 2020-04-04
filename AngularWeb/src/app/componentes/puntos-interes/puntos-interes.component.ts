@@ -15,12 +15,13 @@ export class PuntosInteresComponent implements OnInit, AfterViewInit {
   mapa: Mapboxgl.Map;
   puntosInteres: PuntoInteres[] = [];
   currentMarkers = [];
-  
+
   constructor(
     private puntosService: PuntosInteresService
   ) { }
 
   ngAfterViewInit(): void {
+    console.log('kfafkkfkfa');
     Mapboxgl.accessToken = environment.mapboxToken;
     this.mapa = new Mapboxgl.Map({
       container: 'map',
@@ -84,7 +85,7 @@ export class PuntosInteresComponent implements OnInit, AfterViewInit {
         marker._element.style.cursor = 'pointer';
       });
     });
-  }  
+  }
 
   async processMarker(lng: number, lat: number, desc: string = '') {
     Swal.fire({
@@ -141,7 +142,7 @@ export class PuntosInteresComponent implements OnInit, AfterViewInit {
   openConfirmAlert(id: number) {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "No podrás revertir la acción",
+      text: 'No podrás revertir la acción',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -159,7 +160,7 @@ export class PuntosInteresComponent implements OnInit, AfterViewInit {
   }
 
   eliminarCurrentMarkers() {
-    for(let i = this.currentMarkers.length - 1; i >= 0; i--) {
+    for (let i = this.currentMarkers.length - 1; i >= 0; i--) {
       if (this.currentMarkers[i]) {
         this.currentMarkers[i].remove();
       }
