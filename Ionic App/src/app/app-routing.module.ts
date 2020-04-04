@@ -74,14 +74,28 @@ const routes: Routes = [
     loadChildren: () => import('./pages/adquirir-promocion/adquirir-promocion.module').then( m => m.AdquirirPromocionPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'vigilante',
     loadChildren: () => import('./pages/vigilante/tabs/tabs.module').then( m => m.TabsPageModule)
+=======
+    path: 'noticias',
+    loadChildren: () => import('./pages/noticias/noticias.module').then( m => m.NoticiasPageModule)
+  },
+  {
+    path: 'ver-noticia',
+    loadChildren: () => import('./pages/ver-noticia/ver-noticia.module').then( m => m.VerNoticiaPageModule)
+>>>>>>> 0ba57cb564777d135553c886dde3995065ad10d5
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
+<<<<<<< HEAD
   }     
+=======
+  },
+
+>>>>>>> 0ba57cb564777d135553c886dde3995065ad10d5
 ];
 
 @NgModule({

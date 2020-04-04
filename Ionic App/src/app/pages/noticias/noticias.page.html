@@ -1,0 +1,84 @@
+<app-header titulo="Noticias" tipo="back"></app-header>
+<ion-content>
+    <ion-list>
+        <ion-card *ngFor="let noticias of noticias; let i = index">
+            <ion-list *ngIf="noticias">
+                <ion-card-header>
+                    <ion-card-title class="titulo"> {{noticias.titulo }} </ion-card-title><br>
+                    <ion-card-subtitle class="subtitles">
+                        <div style="text-align: end;">
+                            <ion-label>Fecha : {{ noticias.fechaPublicacion | date:"dd-MM-yyyy" }}
+                            </ion-label>
+                        </div>
+                    </ion-card-subtitle>    
+                    <ion-list>          
+                        <ion-slides [options]="{}" pager="true">
+                          <ion-slide *ngFor="let image of noticias.listaImagenes" class="image-slide"
+                                      [style]="(image | imgServer: 'noticias') | domSanitizer" ></ion-slide>
+                        </ion-slides>
+                    </ion-list>
+                    <ion-item>
+                        {{noticias.descripcion}}
+                    </ion-item>
+                    <ion-item style="text-align: center;">
+                        <ion-label>
+                            <ion-button (click)="verNoticia(i)">Ver noticia </ion-button>
+                        </ion-label>
+                    </ion-item>
+                    <ion-list *ngIf="noticias.listaComentariosNoticia.length==0">
+                        <!--agregar comentario-->
+                        <form  *ngIf="session"   #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro)">
+                            <ion-item style="background-color: blue;">
+                                <ion-textarea name="nombre" required [(ngModel)]="registerUser.comentar" type="text"
+                                    placeholder="Comentar"></ion-textarea>
+                                <ion-button slot="end" type="submit">
+                                    <ion-icon name="paper-plane"></ion-icon>
+                                </ion-button>
+                            </ion-item>
+                        </form>
+                        <ion-item>
+                            <ion-label>No hay comentarios comentarios</ion-label>
+                        </ion-item>
+                    </ion-list>
+                    <ion-list>
+                        <ion-list *ngIf="noticias.listaComentariosNoticia.length>0">
+                            <!--agregar comentario -->
+                            
+                                <form  *ngIf="session"  #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro)">
+                                    <ion-item style="background-color: blue;">
+                                        <ion-textarea name="nombre" required [(ngModel)]="registerUser.comentar"
+                                            type="text" placeholder="Comentar"></ion-textarea>
+                                        <ion-button slot="end" type="submit">
+                                            <ion-icon name="paper-plane"></ion-icon>
+                                        </ion-button>
+                                    </ion-item>
+                                </form>
+                            
+                            <ion-item>
+                            <ion-label>Comentarios</ion-label>
+                        </ion-item>
+                            <ion-list *ngFor="let comentarios of noticias.listaComentariosNoticia; let y = index">
+
+                                <ion-label style="color: blue;">
+                                    {{ comentarios.nombreUsuario }} <br>
+                                </ion-label>
+                                <ion-label>
+                                    {{comentarios.descripcion}} <br>
+                                    {{comentarios.fechaPublicacion | date:"dd-MM-yyyy"}}<br>
+                                </ion-label>
+
+                            </ion-list>
+                        </ion-list>
+                    </ion-list>
+                </ion-card-header>
+            </ion-list>
+            <ion-list *ngIf="!noticias">
+                <ion-label class="noNoticias">
+                    POR EL MOMENTO NO HAY NOTICIAS
+                </ion-label>
+
+            </ion-list>
+
+        </ion-card>
+    </ion-list>
+</ion-content>
