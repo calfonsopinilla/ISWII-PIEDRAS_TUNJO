@@ -18,11 +18,11 @@ namespace Logica
            * Parametro de recepcion: json tipo USubscripcion
            * Return: string estado registro de la subscripcion
         **/
-        public string RegistroSubscripcion(string jsonRegistroSub)
+        public string RegistroSubscripcion(USubscripcion datosSub)
         {
             try
             {
-                USubscripcion datosSub = JsonConvert.DeserializeObject<USubscripcion>(jsonRegistroSub);
+                
 
                 string estado = new DAOSubscripcion().Valida_ExistenciaSubscripcion(datosSub.Subscripcion, datosSub.ValorSubscripcion);
                 int validacion = 0;
@@ -49,6 +49,8 @@ namespace Logica
                     case 3:
                         try
                         {
+                            datosSub.Estado = 1;
+                            datosSub.Token = "";
                             new DAOSubscripcion().RegistroSubscripcion(datosSub);
                             estado = "Subscripcion insertada satisfactoriamente";
                         }
@@ -73,11 +75,11 @@ namespace Logica
          * Return: string json con lista de tipo USubscripcion que contiene
          * todos las subscripciones 
         **/
-        public string Mostrar_Subscripciones(int estadoFiltro)
+        public List<USubscripcion> Mostrar_Subscripciones(int estadoFiltro)
         {
             try
             {
-                return (JsonConvert.SerializeObject((List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro))).ToString();
+                return (List<USubscripcion>)new DAOSubscripcion().Mostrar_Subscripciones(estadoFiltro);
             }
             catch(Exception ex)
             {
@@ -88,18 +90,34 @@ namespace Logica
 
         }
 
+
+        public USubscripcion BuscarSubscripcion(int id)
+        {
+
+            try
+            {
+                return new DAOSubscripcion().BusquedaSubscripcion(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
         /**
          * Autor: Gabriel Zapata
          * fecha: 19/03/2019
          * Return: string con mensaje de edicion exitosa
         **/
-        public string EditarSubscripcion(string json_InfoNueva)
+        public string EditarSubscripcion(int id, USubscripcion infoNueva)
         {
             try
             {
                 string validacionCoincidencia = "";
                 //int id_InformacionAnt = int.Parse(id_InfoAnterior);
-                USubscripcion infoNueva = JsonConvert.DeserializeObject<USubscripcion>(json_InfoNueva);
+                //USubscripcion infoNueva = JsonConvert.DeserializeObject<USubscripcion>(json_InfoNueva);
 
                 //string validacionCoincidencia = new DAOSubscripcion().Valida_CoincidenciaEdicion(id_InformacionAnt, infoNueva);
                 if (infoNueva == null)
@@ -109,7 +127,7 @@ namespace Logica
                 }
                 else
                 {
-                    new DAOSubscripcion().EditarSubscripcion(infoNueva);
+                    new DAOSubscripcion().EditarSubscripcion(id, infoNueva);
                     validacionCoincidencia = "Subscripcion Editada Satisfactoriamente";
 
 
@@ -170,6 +188,11 @@ namespace Logica
             }
         }
 
+
+        public bool ActualizarSubscripcion(int id, USubscripcion subscripcion)
+        {
+            return new DAOSubscripcion().ActualizarSuscripcion(id, subscripcion);
+        }
 
     }
 }

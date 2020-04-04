@@ -27,14 +27,14 @@ namespace PiedrasDelTunjo.Controllers
          * Return: string estado registro de la subscripcion
          **/
 
-        [HttpGet]
+        [HttpPost]
         [Route("Subscripcion/Registro")]
         //public string RegistroSubscripcion([FromUri]string jsonRegistroSub)
-        public IHttpActionResult RegistroSubscripcion([FromUri]string jsonRegistroSub)
+        public IHttpActionResult RegistroSubscripcion([FromBody]USubscripcion datosSub)
         {
             try
             {                
-                return Ok(new LSubscripcion().RegistroSubscripcion(jsonRegistroSub));
+                return Ok(new LSubscripcion().RegistroSubscripcion(datosSub));
             }
             catch(Exception ex)
             {
@@ -63,19 +63,54 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
+
+
+        [HttpPost]
+        [Route("Subscripcion/Buscar_Subscripciones")]        
+        public IHttpActionResult BuscarSubscripcion([FromUri] int id)
+        {
+            var subscripcion = new LSubscripcion().BuscarSubscripcion(id);
+            if (subscripcion == null)
+            {
+               // return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Subscripcion no encontrado");
+            }
+            //return Request.CreateResponse(HttpStatusCode.OK, subscripcion);
+            return Ok(subscripcion);
+        }
+
+        [HttpPut]
+        [Route("Subscripcion/Actualizar_Subscripciones/{id}")]        
+        public HttpResponseMessage ActualizarSubscripciones([FromUri] int id, [FromBody] USubscripcion subscripcion)
+        {
+            if (id != subscripcion.Id_subscripcion)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            
+            bool actualizado = new LSubscripcion().ActualizarSubscripcion(id, subscripcion);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+
+        
+
+
+
+
+
         /**
          * Autor: Gabriel Zapata
          * fecha: 19/03/2019              
          * Return: string que indica un mensaje con respecto al estado del procedimiento de edicion
          **/
-        [HttpGet]
-        [Route("Subscripcion/Editar_Subscripciones")]
+        [HttpPut]
+        [Route("Subscripcion/Buscar_Subscripciones/{id}")]
         //public string Editar_Subscripciones([FromUri]string json_InfoNueva)
-        public IHttpActionResult Editar_Subscripciones([FromUri]string json_InfoNueva)
+        public IHttpActionResult Editar_Subscripciones([FromUri]int id, [FromBody]USubscripcion infoNueva)
         {
             try
             {
-                return Ok(new LSubscripcion().EditarSubscripcion(json_InfoNueva));
+                return Ok(new LSubscripcion().EditarSubscripcion(id,infoNueva));
                     
             }catch(Exception ex)
             {
