@@ -191,6 +191,7 @@ namespace Logica
 
         public bool ActualizarSubscripcion(int id, USubscripcion subscripcion)
         {
+            subscripcion.Estado = 1;
             return new DAOSubscripcion().ActualizarSuscripcion(id, subscripcion);
         }
 

@@ -65,8 +65,8 @@ namespace PiedrasDelTunjo.Controllers
         }
 
 
-        [HttpPost]
-        [Route("Subscripcion/Buscar_Subscripciones")]        
+        [HttpGet]
+        [Route("{id}")]        
         public IHttpActionResult BuscarSubscripcion([FromUri] int id)
         {
             var subscripcion = new LSubscripcion().BuscarSubscripcion(id);
@@ -79,7 +79,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPut]
-        [Route("Subscripcion/Actualizar_Subscripciones/{id}")]        
+        [Route("{id}")]        
         public HttpResponseMessage ActualizarSubscripciones([FromUri] int id, [FromBody] USubscripcion subscripcion)
         {
             if (id != subscripcion.Id_subscripcion)
