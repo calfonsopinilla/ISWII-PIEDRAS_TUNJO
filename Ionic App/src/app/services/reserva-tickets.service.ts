@@ -84,5 +84,7 @@ export class ReservaTicketService {
     });
   }
 
-
+  leerReservaToken(token: string) : Observable<ReservaTicket> {
+    return this.http.get(`${ apiUrl }/reserva-tickets/leerToken?token=${ token }`);
+  }
 }

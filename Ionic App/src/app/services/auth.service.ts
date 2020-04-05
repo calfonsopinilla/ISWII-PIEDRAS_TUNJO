@@ -49,17 +49,16 @@ export class AuthService {
                     // console.log(ok);
                     if (ok) {                                                                    
 
-                      if (!Boolean(res['userLogin']['VerificacionCuenta'])) {
-                        
-                        console.log("Foto Documento");
-                        this.router.navigate(['/registro', 'foto-documento']);
-
-                      } else {
-
-                        console.log("Inicio");
-                        this.loginState$.emit(true);
-                        this.router.navigateByUrl('/inicio');
-                      }                      
+                      if (Number(res['userLogin']['RolId'] == 2)) {
+                        if (!Boolean(res['userLogin']['VerificacionCuenta']) && res['userLogin']['LugarExpedicion'] == null) {                                                    
+                          this.router.navigate(['/registro', 'foto-documento']);
+                        } else {                          
+                          this.loginState$.emit(true);
+                          this.router.navigateByUrl('/inicio');
+                        } 
+                      } else if (Number(res['userLogin']['RolId'] == 4)) {
+                        this.router.navigateByUrl('/vigilante');
+                      }
                     }
                   } else {
                     this.presentToast(res['message']);

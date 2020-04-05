@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PiedrasParquePage implements OnInit {
 
-  itemInfo: ItemInfo;
+  itemInfo: ItemInfo;  
 
   constructor(
     private infoParqueService: InfoParqueService,
@@ -20,7 +20,7 @@ export class PiedrasParquePage implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.infoParqueService.obtenerItemInfo(id)
-                        .subscribe((resp: any) => this.itemInfo = resp);
+                        .subscribe((resp: any) => this.itemInfo = resp);                        
   }
 
 }

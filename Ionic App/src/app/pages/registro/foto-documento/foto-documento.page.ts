@@ -65,5 +65,4 @@ export class FotoDocumentoPage implements OnInit {
     });
     await toast.present();
   }
-
 }
