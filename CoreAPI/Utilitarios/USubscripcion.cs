@@ -15,6 +15,7 @@ namespace Utilitarios
         private double valorSubscripcion;     //precio de la subscripcion   
         private string imagen_Subscripcion; //imagen de la subscripcion
         private int estado; //estado de la subscripcion
+        private string token;
 
         [Key]
         [Column("id")]
@@ -30,5 +31,7 @@ namespace Utilitarios
        // [ForeignKey("fk_estado_subsc")]
         [Column("estado")]
         public int Estado { get => estado; set => estado = value; }
+        [Column("token")]
+        public string Token { get => token; set => token = value; }
     }
 }

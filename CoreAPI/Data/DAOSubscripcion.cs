@@ -5,21 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
 using System.Data.Entity;
-
+using System.Data.Entity.Infrastructure;
 
 namespace Data
 {
     public class DAOSubscripcion
-    { 
+    {
         /**
          * Autor: Gabriel Zapata
          * Fecha: 18/03/2020
          * Parametro de recepcion: string subscripcion a buscar y double valor a buscar
          * return string busqueda
          **/
+        private Mapeo conexionBD;
+        private USubscripcion subscripcion;
+        private List<USubscripcion> listaSubscripciones;
+        private readonly Mapeo db = new Mapeo();
+
         public string Valida_ExistenciaSubscripcion(string subscripcion, double valor)
         {
             string busqueda = "";
+            
+
+
 
             using (var db = new Mapeo())
             {
@@ -156,11 +164,11 @@ namespace Data
         * Metodo para editar las subscripciones en base de datos en la tabla subscripcion        
         * return: void
         **/
-        public void EditarSubscripcion(USubscripcion infoNueva)
+        public void EditarSubscripcion(int id, USubscripcion infoNueva)
         {
             using (var db = new Mapeo())
             {
-                USubscripcion edit = db.infoSubscripcion.Where(x => x.Id_subscripcion == infoNueva.Id_subscripcion).First();
+                USubscripcion edit = db.infoSubscripcion.Where(x => x.Id_subscripcion == id).First();
 
                 edit.ContenidoSubscripcion = infoNueva.ContenidoSubscripcion;
                 edit.ValorSubscripcion = infoNueva.ValorSubscripcion;
@@ -177,6 +185,27 @@ namespace Data
 
             }
 
+        }
+        public USubscripcion BusquedaSubscripcion(int id)
+        {
+            try
+            {
+
+                this.subscripcion = new USubscripcion();
+
+                using (this.conexionBD = new Mapeo())
+                {
+
+                    this.subscripcion = this.conexionBD.infoSubscripcion.Find(id);
+                    return this.subscripcion;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         /**
@@ -201,6 +230,32 @@ namespace Data
                 }
                 db.SaveChanges();
             }
+        }
+
+        public bool ActualizarSuscripcion(int id, USubscripcion subscripcion)
+        {
+            try
+            {
+                db.Entry(subscripcion).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Existe(id))
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        public bool Existe(int id)
+        {
+            return db.infoSubscripcion.Any(x => x.Id_subscripcion == id);
         }
 
 
