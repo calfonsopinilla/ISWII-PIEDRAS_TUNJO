@@ -159,25 +159,25 @@ namespace Logica
          * 
          * Return: string con mensaje del cambio de estado
         **/
-        public string CambiarEstado_Subscripcion(string json_Info)
+        public string CambiarEstado_Subscripcion(int id_subscripcion)
         {
             try
             {
                 string validacion = "";                
-                USubscripcion infoCambiar = JsonConvert.DeserializeObject<USubscripcion>(json_Info);
+               // USubscripcion infoCambiar = JsonConvert.DeserializeObject<USubscripcion>(json_Info);
 
-                if (infoCambiar == null)
+              /*  if (id_subscripcion == null)
                 {
                     validacion = "Los campos estan vacios";
                     return validacion;
                 }
                 else
-                {
-                    new DAOSubscripcion().CambiarEstado_Subscripcion(infoCambiar);
+                {*/
+                    new DAOSubscripcion().CambiarEstado_Subscripcion(id_subscripcion);
                     validacion = "Subscripcion Editada Satisfactoriamente";
 
 
-                }
+                //}
 
 
                 return validacion;
@@ -192,6 +192,7 @@ namespace Logica
         public bool ActualizarSubscripcion(int id, USubscripcion subscripcion)
         {
             subscripcion.Estado = 1;
+            subscripcion.Token = "";
             return new DAOSubscripcion().ActualizarSuscripcion(id, subscripcion);
         }
 
