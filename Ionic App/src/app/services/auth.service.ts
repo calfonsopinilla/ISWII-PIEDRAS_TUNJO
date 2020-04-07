@@ -18,7 +18,7 @@ const urlApi = environment.servicesAPI;
 })
 export class AuthService {
 
-  loginState$ = new EventEmitter<boolean>();  
+  loginState$ = new EventEmitter<boolean>();
   user: any;
 
   constructor(
@@ -35,30 +35,23 @@ export class AuthService {
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();
     this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
-              .pipe(catchError(err => {
+              .pipe(
+                catchError(err => {
                 return of( err.error );
               }))
               .subscribe(
                 async (res) => {
-                  setTimeout(_ => {}, 2000); // timeout para el loadingCtrl
+                  setTimeout(_ => {}, 1000);
                   // Verificar la respuesta de la petición
                   if (res['ok'] === true) {
+                    if (res.userLogin.RolId === 1) {
+                      this.presentToast('No puedes ingresar como usuario administrador');
+                      return;
+                    }
                     this.storage.clear();
-                    // Almacenar el usuario en el localStorage
                     const ok = await this.storage.set('usuario', res['userLogin']);
-                    // console.log(ok);
-                    if (ok) {                                                                    
-
-                      if (Number(res['userLogin']['RolId'] == 2)) {
-                        if (!Boolean(res['userLogin']['VerificacionCuenta']) && res['userLogin']['LugarExpedicion'] == null) {                                                    
-                          this.router.navigate(['/registro', 'foto-documento']);
-                        } else {                          
-                          this.loginState$.emit(true);
-                          this.router.navigateByUrl('/inicio');
-                        } 
-                      } else if (Number(res['userLogin']['RolId'] == 4)) {
-                        this.router.navigateByUrl('/vigilante');
-                      }
+                    if (ok) {
+                      this.loginNavigate(res['userLogin']);
                     }
                   } else {
                     this.presentToast(res['message']);
@@ -67,6 +60,19 @@ export class AuthService {
                 (err) => {},
                 () => loading.dismiss()
               );
+  }
+
+  loginNavigate(userLogin: Usuario) {
+    if (Number(userLogin['RolId'] === 2)) {
+      if (!Boolean(userLogin['VerificacionCuenta']) && userLogin['LugarExpedicion'] == null) {
+        this.router.navigate(['/registro', 'foto-documento']);
+      } else {
+        this.loginState$.emit(true);
+        this.router.navigateByUrl('/inicio');
+      }
+    } else if (Number(userLogin['RolId'] === 4)) {
+      this.router.navigateByUrl('/vigilante');
+    }
   }
 
   async presentToast(message: string) {
