@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PiedrasDelTunjo.Controllers {
 
@@ -16,13 +17,13 @@ namespace PiedrasDelTunjo.Controllers {
         Descripción: Controlador que sirve para hacer CRUD de cabañas
     */
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("cabana")]
+    [RoutePrefix("cabana")]    
     public class CabanaController : ApiController {
        
         // Variables
         private string imageName;
         private string filePath;
-        private List<string> listaUrls;
+        private List<string> listaUrls;        
 
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
