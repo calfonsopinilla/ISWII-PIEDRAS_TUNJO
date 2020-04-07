@@ -214,22 +214,33 @@ namespace Data
          * Metodo para editar el estado de las subscripciones en base de datos en la tabla subscripcion        
          * return: void
          **/
-        public void CambiarEstado_Subscripcion(USubscripcion infoCambiar)
+        public void CambiarEstado_Subscripcion(int id_subscripcion)
         {
-            using (var db = new Mapeo())
+            try
             {
-                var subs = db.infoSubscripcion.Where(x => x.Id_subscripcion == infoCambiar.Id_subscripcion).FirstOrDefault();
+                using (var db = new Mapeo())
+                {
+                    var subs = db.infoSubscripcion.Where(x => x.Id_subscripcion == id_subscripcion).FirstOrDefault();
 
-                if (subs.Estado == 2)
-                {
-                    subs.Estado = 1;
+                    if (subs.Estado == 1)                                           
+         
+                    {
+                        subs.ContenidoSubscripcion = subs.ContenidoSubscripcion;
+                        subs.ValorSubscripcion = subs.ValorSubscripcion;
+                        subs.Subscripcion = subs.Subscripcion;
+                        subs.Imagen_Subscripcion = subs.Imagen_Subscripcion;
+                        subs.Token = "";
+                        subs.Estado = 2;
+                    }
+                    db.SaveChanges();
+                    return;
                 }
-                else
-                {
-                    subs.Estado = 2;
-                }
-                db.SaveChanges();
             }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public bool ActualizarSuscripcion(int id, USubscripcion subscripcion)

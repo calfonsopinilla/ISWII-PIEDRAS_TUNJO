@@ -18,6 +18,7 @@ namespace PiedrasDelTunjo.Controllers
          */
     //
     [EnableCors(origins: "*", methods: "*", headers: "*")]
+    [RoutePrefix("Subscripcion")]
     public class SubscripcionController : ApiController
     {
         /**
@@ -28,7 +29,7 @@ namespace PiedrasDelTunjo.Controllers
          **/
 
         [HttpPost]
-        [Route("Subscripcion/Registro")]
+        [Route("Registro")]
         //public string RegistroSubscripcion([FromUri]string jsonRegistroSub)
         public IHttpActionResult RegistroSubscripcion([FromBody]USubscripcion datosSub)
         {
@@ -49,7 +50,7 @@ namespace PiedrasDelTunjo.Controllers
          *  traidos de la base de datos
          **/
         [HttpGet]
-        [Route("Subscripcion/Ver_Subscripciones")]
+        [Route("Ver_Subscripciones")]
         //public List<USubscripcion> MostrarSubscripciones([FromUri]int estadoFiltro)
         public IHttpActionResult MostrarSubscripciones([FromUri]int estadoFiltro)
         {
@@ -64,8 +65,12 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+<<<<<<< HEAD
 
         /*[HttpGet]
+=======
+        [HttpGet]
+>>>>>>> ff42e85ddd2b89f247ea3bf202af52d8b7bd46ea
         [Route("{id}")]        
         public IHttpActionResult BuscarSubscripcion([FromUri] int id)
         {
@@ -97,7 +102,7 @@ namespace PiedrasDelTunjo.Controllers
          * Return: string que indica un mensaje con respecto al estado del procedimiento de edicion
          **/
         [HttpPut]
-        [Route("Subscripcion/Buscar_Subscripciones/{id}")]
+        [Route("Buscar_Subscripciones/{id}")]
         //public string Editar_Subscripciones([FromUri]string json_InfoNueva)
         public IHttpActionResult Editar_Subscripciones([FromUri]int id, [FromBody]USubscripcion infoNueva)
         {
@@ -117,13 +122,13 @@ namespace PiedrasDelTunjo.Controllers
          * Return: string que indica un mensaje con respecto al estado del procedimiento de cambio de estado
          **/
         [HttpGet]
-        [Route("Subscripcion/Remover_Subscripciones")]
+        [Route("Remover_Subscripciones")]
         //public string Remover_Subscripciones([FromUri]string json_Info)
-        public IHttpActionResult Remover_Subscripciones([FromUri]string json_Info)
+        public IHttpActionResult Remover_Subscripciones([FromUri]int id_subscripcion)
         {
             try
             {
-                return Ok(new LSubscripcion().CambiarEstado_Subscripcion(json_Info));
+                return Ok(new LSubscripcion().CambiarEstado_Subscripcion(id_subscripcion));
 
             }
             catch (Exception ex)
