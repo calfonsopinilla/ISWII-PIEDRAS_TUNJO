@@ -20,6 +20,9 @@ namespace Utilitarios {
         private List<UComentarioNoticia> listaComentariosNoticia;
         private List<string> listaImagenes;
         private string token;
+        private int estado;
+        private string fecha_Publicacion;
+
 
         [Key]
         [Column("id")]
@@ -38,10 +41,17 @@ namespace Utilitarios {
         public double Calificacion { get => calificacion; set => calificacion = value; }
         [Column("token")]
         public string Token { get => token; set => token = value; }
+        [Column("estado")]
+        public int Estado { get => estado; set => estado = value; }
+
+        
 
         [NotMapped]
         public List<UComentarioNoticia> ListaNoticias { get => listaComentariosNoticia; set => listaComentariosNoticia = value; }
         public List<string> ListaImagenes { get => listaImagenes; set => listaImagenes = value; }
-        
+
+        [NotMapped]
+        public string Fecha_Publicacion { get => fecha_Publicacion; set => fecha_Publicacion = value; }
+
     }
 }

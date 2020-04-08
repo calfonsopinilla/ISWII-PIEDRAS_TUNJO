@@ -12,6 +12,7 @@ using System.Web.Http.Cors;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("Noticias")]
     public class NoticiaController : ApiController
     {
         /*
@@ -27,7 +28,8 @@ namespace PiedrasDelTunjo.Controllers
         {
             try
             {
-                var noticias = JsonConvert.DeserializeObject<List<UNoticia>>(new LNoticia().informacionNoticia());
+                //var noticias = JsonConvert.DeserializeObject<List<UNoticia>>(new LNoticia().informacionNoticia());
+                var noticias = new LNoticia().informacionNoticia();
                 return Ok(noticias);
             }
             catch (Exception ex)
@@ -42,14 +44,13 @@ namespace PiedrasDelTunjo.Controllers
        *Recibe: una estreuctura json para agregar los datos
        *Retorna: un true para saber que se agregaron los datos
        */
-        [HttpGet]
+        [HttpPost]
         [Route("agregarNoticia")]
-        public bool agregarNoticia(string datosJson)
+        public IHttpActionResult agregarNoticia([FromBody]UNoticia datosJson)
         {
             try
-            {
-                LNoticia noticia = new LNoticia();
-                return noticia.agregarNoticia(datosJson);
+            {               
+                return Ok( new LNoticia().agregarNoticia(datosJson));
             }
             catch (Exception ex)
             {
