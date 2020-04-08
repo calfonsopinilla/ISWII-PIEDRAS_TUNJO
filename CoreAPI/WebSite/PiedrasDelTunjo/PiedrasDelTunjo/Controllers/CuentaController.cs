@@ -17,6 +17,7 @@ using System.Configuration;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", methods: "*", headers: "*")]
+    [Authorize]
     public class CuentaController : ApiController
     {
 
@@ -38,18 +39,18 @@ namespace PiedrasDelTunjo.Controllers
                 }
                 // Se crea el token y se almacena en la variable token
                 string token = GenerateToken(userLogin);
-                //userLogin.Token = token;
-                //// Se actualiza el token de la BD
-                //bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
-                //if (!actualizar)
-                //{ // En caso de que exista un error a la hora de actualizar la base de datos
-                //    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
-                //}
+                userLogin.Token = token;
+
+                // Se actualiza el token de la BD
+                bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
+                if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
+                    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
+                }
                 // Se retorna un mensaje satisfactorio y el token JWT
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token });
             }
-            catch (Exception ex)
-            {
+
+            catch (Exception ex) {
                 throw ex;
             }
         }
@@ -57,9 +58,35 @@ namespace PiedrasDelTunjo.Controllers
         /*
             @Autor: Jhonattan Pulido
             Fecha creación: 06/04/2020
+            Descripcion: Método que elimina el token del usuario
+            Parámetros: Long id : Id del usuario que desea cerrar sesión
+            Retorna: Booleano
+        */
+        [HttpGet]
+        [Route("cuenta/CerrarSesion")]
+        public HttpResponseMessage CerrarSesion([FromUri] int id) {
+
+            try {
+
+                UUsuario usuario = new LUsuario().Buscar(id); // Se obtiene el usuario
+                usuario.Token = ""; // Se vacia el token                
+                bool actualizar = new LUsuario().Actualizar(usuario.Id, usuario); // Se actualiza el token en la bd
+
+                if (actualizar)
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = true});
+                else
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "Ha ocurrido un error" });
+
+            } catch (Exception ex) { throw ex; }
+        }
+
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 06/04/2020
             Descripcion: Método que genera el token al usuario
-            Parámetros:
-            Retorna:
+            Parámetros: UUsuario usuario : Contiene los datos del usuario que se loggea
+            Retorna: El token generado
         */
         private string GenerateToken(UUsuario usuario) {            
 

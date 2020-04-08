@@ -65,16 +65,7 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
-<<<<<<< HEAD
-        /*[HttpGet]
-=======
-//<<<<<<< HEAD
-
-        /*[HttpGet]
-=======
-        [HttpGet]
-// >>>>>>> ff42e85ddd2b89f247ea3bf202af52d8b7bd46ea
->>>>>>> 7df2d826462ba6abd42dd013e1953505121d8005
+        /*[HttpGet]        
         [Route("{id}")]        
         public IHttpActionResult BuscarSubscripcion([FromUri] int id)
         {

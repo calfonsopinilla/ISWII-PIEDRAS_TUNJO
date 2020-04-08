@@ -434,7 +434,6 @@
     <Content Include="obj\Debug\PiedrasDelTunjo.csproj.CopyComplete" />
     <Content Include="obj\Debug\PiedrasDelTunjo.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\PiedrasDelTunjo.csprojAssemblyReference.cache" />
-    <Content Include="XXX\mailer.html" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
