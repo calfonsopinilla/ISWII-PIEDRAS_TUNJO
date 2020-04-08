@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { Usuario } from '../interfaces/usuario.interface';
+import * as jwt_decode from 'jwt-decode';
  
 const urlApi = environment.servicesAPI;
 
@@ -20,6 +21,7 @@ export class AuthService {
 
   loginState$ = new EventEmitter<boolean>();  
   user: any;
+  jsonToken: any;
 
   constructor(
     private http: HttpClient,
@@ -29,9 +31,54 @@ export class AuthService {
     private router: Router,
     private toastCtrl: ToastController,
     private userService: UserService
-  ) { }
+  ) { }  
+
+  /*
+  TENGA EN CUENTA
+
+  Aqui en este comentario le voy a poner la función de decodificar el token, ya usted vera como acomoda
+  el resto del codigo porque toca tener en cuenta unas cosas
+  */
 
   async login(userLogin: UserLogin) {
+
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+    await loading.present();
+
+    this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
+              .pipe(catchError(err => {
+                return of( err.error );
+              }))
+              .subscribe(
+                async (res) => {
+                  setTimeout(_ => {}, 2000); // timeout para el loadingCtrl
+                  // Verificar la respuesta de la petición
+                  if (res['ok'] === true) {
+                    this.storage.clear();
+                    // Almacenar el usuario en el localStorage
+                    const ok = await this.storage.set('usuario', res['token']); // Ya no se guardaría userLogin - Se guardaria el token porque el token lleva la información del usuario codificada
+                    // console.log(ok);
+                    if (ok) {                                                                    
+                      
+                      this.jsonToken = jwt_decode(res['token'].data);
+                      var parse = JSON.parse(res['token'].data);
+                      this.storage.set("json", parse);
+                      this.presentToast("Response with JSON.parse() :" + parse);
+                      console.log(parse);
+                      
+                    } else {
+                      console.log("ERROR");
+                    }
+                  } else {                    
+                    this.presentToast(res['message']);
+                  }
+                },
+                (err) => {},
+                () => loading.dismiss()
+              );
+  }
+
+  /*async login(userLogin: UserLogin) {
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();
     this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
@@ -68,6 +115,7 @@ export class AuthService {
                 () => loading.dismiss()
               );
   }
+  */
 
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({

@@ -1,13 +1,34 @@
 <app-header titulo="Foto Documento" tipo="back"></app-header>
 
 <ion-content [fullscreen]>
-  <img *ngIf="this.img" [src]="this.img" alt="img1">
-  <ion-button (click)="openCamera()" expand="full" shape="round">
+
+  <ion-item *ngIf="user">
+    <ion-label style="display: block; font-weight: bold;">
+      {{ user['Nombre'] }} {{ user['Apellido'] }}
+    </ion-label>
+  </ion-item>
+
+  <ion-item>    
+    <ion-label>
+      Para terminar con su registro debe adjuntar una foto de su documento:
+    </ion-label>
+  </ion-item>
+
+  <img *ngIf="this.img" [src]="this.img" alt="img1" style="margin: 30px auto">
+
+  <!--<ion-button (click)="openCamera()" expand="full" shape="round">
     Tomar foto
-  </ion-button>
+  </ion-button>-->
+  
   <ion-button *ngIf="this.imgData" (click)="sendImage()" expand="full" shape="round">
     Subir imagen
   </ion-button>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCamera()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
   <p>
     {{ response | json }}
