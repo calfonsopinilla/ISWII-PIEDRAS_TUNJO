@@ -13,6 +13,7 @@ using Logica;
 using Utilitarios;
 using Newtonsoft.Json;
 using System.Configuration;
+using System.Web;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -52,6 +53,17 @@ namespace PiedrasDelTunjo.Controllers
             {
                 throw ex;
             }
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("cuenta/userByToken")]
+        public HttpResponseMessage GetUserByToken()
+        {
+            var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
+            var userClaim = claimsIdentity.FindFirst("usuario"); // or FindAll()
+            var user = JsonConvert.DeserializeObject<UUsuario>(userClaim.Value);
+            return Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
         /*

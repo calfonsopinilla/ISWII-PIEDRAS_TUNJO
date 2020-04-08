@@ -94,6 +94,7 @@
     <Compile Include="UComentarioCabana.cs" />
     <Compile Include="UComentarioEvento.cs" />
     <Compile Include="UComentarioNoticia.cs" />
+    <Compile Include="UComentarioPic.cs" />
     <Compile Include="UComentarioPictograma.cs" />
     <Compile Include="UEstadoPQR.cs" />
     <Compile Include="UEvento.cs" />
