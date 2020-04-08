@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 using Logica;
 using Utilitarios;
+using Newtonsoft.Json;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -43,17 +44,18 @@ namespace PiedrasDelTunjo.Controllers
                 DateTime expires = issuedAt.AddMonths(1);
                 
                 // Se crea el token y se almacena en la variable token
-                usuario.Token = this.BuildToken(usuario, issuedAt, expires);
+                userLogin.Token = this.BuildToken(userLogin, issuedAt, expires);
 
                 // Se actualiza el token de la BD
-                bool actualizar = new LUsuario().Actualizar(usuario.Id, usuario);
+                bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
 
-                if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
+                if (!actualizar)
+                { // En caso de que exista un error a la hora de actualizar la base de datos
                     return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
                 }
 
                 // Se retorna un mensaje satisfactorio y el token JWT
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token = usuario.Token });
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token = userLogin.Token });
             }
             catch (Exception ex)
             {
@@ -73,18 +75,19 @@ namespace PiedrasDelTunjo.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var claimsIdentity = new ClaimsIdentity(new[] {
-                new Claim("Id", usuario.Id.ToString()), // Id
-                new Claim("Nombre", usuario.Nombre), // Nombre
-                new Claim("Apellido", usuario.Apellido), // Apellido
-                new Claim("CorreoElectronico", usuario.CorreoElectronico), // Correo Electronico
-                new Claim("TipoDocumento", usuario.TipoDocumento), // Tipo Documento
-                new Claim("NumeroDocumento", usuario.NumeroDocumento), // Numero Documento
-                new Claim("LugarExpedicion", usuario.LugarExpedicion), // Lugar de expedicion 
-                new Claim("Icono_url", usuario.Icono_url), // Icono Url
-                new Claim("VerificacionCuenta", usuario.VerificacionCuenta.ToString()), // VerificacionCuenta
-                new Claim("EstadoCuenta", usuario.EstadoCuenta.ToString()), // Estado Cuenta
-                new Claim("RolId", usuario.RolId.ToString()), // Rol id
-                new Claim("FechaNacimiento", usuario.FechaNacimiento.ToString()), // FechaNacimiento                
+                new Claim("usuario", JsonConvert.SerializeObject(usuario))
+                //new Claim("Id", usuario.Id.ToString()), // Id
+                //new Claim("Nombre", usuario.Nombre), // Nombre
+                //new Claim("Apellido", usuario.Apellido), // Apellido
+                //new Claim("CorreoElectronico", usuario.CorreoElectronico), // Correo Electronico
+                //new Claim("TipoDocumento", usuario.TipoDocumento), // Tipo Documento
+                //new Claim("NumeroDocumento", usuario.NumeroDocumento), // Numero Documento
+                //new Claim("LugarExpedicion", usuario.LugarExpedicion), // Lugar de expedicion 
+                //new Claim("Icono_url", usuario.Icono_url), // Icono Url
+                //new Claim("VerificacionCuenta", usuario.VerificacionCuenta.ToString()), // VerificacionCuenta
+                //new Claim("EstadoCuenta", usuario.EstadoCuenta.ToString()), // Estado Cuenta
+                //new Claim("RolId", usuario.RolId.ToString()), // Rol id
+                //new Claim("FechaNacimiento", usuario.FechaNacimiento.ToString()), // FechaNacimiento                
             });
 
             // Clave secreta
