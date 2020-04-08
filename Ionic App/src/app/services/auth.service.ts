@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { Usuario } from '../interfaces/usuario.interface';
 import * as jwt_decode from 'jwt-decode';
- 
+
 const urlApi = environment.servicesAPI;
 
 @Injectable({
@@ -31,7 +31,7 @@ export class AuthService {
     private router: Router,
     private toastCtrl: ToastController,
     private userService: UserService
-  ) { }  
+  ) { }
 
   /*
   TENGA EN CUENTA
@@ -55,21 +55,12 @@ export class AuthService {
                   // Verificar la respuesta de la petición
                   if (res['ok'] === true) {
                     this.storage.clear();
-                    // Almacenar el usuario en el localStorage
-                    const ok = await this.storage.set('usuario', res['token']); // Ya no se guardaría userLogin - Se guardaria el token porque el token lleva la información del usuario codificada
-                    // console.log(ok);
-                    if (ok) {                                                                    
-                      
-                      this.jsonToken = jwt_decode(res['token'].data);
-                      var parse = JSON.parse(res['token'].data);
-                      this.storage.set("json", parse);
-                      this.presentToast("Response with JSON.parse() :" + parse);
-                      console.log(parse);
-                      
-                    } else {
-                      console.log("ERROR");
+                    const ok = await this.storage.set('token', res['token']);
+                    if (ok) {
+                      // const jwtToken = jwt_decode(res['token']);
+                      // const usuario = JSON.parse(jwtToken['usuario']);
                     }
-                  } else {                    
+                  } else {
                     this.presentToast(res['message']);
                   }
                 },
