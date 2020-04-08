@@ -638,7 +638,6 @@ C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\Piedr
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Gma.QrCodeNet.Encoding.dll
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Gma.QrCodeNet.Encoding.pdb
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Gma.QrCodeNet.Encoding.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\zxing.dll
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\QRCoder.dll
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\System.Drawing.Common.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Gma.QrCodeNet.Encoding.dll
