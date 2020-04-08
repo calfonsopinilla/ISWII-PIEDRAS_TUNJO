@@ -24,7 +24,7 @@ namespace PiedrasDelTunjo.Controllers
         [HttpPost]
         [Route("")]
         // POST: comentariosNoticia/
-        public HttpResponseMessage AgregarComentarioNotica([FromBody]  UComentarioNoticia  comentarioNoticia)
+        public HttpResponseMessage AgregarComentarioNotica([FromBody] UComentarioNoticia  comentarioNoticia)
         {
             if (comentarioNoticia == null){
 

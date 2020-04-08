@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Owin.Security.OAuth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -15,8 +16,11 @@ namespace PiedrasDelTunjo
             config.Formatters.JsonFormatter.SupportedMediaTypes
                  .Add(new MediaTypeHeaderValue("text/html"));
 
+            // Web API configuration and services    
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
             // Enable CORS
-            //var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors();
 
             // Web API routes
