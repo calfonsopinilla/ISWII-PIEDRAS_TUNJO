@@ -27,7 +27,7 @@ namespace Utilitarios {
         public double Calificacion { get => calificacion; set => calificacion = value; }
         [Column("reportado")]
         public bool Reportado { get => reportado; set => reportado = value; }
-        [ForeignKey("UsuarioId")]
+        //[ForeignKey("UsuarioId")]
         [Column("usuario_id")]
         public int UsuarioId { get => usuarioId; set => usuarioId = value; }
     }

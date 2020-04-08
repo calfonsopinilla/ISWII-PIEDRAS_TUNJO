@@ -11,15 +11,14 @@ using System.IdentityModel.Tokens.Jwt;
 
 using Logica;
 using Utilitarios;
+using Newtonsoft.Json;
+using System.Configuration;
 
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", methods: "*", headers: "*")]
     public class CuentaController : ApiController
     {
-
-        // Variables
-        private string token = null;
 
         /*
               @Autor : Jose Luis Soriano Roa
@@ -28,32 +27,26 @@ namespace PiedrasDelTunjo.Controllers
               *Este metodo recibe : Resive un objeto de tipo Ulogin quien incorpora correoElectronico y clave en json 
       */
         [HttpPost]
+        [AllowAnonymous]
         [Route("cuenta/iniciaSesion")]
         public HttpResponseMessage IniciarSesion([FromBody] UUsuario usuario){
             try
             {
                 var userLogin = new LCuenta().IniciarSesion(usuario.CorreoElectronico, usuario.Clave);
-
                 if (userLogin == null) {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "El usuario no existe" });
                 }
-
-                // Fecha de creación del token
-                DateTime issuedAt = DateTime.Now;
-                DateTime expires = issuedAt.AddMonths(1);
-                
                 // Se crea el token y se almacena en la variable token
-                usuario.Token = this.BuildToken(usuario, issuedAt, expires);
-
-                // Se actualiza el token de la BD
-                bool actualizar = new LUsuario().Actualizar(usuario.Id, usuario);
-
-                if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
-                    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
-                }
-
+                string token = GenerateToken(userLogin);
+                //userLogin.Token = token;
+                //// Se actualiza el token de la BD
+                //bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
+                //if (!actualizar)
+                //{ // En caso de que exista un error a la hora de actualizar la base de datos
+                //    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
+                //}
                 // Se retorna un mensaje satisfactorio y el token JWT
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token = usuario.Token });
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token });
             }
             catch (Exception ex)
             {
@@ -68,45 +61,40 @@ namespace PiedrasDelTunjo.Controllers
             Parámetros:
             Retorna:
         */
-        private string BuildToken(UUsuario usuario, DateTime issuedAt, DateTime expires) {            
+        private string GenerateToken(UUsuario usuario) {            
 
-            var tokenHandler = new JwtSecurityTokenHandler();
+            // Variables de configuración Jwt
+            var _secrectKey = ConfigurationManager.AppSettings["SecretKey"];
+            var _issuer = ConfigurationManager.AppSettings["Issuer"];
+            var _audience = ConfigurationManager.AppSettings["Audience"];
+            if (!Int32.TryParse(ConfigurationManager.AppSettings["Expires"], out int _expires))
+                _expires = 24;
 
-            var claimsIdentity = new ClaimsIdentity(new[] {
-                new Claim("Id", usuario.Id.ToString()), // Id
-                new Claim("Nombre", usuario.Nombre), // Nombre
-                new Claim("Apellido", usuario.Apellido), // Apellido
-                new Claim("CorreoElectronico", usuario.CorreoElectronico), // Correo Electronico
-                new Claim("TipoDocumento", usuario.TipoDocumento), // Tipo Documento
-                new Claim("NumeroDocumento", usuario.NumeroDocumento), // Numero Documento
-                new Claim("LugarExpedicion", usuario.LugarExpedicion), // Lugar de expedicion 
-                new Claim("Icono_url", usuario.Icono_url), // Icono Url
-                new Claim("VerificacionCuenta", usuario.VerificacionCuenta.ToString()), // VerificacionCuenta
-                new Claim("EstadoCuenta", usuario.EstadoCuenta.ToString()), // Estado Cuenta
-                new Claim("RolId", usuario.RolId.ToString()), // Rol id
-                new Claim("FechaNacimiento", usuario.FechaNacimiento.ToString()), // FechaNacimiento                
-            });
+            // CREAMOS EL HEADER
+            var _symmetricSecurityKey = new SymmetricSecurityKey(System.Text.Encoding.Default.GetBytes(_secrectKey));
+            var _signingCredentials = new SigningCredentials(_symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+            var _header = new JwtHeader(_signingCredentials);
 
-            // Clave secreta
-            const string secrectKey = "[RV#tu*zKJV/v4iR5*=*N#MKX;vPNL&RB_7==C?ZXTZ{k6TRiXztjLc-u?V5VdTMUK6y{&.GSFKU.{?,Tq2F$xg?RXd3;y%g&VvS";
-            // Convirtiendo la clave secreta a base64
-            var securityKey = new SymmetricSecurityKey(System.Text.Encoding.Default.GetBytes(secrectKey));
+            // CREAMOS LOS CLAIMS
+            var _claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("usuario", JsonConvert.SerializeObject(usuario))
+            };
 
-            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            // CREAMOS EL PAYLOAD
+            var _payload = new JwtPayload(
+                    issuer: _issuer,
+                    audience: _audience,
+                    claims: _claims,
+                    notBefore: DateTime.UtcNow,
+                    // expira a las 24 horas
+                    expires: DateTime.UtcNow.AddHours(_expires)
+                );
 
-            var token =
-                (JwtSecurityToken)
-                tokenHandler.CreateJwtSecurityToken(
-                    issuer: "http://www.piedrasdeltunjo.tk/",
-                    audience: "http://www.piedrasdeltunjo.tk/",
-                    subject: claimsIdentity,
-                    notBefore: issuedAt,
-                    expires: expires,
-                    signingCredentials: signingCredentials);
+            // GENERAMOS EL TOKEN
+            var _token = new JwtSecurityToken(_header, _payload);
 
-            string tokenString = tokenHandler.WriteToken(token);
-
-            return tokenString;
+            return new JwtSecurityTokenHandler().WriteToken(_token);
         }
     }
 }

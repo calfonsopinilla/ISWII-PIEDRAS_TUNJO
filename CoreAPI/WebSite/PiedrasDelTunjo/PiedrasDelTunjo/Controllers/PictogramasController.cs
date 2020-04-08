@@ -18,6 +18,7 @@ namespace PiedrasDelTunjo.Controllers
          * 
          */
     [EnableCors(origins: "*", methods: "*", headers: "*")]
+    [RoutePrefix("Pictograma")]
     public class PictogramasController : ApiController
     {
         /**
@@ -27,10 +28,10 @@ namespace PiedrasDelTunjo.Controllers
         * Return: string estado registro del Pictograma
         **/
 
-        [HttpGet]
-        [Route("Pictograma/Registro")]
+        [HttpPost]
+        [Route("Registro")]
         //public string RegistroPictograma([FromUri]string jsonRegistroPic)
-        public IHttpActionResult RegistroPictograma([FromUri]string jsonRegistroPic)
+        public IHttpActionResult RegistroPictograma([FromBody] UPictograma jsonRegistroPic)
         {
             try
             {
@@ -51,11 +52,13 @@ namespace PiedrasDelTunjo.Controllers
         *  traidos de la base de datos
         **/
         [HttpGet]
-        [Route("Pictograma/Ver_Pictogramas")]
+        [Route("Ver_Pictogramas")]
         public IHttpActionResult MostrarPictogramas([FromUri]int estadoFiltro)
         {
             try
             {
+                
+
                 var informacion = new LPictograma().Mostrar_Pictogramas(estadoFiltro);
 
                 return Ok(informacion);
@@ -67,25 +70,44 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+
+        /**
+         * 
+         * 
+         * **/
+        [HttpGet]
+        [Route("{id}")]
+        // GET: Usuarios/id
+        public HttpResponseMessage Buscar([FromUri] int id)
+        {
+            var pictograma = new LPictograma().LeerPictograma(id);
+            if (pictograma == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Pictograma no encontrado");
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, pictograma);
+        }
+
+
+
         /**
          * Autor: Mary Zapata
          * fecha: 20/03/2019              
          * Return: string que indica un mensaje con respecto al estado del procedimiento de edicion
          **/
-        [HttpGet]
-        [Route("Pictograma/Editar_Pictograma")]
+        [HttpPut]
+        [Route("{id}")]
         //public string Editar_Pictograma([FromUri]string json_InfoNueva)
-        public IHttpActionResult Editar_Pictograma([FromUri]string json_InfoNueva)
+     
+        public HttpResponseMessage Editar_Pictograma([FromUri] int id, [FromBody] UPictograma json_InfoNueva)
         {
-            try
+            if (id != json_InfoNueva.Id)
             {
-                return Ok(new LPictograma().EditarPictograma(json_InfoNueva));
-
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+           
+            bool actualizado = new LPictograma().Actualizar(id, json_InfoNueva);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
         /**
          * Autor: Mary Zapata
@@ -94,13 +116,13 @@ namespace PiedrasDelTunjo.Controllers
          * Return: string que indica un mensaje con respecto al estado del procedimiento de cambio de estado
          **/
         [HttpGet]
-        [Route("Pictograma/Remover_Pictograma")]
+        [Route("Remover_Pictograma")]
         //public string Remover_Pictograma([FromUri]string json_Info)
-        public IHttpActionResult Remover_Pictograma([FromUri]string json_Info)
+        public IHttpActionResult Remover_Pictograma([FromUri]int id_pictograma)
         {
             try
             {
-                return Ok(new LPictograma().CambiarEstado_Pictograma(json_Info));
+                return Ok(new LPictograma().CambiarEstado_Pictograma(id_pictograma));
 
             }
             catch (Exception ex)
