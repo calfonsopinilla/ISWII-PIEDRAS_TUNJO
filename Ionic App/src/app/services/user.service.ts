@@ -28,7 +28,7 @@ const urlApi = environment.servicesAPI;
         const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
         await loading.present();
         console.log(user);
-              
+
         return this.http.post(`${ urlApi }/usuario/registro/generar_token`, user)
                 .pipe(catchError(err => {
                     return of( err.error );
@@ -39,26 +39,26 @@ const urlApi = environment.servicesAPI;
                 },
                 (err) => {},
                 () => loading.dismiss()
-            );    
+            );
     }
 
-    actualizarDatos(usuario: Usuario) {
-        return new Promise(async resolve => {
-            const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-            await loading.present();
-            this.http.put(`${ urlApi }/usuarios/${ usuario.Id }`, usuario)
-                        .subscribe(async res => {
-                            if (res['ok'] === true) {
-                                await this.storage.clear();
-                                await this.storage.set('usuario', usuario);
-                            }
-                            resolve(res['ok']);
-                        },
-                        (err) => {},
-                        () => loading.dismiss()
-                    );
-        });
-    }    
+    // actualizarDatos(usuario: Usuario) {
+    //     return new Promise(async resolve => {
+    //         const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+    //         await loading.present();
+    //         this.http.put(`${ urlApi }/usuarios/${ usuario.Id }`, usuario)
+    //                     .subscribe(async res => {
+    //                         if (res['ok'] === true) {
+    //                             await this.storage.clear();
+    //                             await this.storage.set('usuario', usuario);
+    //                         }
+    //                         resolve(res['ok']);
+    //                     },
+    //                     (err) => {},
+    //                     () => loading.dismiss()
+    //                 );
+    //     });
+    // }
 
     existeCorreo(correo: string) {
         return this.http.get(`${ urlApi }/registro/existeCorreo?correo=${ correo }`)
@@ -68,7 +68,7 @@ const urlApi = environment.servicesAPI;
     existeNumeroDocumento(numeroDoc: string) {
         return this.http.get(`${ urlApi }/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
                         .pipe(map(res => res['existe']));
-    }    
+    }
 
     // Validar si existe correo en la tabla Token Correo
     existeCorreoToken(correo: string) {
@@ -88,5 +88,5 @@ const urlApi = environment.servicesAPI;
             duration: 3000
         });
         toast.present();
-    }    
+    }
 }

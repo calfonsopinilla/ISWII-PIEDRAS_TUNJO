@@ -4,8 +4,7 @@ import { Usuario } from '../../interfaces/usuario.interface';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
- 
+
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.page.html',
@@ -47,7 +46,7 @@ export class CuentaPage implements OnInit {
       this.usuario.Icono_url = this.avatar;
     }
     // console.log(this.usuario);
-    const updated = await this.userService.actualizarDatos(this.usuario);
+    const updated = await this.auth.actualizarUsuario(this.usuario);
     if (updated) {
       this.updateUser = false;
       this.editForm.setValue({ nombre, apellido });

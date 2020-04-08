@@ -6,8 +6,7 @@
 
 <ion-content [fullscreen] class="ion-padding">
 
-  <app-avatar-selector 
-        [current]="userRegister.iconoUrl" (avatarSelected)="avatar = $event"></app-avatar-selector>
+  <app-avatar-selector (avatarSelected)="avatar = $event"></app-avatar-selector>
 
   <form [formGroup]="formUser" (ngSubmit)="crearUsuario()" *ngIf="formUser">
     <ion-list>

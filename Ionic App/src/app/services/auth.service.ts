@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserLogin } from '../interfaces/user-login.interface';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -7,8 +7,6 @@ import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { Usuario } from '../interfaces/usuario.interface';
 import * as jwt_decode from 'jwt-decode';
 
@@ -19,45 +17,44 @@ const urlApi = environment.servicesAPI;
 })
 export class AuthService {
 
+  usuario: Usuario;
   loginState$ = new EventEmitter<boolean>();
-  user: any;
-  jsonToken: any;
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute,
     private storage: Storage,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private toastCtrl: ToastController,
-    private userService: UserService
+    private toastCtrl: ToastController
   ) { }
 
   async login(userLogin: UserLogin) {
+
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();
+
     this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
-              .pipe(
-                catchError(err => {
+              .pipe(catchError(err => {
                 return of( err.error );
               }))
               .subscribe(
                 async (res) => {
-                  setTimeout(_ => {}, 1000);
+                  setTimeout(_ => {}, 1000); // timeout para el loadingCtrl
                   // Verificar la respuesta de la petición
                   if (res['ok'] === true) {
-                    if (res.userLogin.RolId === 1) {
-                      this.presentToast('No puedes ingresar como usuario administrador');
+                    this.storage.clear();
+                    // decode jwt
+                    const decode = jwt_decode(res['token']);
+                    const user = JSON.parse(decode['usuario']);
+                    // no acceso al usuario administrador
+                    if (user['RolId'] === 1) {
+                      this.presentToast('No puedes acceder como administrador');
                       return;
                     }
-                    this.storage.clear();
-                    const ok = await this.storage.set('token', res['token']);
-                    if (ok) {
-                      const jwt = jwt_decode(res['token']);
-                      const user = JSON.parse(jwt['usuario']);
-                      await this.storage.set('usuario', user);
-                      this.loginNavigate(user);
-                    }
+                    // Almacenar token
+                    this.guardarToken(res['token']);
+                    // Redireccionamiento del usuario
+                    this.loginNavigate(user);
                   } else {
                     this.presentToast(res['message']);
                   }
@@ -83,27 +80,84 @@ export class AuthService {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
       message,
-      position: 'top',
       duration: 3000
     });
     await toast.present();
   }
 
-  isAuthenticated(): Promise<boolean> {
-    return new Promise<boolean>(async (resolve) => {
-      const user = await this.storage.get('usuario') || null;
-      resolve( user !== null );
-    });
+  async isAuthenticated() {
+    return await this.validateToken(false);
   }
 
   async getUsuario() {
-    const usuario = await this.storage.get('usuario') || null;
-    return usuario;
+    await this.validateToken(false);
+    return {...this.usuario};
   }
 
   logout() {
-    this.storage.clear();
+    this.storage.clear(); // eliminamos el token
     this.loginState$.emit(false);
     this.router.navigate(['/inicio']);
+  }
+
+  async validateToken(redirect?: boolean): Promise<boolean> {
+    const token = await this.storage.get('token') || undefined;
+    if (!token) {
+      if (redirect) {
+        this.router.navigateByUrl('/login');
+      }
+      return Promise.resolve(false);
+    }
+
+    return new Promise<boolean>(resolve => {
+      const headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      });
+
+      this.http.get(`${ urlApi }/cuenta/userByToken`, { headers })
+                .pipe(
+                  catchError(err => of({ok: false}))
+                )
+                .subscribe(res => {
+                  if (res['ok'] === true) {
+                    this.usuario = res['usuario'];
+                    resolve(true);
+                  } else {
+                    resolve(false);
+                  }
+                });
+    });
+  }
+
+  async guardarToken(token: string) {
+    await this.storage.set('token', token);
+    await this.validateToken(false);
+  }
+
+  async actualizarUsuario(usuario: Usuario) {
+    const token = await this.storage.get('token');
+    if (!token) {
+      this.router.navigateByUrl('/login');
+    }
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+    await loading.present();
+    return new Promise(resolve => {
+      const headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      });
+      this.http.put(`${ urlApi }/cuenta/update/${ usuario.Id }`, usuario, { headers })
+                .pipe(
+                  catchError(err => of({ok: false}))
+                )
+                .subscribe(res => {
+                  if (res['ok'] === true) {
+                    this.storage.clear();
+                    this.guardarToken(res['token']);
+                    resolve(true);
+                  } else {
+                    resolve(false);
+                  }
+                }, err => {}, () => loading.dismiss());
+    });
   }
 }

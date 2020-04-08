@@ -34,7 +34,7 @@ export class FotoDocumentoPage implements OnInit {
   ngOnInit() {
 
     this.authService.getUsuario().then(data => {
-      this.user = data;      
+      this.user = data;
     });
   }
 
@@ -83,7 +83,7 @@ export class FotoDocumentoPage implements OnInit {
                           this.userAux.Imagen_documento = this.user['Imagen_documento'];
                           this.userAux.Token = this.user['Token'];
 
-                          this.userService.actualizarDatos(this.userAux);
+                          this.authService.actualizarUsuario(this.userAux);
                         }
 
                         loading.dismiss();
