@@ -89,10 +89,5 @@ namespace PiedrasDelTunjo.Controllers
             return Ok(noticiasComentarios);
         }
 
-
-
-
-
-
     }
 }

@@ -8,6 +8,7 @@ using Utilitarios;
 using Logica;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
+using System.Text;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -39,7 +40,6 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
-
 
     }
 }
