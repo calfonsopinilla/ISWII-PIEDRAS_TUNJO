@@ -3,8 +3,12 @@ import { InfoParqueService } from '../../services/info-parque.service';
 import { ItemInfo } from '../../interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { CoordenadasService } from '../../services/coordenadas.service';
+import * as Mapboxgl from 'mapbox-gl';
+import { PuntoInteres } from 'src/app/interfaces/punto-interes.interface';
+import { PuntosInteresService } from '../../services/puntos-interes.service';
 
-declare var mapboxgl: any;
+// declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
 const LATITUD = 4.8164000;
 
@@ -16,16 +20,19 @@ const LATITUD = 4.8164000;
 export class UbicacionParquePage implements OnInit, AfterViewInit {
 
   @ViewChild('map', { static: false }) map: any;
+  mapa: Mapboxgl.Map;
   itemInfo: ItemInfo;
 
   constructor(
     private infoParqueService: InfoParqueService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private coordenadasService: CoordenadasService,
+    private puntosIntService: PuntosInteresService
   ) { }
 
   ngAfterViewInit() {
-    mapboxgl.accessToken = environment.mapboxToken;
-    const map = new mapboxgl.Map({
+    Mapboxgl.accessToken = environment.mapboxToken;
+    this.mapa = new Mapboxgl.Map({
       // container: 'map',
       container: this.map.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -33,39 +40,25 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
       zoom: 15
     });
 
-    map.on('load', () => {
+    this.mapa.on('load', () => {
 
-      map.resize();
+      this.mapa.resize();
 
       // geojson
-      map.addSource('route', {
+      this.mapa.addSource('route', {
         type: 'geojson',
         data: {
           type: 'Feature',
           properties: {},
           geometry: {
             type: 'LineString',
-            coordinates: [
-              [-74.34453014946088, 4.814101441626363],
-              [-74.34201960182293, 4.817950186143946],
-              [-74.34334997749423, 4.819062041614913],
-              [-74.34453014946088, 4.8191261870676385],
-              [-74.34641842460722, 4.818506114106768],
-              [-74.34701923942664, 4.817886040580234],
-              [-74.3495297870646, 4.816218253806653],
-              [-74.34910063362206, 4.815106393685042],
-              [-74.3484139881138, 4.814379407237453],
-              [-74.34626822090179, 4.81333169010945],
-              [-74.34671883201656, 4.811749420367704],
-              [-74.34521679496835, 4.811471453682273],
-              [-74.34453014946088, 4.814101441626363]
-            ]
+            coordinates: this.coordenadasService.getLimites()
           }
         }
       });
 
       // layer
-      map.addLayer({
+      this.mapa.addLayer({
         id: 'route',
         type: 'line',
         source: 'route',
@@ -79,18 +72,28 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
         }
       });
 
+      // Cargar markers
+      this.puntosIntService.getPuntosInteres()
+                            .subscribe(res => {
+                              this.loadPuntosInteres(res);
+                            });
     });
 
-    map.on('click', (e: any) => {
+    this.mapa.on('click', (e: any) => {
       const { lng, lat } = e.lngLat;
-      // console.log(`${lng}, ${lat}`);
     });
+  }
 
-    const popup = new mapboxgl.Popup({offset: 25}).setText('Piedras del Tunjo');
-    const marker = new mapboxgl.Marker({draggable: false})
-                                      .setLngLat([LONGITUD, LATITUD])
-                                      .setPopup(popup)
-                                      .addTo(map);
+  loadPuntosInteres(puntosInt: PuntoInteres[]) {
+    // console.log(puntosInt);
+    puntosInt.forEach(punto => {
+      const popup = new Mapboxgl.Popup({offset: 25})
+                                .setText(punto.Descripcion);
+      new Mapboxgl.Marker({draggable: false})
+                                        .setLngLat([punto.Longitud, punto.Latitud])
+                                        .setPopup(popup)
+                                        .addTo(this.mapa);
+    });
   }
 
   ngOnInit() {
