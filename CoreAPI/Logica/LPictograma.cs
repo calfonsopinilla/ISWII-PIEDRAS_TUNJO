@@ -17,15 +17,16 @@ namespace Logica
       **/
     public class LPictograma
     {
+        private UPictograma pictograma;
 
-        public string RegistroPictograma(string jsonRegistroPic)
+        public string RegistroPictograma(UPictograma jsonRegistroPic)
         {
             try
             {
-                UPictograma datosPic = JsonConvert.DeserializeObject<UPictograma>(jsonRegistroPic);
+             //   UPictograma datosPic = JsonConvert.DeserializeObject<UPictograma>(jsonRegistroPic);
 
 
-                string existencia = new DAOPictograma().Valida_ExistenciaPictograma(datosPic.Id_parque, datosPic.Nombre);
+                string existencia = new DAOPictograma().Valida_ExistenciaPictograma(jsonRegistroPic.Id_parque, jsonRegistroPic.Nombre);
 
 
 
@@ -40,7 +41,9 @@ namespace Logica
                     case "El pictograma no ha sido creado":
                         try
                         {
-                            new DAOPictograma().RegistroPictograma(datosPic);
+                            jsonRegistroPic.Calificacion = 0;
+                            jsonRegistroPic.Estado = 1;
+                            new DAOPictograma().RegistroPictograma(jsonRegistroPic);
                             existencia = "Pictograma insertada satisfactoriamente";
                         }
                         catch (Exception ex)
@@ -59,6 +62,26 @@ namespace Logica
                 throw ex;
             }
         }
+        public UPictograma LeerPictograma(int pictogramaId)
+        {
+
+            try
+            {
+                return new DAOPictograma().LeerPictograma(pictogramaId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
+        public bool Actualizar(int id, UPictograma pictograma)
+        {
+            pictograma.Estado = 1;
+            return new DAOPictograma().Actualizar(id, pictograma);
+        }
 
         /**
         * Autor: Mary Zapata
@@ -70,7 +93,34 @@ namespace Logica
         {
             try
             {
-                return (List<UPictograma>)new DAOPictograma().Mostrar_Pictograma(estadoFiltro);
+                List <UPictograma> lista = (List<UPictograma>)new DAOPictograma().Mostrar_Pictograma(estadoFiltro);
+                List<UComentarioPic> listaCalificaciones = new DAOPictograma().BuscarCalificaciones();
+                if (listaCalificaciones != null)
+                {
+                    for (int i = 0; i < lista.Count; i++)
+                    {
+                        List<UComentarioPic> listaFiltro = listaCalificaciones.Where(x => x.PictogramaId == lista[i].Id).ToList();
+                        double operacion = 0;
+                        for (int j = 0; j < listaFiltro.Count; j++)
+                        {
+                            operacion = operacion + listaFiltro[j].Calificacionpic;
+
+                        }
+                        if (listaFiltro.Count != 0)
+                            lista[i].Calificacion = operacion / listaFiltro.Count;
+                        else
+                            lista[i].Calificacion = 0;
+                    }
+                }
+                else
+                {
+                    
+                }
+                
+
+
+
+                return lista;
             }
             catch (Exception ex)
             {
@@ -124,23 +174,17 @@ namespace Logica
         * 
         * Return: string con mensaje del cambio de estado
        **/
-        public string CambiarEstado_Pictograma(string json_Info)
+        public string CambiarEstado_Pictograma(int id_pictograma)
         {
             try
             {
                 string validacion = "";
-                UPictograma infoCambiar = JsonConvert.DeserializeObject<UPictograma>(json_Info);
+              //  UPictograma infoCambiar = JsonConvert.DeserializeObject<UPictograma>(json_Info);
 
-                if (infoCambiar == null)
-                {
-                    validacion = "Los campos estan vacios";
-                    return validacion;
-                }
-                else
-                {
-                    new DAOPictograma().CambiarEstado_Pictograma(infoCambiar);
+              
+                    new DAOPictograma().CambiarEstado_Pictograma(id_pictograma);
                     validacion = "Pictograma Eliminado Satisfactoriamente";
-                }
+                
                 return validacion;
             }
             catch (Exception ex)

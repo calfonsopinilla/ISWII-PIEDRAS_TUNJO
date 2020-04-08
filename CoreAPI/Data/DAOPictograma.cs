@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Data
 {
@@ -17,6 +18,11 @@ namespace Data
        * return string busqueda
        **/
         //
+        
+        private readonly Mapeo db = new Mapeo();
+        private Mapeo conexionBD;
+        private UPictograma pictograma;
+        private List<UPictograma> listapictogramas;
         public string Valida_ExistenciaPictograma(int id_parque, string nombre)
         {
             string busqueda = "";
@@ -88,7 +94,24 @@ namespace Data
             {
                 try
                 {
+
                     return db.Pictograma.Where(x => x.Estado == estadoFiltro).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        public List<UComentarioPic> BuscarCalificaciones()
+        {
+
+            using (var db = new Mapeo())
+            {
+                try
+                {
+
+                    return db.ComentarioPic.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -120,17 +143,39 @@ namespace Data
             }
 
         }
+        public UPictograma LeerPictograma(int pictogramaId)
+        {
+
+            try
+            {
+
+                this.pictograma = new UPictograma();
+
+                using (this.conexionBD = new Mapeo())
+                {
+
+                    this.pictograma = this.conexionBD.Pictograma.Find(pictogramaId);
+                    return this.pictograma;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         /**
          * Autor: Mary Zapata
          * Fecha: 20/03/2020
          * Metodo para editar el estado del pictograma en base de datos en la tabla pictograma        
          * return: void
          **/
-        public void CambiarEstado_Pictograma(UPictograma infoCambiar)
+        public void CambiarEstado_Pictograma(int id_pictograma)
         {
             using (var db = new Mapeo())
             {
-                var subs = db.Pictograma.Where(x => x.Id == infoCambiar.Id).FirstOrDefault();
+                var subs = db.Pictograma.Where(x => x.Id == id_pictograma).FirstOrDefault();
 
                 if (subs.Estado == 2)
                 {
@@ -142,6 +187,32 @@ namespace Data
                 }
                 db.SaveChanges();
             }
+        }
+
+        public bool Actualizar(int id, UPictograma pictograma)
+        {
+            try
+            {
+
+                db.Entry(pictograma).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Existe(id))
+                {
+                    return false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+        public bool Existe(int id)
+        {
+            return db.Pictograma.Any(x => x.Id == id);
         }
     }
 }

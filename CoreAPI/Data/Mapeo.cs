@@ -28,6 +28,7 @@ namespace Data
         public DbSet<UCabana> Cabana { get; set; }
         public DbSet<UPuntoInteres> PuntosInteres { get; set; }
         public DbSet<UPictograma> Pictograma { get; set; }
+        public DbSet<UComentarioPic> ComentarioPic { get; set; }
         public DbSet<UPuntuacion> Puntuacion { get; set; }
         public DbSet<UPQR> PQR { get; set; }
         public DbSet<UEstadoPQR> EstadoPqr { get; set; }
