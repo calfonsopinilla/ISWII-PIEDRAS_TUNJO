@@ -18,7 +18,7 @@ using System.Web;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", methods: "*", headers: "*")]
-    [Authorize]
+    [RoutePrefix("cuenta")]
     public class CuentaController : ApiController
     {
 
@@ -30,7 +30,7 @@ namespace PiedrasDelTunjo.Controllers
       */
         [HttpPost]
         [AllowAnonymous]
-        [Route("cuenta/iniciaSesion")]
+        [Route("iniciaSesion")]
         public HttpResponseMessage IniciarSesion([FromBody] UUsuario usuario){
             try
             {
@@ -40,13 +40,13 @@ namespace PiedrasDelTunjo.Controllers
                 }
                 // Se crea el token y se almacena en la variable token
                 string token = GenerateToken(userLogin);
-                userLogin.Token = token;
+                //userLogin.Token = token;
 
-                // Se actualiza el token de la BD
-                bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
-                if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
-                    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
-                }
+                //// Se actualiza el token de la BD
+                //bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
+                //if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
+                //    return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Ha ocurrido un error" });
+                //}
                 // Se retorna un mensaje satisfactorio y el token JWT
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token });
             }
@@ -56,15 +56,45 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+        /*
+         Autor: Steven Cruz
+         Fecha: 08/04/2020
+         Desc: Servicio que regresa el usuario tokenizado
+         */
         [HttpGet]
         [Authorize]
-        [Route("cuenta/userByToken")]
+        [Route("userByToken")]
         public HttpResponseMessage GetUserByToken()
         {
             var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
             var userClaim = claimsIdentity.FindFirst("usuario"); // or FindAll()
-            var user = JsonConvert.DeserializeObject<UUsuario>(userClaim.Value);
-            return Request.CreateResponse(HttpStatusCode.OK, user);
+            var usuario = JsonConvert.DeserializeObject<UUsuario>(userClaim.Value);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, usuario });
+        }
+
+        /*
+         * Autor: Steven Cruz
+         * Fecha: 08/04/2020
+         * Desc: Actualizar cuenta del usuario y regresar nuevo token
+         */
+        [HttpPut]
+        [Authorize]
+        [Route("update/{id}")]
+        public HttpResponseMessage Update([FromUri] int id, [FromBody] UUsuario usuario)
+        {
+            if (id != usuario.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+            }
+            var updated = new LUsuario().Actualizar(id, usuario);
+            if(updated)
+            {
+                string token = GenerateToken(usuario);
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token });
+            } else
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false });
+            }
         }
 
         /*
@@ -75,7 +105,7 @@ namespace PiedrasDelTunjo.Controllers
             Retorna: Booleano
         */
         [HttpGet]
-        [Route("cuenta/CerrarSesion")]
+        [Route("CerrarSesion")]
         public HttpResponseMessage CerrarSesion([FromUri] int id) {
 
             try {
