@@ -33,43 +33,7 @@ export class AuthService {
     private userService: UserService
   ) { }
 
-  /*
-  TENGA EN CUENTA
-
-  Aqui en este comentario le voy a poner la función de decodificar el token, ya usted vera como acomoda
-  el resto del codigo porque toca tener en cuenta unas cosas
-  */
-
   async login(userLogin: UserLogin) {
-
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
-
-    this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
-              .pipe(catchError(err => {
-                return of( err.error );
-              }))
-              .subscribe(
-                async (res) => {
-                  setTimeout(_ => {}, 2000); // timeout para el loadingCtrl
-                  // Verificar la respuesta de la petición
-                  if (res['ok'] === true) {
-                    this.storage.clear();
-                    const ok = await this.storage.set('token', res['token']);
-                    if (ok) {
-                      // const jwtToken = jwt_decode(res['token']);
-                      // const usuario = JSON.parse(jwtToken['usuario']);
-                    }
-                  } else {
-                    this.presentToast(res['message']);
-                  }
-                },
-                (err) => {},
-                () => loading.dismiss()
-              );
-  }
-
-  /*async login(userLogin: UserLogin) {
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();
     this.http.post(`${ urlApi }/cuenta/iniciaSesion`, userLogin)
@@ -87,9 +51,12 @@ export class AuthService {
                       return;
                     }
                     this.storage.clear();
-                    const ok = await this.storage.set('usuario', res['userLogin']);
+                    const ok = await this.storage.set('token', res['token']);
                     if (ok) {
-                      this.loginNavigate(res['userLogin']);
+                      const jwt = jwt_decode(res['token']);
+                      const user = JSON.parse(jwt['usuario']);
+                      await this.storage.set('usuario', user);
+                      this.loginNavigate(user);
                     }
                   } else {
                     this.presentToast(res['message']);
@@ -99,7 +66,6 @@ export class AuthService {
                 () => loading.dismiss()
               );
   }
-  */
 
   loginNavigate(userLogin: Usuario) {
     if (Number(userLogin['RolId'] === 2)) {
@@ -136,7 +102,7 @@ export class AuthService {
   }
 
   logout() {
-    this.storage.remove('usuario');
+    this.storage.clear();
     this.loginState$.emit(false);
     this.router.navigate(['/inicio']);
   }
