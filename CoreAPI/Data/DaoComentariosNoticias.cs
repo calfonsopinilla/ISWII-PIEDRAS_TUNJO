@@ -57,18 +57,13 @@ namespace Data
                               
 
                 return listaComentarios.Where(x => x.Noticia_id == noticiaId && x.Reportado== false).ToList();
-    
-
-
+   
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        /// nuevo metodo envio 
-        /// 
 
 
         public List<UNoticia> enviarNoticias() {
@@ -78,9 +73,6 @@ namespace Data
             }
             
         }
-
-
-
 
 
 
@@ -94,16 +86,35 @@ namespace Data
         }
 
 
-
-
-        public bool eliminarComentarioNoticia(int idComentario) {
-            try{
+        public bool eliminarComentarioNoticia(long idComentario)
+        {
+            try
+            {
                 var comentario = db.ComentariosNoticias.Find(idComentario);
                 db.ComentariosNoticias.Remove(comentario);
+                db.SaveChanges();
                 return true;
             }
-            catch (Exception ex) {
-                throw ex; 
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool reportarComentarioNotica(long idComentario)
+        {
+            try
+            {
+                var comentario = db.ComentariosNoticias.Find(idComentario);
+                comentario.Reportado = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+
             }
         }
 

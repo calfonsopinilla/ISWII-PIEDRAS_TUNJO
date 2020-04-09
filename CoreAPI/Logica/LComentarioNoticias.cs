@@ -16,7 +16,6 @@ namespace Logica
             return new DaoComentariosNoticias().agregarComentarioNoticia(comentarioNotica);
         }
 
-
         
 
         public IEnumerable<UComentarioNoticia> listaComentariosNoticia(int noticiaId)
@@ -51,8 +50,6 @@ namespace Logica
 
 
 
-
-
         public UNoticia enviarVerNoticia(int id)
         {
             UNoticia noticias = new DaoComentariosNoticias().enviarNoticias().Where(x => x.Id == id ).FirstOrDefault();
@@ -68,5 +65,17 @@ namespace Logica
             }
             return noticias;
         }
+
+        public bool reportarComentarioNoticia(long idComentario)
+        {
+            return new DaoComentariosNoticias().reportarComentarioNotica(idComentario);
+        }
+
+        public bool eliminarComentarioNoticia(long idComentario)
+        {
+            return new DaoComentariosNoticias().eliminarComentarioNoticia(idComentario);
+        }
+
+
     }
 }

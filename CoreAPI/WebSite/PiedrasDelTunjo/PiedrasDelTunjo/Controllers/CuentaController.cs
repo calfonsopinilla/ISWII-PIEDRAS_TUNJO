@@ -41,7 +41,6 @@ namespace PiedrasDelTunjo.Controllers
                 // Se crea el token y se almacena en la variable token
                 string token = GenerateToken(userLogin);
                 //userLogin.Token = token;
-
                 //// Se actualiza el token de la BD
                 //bool actualizar = new LUsuario().Actualizar(userLogin.Id, userLogin);
                 //if (!actualizar) { // En caso de que exista un error a la hora de actualizar la base de datos
@@ -107,7 +106,6 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("CerrarSesion")]
         public HttpResponseMessage CerrarSesion([FromUri] int id) {
-
             try {
 
                 UUsuario usuario = new LUsuario().Buscar(id); // Se obtiene el usuario
@@ -122,7 +120,6 @@ namespace PiedrasDelTunjo.Controllers
             } catch (Exception ex) { throw ex; }
         }
 
-
         /*
             @Autor: Jhonattan Pulido
             Fecha creación: 06/04/2020
@@ -130,26 +127,23 @@ namespace PiedrasDelTunjo.Controllers
             Parámetros: UUsuario usuario : Contiene los datos del usuario que se loggea
             Retorna: El token generado
         */
-        private string GenerateToken(UUsuario usuario) {            
 
+        private string GenerateToken(UUsuario usuario) {            
             // Variables de configuración Jwt
             var _secrectKey = ConfigurationManager.AppSettings["SecretKey"];
             var _issuer = ConfigurationManager.AppSettings["Issuer"];
             var _audience = ConfigurationManager.AppSettings["Audience"];
             if (!Int32.TryParse(ConfigurationManager.AppSettings["Expires"], out int _expires))
                 _expires = 24;
-
             // CREAMOS EL HEADER
             var _symmetricSecurityKey = new SymmetricSecurityKey(System.Text.Encoding.Default.GetBytes(_secrectKey));
             var _signingCredentials = new SigningCredentials(_symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
             var _header = new JwtHeader(_signingCredentials);
-
             // CREAMOS LOS CLAIMS
             var _claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("usuario", JsonConvert.SerializeObject(usuario))
             };
-
             // CREAMOS EL PAYLOAD
             var _payload = new JwtPayload(
                     issuer: _issuer,
@@ -159,10 +153,8 @@ namespace PiedrasDelTunjo.Controllers
                     // expira a las 24 horas
                     expires: DateTime.UtcNow.AddHours(_expires)
                 );
-
             // GENERAMOS EL TOKEN
             var _token = new JwtSecurityToken(_header, _payload);
-
             return new JwtSecurityTokenHandler().WriteToken(_token);
         }
     }

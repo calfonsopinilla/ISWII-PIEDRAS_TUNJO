@@ -22,6 +22,7 @@ namespace PiedrasDelTunjo.Controllers
         */
 
         [HttpGet]
+        [Authorize]
         [Route("")]
         // GET: eventos/
         public IHttpActionResult ObtenerEventos()
@@ -46,6 +47,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("")]
         // POST: eventos/
         public HttpResponseMessage Agregar([FromBody] UEvento evento)
@@ -53,12 +55,15 @@ namespace PiedrasDelTunjo.Controllers
             if (evento == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Evento null" });
+            } else if (evento.FechaPublicacion < DateTime.Now) {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Fecha invalida" });
             }
             bool creado = new LEvento().Agregar(evento);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]
         // PUT: eventos/5
         public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UEvento evento)
@@ -72,6 +77,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         // DELETE: eventos/5
         public HttpResponseMessage Eliminar([FromUri] int id)
