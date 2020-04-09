@@ -57,6 +57,28 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
+
+        [HttpGet]
+        [Route("{id}")]        
+        public IHttpActionResult BuscarNoticia([FromUri] int id)
+        {                      
+            return Ok(new LNoticia().Buscar(id));
+        }
+
+
+        [HttpPut]
+        [Route("{id}")]   
+        public HttpResponseMessage ActualizarNoticia([FromUri] int id, [FromBody] UNoticia noticia)
+        {
+            if (id != noticia.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+            }
+            bool actualizado = new LNoticia().Actualizar(id, noticia);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
        *Fecha de creación: 18/03/2020
@@ -87,7 +109,7 @@ namespace PiedrasDelTunjo.Controllers
        */
         [HttpGet]
         [Route("eliminarNoticia")]
-        public bool eliminarNoticia(int id)
+        public bool eliminarNoticia([FromUri]int id)
         {
             try
             {

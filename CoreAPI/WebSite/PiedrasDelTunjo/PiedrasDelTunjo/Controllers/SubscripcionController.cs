@@ -65,7 +65,7 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
-        /*[HttpGet]        
+        [HttpGet]        
         [Route("{id}")]        
         public IHttpActionResult BuscarSubscripcion([FromUri] int id)
         {
@@ -76,9 +76,9 @@ namespace PiedrasDelTunjo.Controllers
             }
             //return Request.CreateResponse(HttpStatusCode.OK, subscripcion);
             return Ok(subscripcion);
-        }*/
+        }
 
-        /*[HttpPut]
+        [HttpPut]
         [Route("{id}")]        
         public HttpResponseMessage ActualizarSubscripciones([FromUri] int id, [FromBody] USubscripcion subscripcion)
         {
@@ -89,7 +89,7 @@ namespace PiedrasDelTunjo.Controllers
             
             bool actualizado = new LSubscripcion().ActualizarSubscripcion(id, subscripcion);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
-        }*/
+        }
 
         /**
          * Autor: Gabriel Zapata

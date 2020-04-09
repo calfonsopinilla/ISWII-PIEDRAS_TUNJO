@@ -62,10 +62,13 @@ namespace Logica
                 if (new DAONoticia().buscarId(datosJson.Id) != true)
                 {
                     DAONoticia noticia = new DAONoticia();
-                    datosJson.ImagenesUrl = "[\"" + datosJson.ImagenesUrl  + "\"]";
+                    string cadena = "[";
+                    //datosJson.ImagenesUrl = "[" + '\u0022' + datosJson.ImagenesUrl + '\u0022' + "]";
+                    datosJson.ImagenesUrl = cadena+ "\"" + datosJson.ImagenesUrl + "\""+"]";
                     datosJson.Token = "";
                     datosJson.Estado = 1;
-                    noticia.agregarNoticias(datosJson);
+                    datosJson.FechaPublicacion = DateTime.Parse(datosJson.Fecha_Publicacion);
+                     noticia.agregarNoticias(datosJson);
                     return true;
                 }
                 else
@@ -78,6 +81,18 @@ namespace Logica
             {
                 throw ex;
             }
+        }
+
+
+        public UNoticia Buscar(int id)
+        {
+            return new DAONoticia().Buscar(id);
+        }
+
+
+        public bool Actualizar(int id, UNoticia noticia)
+        {
+            return new DAONoticia().Actualizar(id, noticia);
         }
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
