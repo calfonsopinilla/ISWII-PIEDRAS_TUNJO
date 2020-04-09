@@ -22,7 +22,7 @@ namespace PiedrasDelTunjo.Controllers
         */
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         [Route("")]
         // GET: eventos/
         public IHttpActionResult ObtenerEventos()
@@ -47,7 +47,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route("")]
         // POST: eventos/
         public HttpResponseMessage Agregar([FromBody] UEvento evento)
@@ -63,7 +63,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        //[Authorize]
         [Route("{id}")]
         // PUT: eventos/5
         public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UEvento evento)
@@ -77,7 +77,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
+        //[Authorize]
         [Route("{id}")]
         // DELETE: eventos/5
         public HttpResponseMessage Eliminar([FromUri] int id)
