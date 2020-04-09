@@ -15,13 +15,7 @@ namespace PiedrasDelTunjo.Controllers
     public class ComentarioNoticiaController : ApiController
     {
 
-        /// Jose luis Soriano roa 
-        /// Fecha : 27/03/2020
-        /// Resive un objeto de tipo ucomentarioNoticia
-        /// Si fue o no creado el comentario 
-
-
-       
+        
 
         /// Jose luis Soriano roa 
         /// Fecha : 27/03/2020
