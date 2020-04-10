@@ -52,7 +52,7 @@ namespace Logica
                 return new { ok = false, message = messageError };
             } else
             {
-                return new { ok = true, message = "Upload images" };
+                return new { ok = true, message = "Upload images", fileName = postedFile.FileName };
             }
         }
 
