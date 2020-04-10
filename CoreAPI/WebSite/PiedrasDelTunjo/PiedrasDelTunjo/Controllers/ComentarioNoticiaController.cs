@@ -108,7 +108,7 @@ namespace PiedrasDelTunjo.Controllers
         /// id del comentario a eliminar
         /// true si fue eliminado falso si no 
 
-        [HttpPut]
+        [HttpDelete]
         [Authorize]
         [Route("{id}")]
         public HttpResponseMessage eliminarComentario([FromUri] long id)
