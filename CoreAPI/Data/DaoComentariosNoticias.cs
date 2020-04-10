@@ -40,7 +40,8 @@ namespace Data
                                  nombreUsuario = usuarios.Nombre + " " + usuarios.Apellido,
                                  calificacion = comentarios.Calificacion,
                                  noticiaId = comentarios.Noticia_id,
-                                 reportado = comentarios.Reportado
+                                 reportado = comentarios.Reportado,
+                                 idUsuario = comentarios.UsuarioId
                              }).ToList();
 
                 listaComentarios = lista.AsEnumerable().Select(p => new UComentarioNoticia()
@@ -51,8 +52,9 @@ namespace Data
                     NombreUsuario = p.nombreUsuario,
                     Calificacion = p.calificacion,
                     Noticia_id = p.noticiaId,
-                    Reportado = p.reportado
-                    
+                    Reportado = p.reportado,
+                    UsuarioId =p.idUsuario
+
                 }).ToList();
                               
 
