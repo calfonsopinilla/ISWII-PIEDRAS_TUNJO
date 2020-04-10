@@ -12,6 +12,7 @@ using System.Web.Http.Cors;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("Noticias")]
     public class NoticiaController : ApiController
     {
         /*
@@ -27,7 +28,8 @@ namespace PiedrasDelTunjo.Controllers
         {
             try
             {
-                var noticias = JsonConvert.DeserializeObject<List<UNoticia>>(new LNoticia().informacionNoticia());
+                //var noticias = JsonConvert.DeserializeObject<List<UNoticia>>(new LNoticia().informacionNoticia());
+                var noticias = new LNoticia().informacionNoticia();
                 return Ok(noticias);
             }
             catch (Exception ex)
@@ -42,20 +44,41 @@ namespace PiedrasDelTunjo.Controllers
        *Recibe: una estreuctura json para agregar los datos
        *Retorna: un true para saber que se agregaron los datos
        */
-        [HttpGet]
+        [HttpPost]
         [Route("agregarNoticia")]
-        public bool agregarNoticia(string datosJson)
+        public IHttpActionResult agregarNoticia([FromBody]UNoticia datosJson)
         {
             try
-            {
-                LNoticia noticia = new LNoticia();
-                return noticia.agregarNoticia(datosJson);
+            {               
+                return Ok( new LNoticia().agregarNoticia(datosJson));
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        [HttpGet]
+        [Route("{id}")]        
+        public IHttpActionResult BuscarNoticia([FromUri] int id)
+        {                      
+            return Ok(new LNoticia().Buscar(id));
+        }
+
+
+        [HttpPut]
+        [Route("{id}")]   
+        public HttpResponseMessage ActualizarNoticia([FromUri] int id, [FromBody] UNoticia noticia)
+        {
+            if (id != noticia.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+            }
+            bool actualizado = new LNoticia().Actualizar(id, noticia);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
        *Fecha de creación: 18/03/2020
@@ -86,7 +109,7 @@ namespace PiedrasDelTunjo.Controllers
        */
         [HttpGet]
         [Route("eliminarNoticia")]
-        public bool eliminarNoticia(int id)
+        public bool eliminarNoticia([FromUri]int id)
         {
             try
             {

@@ -16,7 +16,6 @@ namespace Logica
             return new DaoComentariosNoticias().agregarComentarioNoticia(comentarioNotica);
         }
 
-
         
 
         public IEnumerable<UComentarioNoticia> listaComentariosNoticia(int noticiaId)
@@ -40,15 +39,12 @@ namespace Logica
 
                         noticias[i].ListaImagenes = JsonConvert.DeserializeObject<List<string>>(noticias[i].ImagenesUrl);
                     }
-                    List<UComentarioNoticia> listaComentariosNoticia = new DaoComentariosNoticias().ListaComentariosNoticia(noticias[i].Id);
+                    List<UComentarioNoticia> listaComentariosNoticia = new DaoComentariosNoticias().ListaComentariosNoticia(noticias[i].Id).OrderByDescending(x => x.FechaPublicacion).ToList();
                     noticias[i].ListaNoticias = listaComentariosNoticia;
                 }
             }
-            return noticias;
+            return noticias.OrderByDescending(x => x.FechaPublicacion).ToList() ;
         }
-
-
-
 
 
 
@@ -68,5 +64,17 @@ namespace Logica
             }
             return noticias;
         }
+
+        public bool reportarComentarioNoticia(long idComentario)
+        {
+            return new DaoComentariosNoticias().reportarComentarioNotica(idComentario);
+        }
+
+        public bool eliminarComentarioNoticia(long idComentario)
+        {
+            return new DaoComentariosNoticias().eliminarComentarioNoticia(idComentario);
+        }
+
+
     }
 }

@@ -18,14 +18,14 @@ namespace Logica
       *Recibe:
       *Retorna:
       */
-        public string informacionNoticia()
+        public List<UNoticia> informacionNoticia()
         {
             try
             {
                 List<UNoticia> noticias = new DAONoticia().informacionNoticia();
                 if (noticias.Count < 0)
                 {
-                    return "null";
+                    return null;
                 }
                 else
                 {
@@ -34,9 +34,12 @@ namespace Logica
                         if (!String.IsNullOrEmpty(noticias[x].ImagenesUrl))
                         {
                             noticias[x].ListaImagenes = JsonConvert.DeserializeObject<List<string>>(noticias[x].ImagenesUrl);
+                            noticias[x].FechaPublicacion = DateTime.Parse(noticias[x].FechaPublicacion.ToString("dd/MM/yyyy"));
+                            noticias[x].Fecha_Publicacion = noticias[x].FechaPublicacion.ToString("dd/MM/yyyy");
                         }
                     }
-                    return JsonConvert.SerializeObject(noticias);
+                    //return JsonConvert.SerializeObject(noticias);
+                    return noticias;
                 }
             }
             catch (Exception ex)
@@ -51,15 +54,21 @@ namespace Logica
        *Recibe: 
        *Retorna: 
        */
-        public bool agregarNoticia(string datosJson)
+        public bool agregarNoticia(UNoticia datosJson)
         {
             try
             {
-                UNoticia datos = JsonConvert.DeserializeObject<UNoticia>(datosJson);
-                if (new DAONoticia().buscarId(datos.Id) != true)
+                
+                if (new DAONoticia().buscarId(datosJson.Id) != true)
                 {
                     DAONoticia noticia = new DAONoticia();
-                    noticia.agregarNoticias(datos);
+                    string cadena = "[";
+                    //datosJson.ImagenesUrl = "[" + '\u0022' + datosJson.ImagenesUrl + '\u0022' + "]";
+                    datosJson.ImagenesUrl = cadena+ "\"" + datosJson.ImagenesUrl + "\""+"]";
+                    datosJson.Token = "";
+                    datosJson.Estado = 1;
+                    datosJson.FechaPublicacion = DateTime.Parse(datosJson.Fecha_Publicacion);
+                     noticia.agregarNoticias(datosJson);
                     return true;
                 }
                 else
@@ -72,6 +81,18 @@ namespace Logica
             {
                 throw ex;
             }
+        }
+
+
+        public UNoticia Buscar(int id)
+        {
+            return new DAONoticia().Buscar(id);
+        }
+
+
+        public bool Actualizar(int id, UNoticia noticia)
+        {
+            return new DAONoticia().Actualizar(id, noticia);
         }
         /*
        @Autor: Carlos Alfonso Pinilla Garzon

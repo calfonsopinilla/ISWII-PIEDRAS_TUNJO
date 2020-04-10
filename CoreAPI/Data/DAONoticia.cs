@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Utilitarios;
+using System.Data.Entity.Infrastructure;
 
 namespace Data
 {
@@ -23,7 +24,8 @@ namespace Data
             {
                 try
                 {
-                    return db.Noticias.OrderBy(x => x.Id).ToList();
+                   // return db.Noticias.OrderBy(x => x.Id).ToList();
+                    return db.Noticias.Where(x => x.Estado == 1).OrderBy(x => x.Id).ToList();
                 }
                 catch (Exception ex)
                 {
@@ -54,6 +56,56 @@ namespace Data
                 }
             }
         }
+
+
+        public UNoticia Buscar(int id)
+        {
+
+            using (var db = new Mapeo())
+            {
+                try
+                {
+                    return db.Noticias.Find(id);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public bool Actualizar(int id, UNoticia noticia)
+        {
+            using (var db = new Mapeo())
+            {
+                try
+                {
+                    db.Entry(noticia).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!Existe(id))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+        }
+        public bool Existe(int id)
+        {
+            using (var db = new Mapeo())
+            {
+                return db.Noticias.Any(x => x.Id == id);
+            }
+        }
+
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
        *Fecha de creación: 18/03/2020
