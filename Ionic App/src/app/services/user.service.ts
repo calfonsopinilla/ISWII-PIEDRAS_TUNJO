@@ -81,7 +81,7 @@ const urlApi = environment.servicesAPI;
         return this.http.get(`${ urlApi }/usuario/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
                         .pipe(map(res => res['existe']));
     }
-
+    
     async presentToast(message: string) {
         const toast = await this.toastCtrl.create({
             message,

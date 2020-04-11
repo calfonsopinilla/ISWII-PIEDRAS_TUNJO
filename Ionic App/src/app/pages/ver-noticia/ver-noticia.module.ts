@@ -6,13 +6,22 @@ import { VerNoticiaPageRoutingModule } from './ver-noticia-routing.module';
 import { VerNoticiaPage } from './ver-noticia.page';
 import { PipesModule } from '../../pipes/pipes.module';
 import { ComponentsModule } from '../../components/components.module';
+import { ModalComentarioPage} from '../../pages/noticias/modal-comentario/modal-comentario.page';
+import {ModalComentarioPageModule} from '../../pages/noticias/modal-comentario/modal-comentario.module';  
+
+
+
 @NgModule({
+  entryComponents:[
+    ModalComentarioPage
+  ], 
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     VerNoticiaPageRoutingModule,PipesModule,
-    ComponentsModule
+    ComponentsModule,
+     ModalComentarioPageModule
   ],
   declarations: [VerNoticiaPage]
 })
