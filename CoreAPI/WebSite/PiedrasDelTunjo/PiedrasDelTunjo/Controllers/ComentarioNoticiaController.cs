@@ -92,10 +92,10 @@ namespace PiedrasDelTunjo.Controllers
         /// id del comentario a reportar
         /// true si fue exitosa la operacion.
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
-        [Route("{id}")]
-        public HttpResponseMessage reportarComentario([FromUri] long id)
+        [Route("reportar")]
+        public HttpResponseMessage reportarComentario([FromBody] long id)
         {
 
             bool reportado = new LComentarioNoticias().reportarComentarioNoticia(id);
