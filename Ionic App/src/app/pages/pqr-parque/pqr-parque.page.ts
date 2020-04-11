@@ -81,11 +81,13 @@ export class PqrParquePage implements OnInit {
         },
         {
           text: 'Aceptar',
-          handler: () => {
+          handler: async () => {
             // console.log('Confirm Okay');
-            const deleted = this.pqrService.eliminarPqr(pqr.Id);
+            const deleted = await this.pqrService.eliminarPqr(pqr.Id);
             if (deleted) {
               this.pqrs = this.pqrs.filter(x => x.Id !== pqr.Id);
+            } else {
+              this.presentToast('Ha ocurrido un error');
             }
           }
         }
@@ -95,16 +97,19 @@ export class PqrParquePage implements OnInit {
     await alertConfirm.present();
   }
 
-  agregarPQR(pregunta: string) {
+  async agregarPQR(pregunta: string) {
     const pqr: Pqr = {
       FechaPublicacion: new Date(),
       Pregunta: pregunta,
       Respuesta: ''
     };
-    // console.log(pqr);
-    this.pqrService.agregarPqr(pqr);
-    // Refrescar lista
-    this.pqrs.unshift(pqr);
+    const ok = await this.pqrService.agregarPqr(pqr);
+    if (ok) {
+      // Refrescar lista
+      this.pqrs.unshift(pqr);
+    } else {
+      this.presentToast('Ha ocurrido un error');
+    }
   }
 
   async presentToast(message: string) {
