@@ -17,7 +17,7 @@ const urlApi = environment.servicesAPI;
 })
 export class AuthService {
 
-  usuario: Usuario;
+  private usuario: Usuario;
   loginState$ = new EventEmitter<boolean>();
 
   constructor(

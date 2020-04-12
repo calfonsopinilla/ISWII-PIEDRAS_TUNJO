@@ -42,9 +42,8 @@
                     </ion-list>
                     <ion-list>
                         <ion-list *ngIf="noticias.listaComentariosNoticia.length>0">
-                            <!--agregar comentario -->
                             
-                                <form  *ngIf="session"  #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro)">
+                                <form  *ngIf="session"  #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro,noticias.id)">
                                     <ion-item style="background-color: blue;">
                                         <ion-textarea name="nombre" required [(ngModel)]="registerUser.comentar"
                                             type="text" placeholder="Comentar"></ion-textarea>
@@ -53,21 +52,26 @@
                                         </ion-button>
                                     </ion-item>
                                 </form>
-                            
                             <ion-item>
                             <ion-label>Comentarios</ion-label>
-                        </ion-item>
-                            <ion-list *ngFor="let comentarios of noticias.listaComentariosNoticia; let y = index">
-
-                                <ion-label style="color: blue;">
-                                    {{ comentarios.nombreUsuario }} <br>
-                                </ion-label>
-                                <ion-label>
-                                    {{comentarios.descripcion}} <br>
-                                    {{comentarios.fechaPublicacion | date:"dd-MM-yyyy"}}<br>
-                                </ion-label>
-
-                            </ion-list>
+                        </ion-item><br>
+                            <ng-container *ngFor="let comentarios of noticias.listaComentariosNoticia; let y = index">
+                                <div *ngIf="y<3">
+                                    <div style="color: blue;">
+                                    {{ comentarios.nombreUsuario }} 
+                                    </div>  
+                                    <div *ngIf="session">
+                                    <ion-buttons style="display: flex; float:right;">
+                                        <ion-button (click)="abrirOpciones(comentarios.id,usuario.Id,comentarios.usuarioId)"  color="light" ><ion-icon name="ellipsis-vertical-outline" style="color: black; border-color: blanchedalmond;"></ion-icon></ion-button>
+                                    </ion-buttons>    
+                                    </div>
+                                    <div>
+                                        {{comentarios.descripcion}} <br>
+                                        {{comentarios.fechaPublicacion | date:"dd-MM-yyyy"}}<br>
+                                    </div>
+                                    <hr style="color:black;" />
+                                </div> 
+                            </ng-container>
                         </ion-list>
                     </ion-list>
                 </ion-card-header>

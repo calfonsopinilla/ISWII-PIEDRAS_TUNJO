@@ -31,6 +31,7 @@ export class CuentaPage implements OnInit {
   crearForm() {
     this.auth.getUsuario().then(user => {
       this.usuario = user;
+
       this.editForm = this.fb.group({
         nombre: [user.Nombre, Validators.required],
         apellido: [user.Apellido, Validators.required]
@@ -39,6 +40,7 @@ export class CuentaPage implements OnInit {
   }
 
   async onSubmit() {
+    
     const {nombre, apellido} = this.editForm.value;
     this.usuario.Nombre = nombre;
     this.usuario.Apellido = apellido;

@@ -3,6 +3,8 @@ export interface ComentarioNoticia {
     fechaPublicacion : Date ;
     descripcion : string ; 
     nombreUsuario : string; 
-    calificaion : number; 
+    calificacion : number; 
     noticiaId : number;
+    usuarioId : number;
 }
+

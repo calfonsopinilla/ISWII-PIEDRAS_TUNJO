@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: NoticiasPage
+  },
+  {
+    path: 'modal-comentario',
+    loadChildren: () => import('./modal-comentario/modal-comentario.module').then( m => m.ModalComentarioPageModule)
   }
 ];
 

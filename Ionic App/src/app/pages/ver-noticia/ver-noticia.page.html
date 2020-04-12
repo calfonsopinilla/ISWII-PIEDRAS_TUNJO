@@ -37,6 +37,11 @@
           <ion-label style="color: blue;" >
               {{ comentarios.nombreUsuario }} <br>
           </ion-label> 
+          <div *ngIf="session">
+            <ion-buttons style="display: flex; float:right;">
+                <ion-button (click)="abrirOpciones(comentarios.id,usuario.Id,comentarios.usuarioId)"  color="light" ><ion-icon name="ellipsis-vertical-outline" style="color: black; border-color: blanchedalmond;"></ion-icon></ion-button>
+            </ion-buttons>
+            </div> 
           <ion-label>
               {{comentarios.descripcion}} <br>
               {{comentarios.fechaPublicacion | date:"dd-MM-yyyy"}}<br>
@@ -51,8 +56,6 @@
     </ion-card-header> 
   </ion-list>
 </ion-card>
-
-
 
 </ion-content>
 <ion-footer *ngIf="session">
