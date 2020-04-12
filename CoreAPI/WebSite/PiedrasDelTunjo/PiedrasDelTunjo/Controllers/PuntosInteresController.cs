@@ -32,7 +32,7 @@ namespace PiedrasDelTunjo.Controllers
             Retorna: Booleano y mensaje desriptivo
         */
         [HttpPost]
-        //[Route("crear")]
+        [Authorize]
         [Route("")]
         public HttpResponseMessage CrearPuntoInteres([FromBody] UPuntoInteres puntoInteres) {
             puntoInteres.LastModification = DateTime.Now;
@@ -44,6 +44,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("{id}")]
         public HttpResponseMessage LeerPuntoInteres([FromUri] int id)
         {
@@ -57,6 +58,7 @@ namespace PiedrasDelTunjo.Controllers
 
         //
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         // DELETE: 
         public HttpResponseMessage Eliminar([FromUri] int id)
@@ -71,6 +73,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]
         public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UPuntoInteres puntoInteres)
         {
@@ -82,8 +85,5 @@ namespace PiedrasDelTunjo.Controllers
             bool actualizado = new LPuntoInteres().Actualizar(id, puntoInteres);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
-
-
-
     }
 }
