@@ -20,7 +20,7 @@ export class FotoDocumentoPage implements OnInit {
   img: any;
   response: any;  
   user: any;
-  userAux: Usuario;
+  userAux: Usuario;    
 
   constructor(
     private camera: Camera,
@@ -35,7 +35,7 @@ export class FotoDocumentoPage implements OnInit {
 
     this.authService.getUsuario().then(data => {
       this.user = data;
-    });
+    });    
   }
 
   openCamera() {
@@ -62,33 +62,42 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    await this.imagesService.uploadImage(this.imgData, 'identificacion')
+    const answer = await this.imagesService.uploadImage(this.imgData, 'identificacion')
                       .then(res => {
                         this.response = res;
-
-                        if (res['ok']) {
-                          
-                          this.userAux.Id = this.user['Id'];
-                          this.userAux.Nombre = this.user['Nombre'];
-                          this.userAux.Apellido = this.user['Apellido'];
-                          this.userAux.CorreoElectronico = this.user['CorreoElectronico'];
-                          this.userAux.Clave = this.user['Clave'];
-                          this.userAux.NumeroDocumento = this.user['NumeroDocumento'];
-                          this.userAux.TipoDocumento = this.user['TipoDocumento'];
-                          this.userAux.LugarExpedicion = this.user['LugarExpedicion'];
-                          this.userAux.Icono_url = this.user['Icono_url'];
-                          this.userAux.VerificacionCuenta = this.user['VerificacionCuenta'];
-                          this.userAux.EstadoCuenta = this.user['EstadoCuenta'];
-                          this.userAux.RolId = this.user['RolId'];
-                          this.userAux.Imagen_documento = this.user['Imagen_documento'];
-                          this.userAux.Token = this.user['Token'];
-
-                          this.authService.actualizarUsuario(this.userAux);
-                        }
-
                         loading.dismiss();
-                        this.presentToast(res.response);                        
+                        this.presentToast(res.response);
+                        alert("Response Ok: " + this.response['ok'] + " - Negado: " + !this.response['ok']);
+                        alert("Response File: " + this.response['file']);
                       });      
+
+    if (this.response['ok']) {
+                                  
+        this.userAux.Id = this.user['Id'];
+        this.userAux.Nombre = this.user['Nombre'];
+        this.userAux.Apellido = this.user['Apellido'];
+        this.userAux.CorreoElectronico = this.user['CorreoElectronico'];
+        this.userAux.Clave = this.user['Clave'];
+        this.userAux.NumeroDocumento = this.user['NumeroDocumento'];
+        this.userAux.TipoDocumento = this.user['TipoDocumento'];
+        this.userAux.LugarExpedicion = this.user['LugarExpedicion'];
+        this.userAux.Icono_url = this.response['file'];
+        this.userAux.VerificacionCuenta = this.user['VerificacionCuenta'];
+        this.userAux.EstadoCuenta = this.user['EstadoCuenta'];
+        this.userAux.RolId = this.user['RolId'];
+        this.userAux.Imagen_documento = this.user['Imagen_documento'];
+        this.userAux.Token = this.user['Token'];                                                                                                                                                          
+
+        this.authService.actualizarUsuario(this.userAux)
+          .then(result => {
+            alert("Usuario Actualizado");
+          });
+
+      } else {
+        alert("Ha ocurrido un error");
+      }
+
+      alert("Ya salio");
   }
 
   async presentToast(message: any) {

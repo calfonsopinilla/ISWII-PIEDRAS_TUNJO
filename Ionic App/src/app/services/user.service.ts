@@ -42,6 +42,24 @@ const urlApi = environment.servicesAPI;
             );
     }
 
+    async validarCodigo(code: string) {
+
+        const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+        await loading.present();
+
+        return this.http.get(`${ urlApi }/usuario/registro/validar_token?token=${code}`)
+                .pipe(catchError(err => {
+                    return of( err.error );
+                }))
+                .subscribe(res => {
+                    setTimeout(_ => {}, 2000);
+                    this.presentToast(res['message']);
+                },
+                (err) => {},
+                () => loading.dismiss()
+                );
+    }
+
     // actualizarDatos(usuario: Usuario) {
     //     return new Promise(async resolve => {
     //         const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });

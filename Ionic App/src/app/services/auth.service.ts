@@ -72,7 +72,7 @@ export class AuthService {
         this.loginState$.emit(true);
         this.router.navigateByUrl('/inicio');
       }
-    } else if (Number(userLogin['RolId'] === 4)) {
+    } else if (Number(userLogin['RolId'] === 3)) {
       this.router.navigateByUrl('/vigilante');
     }
   }

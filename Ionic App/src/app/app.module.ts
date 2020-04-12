@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
@@ -28,7 +29,9 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     HttpClientModule,
     ComponentsModule,
     IonicStorageModule.forRoot(),
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,

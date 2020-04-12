@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ingresar Código</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen] class="ion-padding">
+  
+  <h2 style="display: block; width: 100%; text-align: center;">Código</h2>    
+  <p style="display: block; width: 92%; margin: 15px auto; text-align: center;">Ingresa tu código de 6 dígitos que recibiste en tu correo eléctronico: </p>  
+
+  <form (ngSubmit)="validateCode()">
+    <ion-item>
+      <ion-label position="floating">Código</ion-label>
+      <ion-input type="text" [(ngModel)]="code" name="code"></ion-input>      
+    </ion-item>    
+    <span *ngIf="error" class="text-danger" style="display: block; margin-top: 10px; color: red; text-align: center;">El código es de 6 dígitos</span>  
+    <ion-button id="button-submit" type="submit" style="margin: 18px 0;"
+                  expand="full">Validar Código</ion-button>                     
+  </form>
+
+</ion-content>
