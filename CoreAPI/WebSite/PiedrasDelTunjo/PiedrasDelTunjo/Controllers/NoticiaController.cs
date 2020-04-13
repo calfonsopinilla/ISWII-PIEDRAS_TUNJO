@@ -37,6 +37,25 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
+
+        [HttpGet]
+        [Route("inicio")]
+
+        public IHttpActionResult enviarNoticiasInicio()
+        {
+            try
+            {
+                var noticias = new LNoticia().informacionNoticia().OrderByDescending(x => x.Id).Take(3).ToList();
+                return Ok(noticias);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
        *Fecha de creación: 18/03/2020
