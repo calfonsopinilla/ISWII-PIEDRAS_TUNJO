@@ -410,6 +410,7 @@
     <Content Include="Imagenes\Usuarios\Avatars\av-2.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-4.png" />
+    <Content Include="Imagenes\Usuarios\Identificaciones\Logo.jpg" />
     <Content Include="obj\Debug\PiedrasDelTunjo.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\PiedrasDelTunjo.dll" />
     <Content Include="obj\Debug\PiedrasDelTunjo.pdb" />
@@ -456,7 +457,6 @@
     <Folder Include="Imagenes\Cabanas\" />
     <Folder Include="Imagenes\Qr\" />
     <Folder Include="Imagenes\Reserva\Tickets\" />
-    <Folder Include="Imagenes\Usuarios\Identificaciones\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

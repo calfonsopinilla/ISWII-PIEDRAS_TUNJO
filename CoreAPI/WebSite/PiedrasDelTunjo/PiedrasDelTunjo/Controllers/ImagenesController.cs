@@ -26,7 +26,7 @@ namespace PiedrasDelTunjo.Controllers
         */
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route("dniImage")]
         public HttpResponseMessage DniImage([FromUri] int id) {
 
