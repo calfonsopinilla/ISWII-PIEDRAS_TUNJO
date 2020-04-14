@@ -40,8 +40,23 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("inicio")]
-
         public IHttpActionResult enviarNoticiasInicio()
+        {
+            try
+            {
+                var noticias = new LNoticia().informacionNoticia().OrderByDescending(x => x.Id).Take(3).ToList();
+                return Ok(noticias);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpGet]
+        [Route("inicio2")]
+        public IHttpActionResult enviarNoticiasInicio2()
         {
             try
             {
