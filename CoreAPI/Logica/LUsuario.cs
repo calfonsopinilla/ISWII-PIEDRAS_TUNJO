@@ -23,7 +23,28 @@ namespace Logica
         {
             try
             {
-                return new DaoUsuario().ObtenerUsuarios();
+                List <UUsuario> usuarios = new DaoUsuario().ObtenerUsuarios();
+                if (usuarios.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    for (int x = 0; x < usuarios.Count(); x++)
+                    {
+                        if(usuarios[x].EstadoCuenta == true)
+                        {
+                            usuarios[x].ControlCuenta = "Activo";
+                        }
+                        else
+                        {
+                            usuarios[x].ControlCuenta = "Inactivo";
+                        }
+                           
+                    }
+                    //return JsonConvert.SerializeObject(noticias);
+                    return usuarios;
+                }                
             }
             catch (Exception ex)
             {
