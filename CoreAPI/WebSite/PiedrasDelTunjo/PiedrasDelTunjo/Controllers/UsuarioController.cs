@@ -131,5 +131,28 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
+
+        /**
+        @Autor: Gabriel Andres Zapata Morera
+        *Fecha de creación: 14/04/2020
+        *Descripcion: Servicio que cambia el estado de cuenta del usuario
+        *Recibe: id_Usuario y estadoFiltro
+        *Retorna: IHttpActionResult
+        */
+        [HttpGet]
+        [Route("Estado_Usuario")]
+        public IHttpActionResult CambiarEstado_Usuarios([FromUri]int estadoFiltro, [FromUri]int id_Usuario)
+        {
+            try
+            {                
+                return Ok(new LUsuario().CambiarEstado_Usuarios(estadoFiltro, id_Usuario));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

@@ -155,5 +155,39 @@ namespace Data
             }
         }
 
+
+        /**
+        *@Autor : Gabriel Andres Zapata Morera
+        *Fecha de creación: 14/04/2020
+        *Descripcion: Metodo para cambiar estado de la cuenta del ususario segun el estadoFiltro
+        *Este metodo recibe:  estadoFiltro,  id_Usuario
+        *Retorna: string validacion
+        */
+        public string CambiarEstado_Usuarios(int estadoFiltro, int id_Usuario)
+        {
+            using (var db = new Mapeo())
+            {
+                string validacion = "";
+                var user = db.Usuarios.Where(x => x.Id == id_Usuario).FirstOrDefault();
+                if (estadoFiltro == 1)
+                {                    
+                    user.EstadoCuenta = false;
+                    validacion = "Usuario Deshabilitado Satisfactoriamente";
+                    db.SaveChanges();                    
+                    return validacion;
+                }
+                else if (estadoFiltro == 2)
+                {
+                    user.EstadoCuenta = true;
+                    validacion = "Usuario Habilitado Satisfactoriamente";
+                    db.SaveChanges();
+                    return validacion;
+                }
+                return validacion;
+
+            }
+        }
+
+
     }
 }

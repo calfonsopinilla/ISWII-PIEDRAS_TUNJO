@@ -172,5 +172,27 @@ namespace Logica
                 throw ex;
             }
         }
+
+        /*
+          @Autor : Gabriel Andres Zapata Morera
+          *Fecha de creación: 14/04/2020
+          *Descripcion: Metodo para cambia el estado de la cuenta del usuario
+          *Este metodo recibe: estado_filtro y id_usuario
+          *Retorna: string validacion
+      */
+        public string CambiarEstado_Usuarios(int estadoFiltro, int id_Usuario)
+        {
+            try
+            {
+                string validacion = "";                
+                validacion = new DaoUsuario().CambiarEstado_Usuarios(estadoFiltro, id_Usuario);
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
