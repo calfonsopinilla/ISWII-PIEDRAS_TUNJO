@@ -38,12 +38,15 @@ export class NoticiasPage implements OnInit {
     idNoticia  : string ;
     usuario : Usuario;
     datas : any ;
-   async ngOnInit() {
+   
+    async ngOnInit() {
+
       this.session = await this.authServicio.isAuthenticated();
       this.noticiaServicio.obtenerInformacionNoticias().subscribe(resp => {this. noticias = resp  
       });
       this.sessions();
     }
+   
     sessions(){
       if (this.session == true) {
         this.authServicio.getUsuario().then(user => {
@@ -53,23 +56,10 @@ export class NoticiasPage implements OnInit {
     }
     
     }
-    async verNoticia(id){
-      console.log(this.noticias);
-      const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-      await loading.present();
-      this.noticiaSelect = this.noticias[id];
 
-      let navigationPromocion : NavigationExtras = {
-        queryParams : {
-          special :  JSON.stringify(this.noticiaSelect)
-        } 
-      }
-      this.router.navigate(['ver-noticia'],navigationPromocion);
-      await loading.dismiss();
-    }
+    
 
     async agregarComentario(form: NgForm,ids){
-      
       console.log(ids);
       if (form.valid == true) {
         var comentario = {}
@@ -81,21 +71,32 @@ export class NoticiasPage implements OnInit {
         //como captar respuesta
         const resultado = await this.noticiaServicio.agregarComentario(comentario);
         console.log(resultado);
+        if(resultado == true){
+          this.presentToast('Tu comentario fue agregado');
+        }else{
+          this.presentToast('Tu comentario no pudo ser agregado');
+
+        }
+
+
         this.registerUser.comentar = "";
-        this.ngOnInit();
         
     }
+    this.ngOnInit();
+    
     }
 
+
     validar :boolean ;
+    
+
+    
     async abrirOpciones(idComent,idUser,idUserComent){
-      
       if(idUser != idUserComent){
         this.validar =  false
       }else{
         this.validar = true;
       }
-      
       const modal = await this.modalCtrlr.create({ 
           component: ModalComentarioPage,
           cssClass: 'my-custom-modal-css',
@@ -127,10 +128,26 @@ export class NoticiasPage implements OnInit {
               }
             }
           }
-
-          
         }catch{}        
     }
+
+
+
+    async verNoticia(id){
+      console.log(this.noticias);
+      const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+      await loading.present();
+      this.noticiaSelect = this.noticias[id];
+      let navigationPromocion : NavigationExtras = {
+        queryParams : {
+          special :  JSON.stringify(this.noticiaSelect)
+        } 
+      }
+      this.router.navigate(['ver-noticia'],navigationPromocion);
+      await loading.dismiss();
+    }
+
+
 
     async presentToast(message: string) {
       const toast = await this.toastCntrl.create({
@@ -141,5 +158,7 @@ export class NoticiasPage implements OnInit {
       await toast.present();
     }
     
+
+
 
 }

@@ -27,7 +27,7 @@
                     </ion-item>
                     <ion-list *ngIf="noticias.listaComentariosNoticia.length==0">
                         <!--agregar comentario-->
-                        <form  *ngIf="session"   #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro)">
+                        <form  *ngIf="session"   #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro,noticias.id)">
                             <ion-item style="background-color: blue;">
                                 <ion-textarea name="nombre" required [(ngModel)]="registerUser.comentar" type="text"
                                     placeholder="Comentar"></ion-textarea>
@@ -41,8 +41,8 @@
                         </ion-item>
                     </ion-list>
                     <ion-list>
+
                         <ion-list *ngIf="noticias.listaComentariosNoticia.length>0">
-                            
                                 <form  *ngIf="session"  #formRegistro="ngForm" (ngSubmit)="agregarComentario(formRegistro,noticias.id)">
                                     <ion-item style="background-color: blue;">
                                         <ion-textarea name="nombre" required [(ngModel)]="registerUser.comentar"

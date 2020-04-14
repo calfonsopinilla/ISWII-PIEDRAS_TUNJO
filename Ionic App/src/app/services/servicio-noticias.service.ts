@@ -97,7 +97,8 @@ export class ServicioNoticiasService {
       });
       console.log('Este es el token')
       console.log(headers);
-      this.http.put(`${urlApi}/comentariosNoticia/${id}`,{headers}).pipe(
+      //`${urlApi}/comentariosNoticia/${id}`,{headers}
+      this.http.post(`${urlApi}/comentariosNoticia/reportar`,id,{headers}).pipe(
         catchError(err => of({ ok: false }))
       )
         .subscribe(res => {
@@ -109,8 +110,6 @@ export class ServicioNoticiasService {
         }, err => { }, () => loading.dismiss());
     });
   }
-
-
 
   //validar token 
   async validateToken(redirect?: boolean): Promise<boolean> {
