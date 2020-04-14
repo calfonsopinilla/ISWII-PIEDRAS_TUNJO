@@ -37,6 +37,26 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+        /**
+         * @Autor: Gabriel Andres Zapata Morera
+         * Fecha de Creacion: 14/04/2020
+         * Descripcion: Servicio que retorna los usuarios activos
+         */
+        [HttpGet]
+        [Route("Ver_Usuarios")]
+        public IHttpActionResult ObtenerUsuarios_Filtrados([FromUri]int estadoFiltro)
+        {
+            try
+            {
+                var informacion = new LUsuario().ObtenerUsuarios_Filtrados(estadoFiltro);
+                return Ok(informacion);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         [HttpPost]
         [Route("")]
         // POST: usuarios/

@@ -44,7 +44,6 @@ namespace Utilitarios {
 
         [NotMapped]
         public string RolNombre { get; set; }
-        [NotMapped]
-        public string ControlCuenta { get => controlCuenta; set => controlCuenta = value; }
+
     }
 }

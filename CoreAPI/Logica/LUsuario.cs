@@ -23,7 +23,25 @@ namespace Logica
         {
             try
             {
-                List <UUsuario> usuarios = new DaoUsuario().ObtenerUsuarios();
+                return new DaoUsuario().ObtenerUsuarios();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /**
+         * @Autor : Gabriel Andres Zapata Morera
+         * Fecha de creación: 14/04/2020
+         * Descripcion : Metodo que devuelve la informacion de los usuarios al servicio
+         * dependiendo del valor del filtro
+         */
+        public List<UUsuario> ObtenerUsuarios_Filtrados(int estadoFiltro)               
+        {
+            try
+            {
+                List<UUsuario> usuarios = new DaoUsuario().ObtenerUsuarios();
+                List<UUsuario> listadoUsuarios = new List<UUsuario>();
                 if (usuarios.Count < 0)
                 {
                     return null;
@@ -32,25 +50,27 @@ namespace Logica
                 {
                     for (int x = 0; x < usuarios.Count(); x++)
                     {
-                        if(usuarios[x].EstadoCuenta == true)
+                        if (estadoFiltro == 1 && usuarios[x].EstadoCuenta == true)
                         {
-                            usuarios[x].ControlCuenta = "Activo";
+                            listadoUsuarios.Add(usuarios[x]);
                         }
-                        else
+                        else if(estadoFiltro == 2 && usuarios[x].EstadoCuenta == false)
                         {
-                            usuarios[x].ControlCuenta = "Inactivo";
+                            listadoUsuarios.Add(usuarios[x]);
                         }
-                           
+
                     }
                     //return JsonConvert.SerializeObject(noticias);
-                    return usuarios;
-                }                
+                    return listadoUsuarios;
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
         /*
          * Autor: Steven Cruz
          * Fecha: 31/03/2020
