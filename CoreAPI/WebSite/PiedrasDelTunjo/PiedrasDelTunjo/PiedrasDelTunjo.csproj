@@ -247,6 +247,7 @@
     <Compile Include="Controllers\ComentarioNoticiaController.cs" />
     <Compile Include="Controllers\PictogramasController.cs" />
     <Compile Include="Controllers\PqrController.cs" />
+    <Compile Include="Controllers\ReservaCabanasController.cs" />
     <Compile Include="Controllers\ReservaTicketsController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\CabanaController.cs" />
@@ -259,7 +260,6 @@
     <Compile Include="Controllers\PuntosInteresController.cs" />
     <Compile Include="Controllers\PuntuacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
-    <Compile Include="Controllers\SubscripcionController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />

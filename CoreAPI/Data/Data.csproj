@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoComentariosNoticias.cs" />
+    <Compile Include="DaoReservaCabana.cs" />
     <Compile Include="DaoReservaTicket.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="DAOCabana.cs" />
@@ -106,7 +107,6 @@
     <Compile Include="DaoPuntoInteres.cs" />
     <Compile Include="DAOPuntuacion.cs" />
     <Compile Include="DAORol.cs" />
-    <Compile Include="DAOSubscripcion.cs" />
     <Compile Include="DaoTicket.cs" />
     <Compile Include="DaoToken.cs" />
     <Compile Include="DAOTokenCorreo.cs" />

@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LComentarioNoticias.cs" />
+    <Compile Include="LReservaCabana.cs" />
     <Compile Include="LReservaTicket.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="LCabana.cs" />
@@ -107,7 +108,6 @@
     <Compile Include="LPromocion.cs" />
     <Compile Include="LPuntoInteres.cs" />
     <Compile Include="LPuntuacion.cs" />
-    <Compile Include="LSubscripcion.cs" />
     <Compile Include="LTicktet.cs" />
     <Compile Include="LTokenCorreo.cs" />
     <Compile Include="LCuenta.cs" />
