@@ -23,8 +23,12 @@ namespace Data
 
         public IEnumerable<UReservaCabana> ObtenerPorUsuario(int userId)
         {
-            var reservas = db.ReservaCabanas.Include("UCabana").Where(x => x.FechaReserva >= DateTime.Now);
-            return reservas.Where(x => x.UUsuarioId == userId).ToList();
+            var reservas = db.ReservaCabanas
+                            .Include("UCabana")
+                            .Where(x => x.UUsuarioId == userId && x.FechaReserva >= DateTime.Today)
+                            .OrderBy(x => x.FechaReserva)
+                            .ToList();
+            return reservas;
         }
 
         public UReservaCabana Buscar(int id)
@@ -64,8 +68,8 @@ namespace Data
         {
             try
             {
-                var reserva = db.ReservaTickets.Find(id);
-                db.ReservaTickets.Remove(reserva);
+                var reserva = db.ReservaCabanas.Find(id);
+                db.ReservaCabanas.Remove(reserva);
                 db.SaveChanges();
                 return true;
             }
