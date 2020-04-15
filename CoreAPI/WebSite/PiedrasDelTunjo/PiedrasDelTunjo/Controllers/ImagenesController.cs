@@ -25,7 +25,12 @@ namespace PiedrasDelTunjo.Controllers
          Parametros: Int id - Id del usuario
         */
 
+<<<<<<< HEAD
         [HttpPost]        
+=======
+        [HttpPost]
+        //[Authorize]
+>>>>>>> da6bee9f027c5ff1874f23bc060e7a084316b7fa
         [Route("dniImage")]
         public HttpResponseMessage DniImage([FromUri] int id) {
 
@@ -126,6 +131,8 @@ namespace PiedrasDelTunjo.Controllers
                     return "Reserva/Tickets";
                 case "noticias":
                     return "Noticias";
+                case "picto":
+                    return "Pictogramas";
             }
             return null;
         }

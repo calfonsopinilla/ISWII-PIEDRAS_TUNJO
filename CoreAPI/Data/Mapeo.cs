@@ -22,7 +22,6 @@ namespace Data
         public DbSet<UInformacionParque> informacionParque{ get; set; }
         public DbSet<UTokenCorreo> TokenCorreo { get; set; }
         public DbSet<UNoticia> Noticias { get; set; }
-        public DbSet<USubscripcion> infoSubscripcion { get; set; }
         public DbSet<UPreguntas_frecuentes> preguntas_Frecuentes { get; set; }
         public DbSet<UPromocion> promocion { get; set; }
         public DbSet<UCabana> Cabana { get; set; }
@@ -35,6 +34,7 @@ namespace Data
         public DbSet<UTicket> Tickets { get; set; }
         public DbSet<UReservaTicket> ReservaTickets { get; set; }
         public DbSet<UComentarioNoticia> ComentariosNoticias { get; set; }
+        public DbSet<UReservaCabana> ReservaCabanas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

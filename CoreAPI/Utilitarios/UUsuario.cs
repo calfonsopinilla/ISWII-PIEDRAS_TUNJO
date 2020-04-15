@@ -7,6 +7,9 @@ namespace Utilitarios {
     [Table("usuario", Schema = "parque")] // Se específica la tabla con la que se relaciona la clase U Usuario
     public class UUsuario {
 
+        private string controlCuenta;
+
+
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -41,6 +44,6 @@ namespace Utilitarios {
 
         [NotMapped]
         public string RolNombre { get; set; }
-       
+
     }
 }

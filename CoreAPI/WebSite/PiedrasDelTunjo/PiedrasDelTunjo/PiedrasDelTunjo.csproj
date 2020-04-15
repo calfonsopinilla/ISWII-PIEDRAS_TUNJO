@@ -247,6 +247,7 @@
     <Compile Include="Controllers\ComentarioNoticiaController.cs" />
     <Compile Include="Controllers\PictogramasController.cs" />
     <Compile Include="Controllers\PqrController.cs" />
+    <Compile Include="Controllers\ReservaCabanasController.cs" />
     <Compile Include="Controllers\ReservaTicketsController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\CabanaController.cs" />
@@ -259,7 +260,6 @@
     <Compile Include="Controllers\PuntosInteresController.cs" />
     <Compile Include="Controllers\PuntuacionController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
-    <Compile Include="Controllers\SubscripcionController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\TokenCorreoElectronicoController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
@@ -410,6 +410,7 @@
     <Content Include="Imagenes\Usuarios\Avatars\av-2.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-4.png" />
+    <Content Include="Imagenes\Usuarios\Identificaciones\Logo.jpg" />
     <Content Include="obj\Debug\PiedrasDelTunjo.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\PiedrasDelTunjo.dll" />
     <Content Include="obj\Debug\PiedrasDelTunjo.pdb" />
@@ -454,9 +455,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Cabanas\" />
+    <Folder Include="Imagenes\Pictogramas\" />
     <Folder Include="Imagenes\Qr\" />
     <Folder Include="Imagenes\Reserva\Tickets\" />
-    <Folder Include="Imagenes\Usuarios\Identificaciones\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

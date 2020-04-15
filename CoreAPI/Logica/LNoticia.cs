@@ -54,34 +54,17 @@ namespace Logica
        *Recibe: 
        *Retorna: 
        */
-        public bool agregarNoticia(UNoticia datosJson)
+        public bool agregarNoticia(UNoticia noticia)
         {
-            try
-            {
-                
-                if (new DAONoticia().buscarId(datosJson.Id) != true)
-                {
-                    DAONoticia noticia = new DAONoticia();
-                    string cadena = "[";
-                    //datosJson.ImagenesUrl = "[" + '\u0022' + datosJson.ImagenesUrl + '\u0022' + "]";
-                    datosJson.ImagenesUrl = cadena+ "\"" + datosJson.ImagenesUrl + "\""+"]";
-                    datosJson.Token = "";
-                    datosJson.Estado = 1;
-                    datosJson.FechaPublicacion = DateTime.Parse(datosJson.Fecha_Publicacion);
-                     noticia.agregarNoticias(datosJson);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            List<string> lista = new List<string>();
+            lista.Add(noticia.ImagenesUrl);
+            noticia.ImagenesUrl = JsonConvert.SerializeObject(lista);
+            noticia.Token = "";
+            noticia.Estado = 1;
+            noticia.FechaPublicacion = DateTime.Now;
+            return new DAONoticia().agregarNoticias(noticia);
         }
+
 
 
         public UNoticia Buscar(int id)

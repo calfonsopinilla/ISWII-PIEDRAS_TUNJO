@@ -18,117 +18,55 @@ namespace PiedrasDelTunjo.Controllers
          * 
          */
     [EnableCors(origins: "*", methods: "*", headers: "*")]
-    [RoutePrefix("Pictograma")]
+    [RoutePrefix("pictogramas")]
     public class PictogramasController : ApiController
     {
-        /**
-        * Autor: Mary Zapata
-        * fecha: 19/03/2019
-        * Parametro de recepcion: json tipo UPictograma, debe traer estado 1 para su registro
-        * Return: string estado registro del Pictograma
-        **/
-
-        [HttpPost]
-        [Route("Registro")]
-        //public string RegistroPictograma([FromUri]string jsonRegistroPic)
-        public IHttpActionResult RegistroPictograma([FromBody] UPictograma jsonRegistroPic)
-        {
-            try
-            {
-                return Ok(new LPictograma().RegistroPictograma(jsonRegistroPic));
-            }
-
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        /**
-        * Autor: Mary Zapata
-        * fecha: 19/03/2019              
-        * Return: string json que contiene una lista con todos los registros de pictogramas
-        *  traidos de la base de datos
-        **/
         [HttpGet]
-        [Route("Ver_Pictogramas")]
-        public IHttpActionResult MostrarPictogramas([FromUri]int estadoFiltro)
+        [Route("")]
+        public HttpResponseMessage ObtenerTodos()
         {
-            try
-            {
-                
-
-                var informacion = new LPictograma().Mostrar_Pictogramas(estadoFiltro);
-
-                return Ok(informacion);
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var pictogramas = new LPictograma().ObtenerTodos();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, pictogramas });
         }
 
-
-        /**
-         * 
-         * 
-         * **/
         [HttpGet]
         [Route("{id}")]
-        // GET: Usuarios/id
         public HttpResponseMessage Buscar([FromUri] int id)
         {
-            var pictograma = new LPictograma().LeerPictograma(id);
-            if (pictograma == null)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Pictograma no encontrado");
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, pictograma);
+            var pictograma = new LPictograma().Buscar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, pictograma });
         }
 
+        [HttpPost]
+        [Route("")]
+        public HttpResponseMessage Crear([FromBody] UPictograma pic)
+        {
+            if (pic == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad request" });
+            }
+            var response = new LPictograma().Agregar(pic);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
 
-
-        /**
-         * Autor: Mary Zapata
-         * fecha: 20/03/2019              
-         * Return: string que indica un mensaje con respecto al estado del procedimiento de edicion
-         **/
         [HttpPut]
         [Route("{id}")]
-        //public string Editar_Pictograma([FromUri]string json_InfoNueva)
-     
-        public HttpResponseMessage Editar_Pictograma([FromUri] int id, [FromBody] UPictograma json_InfoNueva)
+        public HttpResponseMessage Actualizar([FromBody] UPictograma pic, [FromUri] int id)
         {
-            if (id != json_InfoNueva.Id)
+            if (id != pic.Id)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad request" });
             }
-           
-            bool actualizado = new LPictograma().Actualizar(id, json_InfoNueva);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+            var response = new LPictograma().Actualizar(pic, id);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
-        /**
-         * Autor: Mary Zapata
-         * fecha: 20/03/2019  
-         * METODO para cambiar estado del pictograma y "eliminarlo"
-         * Return: string que indica un mensaje con respecto al estado del procedimiento de cambio de estado
-         **/
-        [HttpGet]
-        [Route("Remover_Pictograma")]
-        //public string Remover_Pictograma([FromUri]string json_Info)
-        public IHttpActionResult Remover_Pictograma([FromUri]int id_pictograma)
-        {
-            try
-            {
-                return Ok(new LPictograma().CambiarEstado_Pictograma(id_pictograma));
 
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+        [HttpDelete]
+        [Route("{id}")]
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var deleted = new LPictograma().Eliminar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = deleted });
         }
     }
 }

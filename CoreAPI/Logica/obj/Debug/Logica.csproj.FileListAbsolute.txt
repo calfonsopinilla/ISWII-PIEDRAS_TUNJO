@@ -41,6 +41,7 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.cspro
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+<<<<<<< HEAD
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
@@ -84,3 +85,5 @@ C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\De
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
+=======
+>>>>>>> da6bee9f027c5ff1874f23bc060e7a084316b7fa

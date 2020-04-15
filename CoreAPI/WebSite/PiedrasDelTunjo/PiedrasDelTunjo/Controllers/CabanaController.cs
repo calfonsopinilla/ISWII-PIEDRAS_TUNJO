@@ -71,24 +71,6 @@ namespace PiedrasDelTunjo.Controllers {
             bool creado = new LCabana().Agregar(cabana);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
-        [HttpGet]
-        [Route("leer_id")]
-        /*
-            Autor: Jhonattan Alejandro Pulido Arenas
-            Fecha creación: 18/03/2020
-            Descripción: Método que sirve para leer una cabaña filtrada por el Id
-            Recibe: Integer cabanaId - ID de la cabaña que se desea traer datos
-            Retorna: Objeto de tipo cabaña
-        */
-        public UCabana LeerCabana(int cabanaId) {
-
-            try {
-                return new LCabana().LeerCabana(cabanaId);
-            } catch (Exception ex) {
-                throw ex;
-            }
-        }
-
 
         [HttpGet]
         [Route("{id}")]
@@ -98,10 +80,12 @@ namespace PiedrasDelTunjo.Controllers {
             var cabana = new LCabana().LeerCabana(id);
             if (cabana == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Cabana no encontrado");
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "Cabana Not Found"  });
             }
-            return Request.CreateResponse(HttpStatusCode.OK, cabana);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, cabana });
         }
+
+
         [HttpGet]
         [Route("leer_nombre")]
         /*

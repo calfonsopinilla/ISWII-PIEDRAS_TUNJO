@@ -112,7 +112,6 @@
     <Compile Include="UReservaPromocion.cs" />
     <Compile Include="UReservaTicket.cs" />
     <Compile Include="URol.cs" />
-    <Compile Include="USubscripcion.cs" />
     <Compile Include="UTicket.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UTokenCorreo.cs" />

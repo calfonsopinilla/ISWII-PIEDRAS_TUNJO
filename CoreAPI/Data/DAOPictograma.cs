@@ -11,189 +11,42 @@ namespace Data
 {
     public class DAOPictograma
     {
-        /**
-       * Autor: Mary Zapata
-       * Fecha: 19/03/2020
-       * Parametro de recepcion: int id a buscar y string nombre a buscar
-       * return string busqueda
-       **/
-        //
-        
+
         private readonly Mapeo db = new Mapeo();
-        private Mapeo conexionBD;
-        private UPictograma pictograma;
-        private List<UPictograma> listapictogramas;
-        public string Valida_ExistenciaPictograma(int id_parque, string nombre)
+
+        public IEnumerable<UPictograma> ObtenerTodos()
         {
-            string busqueda = "";
-
-            using (var db = new Mapeo())
-            {
-                //
-                if (db.Pictograma.Where(x => x.Id_parque == id_parque).FirstOrDefault() != null && (db.Pictograma.Where(x => x.Nombre == nombre).FirstOrDefault() != null))
-                {
-                    busqueda = "Ya exite un pictograma con el mismo nombre y el mismo id, eliminelo o actualicelo";
-
-                }
-                else if (db.Pictograma.Where(x => x.Id_parque == id_parque).FirstOrDefault() != null)
-                {
-                    busqueda = "Ya exite un pictograma con el mismo id, eliminelo o actualicelo";
-
-                }
-                else if (db.Pictograma.Where(x => x.Nombre == nombre).FirstOrDefault() != null)
-                {
-                    busqueda = "Ya exite un pictograma con el mismo nombre, eliminelo o actualicelo";
-                }
-                else
-                {
-                    busqueda = "El pictograma no ha sido creado";
-                }
-
-            }
-
-            return busqueda;
+            return db.Pictograma.ToList();
         }
 
-        /**
-         * Autor: Mary Zapata
-         * Fecha: 19/03/2020
-         * Metodo para insertar un nuevo pictograma en base de datos en la tabla pictograma
-         * Parametro de recepcion: objeto UPictograma para insertar en la bd
-         * return: void
-         **/
-        public void RegistroPictograma(UPictograma datosInsertar)
+        public bool Agregar(UPictograma picto)
         {
-
-            using (var db = new Mapeo())
-            {
-
-                try
-                {
-                    db.Pictograma.Add(datosInsertar);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-
-                }
-
-            }
-        }
-
-        /**
-         * Autor: Mary Zapata
-         * Fecha: 19/03/2020
-         * Metodo para consultar los pictogramas en base de datos en la tabla pictograma         
-         * return: List<UPictograma> listaPic
-         **/
-        public List<UPictograma> Mostrar_Pictograma(int estadoFiltro)
-        {
-
-            using (var db = new Mapeo())
-            {
-                try
-                {
-
-                    return db.Pictograma.Where(x => x.Estado == estadoFiltro).ToList();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-        public List<UComentarioPic> BuscarCalificaciones()
-        {
-
-            using (var db = new Mapeo())
-            {
-                try
-                {
-
-                    return db.ComentarioPic.ToList();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-
-        /**
-       * Autor: Mary Zapata
-       * Fecha: 20/03/2020
-       * Metodo para editar los pictogramas en base de datos en la tabla pictograma        
-       * return: void
-       **/
-        public void EditarPictograma(UPictograma infoNueva)
-        {
-            using (var db = new Mapeo())
-            {
-                UPictograma edit = db.Pictograma.Where(x => x.Id == infoNueva.Id).First();
-
-                edit.Nombre = infoNueva.Nombre;
-                edit.Descripcion = infoNueva.Descripcion;
-                edit.Imagenes_url = infoNueva.Imagenes_url;
-                edit.Calificacion = infoNueva.Calificacion;
-                db.Pictograma.Attach(edit);
-                var entry = db.Entry(edit);
-                entry.State = EntityState.Modified;
-                db.SaveChanges();
-            }
-
-        }
-        public UPictograma LeerPictograma(int pictogramaId)
-        {
-
             try
             {
-
-                this.pictograma = new UPictograma();
-
-                using (this.conexionBD = new Mapeo())
-                {
-
-                    this.pictograma = this.conexionBD.Pictograma.Find(pictogramaId);
-                    return this.pictograma;
-                }
-
-            }
-            catch (Exception ex)
+                var result = db.Pictograma.Add(picto);
+                db.SaveChanges();
+                return result != null;
+            }catch(Exception ex)
             {
-
                 throw ex;
             }
         }
-        /**
-         * Autor: Mary Zapata
-         * Fecha: 20/03/2020
-         * Metodo para editar el estado del pictograma en base de datos en la tabla pictograma        
-         * return: void
-         **/
-        public void CambiarEstado_Pictograma(int id_pictograma)
-        {
-            using (var db = new Mapeo())
-            {
-                var subs = db.Pictograma.Where(x => x.Id == id_pictograma).FirstOrDefault();
 
-                if (subs.Estado == 2)
-                {
-                    subs.Estado = 1;
-                }
-                else
-                {
-                    subs.Estado = 2;
-                }
-                db.SaveChanges();
-            }
+        public bool ExistePorNombre(string nombrePic, bool update = false)
+        {
+            var results = db.Pictograma.Where(x => x.Nombre.ToLower() == nombrePic.ToLower()).ToList();
+            return update ? (results.Count > 1) : (results.Count > 0);
         }
 
-        public bool Actualizar(int id, UPictograma pictograma)
+        public UPictograma Buscar(int id)
+        {
+            return db.Pictograma.Find(id);
+        }
+
+        public bool Actualizar(UPictograma pictograma, int id)
         {
             try
             {
-
                 db.Entry(pictograma).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
@@ -210,7 +63,23 @@ namespace Data
                 }
             }
         }
-        public bool Existe(int id)
+
+        public bool Eliminar(int id)
+        {
+            try
+            {
+                var picto = db.Pictograma.Find(id);
+                var result = db.Pictograma.Remove(picto);
+                db.SaveChanges();
+                return result != null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private bool Existe(int id)
         {
             return db.Pictograma.Any(x => x.Id == id);
         }
