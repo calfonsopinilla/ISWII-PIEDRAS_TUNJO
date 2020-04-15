@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoComentariosNoticias.cs" />
+    <Compile Include="DAOReservaPromocion.cs" />
     <Compile Include="DaoReservaTicket.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="DAOCabana.cs" />

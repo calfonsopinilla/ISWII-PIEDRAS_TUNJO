@@ -25,8 +25,7 @@ namespace PiedrasDelTunjo.Controllers
          Parametros: Int id - Id del usuario
         */
 
-        [HttpPost]
-        [Authorize]
+        [HttpPost]        
         [Route("dniImage")]
         public HttpResponseMessage DniImage([FromUri] int id) {
 
