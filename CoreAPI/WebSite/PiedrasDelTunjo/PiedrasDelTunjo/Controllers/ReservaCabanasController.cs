@@ -23,6 +23,23 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
         }
 
+        ///Fecha : 13/04/2020
+        /// Nombre: Jose Luis Soriano 
+        /// Resive :Id de la cabaña
+        /// Retorna : lista de las fechas disponibles para la reserva de la cabaña elegida
+
+        [HttpGet]
+        [Route("diasHabiles")]
+        public HttpResponseMessage ObtenerDiasHabiles([FromUri] int id )
+        {
+            var reservas = new LReservaCabana().ObtenerDiasHabilesCabana(id) ;
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
+        }
+
+
+
+
+
         [HttpGet]
         [Route("")]
         // GET: reserva-cabanas?userId=5
