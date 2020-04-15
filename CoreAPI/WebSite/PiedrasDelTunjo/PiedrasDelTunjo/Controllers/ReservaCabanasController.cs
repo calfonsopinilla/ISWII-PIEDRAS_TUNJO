@@ -26,7 +26,7 @@ namespace PiedrasDelTunjo.Controllers
         [HttpGet]
         [Route("")]
         // GET: reserva-cabanas?userId=5
-        public HttpResponseMessage ObtenerTodos([FromUri] int userId)
+        public HttpResponseMessage ObtenerPorUsuario([FromUri] int userId)
         {
             var reservas = new LReservaCabana().ObtenerPorUsuario(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
@@ -35,7 +35,6 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        // GET: reserva-cabanas?userId=5
         public HttpResponseMessage Buscar([FromUri] int id)
         {
             var reserva = new LReservaCabana().Buscar(id);

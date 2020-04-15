@@ -16,13 +16,14 @@ namespace Data
         public IEnumerable<UReservaCabana> ObtenerTodos()
         {
             var reservas = db.ReservaCabanas
+                              .Include(x => x.UCabana)
                              .Where(x => x.FechaReserva >= DateTime.Today).ToList();
             return reservas;
         }
 
         public IEnumerable<UReservaCabana> ObtenerPorUsuario(int userId)
         {
-            var reservas = db.ReservaCabanas.Where(x => x.FechaReserva >= DateTime.Now);
+            var reservas = db.ReservaCabanas.Include("UCabana").Where(x => x.FechaReserva >= DateTime.Now);
             return reservas.Where(x => x.UUsuarioId == userId).ToList();
         }
 

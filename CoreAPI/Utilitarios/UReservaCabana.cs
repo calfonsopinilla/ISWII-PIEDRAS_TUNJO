@@ -17,7 +17,9 @@ namespace Utilitarios {
         public DateTime LastModification { get; set; } = DateTime.Now;
         [Column("usuario_id")]
         public int UUsuarioId { get; set; }
+
         [Column("cabana_id")]
         public int UCabanaId { get; set; }
+        public UCabana UCabana { get; set; }
     }
 }
