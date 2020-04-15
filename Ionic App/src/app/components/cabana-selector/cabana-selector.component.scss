@@ -1,0 +1,14 @@
+img {
+    width: 120px;
+}
+
+.pick-cabana {
+    width: 300px;
+    height: 160px;
+    opacity: 0.3;
+}
+
+.pick-cabana-seleccionada {
+    transition: opacity 0.5s linear;
+    opacity: 1 !important;
+}

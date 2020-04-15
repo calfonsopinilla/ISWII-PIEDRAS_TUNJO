@@ -85,12 +85,15 @@ const routes: Routes = [
     path: 'ver-noticia',
     loadChildren: () => import('./pages/ver-noticia/ver-noticia.module').then( m => m.VerNoticiaPageModule)
   },
+  {
+    path: 'cabanas',
+    loadChildren: () => import('./pages/cabanas/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  }
-
+  },
 ];
 
 @NgModule({

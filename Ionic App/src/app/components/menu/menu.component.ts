@@ -59,27 +59,18 @@ export class MenuComponent implements OnInit {
       icon: 'map-outline'
     },
     {
-      label: 'Suscripciones',
-      ruta: '/suscripciones',
-      icon: 'ribbon-outline'
-    },
-    {
       label: 'Reserva de Cabañas',
-      ruta: '/reserva-cabanias',
+      ruta: '/cabanas',
       icon: 'calendar-outline'
     },
     {
-      label: 'Reserva de Canoas',
-      ruta: '/reserva-cabañas',
-      icon: 'boat-outline'
+      label : 'Promociones',
+      ruta : '/promociones',
+      icon : 'clipboard'
     },
     {
-      label : 'Promociones',
-      ruta :'/promociones',
-      icon : 'clipboard'
-    },{
       label : 'Noticias',
-      ruta :'/noticias',
+      ruta : '/noticias',
       icon : 'flash'
     }
   ];

@@ -1,0 +1,23 @@
+<ion-row class="ion-margin-bottom">
+  <ion-col class="ion-text-center">
+      <ion-label>Selecciona una cabaña</ion-label>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-slides #slides [options]="cabanaSelector">
+    <ion-slide *ngFor="let cabana of cabanas; let i = index;">
+      <ion-card>
+        <img class="pick-cabana" 
+            [src]="cabana.ImagenesUrl | imgServer: 'cabana'"
+            [ngClass]="{ 'pick-cabana-seleccionada':  (idSelected === cabana.Id)}">
+        <ion-card-content>
+          <b>Valor: </b><span>{{ cabana.Precio | currency:'COP' }}</span>
+          <ion-button expand="full" [fill]="(idSelected === cabana.Id)? 'solid':'outline'" color="tertiary"
+                      (click)="seleccionarCabana(cabana, i)" 
+                      shape="round">Seleccionar</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-row>

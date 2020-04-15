@@ -1,0 +1,23 @@
+<app-header titulo="Reservar Cabaña" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+  
+  <app-cabana-selector (cabanaSelected)="cabanaSelected($event)"></app-cabana-selector>
+
+  <ion-list class="ion-margin-top">
+    <ion-item>
+      <ion-label>Selecciona una fecha de reserva</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha reserva</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY"
+                    [(ngModel)]="fecha"
+                    placeholder="DD/MM/YYYY"
+                    cancelText="Cancelar"></ion-datetime>
+    </ion-item>
+
+    <ion-button [disabled]="!fecha" expand="full" shape="round" id="btn-reservar" 
+                (click)="reservar()">Reservar</ion-button>
+  </ion-list>
+
+</ion-content>

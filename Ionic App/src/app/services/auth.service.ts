@@ -123,6 +123,7 @@ export class AuthService {
                     this.usuario = res['usuario'];
                     resolve(true);
                   } else {
+                    this.router.navigateByUrl('/login');
                     resolve(false);
                   }
                 });

@@ -7,13 +7,15 @@ import { HeaderComponent } from './header/header.component';
 import { ItemInfoComponent } from './item-info/item-info.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
+import { CabanaSelectorComponent } from './cabana-selector/cabana-selector.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     HeaderComponent,
     ItemInfoComponent,
-    AvatarSelectorComponent
+    AvatarSelectorComponent,
+    CabanaSelectorComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.compo
     MenuComponent,
     HeaderComponent,
     ItemInfoComponent,
-    AvatarSelectorComponent
+    AvatarSelectorComponent,
+    CabanaSelectorComponent
   ]
 })
 export class ComponentsModule { }
