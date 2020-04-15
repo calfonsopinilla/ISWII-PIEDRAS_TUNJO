@@ -455,6 +455,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Cabanas\" />
+    <Folder Include="Imagenes\Pictogramas\" />
     <Folder Include="Imagenes\Qr\" />
     <Folder Include="Imagenes\Reserva\Tickets\" />
     <Folder Include="obj\Debug\TempPE\" />

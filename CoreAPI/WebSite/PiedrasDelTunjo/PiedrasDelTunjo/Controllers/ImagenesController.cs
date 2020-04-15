@@ -127,6 +127,8 @@ namespace PiedrasDelTunjo.Controllers
                     return "Reserva/Tickets";
                 case "noticias":
                     return "Noticias";
+                case "picto":
+                    return "Pictogramas";
             }
             return null;
         }
