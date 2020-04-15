@@ -40,7 +40,7 @@ namespace Data
       *Recibe: Un objeto noticia para agregar
       *Retorna: 
       */
-        public void agregarNoticias(UNoticia noticia)
+        public bool agregarNoticias(UNoticia noticia)
         {
             using (var db = new Mapeo())
             {
@@ -48,11 +48,11 @@ namespace Data
                 {
                     db.Noticias.Add(noticia);
                     db.SaveChanges();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
-
                 }
             }
         }
