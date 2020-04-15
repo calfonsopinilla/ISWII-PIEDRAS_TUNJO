@@ -79,18 +79,17 @@ namespace PiedrasDelTunjo.Controllers
        *Retorna: un true para saber que se agregaron los datos
        */
         [HttpPost]
-        [Route("agregarNoticia")]
-        public IHttpActionResult agregarNoticia([FromBody]UNoticia datosJson)
+        [Route("Agregar")]
+        public HttpResponseMessage Agregar([FromBody]UNoticia noticia)
         {
-            try
-            {               
-                return Ok( new LNoticia().agregarNoticia(datosJson));
-            }
-            catch (Exception ex)
+            if (noticia == null)
             {
-                throw ex;
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Noticia null" });
             }
+            bool creado = new LNoticia().agregarNoticia(noticia);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
+
 
         [HttpGet]
         [Route("{id}")]        
