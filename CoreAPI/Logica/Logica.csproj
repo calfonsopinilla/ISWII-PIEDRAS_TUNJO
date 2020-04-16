@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="LComentarioNoticias.cs" />
     <Compile Include="LReservaCabana.cs" />
+    <Compile Include="LReservaPromocion.cs" />
     <Compile Include="LReservaTicket.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="LCabana.cs" />

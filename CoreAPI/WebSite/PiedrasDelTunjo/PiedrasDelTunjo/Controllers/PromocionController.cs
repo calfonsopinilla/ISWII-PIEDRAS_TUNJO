@@ -14,7 +14,6 @@ namespace PiedrasDelTunjo.Controllers {
     [RoutePrefix("promocion")]
     public class PromocionController : ApiController {
 
-        // Variables
         private List<UPromocion> listaPromociones;
 
         /*
