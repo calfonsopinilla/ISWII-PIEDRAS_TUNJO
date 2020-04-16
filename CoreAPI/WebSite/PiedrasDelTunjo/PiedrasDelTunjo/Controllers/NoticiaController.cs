@@ -28,7 +28,6 @@ namespace PiedrasDelTunjo.Controllers
         {
             try
             {
-                //var noticias = JsonConvert.DeserializeObject<List<UNoticia>>(new LNoticia().informacionNoticia());
                 var noticias = new LNoticia().informacionNoticia();
                 return Ok(noticias);
             }

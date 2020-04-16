@@ -23,22 +23,10 @@ namespace Logica
             try
             {
                 List<UNoticia> noticias = new DAONoticia().informacionNoticia();
-                if (noticias.Count < 0)
-                {
+                if (noticias.Count < 0){
                     return null;
                 }
-                else
-                {
-                    for (int x = 0; x < noticias.Count(); x++)
-                    {
-                        if (!String.IsNullOrEmpty(noticias[x].ImagenesUrl))
-                        {
-                            noticias[x].ListaImagenes = JsonConvert.DeserializeObject<List<string>>(noticias[x].ImagenesUrl);
-                            noticias[x].FechaPublicacion = DateTime.Parse(noticias[x].FechaPublicacion.ToString("dd/MM/yyyy"));
-                            noticias[x].Fecha_Publicacion = noticias[x].FechaPublicacion.ToString("dd/MM/yyyy");
-                        }
-                    }
-                    //return JsonConvert.SerializeObject(noticias);
+                else{
                     return noticias;
                 }
             }
@@ -56,12 +44,7 @@ namespace Logica
        */
         public bool agregarNoticia(UNoticia noticia)
         {
-            List<string> lista = new List<string>();
-            lista.Add(noticia.ImagenesUrl);
-            noticia.ImagenesUrl = JsonConvert.SerializeObject(lista);
             noticia.Token = "";
-            noticia.Estado = 1;
-            noticia.FechaPublicacion = DateTime.Now;
             return new DAONoticia().agregarNoticias(noticia);
         }
 
@@ -75,6 +58,7 @@ namespace Logica
 
         public bool Actualizar(int id, UNoticia noticia)
         {
+            noticia.Token = "";
             return new DAONoticia().Actualizar(id, noticia);
         }
         /*
