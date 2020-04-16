@@ -25,12 +25,7 @@ namespace PiedrasDelTunjo.Controllers
          Parametros: Int id - Id del usuario
         */
 
-<<<<<<< HEAD
         [HttpPost]        
-=======
-        [HttpPost]
-        //[Authorize]
->>>>>>> da6bee9f027c5ff1874f23bc060e7a084316b7fa
         [Route("dniImage")]
         public HttpResponseMessage DniImage([FromUri] int id) {
 
@@ -67,6 +62,25 @@ namespace PiedrasDelTunjo.Controllers
             object objectResponse = new LImagen().UploadImages(HttpContext.Current.Request, carpeta);
 
             return Request.CreateResponse(objectResponse);
+        }
+
+        [HttpDelete]
+        [Route("deleteImage")]
+        // DELETE: images/deleteImage?tipo=cabana&nombre=ava1.jpg
+        public HttpResponseMessage DeleteImage([FromUri] string nombre, [FromUri] string tipo)
+        {
+            try
+            {
+                string carpeta = ObtenerCarpetaPorTipo(tipo);
+                string path = $"~/Imagenes/{carpeta}/{nombre}";
+                path = System.Web.Hosting.HostingEnvironment.MapPath(path);
+                File.Delete(path);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = ex.Message });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true });
         }
 
         /*

@@ -479,7 +479,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\Data.csproj">
-      <Project>{6CB511CE-5827-4B01-9680-F43EAABC95A0}</Project>
+      <Project>{6cb511ce-5827-4b01-9680-f43eaabc95a0}</Project>
       <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Logica\Logica.csproj">

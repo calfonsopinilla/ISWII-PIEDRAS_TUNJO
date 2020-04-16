@@ -19,6 +19,7 @@ namespace PiedrasDelTunjo.Controllers
          */
     [EnableCors(origins: "*", methods: "*", headers: "*")]
     [RoutePrefix("pictogramas")]
+    [Authorize]
     public class PictogramasController : ApiController
     {
         [HttpGet]
