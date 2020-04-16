@@ -42,6 +42,7 @@ namespace Logica
             return new DaoReservaTicket().EliminarReserva(id);
         }
 
+        /*
         public int CalcularPrecio(int userId)
         {
             try
@@ -73,6 +74,102 @@ namespace Logica
             }
             // Si no cumple ninguna de las condiciones, paga 4800
             return 4800;
+        }
+
+        */
+        public double CalcularPrecio(int userId)
+        {
+            try
+            {
+                var user = new LUsuario().Buscar(userId);
+
+                if (user.VerificacionCuenta == true)
+                {
+
+                    if (user.LugarExpedicion.ToLower().Equals("facatativa") || user.LugarExpedicion.ToLower().Equals("facatativá"))
+                    {
+                        var ticket = new LTicktet().BuscarTicket(3);
+                        return ticket.Precio;
+                    }
+                    else
+                    {
+                        //permitir comprar el ticket normal
+                        var ticket = new LTicktet().BuscarTicket(4);
+                        return ticket.Precio;
+                    }
+                }
+                else
+                {
+                    var ticket = new LTicktet().BuscarTicket(3);
+                    return ticket.Precio;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public bool validarResidencia(int idUser)
+        {
+
+            try
+            {
+                var user = new LUsuario().Buscar(idUser);
+                if (user.VerificacionCuenta == true)
+                {
+                    if (user.LugarExpedicion.ToLower().Equals("facatativa") || user.LugarExpedicion.ToLower().Equals("facatativá"))
+                    {
+                        bool validarEdad = validarEdades(idUser);
+                        if (validarEdad == true)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+        public bool validarEdades(int idUser)
+        {
+
+            var user = new LUsuario().Buscar(idUser);
+            // Menores de 5 años y mayores de 65 años - Exentos de pago
+            if (user.VerificacionCuenta == true)
+            {
+                int edad = CalcularEdad(user.FechaNacimiento);
+                if (edad < 5 || edad > 65)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public int CalcularEdad(DateTime fechaNac)

@@ -52,33 +52,38 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
         }
 
+
         [HttpPost]
-        [Route("")]
-        // POST: reserva-tickets/
-        public HttpResponseMessage Crear([FromBody] UReservaTicket reserva)
+        [Route("crear")]
+        public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
         {
+
+
             if (reserva == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
             }
-            
+
             reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
+            reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
             QRCodeEncoder encoder = new QRCodeEncoder();
             Bitmap img = encoder.Encode(reserva.Token);
             System.Drawing.Image QR = (System.Drawing.Image)img;
-
-            using (MemoryStream ms = new MemoryStream()) {
-                
+            using (MemoryStream ms = new MemoryStream())
+            {
+                //opcional;
                 QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 Byte[] imageBytes = ms.ToArray();
-                string imagen = "data:image/gif;base64," + Convert.ToBase64String(imageBytes);
-                string path = HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpg");
-                File.Create(path);                
+                //imagen
+                Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
+                imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
             }
-
             bool created = new LReservaTicket().NuevaReserva(reserva);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
         }
+
+
+
 
         [HttpPut]
         [Route("{id}")]
@@ -115,6 +120,26 @@ namespace PiedrasDelTunjo.Controllers
             double precio = new LReservaTicket().CalcularPrecio(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, precio });
         }
+
+
+        [HttpGet]
+        [Route("validarResidencia")]
+        // GET: reserva-tickets/obtenerPrecio?userId
+        public HttpResponseMessage validarResidencia([FromUri] int userId)
+        {
+            bool residencia = new LReservaTicket().validarResidencia(userId);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, residencia });
+        }
+
+        [HttpGet]
+        [Route("validarEdad")]
+        // GET: reserva-tickets/obtenerPrecio?userId
+        public HttpResponseMessage validarEdad([FromUri] int userId)
+        {
+            bool edad = new LReservaTicket().validarEdades(userId);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, edad });
+        }
+
 
         /*
          * Autor: Jhonattan Pulido
