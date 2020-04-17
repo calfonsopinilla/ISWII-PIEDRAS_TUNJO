@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PromocionesService } from '../../../services/promociones.service';
+import { ReservaPromocion } from '../../../interfaces/reserva-promocion.interface';
 
 @Component({
   selector: 'app-tus-promociones',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TusPromocionesPage implements OnInit {
 
-  constructor() { }
+  reservasPromo: ReservaPromocion[] = [];
+
+  constructor(
+    private promoService: PromocionesService
+  ) { }
 
   ngOnInit() {
+    this.promoService.nuevaReservaPromo$.subscribe(_ => this.obtenerPromocionesUser());
+    this.obtenerPromocionesUser();
+  }
+
+  async obtenerPromocionesUser() {
+    this.reservasPromo = await this.promoService.getReservasByUserId();
   }
 
 }
