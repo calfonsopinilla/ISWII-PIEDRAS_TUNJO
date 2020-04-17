@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Logic {
@@ -30,6 +31,23 @@ namespace Logic {
                 output.Append(hashedBytes[i].ToString("x2").ToLower());
 
             return output.ToString();
+        }
+
+        /*
+            Autor: Jhonattan Alejandro Pulido Arenas
+            Fecha creación: 11/03/2020
+            Descripción: Método que sirve para encriptar una cadena de texto
+            Recibe: 
+            Retorna: Código de verificación
+        */
+        public string CodigoVerificacion() {
+
+            Guid guid = Guid.NewGuid();
+
+            string codigoVerificacion = guid.ToString();
+            codigoVerificacion = codigoVerificacion.Substring(0, 6);
+
+            return codigoVerificacion;
         }
     }
 }

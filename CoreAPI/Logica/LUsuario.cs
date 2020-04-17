@@ -30,6 +30,47 @@ namespace Logica
                 throw ex;
             }
         }
+        /**
+         * @Autor : Gabriel Andres Zapata Morera
+         * Fecha de creación: 14/04/2020
+         * Descripcion : Metodo que devuelve la informacion de los usuarios al servicio
+         * dependiendo del valor del filtro
+         */
+        public List<UUsuario> ObtenerUsuarios_Filtrados(int estadoFiltro)               
+        {
+            try
+            {
+                List<UUsuario> usuarios = new DaoUsuario().ObtenerUsuarios();
+                List<UUsuario> listadoUsuarios = new List<UUsuario>();
+                if (usuarios.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    for (int x = 0; x < usuarios.Count(); x++)
+                    {
+                        if (estadoFiltro == 1 && usuarios[x].EstadoCuenta == true)
+                        {
+                            listadoUsuarios.Add(usuarios[x]);
+                        }
+                        else if(estadoFiltro == 2 && usuarios[x].EstadoCuenta == false)
+                        {
+                            listadoUsuarios.Add(usuarios[x]);
+                        }
+
+                    }
+                    //return JsonConvert.SerializeObject(noticias);
+                    return listadoUsuarios;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         /*
          * Autor: Steven Cruz
          * Fecha: 31/03/2020
@@ -131,5 +172,27 @@ namespace Logica
                 throw ex;
             }
         }
+
+        /*
+          @Autor : Gabriel Andres Zapata Morera
+          *Fecha de creación: 14/04/2020
+          *Descripcion: Metodo para cambia el estado de la cuenta del usuario
+          *Este metodo recibe: estado_filtro y id_usuario
+          *Retorna: string validacion
+      */
+        public string CambiarEstado_Usuarios(int estadoFiltro, int id_Usuario)
+        {
+            try
+            {
+                string validacion = "";                
+                validacion = new DaoUsuario().CambiarEstado_Usuarios(estadoFiltro, id_Usuario);
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace PiedrasDelTunjo.Controllers
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("pqr")]
+    [Authorize]
     public class PqrController : ApiController
     {
         /*

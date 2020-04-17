@@ -15,3 +15,4 @@ namespace Utilitarios {
         public int PictogramaId { get => pictogramaId; set => pictogramaId = value; }
     }
 }
+

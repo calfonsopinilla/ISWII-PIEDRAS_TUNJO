@@ -18,25 +18,16 @@ namespace Logica
       *Recibe:
       *Retorna:
       */
-        public string informacionNoticia()
+        public List<UNoticia> informacionNoticia()
         {
             try
             {
                 List<UNoticia> noticias = new DAONoticia().informacionNoticia();
-                if (noticias.Count < 0)
-                {
-                    return "null";
+                if (noticias.Count < 0){
+                    return null;
                 }
-                else
-                {
-                    for (int x = 0; x < noticias.Count(); x++)
-                    {
-                        if (!String.IsNullOrEmpty(noticias[x].ImagenesUrl))
-                        {
-                            noticias[x].ListaImagenes = JsonConvert.DeserializeObject<List<string>>(noticias[x].ImagenesUrl);
-                        }
-                    }
-                    return JsonConvert.SerializeObject(noticias);
+                else{
+                    return noticias;
                 }
             }
             catch (Exception ex)
@@ -51,27 +42,24 @@ namespace Logica
        *Recibe: 
        *Retorna: 
        */
-        public bool agregarNoticia(string datosJson)
+        public bool agregarNoticia(UNoticia noticia)
         {
-            try
-            {
-                UNoticia datos = JsonConvert.DeserializeObject<UNoticia>(datosJson);
-                if (new DAONoticia().buscarId(datos.Id) != true)
-                {
-                    DAONoticia noticia = new DAONoticia();
-                    noticia.agregarNoticias(datos);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+            noticia.Token = "";
+            return new DAONoticia().agregarNoticias(noticia);
+        }
 
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+
+        public UNoticia Buscar(int id)
+        {
+            return new DAONoticia().Buscar(id);
+        }
+
+
+        public bool Actualizar(int id, UNoticia noticia)
+        {
+            noticia.Token = "";
+            return new DAONoticia().Actualizar(id, noticia);
         }
         /*
        @Autor: Carlos Alfonso Pinilla Garzon

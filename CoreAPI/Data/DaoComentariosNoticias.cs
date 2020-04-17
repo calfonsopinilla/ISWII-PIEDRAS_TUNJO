@@ -40,7 +40,8 @@ namespace Data
                                  nombreUsuario = usuarios.Nombre + " " + usuarios.Apellido,
                                  calificacion = comentarios.Calificacion,
                                  noticiaId = comentarios.Noticia_id,
-                                 reportado = comentarios.Reportado
+                                 reportado = comentarios.Reportado,
+                                 idUsuario = comentarios.UsuarioId
                              }).ToList();
 
                 listaComentarios = lista.AsEnumerable().Select(p => new UComentarioNoticia()
@@ -51,24 +52,20 @@ namespace Data
                     NombreUsuario = p.nombreUsuario,
                     Calificacion = p.calificacion,
                     Noticia_id = p.noticiaId,
-                    Reportado = p.reportado
-                    
+                    Reportado = p.reportado,
+                    UsuarioId =p.idUsuario
+
                 }).ToList();
                               
 
                 return listaComentarios.Where(x => x.Noticia_id == noticiaId && x.Reportado== false).ToList();
-    
-
-
+   
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        /// nuevo metodo envio 
-        /// 
 
 
         public List<UNoticia> enviarNoticias() {
@@ -78,9 +75,6 @@ namespace Data
             }
             
         }
-
-
-
 
 
 
@@ -94,16 +88,35 @@ namespace Data
         }
 
 
-
-
-        public bool eliminarComentarioNoticia(int idComentario) {
-            try{
+        public bool eliminarComentarioNoticia(long idComentario)
+        {
+            try
+            {
                 var comentario = db.ComentariosNoticias.Find(idComentario);
                 db.ComentariosNoticias.Remove(comentario);
+                db.SaveChanges();
                 return true;
             }
-            catch (Exception ex) {
-                throw ex; 
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool reportarComentarioNotica(long idComentario)
+        {
+            try
+            {
+                var comentario = db.ComentariosNoticias.Find(idComentario);
+                comentario.Reportado = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+
             }
         }
 

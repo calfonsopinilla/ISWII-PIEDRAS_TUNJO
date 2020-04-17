@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Utilitarios;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -17,6 +18,36 @@ namespace PiedrasDelTunjo.Controllers
     [RoutePrefix("images")]
     public class ImagenesController : ApiController
     {
+
+        /*
+         Autor: Jhonattan Pulido
+         Descripción: Servicio para almacenar imagen del servidor y actualizar datos
+         Parametros: Int id - Id del usuario
+        */
+
+        [HttpPost]        
+        [Route("dniImage")]
+        public HttpResponseMessage DniImage([FromUri] int id) {
+
+            string dniName = new LImagen().UploadDni(HttpContext.Current.Request, "Usuarios/Identificaciones");
+
+            if (dniName != null) {
+
+                UUsuario usuario = new UUsuario();
+                usuario = new LUsuario().Buscar(id);
+                usuario.Imagen_documento = dniName;
+                bool actualizado = new LUsuario().Actualizar(id, usuario);
+
+                if (actualizado)
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "DATOS ACTUALIZADOS: Imágen subida correctamente"});
+                else
+                    return Request.CreateResponse(HttpStatusCode.Conflict, new { ok = false, message = "Error: No se ha podido actualizar el usuario" });
+
+
+            } else
+                return Request.CreateResponse(HttpStatusCode.Conflict, new { ok = false, message = "Error: No se pudo subir la imagen al servidor" });            
+        }
+
         /*
          Autor: Steven Cruz
          Desc: Servicio para almacenar imágenes en el servidor
@@ -31,6 +62,25 @@ namespace PiedrasDelTunjo.Controllers
             object objectResponse = new LImagen().UploadImages(HttpContext.Current.Request, carpeta);
 
             return Request.CreateResponse(objectResponse);
+        }
+
+        [HttpDelete]
+        [Route("deleteImage")]
+        // DELETE: images/deleteImage?tipo=cabana&nombre=ava1.jpg
+        public HttpResponseMessage DeleteImage([FromUri] string nombre, [FromUri] string tipo)
+        {
+            try
+            {
+                string carpeta = ObtenerCarpetaPorTipo(tipo);
+                string path = $"~/Imagenes/{carpeta}/{nombre}";
+                path = System.Web.Hosting.HostingEnvironment.MapPath(path);
+                File.Delete(path);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = ex.Message });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true });
         }
 
         /*
@@ -95,6 +145,8 @@ namespace PiedrasDelTunjo.Controllers
                     return "Reserva/Tickets";
                 case "noticias":
                     return "Noticias";
+                case "picto":
+                    return "Pictogramas";
             }
             return null;
         }

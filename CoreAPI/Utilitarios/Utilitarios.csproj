@@ -94,6 +94,7 @@
     <Compile Include="UComentarioCabana.cs" />
     <Compile Include="UComentarioEvento.cs" />
     <Compile Include="UComentarioNoticia.cs" />
+    <Compile Include="UComentarioPic.cs" />
     <Compile Include="UComentarioPictograma.cs" />
     <Compile Include="UEstadoPQR.cs" />
     <Compile Include="UEvento.cs" />
@@ -108,9 +109,9 @@
     <Compile Include="UPuntuacion.cs" />
     <Compile Include="URegistroUser.cs" />
     <Compile Include="UReservaCabana.cs" />
+    <Compile Include="UReservaPromocion.cs" />
     <Compile Include="UReservaTicket.cs" />
     <Compile Include="URol.cs" />
-    <Compile Include="USubscripcion.cs" />
     <Compile Include="UTicket.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UTokenCorreo.cs" />

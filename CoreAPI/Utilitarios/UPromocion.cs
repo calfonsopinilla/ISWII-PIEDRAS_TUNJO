@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Utilitarios
 {
-    [Serializable] // Se declara que la clase U Usuario se puede expresar en formato JSON
     [Table("promocion", Schema = "parque")] // Se específica la tabla con la que se relaciona la clase U Usuario
     public class UPromocion
     {
@@ -13,8 +12,10 @@ namespace Utilitarios
         private int id;
         private string nombre;
         private string descripcion;
-        private int precio;
+        private double precio;
+        private string estado; // 1 significa que la promoción esta activa - 2 significa que la promoción no esta activa        
         private string token;
+        private DateTime lastModification;
 
 
         [Key]
@@ -25,9 +26,12 @@ namespace Utilitarios
         [Column("descripcion")]
         public string Descripcion { get => descripcion; set => descripcion = value; }
         [Column("precio")]
-        public int Precio { get => precio; set => precio = value; }
+        public double Precio { get => precio; set => precio = value; }
+        [Column("estado")]
+        public string Estado { get => estado; set => estado = value; }        
         [Column("token")]
         public string Token { get => token; set => token = value; }
-
+        [Column("last_modification")]
+        public DateTime LastModification { get => lastModification; set => lastModification = value; }               
     }
 }

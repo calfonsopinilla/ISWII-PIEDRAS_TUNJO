@@ -17,136 +17,63 @@ namespace Logica
       **/
     public class LPictograma
     {
-
-        public string RegistroPictograma(string jsonRegistroPic)
+        public object Agregar(UPictograma pictograma)
         {
+            string messageError = string.Empty;
+            bool created = false;
             try
             {
-                UPictograma datosPic = JsonConvert.DeserializeObject<UPictograma>(jsonRegistroPic);
-
-
-                string existencia = new DAOPictograma().Valida_ExistenciaPictograma(datosPic.Id_parque, datosPic.Nombre);
-
-
-
-                switch (existencia)
+                var existe = new DAOPictograma().ExistePorNombre(pictograma.Nombre);
+                if (existe)
                 {
-                    case "Ya exite un pictograma con el mismo nombre y el mismo id, eliminelo o actualicelo":
-                        return existencia;
-                    case "Ya exite un pictograma con el mismo id, eliminelo o actualicelo":
-                        return existencia;
-                    case "Ya exite un pictograma con el mismo nombre, eliminelo o actualicelo":
-                        return existencia;
-                    case "El pictograma no ha sido creado":
-                        try
-                        {
-                            new DAOPictograma().RegistroPictograma(datosPic);
-                            existencia = "Pictograma insertada satisfactoriamente";
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        break;
-
-
+                    messageError = "El nombre de pictograma ya existe.";
+                } else
+                {
+                    created = new DAOPictograma().Agregar(pictograma);
                 }
-
-                return existencia;
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
-                throw ex;
+                messageError = ex.Message;
             }
+            return new { ok = created, message = messageError };
         }
 
-        /**
-        * Autor: Mary Zapata
-        * fecha: 19/03/2019
-        * Return: string json con lista de tipo UPictogramas que contiene
-        * todos los pictogramas 
-       **/
-        public List<UPictograma> Mostrar_Pictogramas(int estadoFiltro)
+        public IEnumerable<UPictograma> ObtenerTodos()
         {
-            try
-            {
-                return (List<UPictograma>)new DAOPictograma().Mostrar_Pictograma(estadoFiltro);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-
+            return new DAOPictograma().ObtenerTodos();
         }
 
-        /**
-         * Autor: Mary Zapata
-         * fecha: 20/03/2019
-         * Return: string con mensaje de edicion exitosa
-        **/
-
-        public string EditarPictograma(string json_InfoNueva)
+        public object Actualizar(UPictograma pic, int id)
         {
+            string messageError = string.Empty;
+            bool updated = false;
             try
             {
-                string validacionCoincidencia = "";
-                UPictograma infoNueva = JsonConvert.DeserializeObject<UPictograma>(json_InfoNueva);
-
-                if (infoNueva == null)
+                var existe = new DAOPictograma().ExistePorNombre(pic.Nombre, true);
+                if (existe)
                 {
-                    validacionCoincidencia = "Los campos estan vacios";
-                    return validacionCoincidencia;
+                    messageError = "El nombre de pictograma ya existe.";
                 }
                 else
                 {
-                    new DAOPictograma().EditarPictograma(infoNueva);
-                    validacionCoincidencia = "Pictograma Editada Satisfactoriamente";
-
-
+                    updated = new DAOPictograma().Actualizar(pic, id);
                 }
-
-                return validacionCoincidencia;
             }
             catch (Exception ex)
             {
-                throw ex;
-
+                messageError = ex.Message;
             }
-
-
+            return new { ok = updated, message = messageError };
         }
 
-        /**
-        * Autor: Mary Zapata
-        * fecha: 20/03/2019
-        * 
-        * Return: string con mensaje del cambio de estado
-       **/
-        public string CambiarEstado_Pictograma(string json_Info)
+        public UPictograma Buscar(int id)
         {
-            try
-            {
-                string validacion = "";
-                UPictograma infoCambiar = JsonConvert.DeserializeObject<UPictograma>(json_Info);
+            return new DAOPictograma().Buscar(id);
+        }
 
-                if (infoCambiar == null)
-                {
-                    validacion = "Los campos estan vacios";
-                    return validacion;
-                }
-                else
-                {
-                    new DAOPictograma().CambiarEstado_Pictograma(infoCambiar);
-                    validacion = "Pictograma Eliminado Satisfactoriamente";
-                }
-                return validacion;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+        public bool Eliminar(int id)
+        {
+            return new DAOPictograma().Eliminar(id);
         }
     }
 }
