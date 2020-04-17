@@ -11,7 +11,15 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva_promocion")]
-    public class ReservaPromocionController : ApiController {        
+    public class ReservaPromocionController : ApiController {  
+        
+        [HttpGet]
+        [Route("")]
+        public HttpResponseMessage ObtenerTodos()
+        {
+            var reservas = new LReservaPromocion().ObtenerTodos();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
+        }
 
         /*
            * Autor: Jhonattan Pulido
