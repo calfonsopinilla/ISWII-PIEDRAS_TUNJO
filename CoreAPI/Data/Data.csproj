@@ -95,6 +95,7 @@
     <Compile Include="DAOReservaPromocion.cs" />
     <Compile Include="DaoReservaCabana.cs" />
     <Compile Include="DaoReservaTicket.cs" />
+    <Compile Include="DAOStripe.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="DAOCabana.cs" />
     <Compile Include="DaoEvento.cs" />

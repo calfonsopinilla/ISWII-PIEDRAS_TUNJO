@@ -95,6 +95,7 @@
     <Compile Include="LReservaCabana.cs" />
     <Compile Include="LReservaPromocion.cs" />
     <Compile Include="LReservaTicket.cs" />
+    <Compile Include="LStripe.cs" />
     <Compile Include="LUsuario.cs" />
     <Compile Include="LCabana.cs" />
     <Compile Include="LCorreo.cs" />
