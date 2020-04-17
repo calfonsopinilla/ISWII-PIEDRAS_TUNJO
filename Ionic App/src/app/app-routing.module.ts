@@ -66,14 +66,6 @@ const routes: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
-    path: 'promociones',
-    loadChildren: () => import('./pages/promociones/promociones.module').then( m => m.PromocionesPageModule)
-  },
-  {
-    path: 'adquirir-promocion',
-    loadChildren: () => import('./pages/adquirir-promocion/adquirir-promocion.module').then( m => m.AdquirirPromocionPageModule)
-  },
-  {
     path: 'vigilante',
     loadChildren: () => import('./pages/vigilante/tabs/tabs.module').then( m => m.TabsPageModule)
   },
@@ -89,11 +81,16 @@ const routes: Routes = [
     path: 'cabanas',
     loadChildren: () => import('./pages/cabanas/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'promociones',
+    loadChildren: () => import('./pages/promociones/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  },
+  }
+
 ];
 
 @NgModule({
