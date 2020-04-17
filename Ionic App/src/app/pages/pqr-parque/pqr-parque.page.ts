@@ -27,6 +27,16 @@ export class PqrParquePage implements OnInit {
     // console.log(this.pqrs);
   }
 
+  async presentAlert(pqr: Pqr) {
+    const alert = await this.alertCtrl.create({
+      header: pqr.Pregunta,
+      backdropDismiss: true,
+      translucent: true,
+      message: `<b>Rta: </b>${ pqr.Respuesta || 'No hay respuesta' }`
+    });
+    await alert.present();
+  }
+
   async presentAlertPrompt() {
     const alert = await this.alertCtrl.create({
       header: 'Nueva PQR',

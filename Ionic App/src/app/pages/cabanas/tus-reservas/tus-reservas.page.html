@@ -15,13 +15,11 @@
           <img [src]="reserva.UCabana.ImagenesUrl | imgServer: 'cabana'" [alt]="reserva.UCabana.Nombre">
           <ion-card-content>
             <ion-list>
-              <ion-item>
-                <ion-label>
-                  <b>{{ reserva.UCabana.Nombre }}</b>
-                  <br>
-                  <b>Fecha reserva: </b> <span>{{ reserva.FechaReserva | date:'dd MMM yyyy' }}</span>
-                </ion-label>
-              </ion-item>
+              <ion-label>
+                <b>{{ reserva.UCabana.Nombre }}</b>
+                <br>
+                <b>Fecha reserva: </b> <span>{{ reserva.FechaReserva | date:'dd MMM yyyy' }}</span>
+              </ion-label>
               <ion-button style="margin-top: 20px;" color="danger"
                           (click)="presentAlertConfirm(reserva.Id)" expand="full" 
                           shape="round">Cancelar reserva</ion-button>

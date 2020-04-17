@@ -45,6 +45,59 @@ export class ReservaCabanaService {
     });
   }
 
+  getDiasHabilesCabana(id: number): Promise<any[]> {
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-cabanas/diasHabiles?id=${ id }`)
+                .subscribe(res => {
+                  if (res['ok'] === true) {
+                    const dates = [];
+                    res['reservas'].forEach(x => dates.push(x.split('T')[0]));
+                    resolve(dates);
+                  } else {
+                    resolve([]);
+                  }
+                });
+    });
+  }
+
+  getYearValues(dates: any[]) {
+    const yearValues = [];
+    dates.forEach(x => {
+      const year = x.split('-')[0];
+      if (!this.existsInArray(year, yearValues)) {
+        yearValues.push(year);
+      }
+    });
+    return yearValues;
+  }
+
+  getMonthValues(dates: any[]) {
+    const monthValues = [];
+    dates.forEach(x => {
+      const month = x.split('-')[1];
+      if (!this.existsInArray(month, monthValues)) {
+        monthValues.push(month);
+      }
+    });
+    return monthValues;
+  }
+
+  getDayValues(dates: any[], monthV: any) {
+    const dayValues = [];
+    dates.forEach(x => {
+      const month = x.split('-')[1];
+      if (month === monthV) {
+        const day = x.split('-')[2];
+        dayValues.push(day);
+      }
+    });
+    return dayValues;
+  }
+
+  existsInArray(value: any, array: any[]) {
+    return array.find(x => x === value);
+  }
+
   cancelarReservaCabana(id: number) {
     return new Promise(resolve => {
       this.http.delete(`${ apiUrl }/reserva-cabanas/${ id }`)

@@ -14,10 +14,10 @@
     </ion-list-header>
     
     <ion-item *ngFor="let pqr of pqrs">
-      <ion-label>
-        <h5>{{ pqr.Pregunta }}</h5>
-        <p><strong>Rta:</strong> {{ pqr.Respuesta || 'Sin respuesta' }}</p>
-        <small>{{ pqr.FechaPublicacion | date: 'medium' }}</small>
+      <ion-label (click)="presentAlert(pqr)">
+        <b>{{ pqr.Pregunta }}</b>
+        <p><strong>Rta:</strong> {{ pqr.Respuesta || 'No hay respuesta' }}</p>
+        <small>{{ pqr.FechaPublicacion | date: 'MMM d, y' }}</small>
       </ion-label>
       <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
     </ion-item>
