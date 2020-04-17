@@ -10,6 +10,16 @@ namespace Data {
         // Variables
         private readonly Mapeo db = new Mapeo();
 
+
+        /*
+         Steven Cruz
+         Fecha: 17/04/2020
+             */
+        public IEnumerable<UReservaPromocion> ObtenerTodos()
+        {
+            return db.ReservaPromocion.Include("UPromocion").ToList();
+        }
+
         /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para agregar reserva de promociones
@@ -45,6 +55,7 @@ namespace Data {
                 using (this.db) {
 
                     return db.ReservaPromocion
+                          .Include("UPromocion")
                           .Where(x => x.UsuarioId == id)
                           .OrderBy(x => x.FechaCompra)
                           .ToList();
