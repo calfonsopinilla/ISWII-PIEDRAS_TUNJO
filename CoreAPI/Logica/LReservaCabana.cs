@@ -39,11 +39,6 @@ namespace Logica
             }
         }
 
-
-
-
-
-
         public IEnumerable<UReservaCabana> ObtenerTodos()
         {
             return new DaoReservaCabana().ObtenerTodos();
@@ -108,7 +103,7 @@ namespace Logica
         /// Resive :Rango en que necesite los festivos entre esa fecha
         /// Retorna : lista de festivos en esos rango de fecha
 
-        public List<DateTime> festivos(DateTime inicio, DateTime fin)
+        protected List<DateTime> festivos(DateTime inicio, DateTime fin)
         {
             //festivos fijos
             List<DateTime> festivos = new List<DateTime>();
@@ -224,57 +219,34 @@ namespace Logica
         {
 
             List<DateTime> diashabiles = new List<DateTime>();
-
-            List<DateTime> diasFestivos = festivos(DateTime.Now, DateTime.Now.AddMonths(2)).OrderBy(x => x.Month).ToList();
+            List<DateTime> diasFestivos = festivos(DateTime.Now.AddDays(1), DateTime.Now.AddMonths(1));
             DateTime diaAnterior;
             DateTime diaBusqueda;
             for (DateTime i = DateTime.Now.AddDays(1); i <= DateTime.Now.AddMonths(1);)
             {
-                if ((int)i.DayOfWeek != 1 && ((int)i.DayOfWeek != 2))
+                if ((int)i.DayOfWeek != 1 || ((int)i.DayOfWeek != 2))
                 {
                     diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
                 }
-                else if ((int)i.DayOfWeek == 1)
-                {
-                    try
-                    {
-                        DateTime festivo = diasFestivos.Where(x => x.Equals(i.Date)).First();
-                        diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-
-                }
                 else if ((int)i.DayOfWeek == 2)
                 {
-                    diaAnterior = i.AddDays(-1).Date;
-
-                    diaBusqueda = i;
-                    try
+                    diaAnterior = i.AddDays(-1);
+                    diaBusqueda = new DateTime(diaAnterior.Year, diaAnterior.Month, diaAnterior.Day);
+                    for (int x = 0; x < diasFestivos.Count; x++)
                     {
-                        DateTime festivo = diasFestivos.Where(x => x.Equals(diaAnterior)).First();
+                        if (diaBusqueda == diasFestivos[x])
+                        {
+                            diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
-                    }
-
                 }
-
+                else if ((int)i.DayOfWeek == 1)
+                {
+                }
                 i = i.AddDays(1);
             }
-
-
             return diashabiles;
-
-
-
         }
-
-
-       
-
     }
 
 

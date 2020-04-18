@@ -32,9 +32,7 @@ namespace Utilitarios {
         public string Token { get => token; set => token = value; }
         [Column("last_modification")]
         public DateTime LastModification { get => lastModification; set => lastModification = value; }
-
         [Column("promocion_id")]
-        public int UPromocionId { get => promocionId; set => promocionId = value; }
-        public UPromocion UPromocion { get; set; }
+        public int PromocionId { get => promocionId; set => promocionId = value; }        
     }
 }

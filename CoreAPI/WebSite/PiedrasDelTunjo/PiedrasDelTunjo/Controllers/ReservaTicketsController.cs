@@ -159,22 +159,6 @@ namespace PiedrasDelTunjo.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontro la reserva" });
         }
 
-        [HttpGet]
-        [Route("validarFechas")]
-
-
-        public HttpResponseMessage ValidarFechas() {
-            var fechas = new LReservaTicket().fechasValidas();
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas});
-
-        }
-
-
-
-
-
-
-
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
             Fecha creación: 11/03/2020
