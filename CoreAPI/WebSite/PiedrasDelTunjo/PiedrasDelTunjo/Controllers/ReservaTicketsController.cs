@@ -55,9 +55,11 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpPost]
         [Route("crear")]
-        public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva, string tipo)
+        public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
         {
 
+
+            string tipo = reserva.Token;
 
             if (reserva == null)
             {
@@ -83,15 +85,21 @@ namespace PiedrasDelTunjo.Controllers
                     Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
                     imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
                 }
+                reserva.FechaIngreso = reserva.FechaIngreso.Date;
                 bool created = new LReservaTicket().NuevaReserva(reserva);
                 return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
-
 
             }
             else if (validarTipo.Equals("2"))
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Ya tienes una reserva de este tipo para este ticket" });
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes obtener una entrada gratis por dia" });
             }
+            else if (validarTipo.Equals("3"))
+            {
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes adquirir una entrada de residente por dia" });
+
+            }
+
             else
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad resquest" });
