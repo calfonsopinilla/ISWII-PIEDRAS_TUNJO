@@ -1,0 +1,65 @@
+<ion-content [fullscreen] color="dark">
+  <ion-slides [options]="slideOpts" class="full-slide">
+    <ion-slide>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form1">
+        <ion-card>
+          <ion-card-header>
+            <b>DETALLES DEL PAGO</b>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">NÚMERO DE TARJETA</ion-label>
+                <ion-input formControlName="cardNumber" type="text" placeholder="Card number" appMaxLength="16"></ion-input>
+                <ion-icon name="card-outline" slot="end"></ion-icon>
+                <span class="text-danger"
+                      *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.required">
+                      Requerido</span>
+                <span class="text-danger"
+                      *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.minlength">
+                      Debe contener 16 digitos</span>
+              </ion-item>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="8">
+                    <ion-item>
+                      <ion-label position="floating">FECHA DE CADUCIDAD</ion-label>
+                      <ion-input formControlName="expireDate" type="text" placeholder="MM/YY" appExpireDate></ion-input>
+
+                      <span class="text-danger"
+                          *ngIf="expireDate.touched && expireDate.dirty && expireDate.errors?.required">
+                      Requerido</span>
+                      <span class="text-danger"
+                          *ngIf="expireDate.touched && expireDate.dirty && expireDate.errors?.minlength">
+                      MM/YY</span>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="4">
+                    <ion-item>
+                      <ion-label position="floating">CVC</ion-label>
+                      <ion-input formControlName="cvc" type="password" placeholder="000" appMaxLength="3"></ion-input>
+
+                      <span class="text-danger"
+                        *ngIf="cvc.touched && cvc.dirty && cvc.errors?.required">
+                      Requerido</span>
+                      <span class="text-danger"
+                        *ngIf="cvc.touched && cvc.dirty && cvc.errors?.minlength">
+                      3 digitos</span>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-list>
+            <ion-button fill="clear" expand="full" class="ion-margin-top ion-margin-bottom">
+              PAGO TOTAL
+              <ion-chip color="primary" outline slot="end">
+                <ion-label>{{ amount | currency: 'COP' }}</ion-label>
+              </ion-chip>
+            </ion-button>
+            <ion-button [disabled]="form1.invalid" type="submit" expand="full" color="secondary">PAGAR</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </form>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

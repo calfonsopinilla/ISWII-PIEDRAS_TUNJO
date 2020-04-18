@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaCabanaService } from 'src/app/services/reserva-cabana.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { CabanaService } from '../../../services/cabana.service';
 import { Router } from '@angular/router';
+import { CheckoutPage } from '../../checkout/checkout.page';
 
 declare var $: any;
 
@@ -25,7 +26,8 @@ export class ReservarPage implements OnInit {
   constructor(
     private reservaCabanaService: ReservaCabanaService,
     private toastCtrl: ToastController,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,16 @@ export class ReservarPage implements OnInit {
   }
 
   async reservar() {
+    const modal = await this.modalCtrl.create({
+      component: CheckoutPage,
+      componentProps: {
+        amount: this.valorTotal
+      }
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
     const year = $('#year')[0].value;
     const month = Number($('#month')[0].value) - 1;
     const day = $('#day')[0].value;

@@ -4,7 +4,7 @@
     <ion-card *ngFor="let reserva of reservasPromo">
         <ion-card-header>
            <ion-card-subtitle>{{ reserva.FechaCompra | date: 'MMM d, y' }}</ion-card-subtitle>
-           <ion-card-title>{{ reserva.UPromocion.Nombre }}</ion-card-title>
+           <ion-card-title>{{ reserva.UPromocion.nombre }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
             <ion-button color="secondary"  shape="round">Aplicar</ion-button>

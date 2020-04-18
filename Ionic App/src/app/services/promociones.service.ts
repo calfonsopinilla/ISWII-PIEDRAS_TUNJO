@@ -46,6 +46,7 @@ export class PromocionesService {
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/reserva_promocion/leer_usuario?id=${ usuario.Id }`)
                 .subscribe(res => {
+                  // console.log(res);
                   resolve(res['promociones']);
                 });
     });
