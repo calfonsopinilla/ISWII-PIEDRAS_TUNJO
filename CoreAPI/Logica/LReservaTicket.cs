@@ -187,5 +187,128 @@ namespace Logica
 
             return new DaoReservaTicket().LeerToken(token);
         }
+
+
+        public List<DateTime> fechasValidas()
+        {
+
+            List<DateTime> diasHabliles = diasHabilesTicket();
+
+            if (DateTime.Now.Hour >= 17)
+            {
+                diasHabliles.RemoveAt(0);
+            }
+
+            return diasHabliles.OrderBy(x => x.Month & x.Year).ToList();
+
+        }
+
+
+
+
+
+        public List<DateTime> diasHabilesTicket()
+        {
+
+            List<DateTime> diashabiles = new List<DateTime>();
+
+            List<DateTime> diasFestivos = new LReservaCabana().festivos(DateTime.Now, DateTime.Now.AddMonths(2)).OrderBy(x => x.Month).ToList();
+            DateTime diaAnterior;
+            DateTime diaBusqueda;
+            for (DateTime i = DateTime.Now; i <= DateTime.Now.AddMonths(1);)
+            {
+                if ((int)i.DayOfWeek != 1 && ((int)i.DayOfWeek != 2))
+                {
+                    diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
+                }
+                else if ((int)i.DayOfWeek == 1)
+                {
+                    try
+                    {
+                        DateTime festivo = diasFestivos.Where(x => x.Equals(i.Date)).First();
+                        diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                }
+                else if ((int)i.DayOfWeek == 2)
+                {
+                    diaAnterior = i.AddDays(-1).Date;
+
+                    diaBusqueda = i;
+                    try
+                    {
+                        DateTime festivo = diasFestivos.Where(x => x.Equals(diaAnterior)).First();
+                    }
+                    catch (Exception ex)
+                    {
+                        diashabiles.Add(new DateTime(i.Year, i.Month, i.Day));
+                    }
+
+                }
+
+                i = i.AddDays(1);
+            }
+
+
+            return diashabiles;
+
+        }
+
+        public string validarTipos(string tipo, int idUser, DateTime fecha)
+        {
+
+            //si ese usuario ya tiene una reserva para ese dia de tipo 1
+
+            if (tipo.Equals("1"))
+            {
+
+                int cantidad = ObtenerTickets().Where(x => x.UUsuarioId == idUser && x.idTicket == 3 && x.FechaIngreso.Date == fecha.Date).Count();
+
+                if (cantidad > 0)
+                {
+                    return "2";
+                }
+                else
+                {
+                    return "1";
+                }
+            }
+            else if (tipo.Equals("3"))
+            {
+                int cantidad = ObtenerTickets().Where(x => x.UUsuarioId == idUser && x.idTicket == 5 && x.FechaIngreso.Date == fecha.Date).Count();
+                if (cantidad > 0)
+                {
+                    return "2";
+                }
+                else
+                {
+                    return "1";
+                }
+            }
+            else if (tipo.Equals("2"))
+            {
+                return "1";
+            }
+            else
+            {
+
+                return "bad resquest";
+            }
+
+
+
+        }
+
+
+
+
     }
+
+
+
+
 }
+

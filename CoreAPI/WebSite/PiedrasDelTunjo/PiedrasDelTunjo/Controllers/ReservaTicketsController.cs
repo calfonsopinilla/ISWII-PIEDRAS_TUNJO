@@ -55,7 +55,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpPost]
         [Route("crear")]
-        public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
+        public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva, string tipo)
         {
 
 
@@ -63,23 +63,39 @@ namespace PiedrasDelTunjo.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
             }
+            string validarTipo = new LReservaTicket().validarTipos(tipo, reserva.UUsuarioId, reserva.FechaIngreso.Date);
 
-            reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
-            reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
-            QRCodeEncoder encoder = new QRCodeEncoder();
-            Bitmap img = encoder.Encode(reserva.Token);
-            System.Drawing.Image QR = (System.Drawing.Image)img;
-            using (MemoryStream ms = new MemoryStream())
+
+            if (validarTipo.Equals("1"))
             {
-                //opcional;
-                QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] imageBytes = ms.ToArray();
-                //imagen
-                Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
-                imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
+
+                reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
+                reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
+                QRCodeEncoder encoder = new QRCodeEncoder();
+                Bitmap img = encoder.Encode(reserva.Token);
+                System.Drawing.Image QR = (System.Drawing.Image)img;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    //opcional;
+                    QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Byte[] imageBytes = ms.ToArray();
+                    //imagen
+                    Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
+                    imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
+                }
+                bool created = new LReservaTicket().NuevaReserva(reserva);
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
+
+
             }
-            bool created = new LReservaTicket().NuevaReserva(reserva);
-            return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
+            else if (validarTipo.Equals("2"))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Ya tienes una reserva de este tipo para este ticket" });
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad resquest" });
+            }
         }
 
 
@@ -158,6 +174,24 @@ namespace PiedrasDelTunjo.Controllers
             else
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontro la reserva" });
         }
+
+
+        [HttpGet]
+        [Route("validarFechas")]
+
+
+        public HttpResponseMessage ValidarFechas()
+        {
+            var fechas = new LReservaTicket().fechasValidas();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
+
+        }
+
+
+
+
+
+
 
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
