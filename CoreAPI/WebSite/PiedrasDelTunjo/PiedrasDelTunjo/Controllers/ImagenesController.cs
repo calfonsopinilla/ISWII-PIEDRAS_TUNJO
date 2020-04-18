@@ -65,16 +65,19 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpDelete]
-        [Route("deleteImage")]
+        [Route("deleteImages")]
         // DELETE: images/deleteImage?tipo=cabana&nombre=ava1.jpg
-        public HttpResponseMessage DeleteImage([FromUri] string nombre, [FromUri] string tipo)
+        public HttpResponseMessage DeleteImage([FromUri] string imagenesUrl, [FromUri] string tipo)
         {
             try
             {
                 string carpeta = ObtenerCarpetaPorTipo(tipo);
-                string path = $"~/Imagenes/{carpeta}/{nombre}";
-                path = System.Web.Hosting.HostingEnvironment.MapPath(path);
-                File.Delete(path);
+                foreach(string img in imagenesUrl.Split('@'))
+                {
+                    string path = $"~/Imagenes/{carpeta}/{img}";
+                    path = System.Web.Hosting.HostingEnvironment.MapPath(path);
+                    File.Delete(path);
+                }
             }
             catch(Exception ex)
             {
