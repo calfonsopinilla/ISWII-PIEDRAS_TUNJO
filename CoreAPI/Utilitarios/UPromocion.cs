@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Utilitarios
 {
-    [Serializable] // Se declara que la clase U Usuario se puede expresar en formato JSON
+    //[Serializable] // Se declara que la clase U Usuario se puede expresar en formato JSON
     [Table("promocion", Schema = "parque")] // Se específica la tabla con la que se relaciona la clase U Usuario
     public class UPromocion
     {

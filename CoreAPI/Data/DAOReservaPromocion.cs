@@ -31,6 +31,11 @@ namespace Data {
             } catch { return false; }
         }
 
+        public IEnumerable<UReservaPromocion> ObtenerTodos()
+        {
+            return db.ReservaPromocion.Include("UPromocion").ToList();
+        }
+
         /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para leer las promociones compradas por un usuario
@@ -45,6 +50,7 @@ namespace Data {
                 using (this.db) {
 
                     return db.ReservaPromocion
+                          .Include("UPromocion")
                           .Where(x => x.UsuarioId == id)
                           .OrderBy(x => x.FechaCompra)
                           .ToList();

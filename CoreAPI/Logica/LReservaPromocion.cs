@@ -28,5 +28,10 @@ namespace Logica {
         public IEnumerable<UReservaPromocion> LeerPromocionesUsuario(int id) {
             return new DAOReservaPromocion().LeerPromocionesUsuario(id);
         }
+
+        public IEnumerable<UReservaPromocion> ObtenerTodos()
+        {
+            return new DAOReservaPromocion().ObtenerTodos();
+        }
     }
 }
