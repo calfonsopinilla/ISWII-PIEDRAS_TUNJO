@@ -12,4 +12,5 @@ export interface ReservaTicket {
     EstadoId?: number;
     UUsuarioId?: number;
     UUsuario?: Usuario;
+    idTicket? : number;
 }

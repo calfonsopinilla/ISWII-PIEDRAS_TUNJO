@@ -1,4 +1,4 @@
-<app-header titulo="Compra de tickets" tipo="menu"></app-header>
+<<app-header titulo="Compra de tickets" tipo="menu"></app-header>
 
 <ion-content [fullscreen] class="ion-padding">
   <form #formReserva="ngForm" (ngSubmit)="onSubmit(formReserva)">
@@ -6,24 +6,67 @@
       <ion-list-header>
         <ion-label><strong>Nueva reserva</strong></ion-label>
       </ion-list-header>
-
+      <div style="text-align: center;"> Elije un ticket</div>
       <ion-item>
+        <ion-label>Tickets </ion-label>
+
+        <ion-select name="value"   [(ngModel)]="reserva.value" interface="action-sheet"  (ionChange)="onSelectChange()" cancelText="Cancelar">
+
+          <div *ngIf="validarResidencia">
+            <ion-select-option value="1">Entrada Residente </ion-select-option>
+          </div>
+          <ion-select-option value="2">Entrada Visitante</ion-select-option>
+          <div *ngIf="validarEdad">
+            <ion-select-option value="3">Entrada gratuita</ion-select-option>
+          </div>
+        </ion-select>
+      </ion-item>
+      
+    
+      
+      <ion-item *ngIf="validar">
         <ion-label position="floating">Fecha Ingreso</ion-label>
         <ion-datetime name="fechaIngreso" [(ngModel)]="reserva.fechaIngreso" displayFormat="DD MMMM YYYY" 
                       placeholder="DD MM YYYY" cancelText="Cancelar" 
-                      yearValues="2020"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating" >Cantidad</ion-label>
-        <ion-input type="number" name="cantidad" min="1" [(ngModel)]="reserva.cantidad"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="fixed">Precio </ion-label>
-        <ion-label>$ {{ precioTotal }}</ion-label>
+                      yearValues="2020"
+                      month-names ='Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre'
+                      monthValues="1,2,3,4,5,6,7,8,9,10,11,12"
+                      doneText="Hecho"
+                      min ="{{min}}"
+                      max ="{{max}}"
+                      
+
+                      ></ion-datetime>
       </ion-item>
 
+
+
+      <ion-item *ngIf="(reserva.value=='1' && validar ) ">          
+        <ion-label position="floating">Cantidad</ion-label>  
+        <ion-input type="number" disabled ="true" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
+      </ion-item>
+    
+      <ion-item *ngIf="(reserva.value=='2'  && validar )">          
+        <ion-label position="floating">Cantidad</ion-label>  
+        <ion-input (ionChange)="calcularPrecioTotal()" type="number" disabled ="false" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
+      </ion-item>
+    
+      <ion-item *ngIf="(reserva.value=='3'  && validar )">        
+        <ion-label position="floating">Cantidad</ion-label>  
+        <ion-input type="number" disabled ="true" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
+      </ion-item>
+    
+    <ion-item *ngIf="validar">
+        <ion-label position="fixed">Precio </ion-label>
+        <ion-label>$ {{ precioTicket }}</ion-label>
+    </ion-item>
       <ion-button expand="full" shape="round" type="submit" 
                   [disabled]="!reservaValida" class="btn-form">Reservar</ion-button>
+                            
     </ion-list>
+
   </form>
+
+
+
 </ion-content>
