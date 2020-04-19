@@ -42,10 +42,12 @@ export class CheckoutPage implements OnInit {
       monthExpiration: expireDate.split('/')[0],
       yearExpiration: '20' + expireDate.split('/')[1]
     };
-    // const resultPay = await this.checkoutService.payment(customerInfo);
-    // console.log(resultPay);
+    const resultPay = await this.checkoutService.payment(customerInfo);
+    this.modalCtrl.dismiss(resultPay);
+  }
 
-    this.modalCtrl.dismiss({ ok: true });
+  cancelar() {
+    this.modalCtrl.dismiss();
   }
 
   get cvc() {

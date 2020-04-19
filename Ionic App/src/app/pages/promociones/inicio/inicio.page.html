@@ -3,14 +3,14 @@
 <ion-content [fullscreen]>
     <ion-card *ngFor="let promo of promociones">
         <ion-card-header>
-            <ion-title>{{ promo.nombre }}</ion-title>
+            <ion-title>{{ promo.Nombre }}</ion-title>
         </ion-card-header>
         <ion-card-content>
-            {{ promo.descripcion }}
+            {{ promo.Descripcion }}
             <p>
                 <b>Precio: </b>
                 <ion-chip>
-                    <ion-label color="primary">{{ promo.precio | currency: 'COP' }}</ion-label>
+                    <ion-label color="primary">{{ promo.Precio | currency: 'COP' }}</ion-label>
                 </ion-chip>
             </p>
             <ion-button (click)="comprar(promo)" expand="full" class="ion-margin-top" shape="round">comprar</ion-button>

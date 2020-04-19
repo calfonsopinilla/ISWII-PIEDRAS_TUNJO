@@ -1,7 +1,7 @@
 export interface Promocion {
-    id?: number;
-    nombre?: string;
-    descripcion?: string;
-    precio?: number;
-    estado?: number;
+    Id?: number;
+    Nombre?: string;
+    Descripcion?: string;
+    Precio?: number;
+    Estado?: number;
 }

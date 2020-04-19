@@ -37,7 +37,8 @@ export class ReservarPage implements OnInit {
   async cabanaSelected(event: any) {
     this.idCabana = event.id;
     this.valorTotal = event.valor;
-    await this.loadDates();
+    this.loadDates();
+    $('#month')[0].value = this.monthValues[0];
   }
 
   async loadDates() {
@@ -58,16 +59,7 @@ export class ReservarPage implements OnInit {
   }
 
   async reservar() {
-    const modal = await this.modalCtrl.create({
-      component: CheckoutPage,
-      componentProps: {
-        amount: this.valorTotal
-      }
-    });
-    await modal.present();
-
-    const { data } = await modal.onDidDismiss();
-
+    // construcción del objeto de ReservaCabana
     const year = $('#year')[0].value;
     const month = Number($('#month')[0].value) - 1;
     const day = $('#day')[0].value;
@@ -76,11 +68,28 @@ export class ReservarPage implements OnInit {
       ucabanaId: this.idCabana,
       valorTotal: this.valorTotal
     };
-    const created = await this.reservaCabanaService.reservar(reserva);
-    if (created) {
-      await this.loadDates();
-      this.presentToast('Reserva realizada!');
-      this.router.navigateByUrl('/cabanas/tus-reservas');
+
+    // modal para el checkout del pago
+    const modal = await this.modalCtrl.create({
+      component: CheckoutPage,
+      componentProps: {
+        amount: this.valorTotal
+      }
+    });
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    // console.log(data);
+    if (data) {
+      this.presentToast(data.message);
+      if (data.ok === true) {
+        // agregar la reserva de cabaña
+        const created = await this.reservaCabanaService.reservar(reserva);
+        if (created) {
+          $('#month')[0].value = this.monthValues[0];
+          this.loadDates();
+          this.router.navigateByUrl('/cabanas/tus-reservas');
+        }
+      }
     }
   }
 
