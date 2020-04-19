@@ -183,6 +183,7 @@ namespace Logica
          * Parametros: String token - Valor del token para filtrar
          * Retorna: Objeto tipo reserva token
          */
+
         public UReservaTicket LeerToken(string token) {
 
             return new DaoReservaTicket().LeerToken(token);
@@ -269,7 +270,7 @@ namespace Logica
 
                 if (cantidad > 0)
                 {
-                    return "2";
+                    return "3";
                 }
                 else
                 {
