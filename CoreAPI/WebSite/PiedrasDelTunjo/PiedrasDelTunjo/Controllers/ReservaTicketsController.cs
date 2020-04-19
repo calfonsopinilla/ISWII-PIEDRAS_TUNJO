@@ -196,7 +196,16 @@ namespace PiedrasDelTunjo.Controllers
         }
 
 
+        [HttpGet]
+        [Route("validarFechasUser")]
 
+
+        public HttpResponseMessage ValidarFechasUser( [FromUri] int idUser, int idTicket   ){
+
+            var fechas = new LReservaTicket().ObtenerDiasHabilesTicketUser(idUser, idTicket);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
+
+        }
 
 
 

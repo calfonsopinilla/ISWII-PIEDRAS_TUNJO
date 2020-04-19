@@ -21,6 +21,7 @@ namespace Logica
                 List<UReservaCabana> diasReservados = new DaoReservaCabana().ObtenerTodos().Where(x => x.UCabanaId == idCabana).ToList();
                 if (diasReservados.Count != 0){
                     for (int x = 0; x < diasReservados.Count(); x++){
+
                         bool buscar = diasHabiles.Contains(diasReservados[x].FechaReserva);
                         if (buscar != false){
                             int id = diasHabiles.IndexOf(diasReservados[x].FechaReserva);
