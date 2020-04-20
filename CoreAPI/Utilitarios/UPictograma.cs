@@ -20,7 +20,9 @@ namespace Utilitarios {
         public double Calificacion { get; set; } = 0;
         [Column("estado")]
         public int Estado { get; set; } = 1;
-        [Column("id_parque")]
-        public int IdParque { get; set; }
+        [Column("latitud")]
+        public string Latitud { get; set; }
+        [Column("longitud")]
+        public string Longitud { get; set; }
     }
 }
