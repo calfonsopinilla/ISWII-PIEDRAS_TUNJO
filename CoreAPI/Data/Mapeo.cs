@@ -36,6 +36,7 @@ namespace Data
         public DbSet<UComentarioNoticia> ComentariosNoticias { get; set; }
         public DbSet<UReservaCabana> ReservaCabanas { get; set; }
         public DbSet<UReservaPromocion> ReservaPromocion { get; set; }
+        public DbSet<URecorrido> Recorridos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
