@@ -16,6 +16,26 @@ namespace PiedrasDelTunjo.Controllers
     [Authorize]
     public class PqrController : ApiController
     {
+
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripcion: Método que funciona para responder el PQR de un usuario
+            * Parametros: Int id: Indentificador unico del usuario, UPQR pqr: Objeto tipo pqr con los datos a actualizar
+            * Retorna: Booleano true o false
+            * Ruta: pqr/responder/{id}
+        */
+        [HttpPut]
+        [Route("responder/{id}")]        
+        public HttpResponseMessage ResponderPQR([FromUri] int id, [FromBody] UPQR pqr) {
+
+            if (id != pqr.Id) 
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+
+            pqr.FechaRespuesta = DateTime.Now;
+            bool actualizado = new LPqr().actualizaPqr(id, pqr);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
         /*
             Jose Luis Soriano
             Parámetros: Ninguno

@@ -10,7 +10,6 @@ namespace Data
 {
     public class DaoPqr
     {
-
         public IEnumerable<UPQR> ListaPQR() {
 
             using (var db = new Mapeo())
@@ -64,8 +63,7 @@ namespace Data
                 }
             }
         }
-        public bool actualizarPqr(int id, UPQR PQR) {
-            PQR.FechaRespuesta = DateTime.Now;
+        public bool actualizarPqr(int id, UPQR PQR) {            
             using (var db = new Mapeo())
             {
                 try
