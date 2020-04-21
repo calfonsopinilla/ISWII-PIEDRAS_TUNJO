@@ -7,10 +7,18 @@ using Utilitarios;
 using Data;
 using Newtonsoft.Json;
 
-namespace Logica
-{
-    public class LUsuario
-    {
+namespace Logica {
+
+    public class LUsuario {
+
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripción: Servicio que funciona para traer los estados que estan registrados pero no han sido verificados por el administrador
+            * Parámetros: Ninguno
+            * Retorna: Lista de usuarios filtrados por verificación de cuenta en falso
+        */
+        public List<UUsuario> LeerUsuariosNoVerificados() { return new DaoUsuario().LeerUsuariosNoVerificados(); }
+
         /*
        @Autor : Jose Luis Soriano Roa
        *Fecha de creación: 11/03/2020

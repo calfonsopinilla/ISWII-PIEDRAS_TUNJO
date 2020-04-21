@@ -11,6 +11,25 @@ namespace Data
     public class DaoUsuario {
         private readonly Mapeo db = new Mapeo();
 
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripción: Servicio que funciona para traer los estados que estan registrados pero no han sido verificados por el administrador
+            * Parámetros: Ninguno
+            * Retorna: Lista de usuarios filtrados por verificación de cuenta en falso
+        */
+        public List<UUsuario> LeerUsuariosNoVerificados() {
+
+            try {
+
+                using (this.db) {
+
+                    return this.db.Usuarios.Where(x => x.VerificacionCuenta == false).ToList();
+                }
+
+            } catch { throw; }
+
+        }
+
         public List<UUsuario> ObtenerUsuarios() {
 
             using (var db = new Mapeo()) {

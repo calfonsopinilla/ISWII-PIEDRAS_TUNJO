@@ -186,3 +186,16 @@ C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Relea
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CopyComplete
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.xml
