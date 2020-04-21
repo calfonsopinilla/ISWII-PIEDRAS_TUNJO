@@ -105,3 +105,68 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utili
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.pdb
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Newtonsoft.Json.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Newtonsoft.Json.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Utilitarios.dll.config
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Utilitarios.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Utilitarios.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework.SqlServer.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework6.Npgsql.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Newtonsoft.Json.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Buffers.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Memory.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Numerics.Vectors.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Text.Encodings.Web.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Text.Json.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.ValueTuple.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework.SqlServer.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\EntityFramework6.Npgsql.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Newtonsoft.Json.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\Npgsql.NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Buffers.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Memory.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Numerics.Vectors.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Text.Encodings.Web.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Text.Json.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\System.ValueTuple.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.csprojAssemblyReference.cache
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.csproj.CopyComplete
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.pdb

@@ -152,6 +152,18 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
+        [HttpGet]
+        [Route("RolesUsuario")]
+        public IHttpActionResult ObtenerRoles()
+        {
+            try
+            {
+                return Ok(new LUsuario().ObteneRoles());
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }

@@ -12,7 +12,7 @@ namespace Utilitarios
         public int Id { get; set; }
         [Column("nombre")]
         public string Nombre { get; set; }
-        [Column("ruta", TypeName = "geometry")]
+        [Column("ruta")]
         public string Ruta { get; set; }
         [Column("puntos_interes")]
         public string PuntosInteres { get; set; }
