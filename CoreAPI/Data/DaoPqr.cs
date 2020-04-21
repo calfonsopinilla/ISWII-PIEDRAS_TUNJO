@@ -51,8 +51,7 @@ namespace Data
             }
         }
 
-        public bool AgregarPqr(UPQR pqr) {
-
+        public bool AgregarPqr(UPQR pqr) {            
             using (var db = new Mapeo()){
                 try{
                     db.PQR.Add(pqr);
@@ -66,7 +65,7 @@ namespace Data
             }
         }
         public bool actualizarPqr(int id, UPQR PQR) {
-
+            PQR.FechaRespuesta = DateTime.Now;
             using (var db = new Mapeo())
             {
                 try
@@ -126,7 +125,6 @@ namespace Data
                 return pqrs.Find(x => x.Id == id);
             }
         }
-
     }
     
 }
