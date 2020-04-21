@@ -397,3 +397,5 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\Piedr
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Release\PiedrasDelTunjo.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Release\PiedrasDelTunjo.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Release\PiedrasDelTunjo.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.xml

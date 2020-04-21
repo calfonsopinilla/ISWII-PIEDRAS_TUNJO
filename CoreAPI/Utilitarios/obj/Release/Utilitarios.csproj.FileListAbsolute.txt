@@ -103,3 +103,5 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utili
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Release\Utilitarios.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\bin\Release\NetTopologySuite.xml

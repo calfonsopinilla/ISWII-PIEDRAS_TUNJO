@@ -127,3 +127,5 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Release\Logica.csp
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Release\Logica.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Release\Logica.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Release\Logica.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Release\NetTopologySuite.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Release\NetTopologySuite.xml
