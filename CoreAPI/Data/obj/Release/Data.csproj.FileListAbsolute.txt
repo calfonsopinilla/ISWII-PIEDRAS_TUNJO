@@ -120,3 +120,16 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.xml
