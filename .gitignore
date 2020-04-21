@@ -28,3 +28,12 @@ CoreAPI/WebSite/PiedrasDelTunjo/.vs/PiedrasDelTunjo/v15/.suo
 *.cache
 *.cache
 *.cache
+*.dll
+*.pdb
+*.cache
+*.txt
+*.txt
+*.config
+*.ide-shm
+*.ide-wal
+*.dll

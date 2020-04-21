@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using Utilitarios;
 namespace Data
 {
-    public class DaoUsuario{
+    public class DaoUsuario {
         private readonly Mapeo db = new Mapeo();
 
-        public List<UUsuario> ObtenerUsuarios(){
+        public List<UUsuario> ObtenerUsuarios() {
 
-            using (var db = new Mapeo()){
-                try{
+            using (var db = new Mapeo()) {
+                try {
                     return db.Usuarios.ToList();
-                }catch (Exception ex)
+                } catch (Exception ex)
                 {
                     throw ex;
                 }
@@ -36,7 +36,7 @@ namespace Data
                 throw ex;
             }
         }
-         public UUsuario Buscar(int id)
+        public UUsuario Buscar(int id)
         {
             try
             {
@@ -150,12 +150,10 @@ namespace Data
                 {
                     user.EstadoCuenta = false;
                 }
-                
+
                 db.SaveChanges();
             }
         }
-
-
         /**
         *@Autor : Gabriel Andres Zapata Morera
         *Fecha de creación: 14/04/2020
@@ -170,10 +168,10 @@ namespace Data
                 string validacion = "";
                 var user = db.Usuarios.Where(x => x.Id == id_Usuario).FirstOrDefault();
                 if (estadoFiltro == 1)
-                {                    
+                {
                     user.EstadoCuenta = false;
                     validacion = "Usuario Deshabilitado Satisfactoriamente";
-                    db.SaveChanges();                    
+                    db.SaveChanges();
                     return validacion;
                 }
                 else if (estadoFiltro == 2)
@@ -185,6 +183,23 @@ namespace Data
                 }
                 return validacion;
 
+            }
+        }
+        /**
+        *@Autor : Carlos Alfonso Pinilla Garzón
+        *Fecha de creación: 21/04/2020
+        *Descripcion: Metodo para obtener los roles
+        *Este metodo recibe: nada
+        *Retorna: lista de roles
+        */
+        public List<URol> ObtenerRoles()
+        {
+            try
+            {
+                return db.Roles.ToList();
+            }catch(Exception ex)
+            {
+                throw ex;
             }
         }
 

@@ -193,6 +193,16 @@ namespace Logica
                 throw ex;
             }
         }
-
+        /**
+        *@Autor : Gabriel Andres Zapata Morera
+        *Fecha de creación: 14/04/2020
+        *Descripcion: Metodo para cambiar estado de la cuenta del ususario segun el estadoFiltro
+        *Este metodo recibe:  estadoFiltro,  id_Usuario
+        *Retorna: string validacion
+        */
+        public List<URol> ObteneRoles()
+        {
+            return new DaoUsuario().ObtenerRoles();
+        }
     }
 }
