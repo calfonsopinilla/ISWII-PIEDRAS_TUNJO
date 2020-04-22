@@ -79,7 +79,6 @@ namespace Logica
 
         public bool validarResidencia(int idUser)
         {
-
             try
             {
                 var user = new LUsuario().Buscar(idUser);
@@ -169,8 +168,14 @@ namespace Logica
             return diasHabliles.OrderBy(x => x.Month & x.Year).ToList();
 
         }
-        
-        
+
+        /*
+       * Autor: Jose Luis Soriano Roa 
+       * Fecha de modificación: 21-04-2020
+       * id del usuario
+       * Envia  dinamicamente los dias que puede comprar ticket segun los dias de abierto al publico 
+       * Como tambien los dias que no pueda reservar cierto tipo de tickets.
+       */
 
 
         public IEnumerable<DateTime> ObtenerDiasHabilesTicketUser(int idUser, int idTicket){            
@@ -191,7 +196,6 @@ namespace Logica
                 return diasHabiles;
 
 
-                return null;
             }
             else {
                 return diasHabiles;

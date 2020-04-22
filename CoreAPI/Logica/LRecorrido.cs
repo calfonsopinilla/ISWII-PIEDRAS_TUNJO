@@ -14,5 +14,20 @@ namespace Logica
         {
             return new DaoRecorrido().ObtenerTodos();
         }
+
+        public URecorrido Buscar(int id)
+        {
+            return new DaoRecorrido().Buscar(id);
+        }
+
+        public bool Agregar(URecorrido recorrido)
+        {
+            return new DaoRecorrido().Agregar(recorrido);
+        }
+
+        public bool Eliminar(int id)
+        {
+            return new DaoRecorrido().Eliminar(id);
+        }
     }
 }

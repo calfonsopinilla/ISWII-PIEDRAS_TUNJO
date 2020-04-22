@@ -52,12 +52,19 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
         }
 
+        /*
+          * Autor: Jose Luis Soriano Roa 
+          * Fecha de modificación: 21-04-2020
+          * No resive parametros
+          * Crea el qr de la entrada al parque y agrega la reserva
+          * No es posible que un usuario obtenga dos tickets gratis para un mismo sea debido a excepcion por entrada de edad
+          * Como tampoco es posible que el usuario tenga dos tickets para los residentes de faca en la misma fecha
+      */
 
         [HttpPost]
         [Route("crear")]
         public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
         {
-
 
             string tipo = reserva.Token;
 
@@ -146,14 +153,34 @@ namespace PiedrasDelTunjo.Controllers
         }
 
 
+        /*
+       * Autor: Jose Luis Soriano Roa 
+       * Fecha de modificación: 21-04-2020
+       * id del usuario
+       * evalua segun los datos del usuario si es residente de faca para permitir  o no la compra del ticket de residentes
+       
+   */
+
+
+
         [HttpGet]
         [Route("validarResidencia")]
-        // GET: reserva-tickets/obtenerPrecio?userId
+        
         public HttpResponseMessage validarResidencia([FromUri] int userId)
         {
             bool residencia = new LReservaTicket().validarResidencia(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, residencia });
         }
+
+
+
+        /*
+        * Autor: Jose Luis Soriano Roa 
+        * Fecha de modificación: 21-04-2020
+        * id del usuario
+        * Evalua que el usuario pueda o no adquirir los tickets de entrada gratis
+
+        */
 
         [HttpGet]
         [Route("validarEdad")]
