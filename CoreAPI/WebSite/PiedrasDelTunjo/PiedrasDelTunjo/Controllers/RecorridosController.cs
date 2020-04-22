@@ -12,6 +12,7 @@ namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("recorridos")]
+    [Authorize]
     public class RecorridosController : ApiController
     {
         [HttpGet]
