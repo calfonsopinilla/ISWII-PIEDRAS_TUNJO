@@ -19,6 +19,8 @@ namespace Utilitarios {
         public string Token { get; set; } = "";
         [Column("last_modification")]
         public DateTime LastModification { get; set; } = DateTime.Now;
+        [Column("fecha_respuesta")]
+        public DateTime FechaRespuesta { get; set; }
 
         [Column("estado_id")]
         public int UEstadoPQRId { get; set; } = 1;

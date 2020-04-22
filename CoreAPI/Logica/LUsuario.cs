@@ -7,10 +7,18 @@ using Utilitarios;
 using Data;
 using Newtonsoft.Json;
 
-namespace Logica
-{
-    public class LUsuario
-    {
+namespace Logica {
+
+    public class LUsuario {
+
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripción: Servicio que funciona para traer los estados que estan registrados pero no han sido verificados por el administrador
+            * Parámetros: Ninguno
+            * Retorna: Lista de usuarios filtrados por verificación de cuenta en falso
+        */
+        public List<UUsuario> LeerUsuariosNoVerificados() { return new DaoUsuario().LeerUsuariosNoVerificados(); }
+
         /*
        @Autor : Jose Luis Soriano Roa
        *Fecha de creación: 11/03/2020
@@ -193,6 +201,16 @@ namespace Logica
                 throw ex;
             }
         }
-
+        /**
+        *@Autor : Gabriel Andres Zapata Morera
+        *Fecha de creación: 14/04/2020
+        *Descripcion: Metodo para cambiar estado de la cuenta del ususario segun el estadoFiltro
+        *Este metodo recibe:  estadoFiltro,  id_Usuario
+        *Retorna: string validacion
+        */
+        public List<URol> ObteneRoles()
+        {
+            return new DaoUsuario().ObtenerRoles();
+        }
     }
 }

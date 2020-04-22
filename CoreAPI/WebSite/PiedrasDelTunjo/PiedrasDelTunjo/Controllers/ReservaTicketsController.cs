@@ -52,34 +52,65 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
         }
 
+        /*
+          * Autor: Jose Luis Soriano Roa 
+          * Fecha de modificación: 21-04-2020
+          * No resive parametros
+          * Crea el qr de la entrada al parque y agrega la reserva
+          * No es posible que un usuario obtenga dos tickets gratis para un mismo sea debido a excepcion por entrada de edad
+          * Como tampoco es posible que el usuario tenga dos tickets para los residentes de faca en la misma fecha
+      */
 
         [HttpPost]
         [Route("crear")]
         public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
         {
 
+            string tipo = reserva.Token;
 
             if (reserva == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
             }
+            string validarTipo = new LReservaTicket().validarTipos(tipo, reserva.UUsuarioId, reserva.FechaIngreso.Date);
 
-            reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
-            reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
-            QRCodeEncoder encoder = new QRCodeEncoder();
-            Bitmap img = encoder.Encode(reserva.Token);
-            System.Drawing.Image QR = (System.Drawing.Image)img;
-            using (MemoryStream ms = new MemoryStream())
+
+            if (validarTipo.Equals("1"))
             {
-                //opcional;
-                QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                Byte[] imageBytes = ms.ToArray();
-                //imagen
-                Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
-                imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
+
+                reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
+                reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
+                QRCodeEncoder encoder = new QRCodeEncoder();
+                Bitmap img = encoder.Encode(reserva.Token);
+                System.Drawing.Image QR = (System.Drawing.Image)img;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    //opcional;
+                    QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Byte[] imageBytes = ms.ToArray();
+                    //imagen
+                    Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
+                    imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
+                }
+                reserva.FechaIngreso = reserva.FechaIngreso.Date;
+                bool created = new LReservaTicket().NuevaReserva(reserva);
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
+
             }
-            bool created = new LReservaTicket().NuevaReserva(reserva);
-            return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
+            else if (validarTipo.Equals("2"))
+            {
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes obtener una entrada gratis por dia" });
+            }
+            else if (validarTipo.Equals("3"))
+            {
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes adquirir una entrada de residente por dia" });
+
+            }
+
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad resquest" });
+            }
         }
 
 
@@ -122,14 +153,34 @@ namespace PiedrasDelTunjo.Controllers
         }
 
 
+        /*
+       * Autor: Jose Luis Soriano Roa 
+       * Fecha de modificación: 21-04-2020
+       * id del usuario
+       * evalua segun los datos del usuario si es residente de faca para permitir  o no la compra del ticket de residentes
+       
+   */
+
+
+
         [HttpGet]
         [Route("validarResidencia")]
-        // GET: reserva-tickets/obtenerPrecio?userId
+        
         public HttpResponseMessage validarResidencia([FromUri] int userId)
         {
             bool residencia = new LReservaTicket().validarResidencia(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, residencia });
         }
+
+
+
+        /*
+        * Autor: Jose Luis Soriano Roa 
+        * Fecha de modificación: 21-04-2020
+        * id del usuario
+        * Evalua que el usuario pueda o no adquirir los tickets de entrada gratis
+
+        */
 
         [HttpGet]
         [Route("validarEdad")]
@@ -159,18 +210,29 @@ namespace PiedrasDelTunjo.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontro la reserva" });
         }
 
+
         [HttpGet]
         [Route("validarFechas")]
 
 
-        public HttpResponseMessage ValidarFechas() {
+        public HttpResponseMessage ValidarFechas()
+        {
             var fechas = new LReservaTicket().fechasValidas();
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas});
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
 
         }
 
 
+        [HttpGet]
+        [Route("validarFechasUser")]
 
+
+        public HttpResponseMessage ValidarFechasUser( [FromUri] int idUser, int idTicket   ){
+
+            var fechas = new LReservaTicket().ObtenerDiasHabilesTicketUser(idUser, idTicket);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
+
+        }
 
 
 

@@ -31,6 +31,13 @@ namespace Utilitarios
         [Column("estado_id")]
         public int EstadoId { get; set; } = 1;
 
+
+        [Column("id_ticket")]
+        public int idTicket { get; set; }
+
+
+
+
         [Column("usuario_id")]
         public int UUsuarioId { get; set; }
         public UUsuario UUsuario { get; set; }

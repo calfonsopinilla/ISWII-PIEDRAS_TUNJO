@@ -1,24 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Utilitarios;
 using Logica;
 using System.Web.Http.Cors;
+using System.Collections.Generic;
 
-namespace PiedrasDelTunjo.Controllers
-{
+namespace PiedrasDelTunjo.Controllers {
+
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("Usuarios")]
     public class UsuarioController : ApiController{
 
         /*
+            * Autor: Jhonattan Pulido
+            * Fecha creación: 21/04/2020
+            * Descripción: Servicio que funciona para traer los estados que estan registrados pero no han sido verificados por el administrador
+            * Parámetros: Ninguno
+            * Retorna: Lista de usuarios filtrados por verificación de cuenta en falso
+            * Ruta: Usuarios/leer/no-verificados
+        */
+        [HttpGet]
+        //[Authorize]
+        [Route("leer/no-verificados")]
+        public HttpResponseMessage LeerUsuariosNoVerificados() {
+
+            try {
+
+                List<UUsuario> listaUsuarios = new LUsuario().LeerUsuariosNoVerificados();
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, listaUsuarios });
+
+            } catch { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Error Inesperado" }); }            
+        }
+
+        /*
+            * Autor: Jhonattan Pulido
+            * * Fecha creación: 21/04/2020
+            * Descripción: Servicio que funciona para habilitar al usuario para poder realizar funciones desde movil
+            * Parámetros: UUsuario usuario: Objeto con los datos del usuario inscritos
+            * Retorna: True: Si la ejecución del servicio se hizo correctamente, False: Si ocurrio un error durante la ejecución del método
+            * Ruta: Usuarios/actualizar/no-verificado
+        */
+        [HttpPut]
+        //[Authorize]
+        [Route("actualizar/no-verificado")]
+        public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario) {
+
+            usuario.VerificacionCuenta = true;
+            bool actualizado = new LUsuario().Actualizar(usuario.Id, usuario);
+            if (actualizado)
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Usuario actualizado correctamente" });
+            else
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
+        }
+
+        /*
         @Autor : Jose Luis Soriano Roa
         *Fecha de creación: 11/03/2020
         *Descripcion : Servicio que envia la informacion de los usuarios del sistema
-        *Resive parametro de tipo UBusqueda en json con rolId y cedula de estructura de utilitario UBUSQUEDA
+        *Recibe parametro de tipo UBusqueda en json con rolId y cedula de estructura de utilitario UBUSQUEDA
         *Retorna: lista de la informacion de los usuarios registrados en formato json de tipo UUsuario
         */
 
@@ -152,7 +193,17 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
-
-
+        [HttpGet]
+        [Route("RolesUsuario")]
+        public IHttpActionResult ObtenerRoles()
+        {
+            try
+            {
+                return Ok(new LUsuario().ObteneRoles());
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
