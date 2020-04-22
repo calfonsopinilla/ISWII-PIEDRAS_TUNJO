@@ -61,6 +61,22 @@ namespace Data {
             } catch (Exception ex) { return null; }
         }
 
+
+        
+        public List<UPromocion> ObtenerPromociones()
+        {
+            try
+            {
+                using (this.db)
+                {
+                    return this.db.promocion.OrderBy(x => x.Id).ToList();   
+                }
+
+            }
+            catch (Exception ex) { return null; }
+        }
+
+
         /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para cambiar el estado de una promoción
