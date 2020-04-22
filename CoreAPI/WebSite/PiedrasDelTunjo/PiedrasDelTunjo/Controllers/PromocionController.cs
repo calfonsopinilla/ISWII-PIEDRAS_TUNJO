@@ -17,37 +17,78 @@ namespace PiedrasDelTunjo.Controllers {
         private List<UPromocion> listaPromociones;
 
         /*
-            * Autor: Jhonattan Pulido
-            * Descripción: Método que sirve para crear promociones
-            * Fecha de modificación: 15-04-2020
-            * Parámetros: UPromocion nuevaPromocion - Objeto con los datos de la promoción
-            * Retorna: True si la promoción se almaceno correctamente - False si ocurrio un error en la ejecución del método
-            * Ruta promocion/crear
+            * Autor: Jose Luis Soriano  
+            * Descripción: Insertar Promociones
+            * Fecha de modificación: 21-04-2020
+            * Parámetros: Objeto u promocion
+            * Nota: No es posible tener dos promociones del mismo ticket  para ya sea un mismo rango de fechas o
+            * que estas interfieran en otro rango.
         */
-        [HttpPost]
+        [HttpGet]
         //[Authorize]
         [Route("crear")]
         public HttpResponseMessage CrearPromocion([FromBody] UPromocion promocion) {
 
+            
+
+            if (promocion.FechaInicio.Date < DateTime.Now.Date){
+                return Request.CreateErrorResponse(HttpStatusCode.Created, "Fecha inicio no valida");
+            }
+            else if (promocion.FechaFin.Date < promocion.FechaInicio.Date){
+                return Request.CreateErrorResponse(HttpStatusCode.Created, "La fecha fin debe ser despues de la fecha inicio");
+            }
+
             promocion.Estado = "1";
             promocion.LastModification = DateTime.Now;
             promocion.Token = "";
-            bool creado = new LPromocion().CrearPromocion(promocion);
+            bool resultado = new LPromocion().validarPromocion(promocion);
 
-            if (creado)
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Promoción agregada correctamente" });
-            else
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Ha ocurrido un error con el servidor" });
+            if (resultado == true)
+            {
+                bool creado = new LPromocion().CrearPromocion(promocion);
+
+                if (creado == true)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Created, "promocion  agregada");
+                }
+                else {
+                    return Request.CreateErrorResponse(HttpStatusCode.Created, "ocurrio un error");
+                }
+
+            }
+            else{
+                return Request.CreateErrorResponse(HttpStatusCode.Created, "promocion  no agregada, verifique que no exista otra promocion en ese rango de fechas");
+            }
         }
 
         /*
-            * Autor: Jhonattan Pulido
-            * Descripción: Método que sirve para leer todas las promociones
-            * Fecha de modificación: 15-04-2020
-            * Parámetros: string estado - "1" si se quieren obtener las promociones habilitadas, "2" si se quieren obtener las promociones deshabilitadas
-            * Retorna: Lista tipo UPromocion con las promociones - Null si ocurrio un error en la ejecución del método
-            * Ruta: promocion/leer?estado=1 || promocion/leer?estado=2
-        */
+          * Autor: Jose Luis Soriano Roa 
+          * Fecha de modificación: 21-04-2020
+          * No resive parametros
+          * Retorna la lista de las promociones  
+      */
+        [HttpGet]
+        [Route("")]
+        public HttpResponseMessage ObtenerPromociones()
+        {
+
+            var promociones = new LPromocion().ObtenerPromociones();
+            return Request.CreateResponse(HttpStatusCode.OK, promociones);
+        }
+
+
+
+        
+        
+        /*
+           * Autor: Jhonattan Pulido
+           * Descripción: Método que sirve para leer todas las promociones
+           * Fecha de modificación: 15-04-2020
+           * Parámetros: string estado - "1" si se quieren obtener las promociones habilitadas, "2" si se quieren obtener las promociones deshabilitadas
+           * Retorna: Lista tipo UPromocion con las promociones - Null si ocurrio un error en la ejecución del método
+           * Ruta: promocion/leer?estado=1 || promocion/leer?estado=2
+       */
+
         [HttpGet]
         //[Authorize]
         [Route("leer")]
@@ -71,27 +112,57 @@ namespace PiedrasDelTunjo.Controllers {
         public HttpResponseMessage CambiarEstado([FromUri] int id) {
 
             bool creado = new LPromocion().CambiarEstado(id);
-
+            
             if (creado)
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Cambio de estado efectuado correctamente" });
             else
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Ha ocurrido un error con el servidor" });
         }
 
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripción: Actualza promocion y valida que no permita que dos promociones del mismo ticket se crucen de fecha
+            * Fecha de modificación: 21/04/2020
+            * Parámetros: Objeto upromocion
+            *Retorna respuesta de que si ocurrio un error, incumple la validacionde las fechas o si en verdad fue insertado 
+        */
         [HttpPut]
-        //[Authorize]
-        [Route("{id}")]
-        // PUT: promocion/id
-        public HttpResponseMessage Actualizar([FromUri] int id, [FromBody] UPromocion promocion) {
+        [Route("editar")]
+        public HttpResponseMessage Actualizar([FromBody] UPromocion promocion) {
 
+            int id= promocion.Id;
             if (id != promocion.Id) {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            promocion.Token = "";
-            bool actualizado = new LPromocion().Actualizar(id, promocion);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
-        }
 
+            if (promocion.FechaInicio.Date < DateTime.Now.Date)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Created, "Fecha inicio no valida");
+            }
+            else if (promocion.FechaFin.Date < promocion.FechaInicio.Date)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Created, "La fecha fin debe ser despues de la fecha inicio");
+            }
+
+
+            promocion.LastModification = DateTime.Now;
+            bool resultado = new LPromocion().validarPromocionUpdate(promocion);
+            if (resultado == true){
+                promocion.Token = "";
+                bool actualizado = new LPromocion().Actualizar(id, promocion);
+                if (actualizado == true) {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+                }
+                else{
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = "No fue posible actualizar" });
+                }
+            }
+            else {
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = "Ya existe una reserva en este rango de fechas" });
+
+            }
+            
+        }
         /*
             Daniel Zambrano
            Parámetros: Ninguno
