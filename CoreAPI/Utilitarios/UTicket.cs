@@ -16,6 +16,7 @@ namespace Utilitarios
         private string nombre;
         private double precio;
         private string descripcion;
+        private int estado;
 
         [Key]
         [Column("id")]
@@ -30,8 +31,8 @@ namespace Utilitarios
         public string Token { get; set; }
         [Column("last_modification")]
         public DateTime LastModificacion { get; set; }
-
-
+        [Column("estado")]
+        public int Estado { get => estado; set => estado = value; }
     }
 
 }
