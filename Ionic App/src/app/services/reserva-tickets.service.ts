@@ -135,8 +135,10 @@ obtenerFechasDisponibles() : Promise<Date []>{
                 });
   });
  }
+
  
- obtenerFechasDisponibles2(): Promise<any[]> {
+ 
+  async obtenerFechasDisponibles2(): Promise<any[]> {
   return new Promise(resolve => {
     this.http.get(`${ apiUrl }/reserva-tickets/validarFechas`)
               .subscribe(res => {
@@ -152,6 +154,22 @@ obtenerFechasDisponibles() : Promise<Date []>{
 }
 
 
+
+ async obtenerFechasDisponiblesPorTicket(idTicket : number): Promise<any[]> {
+  const user = await this.auth.getUsuario();
+  return new Promise(resolve => {
+    this.http.get(`${ apiUrl }/reserva-tickets/validarFechasUser?idUser=${user.Id}&idTicket=${idTicket}`)
+              .subscribe(res => {
+                if (res['ok'] === true) {
+                  const dates = [];
+                  res['results'].forEach(x => dates.push(x.split('T')[0]));
+                  resolve(dates);
+                } else {
+                  resolve([]);
+                }
+              });
+  });
+}
 
 
  getYearValues(dates: any[]) {
