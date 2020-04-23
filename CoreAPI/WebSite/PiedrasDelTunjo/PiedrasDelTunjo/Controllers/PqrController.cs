@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 using Utilitarios;
 using Logica;
+using System.Net;
+using System;
+
 namespace PiedrasDelTunjo.Controllers
 {
 
@@ -24,18 +23,7 @@ namespace PiedrasDelTunjo.Controllers
             * Retorna: Booleano true o false
             * Ruta: pqr/responder/{id}
         */
-        [HttpPut]
-        [Route("responder/{id}")]        
-        public HttpResponseMessage ResponderPQR([FromUri] int id, [FromBody] UPQR pqr) {
-
-            if (id != pqr.Id) 
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
-
-            pqr.FechaRespuesta = DateTime.Now;
-            pqr.UEstadoPQR.Id = 2;
-            bool actualizado = new LPqr().actualizaPqr(id, pqr);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
-        }
+        
 
         /*
             Jose Luis Soriano
@@ -113,6 +101,24 @@ namespace PiedrasDelTunjo.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
             }
+          
+            bool actualizado = new LPqr().actualizaPqr(id, pqr);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+        [HttpPut]
+        [Route("responder/{id}")]
+        public HttpResponseMessage ResponderPQR([FromUri] int id, [FromBody] UPQR pqr)
+        {
+
+            if (id != pqr.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
+            }
+            pqr.FechaRespuesta = DateTime.Now;
+            pqr.UEstadoPQR.Id = 2;
+            pqr.UEstadoPQRId = 2;
+           
             bool actualizado = new LPqr().actualizaPqr(id, pqr);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
