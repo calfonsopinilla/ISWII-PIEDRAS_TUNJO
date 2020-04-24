@@ -163,6 +163,22 @@ namespace PiedrasDelTunjo.Controllers {
             }
             
         }
+
+
+        [HttpDelete]
+        [Route("{id}")]
+        // DELETE: promocion/id
+        public HttpResponseMessage Eliminar([FromUri] int id)
+        {
+            var promocion = new LPromocion().Buscar(id);
+            if (promocion == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "promocion no encontrada");
+            }
+            var eliminado = new LPromocion().Eliminar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
+        }
+
         /*
             Daniel Zambrano
            Parámetros: Ninguno
@@ -205,19 +221,7 @@ namespace PiedrasDelTunjo.Controllers {
             bool creado = new LPromocion().Agregar(promocion);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }        
+        */
 
-        [HttpDelete]
-        [Route("{id}")]
-        // DELETE: promocion/id
-        public HttpResponseMessage Eliminar([FromUri] int id)
-        {
-            var promocion = new LPromocion().Buscar(id);
-            if (promocion == null)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "promocion no encontrada");
-            }
-            var eliminado = new LPromocion().Eliminar(id);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = eliminado });
-        }*/
     }
 }
