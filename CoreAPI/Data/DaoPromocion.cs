@@ -138,6 +138,19 @@ namespace Data {
             return db.promocion.Any(x => x.Id == id);
         }
 
+
+        public UPromocion Buscar(int id){
+         try
+         {
+             return db.promocion.Find(id);
+         }
+         catch (Exception ex)
+         {
+             throw ex;
+         }
+     }
+
+
         /*public IEnumerable<UPromocion> ObtenerPromociones() {
             List<UPromocion> promocion = null;
             try
@@ -153,17 +166,7 @@ namespace Data {
             return promocion;
         }
 
-        /*public UPromocion Buscar(int id)
-        {
-            try
-            {
-                return db.promocion.Find(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }*/
+     
 
         /*public bool Agregar(UPromocion promocion)
         {
@@ -179,7 +182,7 @@ namespace Data {
             }
         } */
 
-        /*public bool Eliminar(int id)
+        public bool Eliminar(int id)
         {
             try
             {
@@ -192,6 +195,6 @@ namespace Data {
             {
                 throw ex;
             }
-        }*/
+        }
     }
 }

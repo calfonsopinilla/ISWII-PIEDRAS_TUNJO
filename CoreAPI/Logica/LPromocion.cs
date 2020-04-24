@@ -108,20 +108,20 @@ namespace Logica {
             return new DaoPromocion().ObtenerPromociones();
         }*/
 
-        /*public UPromocion Buscar(int id)
+        public UPromocion Buscar(int id)
         {
             return new DaoPromocion().Buscar(id);
-        }*/
+        }
 
         /*public bool Agregar(UPromocion promocion)
         {
             return new DaoPromocion().Agregar(promocion);
         }*/
 
-        /*public bool Eliminar(int id)
+        public bool Eliminar(int id)
         {
             return new DaoPromocion().Eliminar(id);
-        }*/
+        }
 
 
     }
