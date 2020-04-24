@@ -90,7 +90,7 @@ namespace PiedrasDelTunjo.Controllers
                     Byte[] imageBytes = ms.ToArray();
                     //imagen
                     Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
-                    imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Token }.jpeg"));
+                    imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Qr }.jpeg"));
                 }
                 reserva.FechaIngreso = reserva.FechaIngreso.Date;
                 bool created = new LReservaTicket().NuevaReserva(reserva);

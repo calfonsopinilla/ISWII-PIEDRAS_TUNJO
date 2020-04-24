@@ -12,7 +12,7 @@ namespace PiedrasDelTunjo.Controllers
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("pqr")]
-    [Authorize]
+    //[Authorize]
     public class PqrController : ApiController
     {
 
@@ -74,17 +74,22 @@ namespace PiedrasDelTunjo.Controllers
         [HttpPost]
         [Route("")]
         // POST: pqr/
-        public HttpResponseMessage Agregar([FromBody] UPQR upqr)
+        public HttpResponseMessage Agregar([FromBody] UPQR pqr)
         {
-            if (upqr == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "PQR null" });
-            }
-            upqr.FechaPublicacion = DateTime.Now;
-            upqr.UEstadoPQR.Id = 1;
-            upqr.FechaRespuesta = new DateTime();
-            bool respuesta = new LPqr().agregarPqr(upqr);
-            return Request.CreateResponse(HttpStatusCode.Created, new { ok = respuesta });
+            try {
+
+                if (pqr == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "PQR null" });
+                }
+                //pqr.FechaPublicacion = DateTime.Now;
+                pqr.UEstadoPQR.Id = 1;
+                pqr.UEstadoPQRId = 1;
+                pqr.FechaRespuesta = new DateTime();
+                bool respuesta = new LPqr().agregarPqr(pqr);
+                return Request.CreateResponse(HttpStatusCode.Created, new { ok = respuesta });
+
+            } catch (Exception ex) { return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "Error Intero", exception = ex, pqr }); }
         }
         /*
         Jose Luis Soriano
