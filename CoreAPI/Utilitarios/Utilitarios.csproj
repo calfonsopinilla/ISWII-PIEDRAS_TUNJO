@@ -126,6 +126,7 @@
     <Compile Include="UPromocion.cs" />
     <Compile Include="UPuntoInteres.cs" />
     <Compile Include="UPuntuacion.cs" />
+    <Compile Include="UPush.cs" />
     <Compile Include="URecorrido.cs" />
     <Compile Include="URegistroUser.cs" />
     <Compile Include="UReservaCabana.cs" />

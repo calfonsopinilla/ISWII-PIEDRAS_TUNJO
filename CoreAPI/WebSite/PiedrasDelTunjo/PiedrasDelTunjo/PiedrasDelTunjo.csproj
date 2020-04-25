@@ -271,6 +271,7 @@
     <Compile Include="Controllers\ComentarioNoticiaController.cs" />
     <Compile Include="Controllers\PictogramasController.cs" />
     <Compile Include="Controllers\PqrController.cs" />
+    <Compile Include="Controllers\PushController.cs" />
     <Compile Include="Controllers\RecorridosController.cs" />
     <Compile Include="Controllers\ReservaCabanasController.cs" />
     <Compile Include="Controllers\ReservaPromocionController.cs" />

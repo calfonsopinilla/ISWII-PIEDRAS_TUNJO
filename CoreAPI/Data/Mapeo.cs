@@ -39,6 +39,7 @@ namespace Data
         public DbSet<URecorrido> Recorridos { get; set; }
         public DbSet<URol> Roles { get; set; }
 
+        public DbSet<UPush> Push { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.HasDefaultSchema(this.schema);
