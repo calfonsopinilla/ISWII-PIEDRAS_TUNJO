@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemInfo } from 'src/app/interfaces/item-info.interface';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { AuthService } from '../../services/auth.service';
+import {FCM} from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-inicio',
@@ -13,9 +14,10 @@ export class InicioPage implements OnInit {
   rutas = ['/descripcion-parque', '/resenia-historica', '/ubicacion-parque', '/piedras-parque'];
   itemsInfo: ItemInfo[] = [];
   horarioInfo: any;
-
+  tokens : string ;
   constructor(
-    private infoParqueService: InfoParqueService
+    private infoParqueService: InfoParqueService,
+    private fcm : FCM
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,12 @@ export class InicioPage implements OnInit {
                               this.horarioInfo = (resp as ItemInfo[])
                                                   .find(x => x.id === 7); // find horario item
                             });
+    //firebase 
+    this.fcm.getToken().then(token => {
+        console.log(token);
+        this.tokens = token;
+     });
+
   }
 
 }
