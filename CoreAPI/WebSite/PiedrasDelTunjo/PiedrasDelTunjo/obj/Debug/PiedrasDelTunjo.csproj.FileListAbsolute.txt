@@ -1139,3 +1139,19 @@ C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\Piedra
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.csproj.CopyComplete
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.dll
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\obj\Debug\PiedrasDelTunjo.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.CoordinateSystems.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.IO.PostGis.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Npgsql.NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Stripe.net.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.CoordinateSystems.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\GeoAPI.CoordinateSystems.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\NetTopologySuite.IO.PostGis.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Npgsql.NetTopologySuite.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Npgsql.NetTopologySuite.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Stripe.net.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\WebSite\PiedrasDelTunjo\PiedrasDelTunjo\bin\Stripe.net.xml

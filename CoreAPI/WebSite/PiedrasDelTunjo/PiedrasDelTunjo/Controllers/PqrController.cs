@@ -82,8 +82,8 @@ namespace PiedrasDelTunjo.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "PQR null" });
                 }
-                //pqr.FechaPublicacion = DateTime.Now;
-                pqr.UEstadoPQR.Id = 1;
+                pqr.FechaPublicacion = DateTime.Now;
+                //pqr.UEstadoPQR.Id = 1;
                 pqr.UEstadoPQRId = 1;
                 pqr.FechaRespuesta = new DateTime();
                 bool respuesta = new LPqr().agregarPqr(pqr);
@@ -121,7 +121,7 @@ namespace PiedrasDelTunjo.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad Request" });
             }
             pqr.FechaRespuesta = DateTime.Now;
-            pqr.UEstadoPQR.Id = 2;
+            //pqr.UEstadoPQR.Id = 2;
             pqr.UEstadoPQRId = 2;
            
             bool actualizado = new LPqr().actualizaPqr(id, pqr);

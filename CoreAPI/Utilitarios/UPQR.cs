@@ -22,7 +22,7 @@ namespace Utilitarios {
         [Column("fecha_respuesta")]
         public DateTime FechaRespuesta { get; set; }
         [Column("estado_id")]
-        public int UEstadoPQRId { get; set; } = 1;
+        public int UEstadoPQRId { get; set; }
         public UEstadoPQR UEstadoPQR { get; set; }
 
         [Column("usuario_id")]
