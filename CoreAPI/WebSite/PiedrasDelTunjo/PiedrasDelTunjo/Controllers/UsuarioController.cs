@@ -24,14 +24,16 @@ namespace PiedrasDelTunjo.Controllers {
         [HttpGet]
         //[Authorize]
         [Route("leer/no-verificados")]
-        public HttpResponseMessage LeerUsuariosNoVerificados() {
+        public IHttpActionResult LeerUsuariosNoVerificados() {
 
             try {
+                var informacion = new LUsuario().LeerUsuariosNoVerificados();
+                return Ok(informacion);
 
-                List<UUsuario> listaUsuarios = new LUsuario().LeerUsuariosNoVerificados();
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, listaUsuarios });
-
-            } catch { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Error Inesperado" }); }            
+            } catch (Exception ex)
+            {
+                throw ex;
+            }            
         }
 
         /*

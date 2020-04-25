@@ -197,3 +197,16 @@ C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debu
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.dll
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Debug\Data.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.CoordinateSystems.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.CoordinateSystems.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\Npgsql.NetTopologySuite.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Debug\Npgsql.NetTopologySuite.xml

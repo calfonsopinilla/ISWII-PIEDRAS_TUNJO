@@ -209,3 +209,16 @@ C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\De
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
 C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
