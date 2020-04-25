@@ -1,4 +1,4 @@
-<<app-header titulo="Compra de tickets" tipo="menu"></app-header>
+<app-header titulo="Compra de tickets" tipo="menu"></app-header>
 
 <ion-content [fullscreen] class="ion-padding">
   <form #formReserva="ngForm" (ngSubmit)="onSubmit(formReserva)">
@@ -22,23 +22,45 @@
         </ion-select>
       </ion-item>
       
-    
-      
-      <ion-item *ngIf="validar">
-        <ion-label position="floating">Fecha Ingreso</ion-label>
-        <ion-datetime name="fechaIngreso" [(ngModel)]="reserva.fechaIngreso" displayFormat="DD MMMM YYYY" 
-                      placeholder="DD MM YYYY" cancelText="Cancelar" 
-                      yearValues="2020"
-                      month-names ='Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre'
-                      monthValues="1,2,3,4,5,6,7,8,9,10,11,12"
-                      doneText="Hecho"
-                      min ="{{min}}"
-                      max ="{{max}}"
-                      
-
-                      ></ion-datetime>
-      </ion-item>
-
+  
+      <ion-row *ngIf="validar">
+        <ion-col size="4">
+          <ion-label style="text-align: center;">Año</ion-label>
+          <ion-select id="year" *ngIf="yearValues"
+                      [value]="yearValues[0]"
+                      [disabled]="yearValues.length === 1" 
+                      placeholder="Select"
+                      okText="Aceptar"
+                      >
+            <ion-select-option *ngFor="let year of yearValues" [value]="year">{{ year }}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4">
+          <ion-label>Mes</ion-label>
+          <ion-select id="month" *ngIf="monthValues"
+                      [value]="monthValues[0]"
+                      (ionChange)="monthChange($event)"
+                      [disabled]="monthValues.length === 1" 
+                      placeholder="Select"
+                      okText="Aceptar">
+            <ion-select-option *ngFor="let month of monthValues;" [value]="month">
+                {{ nameMonths[convertNumber(month)-1] }} 
+  
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="4">
+          <ion-label>Día</ion-label>
+          <ion-select id="day" *ngIf="dayValues"
+                      [value]="dayValues[0]"
+                      [disabled]="dayValues.length === 1"
+                      placeholder="Select"
+                      okText="Aceptar"
+                      >
+            <ion-select-option *ngFor="let day of dayValues" [value]="day">{{ day }}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
 
 
       <ion-item *ngIf="(reserva.value=='1' && validar ) ">          

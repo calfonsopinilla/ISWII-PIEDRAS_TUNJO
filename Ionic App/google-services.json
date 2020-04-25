@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "253556781690",
+    "firebase_url": "https://piedras-88722.firebaseio.com",
+    "project_id": "piedras-88722",
+    "storage_bucket": "piedras-88722.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253556781690:android:cec038407f2c0a098801c3",
+        "android_client_info": {
+          "package_name": "com.parque.udec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253556781690-22spsvhruratrhkn78mc3t96arp61i8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-OkTvcloAiMF9Xiwd9xriBBe_dNT8Njs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253556781690-22spsvhruratrhkn78mc3t96arp61i8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
