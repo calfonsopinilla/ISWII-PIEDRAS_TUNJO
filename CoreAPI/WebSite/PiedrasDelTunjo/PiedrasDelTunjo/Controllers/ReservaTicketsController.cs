@@ -211,6 +211,25 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         /*
+            * Autor: Jhonattan Pulido
+            * Descripcion: Método que funciona para buscar las reservas de un usuario filtrado por el id
+            * Parámetros: String numeroDocumento: numero de documento del usuario
+            * Retorna: La reserva buscada
+            * Ruta: .../reserva-tickets/leerDNI?numeroDocumento=0000000
+        */
+        [HttpGet]
+        [Route("leerDNI")]
+        public HttpResponseMessage LeerDNI([FromUri] string numeroDocumento) {
+
+            UReservaTicket reserva = new LReservaTicket().LeerReservaDNI(numeroDocumento);
+
+            if (reserva != null)
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
+            else
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontraron reservas" });
+        }
+
+        /*
          * Autor: Jhonattan Pulido
          * Descripción: Método que funciona para gastar el qr de reserva
          * Parámetros: Int id: Identificador de la reserva

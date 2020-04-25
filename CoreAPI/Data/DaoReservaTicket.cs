@@ -13,6 +13,29 @@ namespace Data
     {
         private readonly Mapeo db = new Mapeo();
 
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripcion: Método que funciona para buscar las reservas de un usuario filtrado por el id
+            * Parámetros: String numeroDocumento: numero de documento del usuario
+            * Retorna: La reserva buscada
+        */
+        public UReservaTicket LeerReservaDNI(string numeroDocumento) {
+
+            try {
+
+                using (this.db) {
+
+                    return this.db.ReservaTickets
+                        .Include("UUsuario")
+                        .Where(
+                            x => x.UUsuario.NumeroDocumento == numeroDocumento &&
+                            x.EstadoId == 1
+                        ).FirstOrDefault();
+                }
+
+            } catch { return null; }
+        }
+
         public IEnumerable<UReservaTicket> ObtenerReservas()
         {
             try

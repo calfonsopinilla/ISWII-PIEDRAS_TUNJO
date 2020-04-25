@@ -12,6 +12,14 @@ namespace Logica
 {
     public class LReservaTicket
     {
+        /*
+            * Autor: Jhonattan Pulido
+            * Descripcion: Método que funciona para buscar las reservas de un usuario filtrado por el id
+            * Parámetros: String numeroDocumento: numero de documento del usuario
+            * Retorna: La reserva buscada
+        */
+        public UReservaTicket LeerReservaDNI(string numeroDocumento) { return new DaoReservaTicket().LeerReservaDNI(numeroDocumento); }
+
         public IEnumerable<UReservaTicket> ObtenerTickets()
         {
             return new DaoReservaTicket().ObtenerReservas();
