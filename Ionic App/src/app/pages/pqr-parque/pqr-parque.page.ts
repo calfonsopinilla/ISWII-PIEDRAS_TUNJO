@@ -11,7 +11,9 @@ import { Pqr } from '../../interfaces/pqr.interface';
 export class PqrParquePage implements OnInit {
 
   pqrs: Pqr[] = [];
-
+  pqrsA: Pqr[] = [];
+  pqrsB: Pqr[] = [];
+ 
   constructor(
     private pqrService: PqrService,
     private toastCtrl: ToastController,
@@ -25,6 +27,10 @@ export class PqrParquePage implements OnInit {
   async obtenerPqrs() {
     this.pqrs = await this.pqrService.getPqrUser();
     // console.log(this.pqrs);
+    await this.pqrs.forEach(val => {
+      if (val["UEstadoPQRId"] == 1) { this.pqrsA.push(Object.assign({}, val)); } else { this.pqrsB.push(Object.assign({}, val)); }
+    });
+    console.log(this.pqrsA);
   }
 
   async presentAlert(pqr: Pqr) {
@@ -109,14 +115,23 @@ export class PqrParquePage implements OnInit {
 
   async agregarPQR(pregunta: string) {
     const pqr: Pqr = {
+      Id: null,
       FechaPublicacion: new Date(),
       Pregunta: pregunta,
-      Respuesta: ''
+      Respuesta: '',
+      FechaRespuesta: null,
+      Token: "token",
+      LastModification: null,
+      UUsuario: null,
+      UEstadoPQRId: null,
+      UEstadoPQR: null,
     };
+        
     const ok = await this.pqrService.agregarPqr(pqr);
+    console.log(ok);
     if (ok) {
       // Refrescar lista
-      this.pqrs.unshift(pqr);
+      this.pqrsB.unshift(pqr);
     } else {
       this.presentToast('Ha ocurrido un error');
     }

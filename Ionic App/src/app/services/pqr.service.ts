@@ -67,7 +67,7 @@ export class PqrService {
     const build = await this.buildService();
     if (!build) { return Promise.resolve(false); }
     pqr.UUsuarioId = this.user.Id;
-
+    console.log(pqr);
     return new Promise(resolve => {
       this.http.post(`${ URL }/pqr`, pqr, { headers: this.headers })
                 .pipe(

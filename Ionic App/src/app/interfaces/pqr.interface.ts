@@ -11,6 +11,7 @@ export interface Pqr {
     UEstadoPQR?: UEstadoPQR;
     UUsuarioId?: number;
     UUsuario?: Usuario;
+    FechaRespuesta?: Date;
 }
 
 export interface UEstadoPQR {

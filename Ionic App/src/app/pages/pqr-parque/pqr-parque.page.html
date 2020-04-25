@@ -13,13 +13,40 @@
       <ion-label><strong>Tus PQR´s</strong></ion-label>
     </ion-list-header>
     
-    <ion-item *ngFor="let pqr of pqrs">
-      <ion-label (click)="presentAlert(pqr)">
-        <b>{{ pqr.Pregunta }}</b>
-        <p><strong>Rta:</strong> {{ pqr.Respuesta || 'No hay respuesta' }}</p>
-        <small>{{ pqr.FechaPublicacion | date: 'MMM d, y' }}</small>
-      </ion-label>
-      <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
-    </ion-item>
+    <ion-card *ngIf="pqrsB">
+      <ion-card-header>        
+        <ion-card-title>PQR'S Enviados</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item *ngFor="let pqr of pqrsB">
+          <ion-label (click)="presentAlert(pqr)">
+            <p><small>{{ pqr.FechaPublicacion | date: 'MMM d, y' }}</small></p>
+            <b>{{ pqr.Pregunta }}</b>            
+          </ion-label>
+          <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>        
+
+    <ion-card *ngIf="pqrsA">
+      <ion-card-header>        
+        <ion-card-title>PQR'S Respondidos</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item *ngFor="let pqr of pqrsA">
+          <ion-label (click)="presentAlert(pqr)">
+            <p><small>{{ pqr.FechaPublicacion | date: 'MMM d, y' }}</small></p>
+            <b>{{ pqr.Pregunta }}</b>
+            <p><strong>Rta:</strong></p>
+            <p> {{ pqr.FechaRespuesta | date: 'MMM d, y' }}</p>
+            <p> {{ pqr.Respuesta }} </p>            
+          </ion-label>
+          <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    
   </ion-list>
 </ion-content>

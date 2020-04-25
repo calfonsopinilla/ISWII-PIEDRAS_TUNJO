@@ -84,10 +84,22 @@ export class ReservaTicketService {
     });
   }
 
-  leerReservaToken(token: string) : Observable<ReservaTicket> {
-    return this.http.get(`${ apiUrl }/reserva-tickets/leerToken?token=${ token }`);
+  leerReservaToken(qr: string) : Observable<ReservaTicket> {
+    return this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`);
   }
 
+  validarQr(id: number): Promise<boolean> {
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/validarQr?id=${ id }`)
+        .subscribe(res => {
+          if (res['ok'] === true) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+    });
+  }
 
   async validarResidencia():Promise<boolean> {
     const user = await this.auth.getUsuario();
