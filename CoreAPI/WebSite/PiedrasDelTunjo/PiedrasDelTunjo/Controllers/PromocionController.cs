@@ -24,8 +24,8 @@ namespace PiedrasDelTunjo.Controllers {
             * Nota: No es posible tener dos promociones del mismo ticket  para ya sea un mismo rango de fechas o
             * que estas interfieran en otro rango.
         */
-        [HttpGet]
-        //[Authorize]
+        [HttpPost]
+        [Authorize]
         [Route("crear")]
         public HttpResponseMessage CrearPromocion([FromBody] UPromocion promocion) {
 
@@ -68,6 +68,7 @@ namespace PiedrasDelTunjo.Controllers {
           * Retorna la lista de las promociones  
       */
         [HttpGet]
+        
         [Route("")]
         public HttpResponseMessage ObtenerPromociones()
         {
@@ -107,7 +108,7 @@ namespace PiedrasDelTunjo.Controllers {
             * Ruta: promocion/cambiar_estado?id=1
         */
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route("cambiar_estado")]
         public HttpResponseMessage CambiarEstado([FromUri] int id) {
 
@@ -127,6 +128,7 @@ namespace PiedrasDelTunjo.Controllers {
             *Retorna respuesta de que si ocurrio un error, incumple la validacionde las fechas o si en verdad fue insertado 
         */
         [HttpPut]
+        [Authorize]
         [Route("editar")]
         public HttpResponseMessage Actualizar([FromBody] UPromocion promocion) {
 
@@ -166,6 +168,7 @@ namespace PiedrasDelTunjo.Controllers {
 
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         // DELETE: promocion/id
         public HttpResponseMessage Eliminar([FromUri] int id)
