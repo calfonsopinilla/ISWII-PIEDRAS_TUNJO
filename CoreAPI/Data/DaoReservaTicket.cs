@@ -112,15 +112,15 @@ namespace Data
         /*
          * Autor: Jhonattan Pulido
          * Descripcion: Método que funciona para buscar una reserva filtrado por ticket
-         * Parametros: String token - Valor del token para filtrar
+         * Parametros: String qr - Valor del qr para filtrar
          * Retorna: Objeto tipo reserva token
          */
-        public UReservaTicket LeerToken(string token) {
+        public UReservaTicket LeerToken(string qr) {
             try {
 
                 return db.ReservaTickets
                         .Include("UUsuario")
-                        .Where(x => x.Token == token)
+                        .Where(x => x.Qr == qr && x.EstadoId == 1)
                         .FirstOrDefault();
             } catch (Exception ex) {
                 throw ex;

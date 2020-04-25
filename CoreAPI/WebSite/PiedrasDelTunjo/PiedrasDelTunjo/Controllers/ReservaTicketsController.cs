@@ -200,14 +200,45 @@ namespace PiedrasDelTunjo.Controllers
          */
         [HttpGet]
         [Route("leerToken")]
-        public HttpResponseMessage LeerToken([FromUri] string token) {
+        public HttpResponseMessage LeerToken([FromUri] string qr) {
 
-            UReservaTicket reserva = new LReservaTicket().LeerToken(token);
+            UReservaTicket reserva = new LReservaTicket().LeerToken(qr);
 
             if (reserva != null)
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
             else
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: No se encontro la reserva" });
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para gastar el qr de reserva
+         * Parámetros: Int id: Identificador de la reserva
+         * Retorna: True si la ejecución fue correcta - False si durante la ejecución ocurre un error
+         * Ruta: .../reserva-tickets/validarQr?id=1
+         */
+        [HttpGet]
+        [Route("validarQr")]        
+        public HttpResponseMessage ValidarQr([FromUri] int id) {
+
+            try {
+
+                UReservaTicket reserva = new LReservaTicket().Buscar(id);
+
+                if (reserva != null) {
+
+                    reserva.EstadoId = 2;
+                    bool actualizado = new LReservaTicket().ActualizarReserva(id, reserva);
+                    if (actualizado)
+                        return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Validación exitosa!" });
+                    else
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Algo malo ha ocurrido!" });
+
+                } else
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: QR No valido!" });
+
+            } catch (Exception ex) { return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Algo malo ha ocurrido!", exception = ex }); }
+
         }
 
 
