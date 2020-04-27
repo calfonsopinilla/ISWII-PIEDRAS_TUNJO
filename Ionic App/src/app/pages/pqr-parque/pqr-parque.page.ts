@@ -26,9 +26,9 @@ export class PqrParquePage implements OnInit {
 
   async obtenerPqrs() {
     this.pqrs = await this.pqrService.getPqrUser();
-    // console.log(this.pqrs);
-    await this.pqrs.forEach(val => {
-      if (val["UEstadoPQRId"] == 1) { this.pqrsA.push(Object.assign({}, val)); } else { this.pqrsB.push(Object.assign({}, val)); }
+    console.log(this.pqrs);
+    await this.pqrs.forEach(val => {    
+      if (Number(val["UEstadoPQRId"]) == 1) { this.pqrsB.unshift(val); } else { this.pqrsA.unshift(val); }
     });
     console.log(this.pqrsA);
   }
@@ -114,17 +114,10 @@ export class PqrParquePage implements OnInit {
   }
 
   async agregarPQR(pregunta: string) {
-    const pqr: Pqr = {
-      Id: null,
+    const pqr: Pqr = {      
       FechaPublicacion: new Date(),
       Pregunta: pregunta,
-      Respuesta: '',
-      FechaRespuesta: null,
-      Token: "token",
-      LastModification: null,
-      UUsuario: null,
-      UEstadoPQRId: null,
-      UEstadoPQR: null,
+      Respuesta: ''                                       
     };
         
     const ok = await this.pqrService.agregarPqr(pqr);

@@ -84,8 +84,17 @@ export class ReservaTicketService {
     });
   }
 
-  leerReservaToken(qr: string) : Observable<ReservaTicket> {
-    return this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`);
+  leerReservaToken(qr: string) : Promise<ReservaTicket> {
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`)
+        .subscribe(res => {
+          if (res['ok'] === true) {
+            resolve(res['reserva']);
+          } else {
+            resolve(null);
+          }
+        });
+    });
   }
 
   validarQr(id: number): Promise<boolean> {
@@ -147,10 +156,8 @@ obtenerFechasDisponibles() : Promise<Date []>{
                 });
   });
  }
-
  
- 
-  async obtenerFechasDisponibles2(): Promise<any[]> {
+ obtenerFechasDisponibles2(): Promise<any[]> {
   return new Promise(resolve => {
     this.http.get(`${ apiUrl }/reserva-tickets/validarFechas`)
               .subscribe(res => {
@@ -165,9 +172,7 @@ obtenerFechasDisponibles() : Promise<Date []>{
   });
 }
 
-
-
- async obtenerFechasDisponiblesPorTicket(idTicket : number): Promise<any[]> {
+async obtenerFechasDisponiblesPorTicket(idTicket : number): Promise<any[]> {
   const user = await this.auth.getUsuario();
   return new Promise(resolve => {
     this.http.get(`${ apiUrl }/reserva-tickets/validarFechasUser?idUser=${user.Id}&idTicket=${idTicket}`)
@@ -182,7 +187,6 @@ obtenerFechasDisponibles() : Promise<Date []>{
               });
   });
 }
-
 
  getYearValues(dates: any[]) {
   const yearValues = [];

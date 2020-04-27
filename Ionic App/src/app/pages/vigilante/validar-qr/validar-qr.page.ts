@@ -25,11 +25,10 @@ export class ValidarQrPage implements OnInit {
   }
 
   async scanCode() {
-    this.barCodeScanner.scan().then(barcodeData => {
-      this.scannedCode = barcodeData.text;      
-      this.reservaTicketService.leerReservaToken(barcodeData.text)
-          .subscribe((resp: ReservaTicket) => this.reservaTicket = resp);
-    });    
+    await this.barCodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;            
+    });
+    this.reservaTicket = await this.reservaTicketService.leerReservaToken(this.scannedCode);
   }
 
   async spendCode() {

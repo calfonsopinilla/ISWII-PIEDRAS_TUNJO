@@ -17,13 +17,13 @@
       <ion-card-title>{{ reservaTicket.UUsuario.Nombre }} {{ reservaTicket.UUsuario.Apellido }}</ion-card-title>
     </ion-card-header>
   
-    <ion-card-content>
+    </ion-card-content>
       <p>N. Documento: {{ reservaTicket.UUsuario.NumeroDocumento }}</p>
       <p>Cantidad: {{ reservaTicket.Cantidad }}</p>      
-    </ion-card-content>
+    </ion-card-content>    
 
     <ion-card-content style="display: flex; justify-content: center;">
-      <ion-button (click)="spendCode()">
+      <ion-button (click)="spendCode()" color="success">
         Gastar Reserva
       </ion-button>
     </ion-card-content>

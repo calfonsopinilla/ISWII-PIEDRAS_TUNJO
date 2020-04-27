@@ -66,12 +66,10 @@ export class FotoDocumentoPage implements OnInit {
                       .then(res => {
                         this.response = res;
                         loading.dismiss();
-                        this.presentToast(res.response);
-                        alert("Response Ok: " + this.response['ok'] + " - Negado: " + !this.response['ok']);
-                        alert("Response File: " + this.response['file']);
+                        this.presentToast(res.response);                        
                       });      
 
-    if (this.response['ok']) {
+    if (Boolean(this.response['ok']) == true) {
                                   
         this.userAux.Id = this.user['Id'];
         this.userAux.Nombre = this.user['Nombre'];
@@ -88,16 +86,14 @@ export class FotoDocumentoPage implements OnInit {
         this.userAux.Imagen_documento = this.user['Imagen_documento'];
         this.userAux.Token = this.user['Token'];                                                                                                                                                          
 
-        this.authService.actualizarUsuario(this.userAux)
+        await this.authService.actualizarUsuario(this.userAux)
           .then(result => {
             alert("Usuario Actualizado");
           });
 
       } else {
         alert("Ha ocurrido un error");
-      }
-
-      alert("Ya salio");
+      }      
   }
 
   async presentToast(message: any) {
