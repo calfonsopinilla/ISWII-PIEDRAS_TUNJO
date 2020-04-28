@@ -20,6 +20,8 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 //firebase 
 import { FCM} from '@ionic-native/fcm/ngx' ;
+import { Push } from '@ionic-native/push/ngx' ; 
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +35,7 @@ import { FCM} from '@ionic-native/fcm/ngx' ;
     IonicStorageModule.forRoot(),
     NgxQRCodeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     FCM,
@@ -45,7 +47,8 @@ import { FCM} from '@ionic-native/fcm/ngx' ;
     BarcodeScanner,
     Base64ToGallery,
     TranslateService,
-    FileTransfer
+    FileTransfer,
+    Push
   ],
   bootstrap: [AppComponent]
 })

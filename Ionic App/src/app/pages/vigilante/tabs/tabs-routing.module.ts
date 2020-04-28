@@ -15,6 +15,12 @@ const routes: Routes = [
       {
         path: 'validar-numero-documento',
         loadChildren: () => import('../validar-numero-documento/validar-numero-documento.module').then(mod => mod.ValidarNumeroDocumentoPageModule)
+      },
+      {
+        path: '', pathMatch: 'full', redirectTo: 'validar-qr'
+      },
+      {
+        path: '**', pathMatch: 'full', redirectTo: 'validar-qr'
       }
     ]
   }

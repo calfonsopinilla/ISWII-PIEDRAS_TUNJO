@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemInfo } from 'src/app/interfaces/item-info.interface';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { AuthService } from '../../services/auth.service';
-import {FCM} from '@ionic-native/fcm/ngx';
+//import {FCM} from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,10 +18,9 @@ export class InicioPage implements OnInit {
   tokens: string ;
 
   constructor(
-    private infoParqueService: InfoParqueService,
-    private authService: AuthService,
-    private router: Router,
-    private fcm: FCM
+    private infoParqueService: InfoParqueService
+    //private fcm : FCM,
+    //private pushService: PushService
   ) { }
 
   ngOnInit() {
@@ -31,13 +30,24 @@ export class InicioPage implements OnInit {
                               this.itemsInfo = resp;
                               this.horarioInfo = (resp as ItemInfo[])
                                                   .find(x => x.id === 7); // find horario item
-                            });
-    // firebase
-    this.fcm.getToken().then(token => {
-        console.log(token);
-        this.tokens = token;
-     });
+                            });    
 
+    /*this.fcm.getToken().then(token => {      
+      this.insertarToken(token);
+      this.tokens = token;
+    });*/
   }
 
+  /*async insertarToken(token:string){
+    const push =  {
+        ObjetoPush : token,
+        Fecha : new Date(2000,1,1),
+        EstadoId : 1,
+        TokenId : token,
+    }
+    alert("Token generado: " + token);
+    const respuest = this.pushService.agregarToken(push);
+    console.log(respuest);
+    alert(respuest);
+  }*/
 }

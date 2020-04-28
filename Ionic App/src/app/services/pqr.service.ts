@@ -66,8 +66,7 @@ export class PqrService {
   async agregarPqr(pqr: Pqr): Promise<boolean> {
     const build = await this.buildService();
     if (!build) { return Promise.resolve(false); }
-    pqr.UUsuarioId = this.user.Id;
-
+    pqr.UUsuarioId = this.user.Id;    
     return new Promise(resolve => {
       this.http.post(`${ URL }/pqr`, pqr, { headers: this.headers })
                 .pipe(
