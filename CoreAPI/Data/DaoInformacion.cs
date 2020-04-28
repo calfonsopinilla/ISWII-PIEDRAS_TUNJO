@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,44 +71,5 @@ namespace Data
                 }
             }
         }
-        /**
-          * Autor: Gabriel Zapata
-          * fecha: 28/04/2020
-          */
-        public bool ActualizarTerminosYCond(UInformacionParque infoParque)
-        {
-
-            using (var db = new Mapeo())
-            {
-                try
-                {
-                    db.Entry(infoParque).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!Existe(infoParque.Id))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-        }
-
-
-        public bool Existe(int id)
-        {
-            using (var db = new Mapeo())
-            {
-                return db.informacionParque.Any(x => x.Id == id);
-            }
-        }
-
-
     }
 }
