@@ -48,7 +48,6 @@ namespace PiedrasDelTunjo.Controllers {
         //[Authorize]
         [Route("actualizar/no-verificado")]
         public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario) {
-
             usuario.VerificacionCuenta = true;
             bool actualizado = new LUsuario().Actualizar(usuario.Id, usuario);
             if (actualizado)
