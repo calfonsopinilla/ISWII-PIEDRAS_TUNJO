@@ -22,7 +22,7 @@ namespace PiedrasDelTunjo.Controllers
         */
 
         [HttpGet]
-        //[Authorize]
+        [AllowAnonymous]
         [Route("")]
         // GET: eventos/
         public IHttpActionResult ObtenerEventos()
@@ -35,6 +35,7 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [AllowAnonymous]
         // GET: eventos/5
         public HttpResponseMessage Buscar([FromUri] int id)
         {

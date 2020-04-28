@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
-using Microsoft.AspNetCore.Authorization;
 
 namespace PiedrasDelTunjo.Controllers {
 
@@ -17,7 +16,8 @@ namespace PiedrasDelTunjo.Controllers {
         Descripción: Controlador que sirve para hacer CRUD de cabañas
     */
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("cabana")]    
+    [RoutePrefix("cabana")]
+    [Authorize]
     public class CabanaController : ApiController {
        
         // Variables
@@ -56,8 +56,8 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
-        //////
-        ///[HttpPost]
+
+        [HttpPost]
         [Route("")]
         // POST: 
         public HttpResponseMessage Agregar([FromBody] UCabana cabana)
@@ -140,8 +140,6 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
-        //////
-        ///
         [HttpDelete]
         [Route("{id}")]
         // DELETE: 
@@ -186,7 +184,7 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
-        /////
+
         [HttpPut]
         [Route("{id}")]
         // PUT: 
