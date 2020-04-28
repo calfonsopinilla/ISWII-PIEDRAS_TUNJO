@@ -1,10 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Preguntas Frecuentes</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Preguntas Frecuentes" tipo="menu"></app-header>
 
-<ion-content>
+<ion-content [fullscreen]>
   <ion-list>
     <ion-card *ngFor="let frequencieQuestion of frequentQuestions">
       <ion-card-header>

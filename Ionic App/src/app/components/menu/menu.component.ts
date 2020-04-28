@@ -54,6 +54,11 @@ export class MenuComponent implements OnInit {
       icon: 'compass-outline'
     },
     {
+      label: 'Pictogramas',
+      ruta: '/pictogramas',
+      icon: 'bonfire-outline'
+    },
+    {
       label: 'Tickets',
       ruta: '/tickets',
       icon: 'map-outline'

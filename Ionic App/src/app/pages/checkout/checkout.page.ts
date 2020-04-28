@@ -27,9 +27,9 @@ export class CheckoutPage implements OnInit {
 
   ngOnInit() {
     this.form1 = this.fb.group({
-      cardNumber: ['', [Validators.required, Validators.minLength(16)]],
-      expireDate: ['', [Validators.required, Validators.minLength(5)]],
-      cvc: ['', [Validators.required, Validators.minLength(3)]]
+      cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      expireDate: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      cvc: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
 

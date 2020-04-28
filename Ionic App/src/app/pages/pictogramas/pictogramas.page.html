@@ -1,0 +1,9 @@
+<app-header titulo="Pictogramas" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+  <ion-row>
+    <ion-col size="12" *ngFor="let picto of pictogramas">
+      <app-card-pictograma [pictograma]="picto"></app-card-pictograma>
+    </ion-col>
+  </ion-row>
+</ion-content>

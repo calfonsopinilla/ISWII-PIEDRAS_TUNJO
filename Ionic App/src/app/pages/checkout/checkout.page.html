@@ -10,14 +10,17 @@
             <ion-list>
               <ion-item>
                 <ion-label position="floating">NÚMERO DE TARJETA</ion-label>
-                <ion-input formControlName="cardNumber" type="text" placeholder="Card number" appMaxLength="16"></ion-input>
+                <ion-input formControlName="cardNumber" type="text" placeholder="Card number"></ion-input>
                 <ion-icon name="card-outline" slot="end"></ion-icon>
                 <span class="text-danger"
                       *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.required">
                       Requerido</span>
                 <span class="text-danger"
                       *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.minlength">
-                      Debe contener 16 digitos</span>
+                      16 digitos</span>
+                <span class="text-danger"
+                      *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.maxLength">
+                      16 digitos</span>
               </ion-item>
               <ion-grid fixed>
                 <ion-row>
@@ -25,25 +28,30 @@
                     <ion-item>
                       <ion-label position="floating">FECHA DE CADUCIDAD</ion-label>
                       <ion-input formControlName="expireDate" type="text" placeholder="MM/YY" appExpireDate></ion-input>
-
                       <span class="text-danger"
                           *ngIf="expireDate.touched && expireDate.dirty && expireDate.errors?.required">
                       Requerido</span>
                       <span class="text-danger"
                           *ngIf="expireDate.touched && expireDate.dirty && expireDate.errors?.minlength">
                       MM/YY</span>
+                      <span class="text-danger"
+                          *ngIf="expireDate.touched && expireDate.dirty && expireDate.errors?.maxLength">
+                      MM/YY</span>
                     </ion-item>
                   </ion-col>
                   <ion-col size="4">
                     <ion-item>
                       <ion-label position="floating">CVC</ion-label>
-                      <ion-input formControlName="cvc" type="password" placeholder="000" appMaxLength="3"></ion-input>
+                      <ion-input formControlName="cvc" type="password" placeholder="000"></ion-input>
 
                       <span class="text-danger"
                         *ngIf="cvc.touched && cvc.dirty && cvc.errors?.required">
                       Requerido</span>
                       <span class="text-danger"
                         *ngIf="cvc.touched && cvc.dirty && cvc.errors?.minlength">
+                      3 digitos</span>
+                      <span class="text-danger"
+                        *ngIf="cvc.touched && cvc.dirty && cvc.errors?.maxLength">
                       3 digitos</span>
                     </ion-item>
                   </ion-col>

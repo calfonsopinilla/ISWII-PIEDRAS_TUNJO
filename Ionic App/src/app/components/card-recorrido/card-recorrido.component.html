@@ -1,6 +1,9 @@
 <ion-card>
   <ion-item>
-    <ion-label>{{ recorrido.Nombre }}</ion-label>
+    <ion-label>
+      <h4>{{ recorrido.Nombre }}</h4>
+      <small>{{ recorrido.TiempoEstimado }} minutos aprox.</small>
+    </ion-label>
     <ion-button slot="end" (click)="detallesRecorrido(recorrido.Id)">
       <ion-icon name="eye-outline" slot="icon-only"></ion-icon>
     </ion-button>

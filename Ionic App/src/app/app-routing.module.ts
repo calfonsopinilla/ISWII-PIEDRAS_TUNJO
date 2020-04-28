@@ -106,11 +106,18 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/detalles-recorrido/detalles-recorrido.module').then( m => m.DetallesRecorridoPageModule)
   },
+  {
+    path: 'pictogramas',
+    canLoad: [ VerifiedAccountGuard, AuthGuard ],
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./pages/pictogramas/pictogramas.module').then( m => m.PictogramasPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
+
 
 ];
 

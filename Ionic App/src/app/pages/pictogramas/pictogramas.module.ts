@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PreguntasFrecuentesPageRoutingModule } from './preguntas-frecuentes-routing.module';
+import { PictogramasPageRoutingModule } from './pictogramas-routing.module';
 
-import { PreguntasFrecuentesPage } from './preguntas-frecuentes.page';
+import { PictogramasPage } from './pictogramas.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    PreguntasFrecuentesPageRoutingModule,
+    PictogramasPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [PreguntasFrecuentesPage]
+  declarations: [PictogramasPage]
 })
-export class PreguntasFrecuentesPageModule {}
+export class PictogramasPageModule {}
