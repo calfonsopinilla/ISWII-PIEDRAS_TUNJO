@@ -58,7 +58,7 @@ namespace Logica {
                 {
                     for (int x = 0; x < usuarios.Count(); x++)
                     {
-                        if (estadoFiltro == 1 && usuarios[x].EstadoCuenta == true)
+                        if (estadoFiltro == 1 && usuarios[x].EstadoCuenta == true && usuarios[x].VerificacionCuenta == true)
                         {
                             listadoUsuarios.Add(usuarios[x]);
                         }
