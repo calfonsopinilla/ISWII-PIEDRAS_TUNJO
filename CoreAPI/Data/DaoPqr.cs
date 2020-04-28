@@ -10,7 +10,6 @@ namespace Data
 {
     public class DaoPqr
     {
-
         public IEnumerable<UPQR> ListaPQR() {
 
             using (var db = new Mapeo())
@@ -51,8 +50,7 @@ namespace Data
             }
         }
 
-        public bool AgregarPqr(UPQR pqr) {
-
+        public bool AgregarPqr(UPQR pqr) {            
             using (var db = new Mapeo()){
                 try{
                     db.PQR.Add(pqr);
@@ -65,8 +63,7 @@ namespace Data
                 }
             }
         }
-        public bool actualizarPqr(int id, UPQR PQR) {
-
+        public bool actualizarPqr(int id, UPQR PQR) {            
             using (var db = new Mapeo())
             {
                 try
@@ -126,7 +123,6 @@ namespace Data
                 return pqrs.Find(x => x.Id == id);
             }
         }
-
     }
     
 }

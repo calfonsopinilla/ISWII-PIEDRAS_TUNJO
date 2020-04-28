@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>validar-numero-documento</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Validar Número Documento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-fab vertical="center" horizontal="end" edge slot="fixed" (click)="logout()">
+    <ion-fab-button>
+      <ion-icon name="power-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-item style="display: flex; width: 60%; margin: 16px auto; margin-bottom: 0;">
+    <ion-label position="floating">Numero de documento</ion-label>
+    <ion-input [(ngModel)]='dni' type="text"></ion-input>   
+  </ion-item>    
+  <ion-button style="display: flex; width: 60%; margin: 16px auto;" (click)="readDNI()">    
+    Validar Documento
+  </ion-button>
+
+  <ion-card *ngIf="reservaTicket">
+    <ion-card-header>
+      <ion-card-subtitle>Descripcion Reserva</ion-card-subtitle>
+      <ion-card-title>{{ reservaTicket.UUsuario.Nombre }} {{ reservaTicket.UUsuario.Apellido }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>      
+      <p>N. Documento: {{ reservaTicket.UUsuario.NumeroDocumento }}</p>
+      <p>Cantidad: {{ reservaTicket.Cantidad }}</p>  
+      <p>Fecha: {{ reservaTicket.FechaCompra }}</p>   
+    </ion-card-content>    
+
+    <ion-card-content style="display: flex; justify-content: center;">
+      <ion-button (click)="spendCode()" color="success">
+        Gastar Reserva
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

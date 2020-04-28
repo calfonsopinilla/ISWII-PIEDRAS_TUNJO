@@ -38,6 +38,46 @@ C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CopyComplete
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll.config
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework6.Npgsql.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Newtonsoft.Json.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Buffers.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Memory.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Numerics.Vectors.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Encodings.Web.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Json.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.ValueTuple.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.dll.config
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework6.Npgsql.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Newtonsoft.Json.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Buffers.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Memory.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Numerics.Vectors.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Encodings.Web.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Json.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.ValueTuple.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csprojAssemblyReference.cache
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CoreCompileInputs.cache
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CopyComplete
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll.config
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.pdb
@@ -78,3 +118,84 @@ C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CopyComplete
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
 C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll.config
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Data.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework6.Npgsql.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Newtonsoft.Json.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Buffers.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Memory.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Numerics.Vectors.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Encodings.Web.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Json.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.ValueTuple.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Utilitarios.dll.config
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\EntityFramework6.Npgsql.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Newtonsoft.Json.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Buffers.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Memory.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Numerics.Vectors.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Encodings.Web.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Text.Json.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\System.ValueTuple.xml
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csprojAssemblyReference.cache
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CoreCompileInputs.cache
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.csproj.CopyComplete
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.dll
+C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\obj\Release\Data.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.dll
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\GeoAPI.CoordinateSystems.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\NetTopologySuite.IO.PostGis.xml
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.pdb
+C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Data\bin\Release\Npgsql.NetTopologySuite.xml

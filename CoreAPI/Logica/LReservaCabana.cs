@@ -21,6 +21,7 @@ namespace Logica
                 List<UReservaCabana> diasReservados = new DaoReservaCabana().ObtenerTodos().Where(x => x.UCabanaId == idCabana).ToList();
                 if (diasReservados.Count != 0){
                     for (int x = 0; x < diasReservados.Count(); x++){
+
                         bool buscar = diasHabiles.Contains(diasReservados[x].FechaReserva);
                         if (buscar != false){
                             int id = diasHabiles.IndexOf(diasReservados[x].FechaReserva);
@@ -38,11 +39,6 @@ namespace Logica
                 throw ex; 
             }
         }
-
-
-
-
-
 
         public IEnumerable<UReservaCabana> ObtenerTodos()
         {
@@ -222,7 +218,6 @@ namespace Logica
 
         public List<DateTime> diasHabilesS()
         {
-
             List<DateTime> diashabiles = new List<DateTime>();
 
             List<DateTime> diasFestivos = festivos(DateTime.Now, DateTime.Now.AddMonths(2)).OrderBy(x => x.Month).ToList();
@@ -268,13 +263,7 @@ namespace Logica
 
             return diashabiles;
 
-
-
         }
-
-
-       
-
     }
 
 

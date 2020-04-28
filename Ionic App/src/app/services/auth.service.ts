@@ -86,11 +86,11 @@ export class AuthService {
   }
 
   async isAuthenticated() {
-    return await this.validateToken(false);
+    return await this.validateToken();
   }
 
   async getUsuario() {
-    await this.validateToken(false);
+    await this.validateToken();
     return {...this.usuario};
   }
 
@@ -100,7 +100,7 @@ export class AuthService {
     this.router.navigate(['/inicio']);
   }
 
-  async validateToken(redirect?: boolean): Promise<boolean> {
+  async validateToken(redirect: boolean = false): Promise<boolean> {
     const token = await this.storage.get('token') || undefined;
     if (!token) {
       if (redirect) {
@@ -132,7 +132,7 @@ export class AuthService {
 
   async guardarToken(token: string) {
     await this.storage.set('token', token);
-    await this.validateToken(false);
+    await this.validateToken();
   }
 
   async actualizarUsuario(usuario: Usuario) {
@@ -159,6 +159,28 @@ export class AuthService {
                     resolve(false);
                   }
                 }, err => {}, () => loading.dismiss());
+    });
+  }
+
+  esVigilante(redirect: boolean = true): Promise<boolean> {
+    return new Promise(async resolve => {
+      const usuario = await this.getUsuario();
+      if (usuario.RolId !== 3) {
+        if (redirect) {
+          this.router.navigateByUrl('/inicio');
+        }
+      }
+      resolve(usuario.RolId === 3);
+    });
+  }
+
+  verifiedAccount(): Promise<boolean> {
+    return new Promise(async resolve => {
+      const usuario = await this.getUsuario();
+      if (usuario.VerificacionCuenta === false) {
+        this.router.navigateByUrl('/registro/foto-documento');
+      }
+      resolve(usuario.VerificacionCuenta);
     });
   }
 }

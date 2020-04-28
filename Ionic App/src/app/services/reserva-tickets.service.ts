@@ -95,17 +95,46 @@ export class ReservaTicketService {
           }
         });
     });
+  }  
+
+  /* Jhonattan Pulido */
+  async leerQr(qr: string): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`)
+        .subscribe(res => {
+          if (res['ok'] === true) {
+            resolve(res['reserva']);
+          }
+        }, (error) => {
+          resolve(false);
+        });
+    });
   }
 
-  validarQr(id: number): Promise<boolean> {
+  /* Jhonattan Pulido */
+  async leerDNI(numeroDocumento: string): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/leerDNI?numeroDocumento=${ numeroDocumento }`)
+        .subscribe(res => {
+          if (res['ok'] === true) {
+            resolve(res['reserva']);
+          }
+        }, (error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  /* Jhonattan Pulido */
+  async validarQr(id: number): Promise<boolean> {
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/reserva-tickets/validarQr?id=${ id }`)
         .subscribe(res => {
           if (res['ok'] === true) {
             resolve(true);
-          } else {
-            resolve(false);
           }
+        }, (error) => {
+          resolve(false);
         });
     });
   }

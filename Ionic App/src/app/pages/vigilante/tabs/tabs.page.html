@@ -1,6 +1,15 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom" color="primary">
 
+    <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button><ion-icon name="power-outline"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
     <!-- tab property = routerLink -->
     <ion-tab-button tab="validar-qr">
       <ion-icon name="qr-code-outline"></ion-icon>

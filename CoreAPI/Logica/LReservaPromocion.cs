@@ -18,12 +18,6 @@ namespace Logica {
             return new DAOReservaPromocion().CrearReserva(nuevaPromocion);
         }
 
-        public IEnumerable<UReservaPromocion> ObtenerTodos()
-        {
-            return new DAOReservaPromocion().ObtenerTodos();
-        }
-
-
         /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para leer las promociones compradas por un usuario
@@ -33,6 +27,11 @@ namespace Logica {
         */
         public IEnumerable<UReservaPromocion> LeerPromocionesUsuario(int id) {
             return new DAOReservaPromocion().LeerPromocionesUsuario(id);
+        }
+
+        public IEnumerable<UReservaPromocion> ObtenerTodos()
+        {
+            return new DAOReservaPromocion().ObtenerTodos();
         }
     }
 }

@@ -3,7 +3,7 @@ import { ItemInfo } from 'src/app/interfaces/item-info.interface';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { AuthService } from '../../services/auth.service';
 //import {FCM} from '@ionic-native/fcm/ngx';
-//import { PushService } from '../../services/push.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -15,7 +15,8 @@ export class InicioPage implements OnInit {
   rutas = ['/descripcion-parque', '/resenia-historica', '/ubicacion-parque', '/piedras-parque'];
   itemsInfo: ItemInfo[] = [];
   horarioInfo: any;
-  tokens : string ;
+  tokens: string ;
+
   constructor(
     private infoParqueService: InfoParqueService
     //private fcm : FCM,
@@ -23,12 +24,13 @@ export class InicioPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.infoParqueService.obtenerInfoParque()
                             .subscribe(resp => {
                               this.itemsInfo = resp;
                               this.horarioInfo = (resp as ItemInfo[])
                                                   .find(x => x.id === 7); // find horario item
-                            });
+                            });    
 
     /*this.fcm.getToken().then(token => {      
       this.insertarToken(token);

@@ -8,7 +8,7 @@ using Utilitarios;
 
 namespace Logica {
 
-   public class LPromocion {
+    public class LPromocion {
 
         /*
             * Autor: Jhonattan Pulido
@@ -54,6 +54,55 @@ namespace Logica {
             return new DaoPromocion().Actualizar(id, promocion);
         }
 
+        //validacion de promocion para insert 
+        public bool validarPromocion(UPromocion promocion) {
+            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.TicketId == promocion.TicketId).ToList();
+            for (int x = 0; x < promociones.Count(); x++) {
+                if (promociones[x].FechaInicio <= promocion.FechaInicio && promociones[x].FechaFin >= promocion.FechaInicio)
+                {
+                    return false;
+                }
+                else if (promociones[x].FechaFin >= promocion.FechaFin && promociones[x].FechaInicio <= promociones[x].FechaInicio)
+                {
+                    int contador2 = promociones.Where(i => i.FechaFin >= promocion.FechaFin && i.FechaInicio <= promocion.FechaInicio).Count();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //validacion de promocion para update
+        // Jose Luis Soriano 
+        // no permite que dos promociones del mismo ticket se crucen ;
+
+
+
+        public bool validarPromocionUpdate(UPromocion promocion)
+        {
+            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.TicketId == promocion.TicketId && x.Id != promocion.Id).ToList();
+
+            for (int x = 0; x < promociones.Count(); x++) {
+
+                if (promocion.FechaInicio.Date >= promociones[x].FechaInicio.Date && promociones[x].FechaFin.Date >= promocion.FechaInicio.Date) {
+                    return false;
+
+                } else if (promocion.FechaFin.Date >= promociones[x].FechaInicio && promociones[x].FechaFin <= promocion.FechaFin)
+                {
+
+
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        public IEnumerable<UPromocion> ObtenerPromociones()
+        {
+            return new DaoPromocion().ObtenerPromociones();
+        }
+
+
         /*public IEnumerable<UPromocion> ObtenerPromociones()
         {
             return new DaoPromocion().ObtenerPromociones();
@@ -73,5 +122,7 @@ namespace Logica {
         {
             return new DaoPromocion().Eliminar(id);
         }*/
+
+
     }
 }
