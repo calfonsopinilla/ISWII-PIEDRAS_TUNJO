@@ -49,6 +49,11 @@ export class MenuComponent implements OnInit {
 
   itemsServicios = [
     {
+      label: 'Recorridos',
+      ruta: '/recorridos',
+      icon: 'compass-outline'
+    },
+    {
       label: 'Tickets',
       ruta: '/tickets',
       icon: 'map-outline'

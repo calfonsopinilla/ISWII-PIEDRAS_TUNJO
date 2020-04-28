@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AlertController, ToastController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 
-const apiUrl = environment.servicesAPI;
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { LoadingController, ToastController } from '@ionic/angular';
 
+const apiUrl = environment.servicesAPI;
+import { of, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class PushService {
-
-  private headers: HttpHeaders;
-
-  constructor(
-    private http: HttpClient,
-    private toastCtrl: ToastController
-  ) { }
+  
+  constructor( private http: HttpClient,
+              private toastCtrl :ToastController
+    ) { }
 
   agregarToken(push : any){
-    return this.http.post(`${ apiUrl }/push/crear`,push)                
+    return this.http.post(`${ apiUrl }/push/crear`,push)
+                .pipe(catchError(err => {
+                    return of( err.error );
+                }))
                 .subscribe(res => {
                     setTimeout(_ => {}, 2000);
                     this.presentToast(res['message']);
                 },
-                (err) => {
-                  setTimeout(_ => {}, 2000);
-                  this.presentToast(err);
-                },
+                (err) => {},
             );
   }
 
@@ -36,5 +35,5 @@ export class PushService {
         duration: 3000
     });
     toast.present();
-}
+  }
 }

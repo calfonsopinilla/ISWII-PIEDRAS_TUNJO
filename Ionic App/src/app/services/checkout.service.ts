@@ -4,6 +4,8 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { LoadingController } from '@ionic/angular';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 const apiUrl = environment.servicesAPI;
 
@@ -25,6 +27,9 @@ export class CheckoutService {
       const user = await this.authService.getUsuario();
       customerInfo.email = user.CorreoElectronico;
       this.http.post(`${ apiUrl }/stripe/payment?userId=${ user.Id }`, customerInfo)
+                .pipe(
+                  catchError(err => of({ ok: false, message: '500 Internal Server Error' })) // Internal Server Error
+                )
                 .subscribe(res => {
                   resolve(res);
                 }, err => {}, () => loading.dismiss());

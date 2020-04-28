@@ -1,0 +1,11 @@
+<ion-card>
+  <ion-item>
+    <ion-label>{{ recorrido.Nombre }}</ion-label>
+    <ion-button slot="end" (click)="detallesRecorrido(recorrido.Id)">
+      <ion-icon name="eye-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-card-content>
+    <div id="map" #map></div>
+  </ion-card-content>
+</ion-card>

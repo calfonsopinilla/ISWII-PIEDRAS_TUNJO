@@ -2,8 +2,7 @@
 <app-header titulo="Inicio" tipo="menu"></app-header>
 
 <ion-content class="ion-padding" [fullscreen]>
-  
-  {{tokens}}
+
   <app-item-info *ngFor="let item of itemsInfo.slice(0, 4); let i = index;" [itemInfo]="item" 
                 [ruta]="rutas[i] + '/' + item.id"></app-item-info>
 

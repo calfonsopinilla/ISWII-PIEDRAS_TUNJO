@@ -94,11 +94,24 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/promociones/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'recorridos',
+    canLoad: [ VerifiedAccountGuard, AuthGuard ],
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./pages/recorridos/recorridos.module').then( m => m.RecorridosPageModule)
+  },
+  {
+    path: 'detalles-recorrido/:id',
+    canLoad: [ VerifiedAccountGuard, AuthGuard ],
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./pages/detalles-recorrido/detalles-recorrido.module').then( m => m.DetallesRecorridoPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
+
 ];
 
 @NgModule({
