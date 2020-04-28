@@ -8,6 +8,7 @@ import { ItemInfoComponent } from './item-info/item-info.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { CabanaSelectorComponent } from './cabana-selector/cabana-selector.component';
+import { CardRecorridoComponent } from './card-recorrido/card-recorrido.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CabanaSelectorComponent } from './cabana-selector/cabana-selector.compo
     HeaderComponent,
     ItemInfoComponent,
     AvatarSelectorComponent,
-    CabanaSelectorComponent
+    CabanaSelectorComponent,
+    CardRecorridoComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { CabanaSelectorComponent } from './cabana-selector/cabana-selector.compo
     HeaderComponent,
     ItemInfoComponent,
     AvatarSelectorComponent,
-    CabanaSelectorComponent
+    CabanaSelectorComponent,
+    CardRecorridoComponent
   ]
 })
 export class ComponentsModule { }

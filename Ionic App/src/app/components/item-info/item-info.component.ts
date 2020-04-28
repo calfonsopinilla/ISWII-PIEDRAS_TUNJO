@@ -44,7 +44,8 @@ export class ItemInfoComponent implements AfterViewInit, OnInit {
                                   .setLngLat([LONGITUD, LATITUD])
                                   .setPopup(popup)
                                   .addTo(this.mapa);
-
+      // navigation controls
+      this.mapa.addControl(new Mapboxgl.NavigationControl());
     }
   }
 
