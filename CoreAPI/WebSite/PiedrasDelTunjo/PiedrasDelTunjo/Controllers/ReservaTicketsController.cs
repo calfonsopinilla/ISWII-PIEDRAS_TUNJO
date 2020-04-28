@@ -81,7 +81,7 @@ namespace PiedrasDelTunjo.Controllers
                 reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
                 reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
                 QRCodeEncoder encoder = new QRCodeEncoder();
-                Bitmap img = encoder.Encode(reserva.Token);
+                Bitmap img = encoder.Encode(reserva.Qr);
                 System.Drawing.Image QR = (System.Drawing.Image)img;
                 using (MemoryStream ms = new MemoryStream())
                 {
