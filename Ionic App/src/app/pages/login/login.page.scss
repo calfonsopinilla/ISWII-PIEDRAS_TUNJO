@@ -6,8 +6,35 @@
     margin-top: 30px;
 }
 #logo {
-    width: 80%;
-    margin: 30px auto;
+    width: 100%;
+    height: 200px;
     display: block;
     text-align: center;
+    opacity: 0.8;
 }
+
+.full-slide {
+    height: 100% !important;
+}
+
+ion-slides {
+    margin-top: -40px;
+}
+
+// .line-input {
+//     margin-bottom: 0!important;
+//     ion-item {
+//         --border-color: transparent!important;
+//         --highlight-height: 0;
+//         border: 1px solid #dedede;
+//         border-radius: 4px;
+//         &.item-has-focus {
+//             border: 1px solid var(--ion-color-primary);
+//         }
+//         ion-label {
+//             color: #807e7e!important;
+//             font-weight: 300;
+//             font-size: 1rem!important;
+//         }
+//     }
+// }

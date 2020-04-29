@@ -1,5 +1,5 @@
-<ion-header [translucent]>
-  <ion-toolbar color="tertiary">
+<ion-header [translucent] no-border>
+  <ion-toolbar [color]="color">
     <ion-buttons slot="start">
       <ion-menu-button *ngIf="tipo === 'menu'" color="light" menu="first"></ion-menu-button>
       <ion-back-button [defaultHref]="defaultH" *ngIf="tipo === 'back'"></ion-back-button>

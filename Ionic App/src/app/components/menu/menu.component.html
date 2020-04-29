@@ -11,7 +11,7 @@
             <ion-list-header>Piedras del Tunjo</ion-list-header>
             <ion-menu-toggle autoHide="false" *ngFor="let item of itemsParque">
                 <ion-item detail [routerLink]="item.ruta" detail>
-                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-icon slot="start" [name]="item.icon" color="tertiary"></ion-icon>
                     <ion-label>{{ item.label }}</ion-label>
                 </ion-item>
             </ion-menu-toggle>
@@ -20,7 +20,7 @@
             <ion-list-header>Servicios</ion-list-header>
             <ion-menu-toggle autoHide="false" *ngFor="let item of itemsServicios">
                 <ion-item [routerLink]="item.ruta" detail>
-                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-icon slot="start" [name]="item.icon" color="tertiary"></ion-icon>
                     <ion-label>{{ item.label }}</ion-label>
                 </ion-item>
             </ion-menu-toggle>
@@ -30,14 +30,14 @@
             <!-- Login y registro -->
             <ion-menu-toggle autoHide="false" *ngFor="let item of itemsCuenta">
                 <ion-item *ngIf="!auth" [routerLink]="item.ruta" detail>
-                    <ion-icon slot="start" [name]="item.icon" color="primary"></ion-icon>
+                    <ion-icon slot="start" [name]="item.icon" color="tertiary"></ion-icon>
                     <ion-label>{{ item.label }}</ion-label>
                 </ion-item>
             </ion-menu-toggle>
             <!-- Cerrar sesión -->
             <ion-menu-toggle autoHide="false" *ngIf="auth">
                 <ion-item detail (click)="logout()">
-                    <ion-icon slot="start" name="log-out-outline" color="parning"></ion-icon>
+                    <ion-icon slot="start" name="log-out-outline" color="tertiary"></ion-icon>
                     <ion-label>Cerrar sesión</ion-label>
                 </ion-item>
             </ion-menu-toggle>

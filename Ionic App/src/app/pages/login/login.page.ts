@@ -12,14 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+  slideOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
+
   loginForm: FormGroup;
-  redirect = 'no';
+  seePassword = false;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private loadingCtrl: LoadingController
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class LoginPage implements OnInit {
     // this.redirect = this.route.snapshot.queryParamMap.get('redirect');
 
     this.loginForm = this.fb.group({
-      correoElectronico: ['', [Validators.required]],
+      correoElectronico: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       clave: ['', [Validators.required, Validators.minLength(5)]]
     });
   }

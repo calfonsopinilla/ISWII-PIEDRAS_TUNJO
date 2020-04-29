@@ -18,9 +18,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-//firebase 
-import { FCM} from '@ionic-native/fcm/ngx' ;
-import { Push } from '@ionic-native/push/ngx' ; 
+// firebase
+import { FCM} from '@ionic-native/fcm/ngx';
+import { Push } from '@ionic-native/push/ngx'; 
 
 
 @NgModule({

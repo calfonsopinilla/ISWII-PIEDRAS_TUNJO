@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Crear Cuenta</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Crear cuenta" tipo="back"></app-header>
 
 <ion-content [fullscreen] class="ion-padding">
 
@@ -84,7 +80,7 @@
       </ion-item>
 
       <ion-item style="display: flex; justify-content: center;">
-        <ion-checkbox (ionChange)="mostrarTerminosCondiciones($event)"></ion-checkbox>
+        <ion-checkbox (ionChange)="mostrarTerminosCondiciones()"></ion-checkbox>
         <ion-label style="display: flex; margin-left: 14px;">Acepto los términos y condiciones</ion-label>
       </ion-item>
 
