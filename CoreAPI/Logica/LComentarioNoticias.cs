@@ -10,7 +10,23 @@ namespace Logica
 {
     public class LComentarioNoticias
     {
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para agregar un comentario de una noticia
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool CrearComentario(UComentarioNoticia comentario) { return new DaoComentariosNoticias().CrearComentario(comentario); }
 
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para leer todos los comentarios de unna noticia
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos del evento que se desea leer
+         * Retorna: Lista de comentarios
+         */
+        public List<UComentarioNoticia> LeerComentariosId(UComentarioNoticia comentario) { return new DaoComentariosNoticias().LeerComentariosId(comentario); }
 
         public bool agregarComentarioNoticia(UComentarioNoticia comentarioNotica) {
             return new DaoComentariosNoticias().agregarComentarioNoticia(comentarioNotica);

@@ -1,5 +1,4 @@
-﻿using Data;
-using Logica;
+﻿using Logica;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,109 +12,152 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("puntuacion")]
-    public class PuntuacionController : ApiController {
-
-        // Variables
-        private int contador;
-        private List<UPuntuacion> listaPuntuaciones;
-        private UPictograma pictograma;
-        private UEvento evento;
-        private UNoticia noticia;
-        private UCabana cabana;
+    public class PuntuacionController : ApiController {        
 
         /*
-            Autor: Jhonattan Alejandro Pulido Arenas
-            Fecha creación: 24/03/2020
-            Descripción: Método que sirve para leer las puntuaciones de un objeto insertado en una tabla
-            Recibe: UPuntuacion puntuacion - Objeto con los atributos a guardar
-            Retorna: Lista de puntuaciones
+         * Autor: Jhonattan Pulido
+         * Fecha creación: 29/04/2020
+         * Descripción: Método que sirve para agregar un comentario y añadir una puntuación
+         * Recibe: 
+         * Retorna:
+         * Ruta: .../puntuacion/crear?table=noticia&objectId=1
         */
-        [HttpGet]
-        [Route("calcular")]
-        public HttpResponseMessage EnviarTokenCorreo([FromUri] UPuntuacion puntuacion) {
+        [HttpPost]
+        //[Authorize]
+        [Route("crear")]
+        public HttpResponseMessage CrearComentario([FromUri] string table, [FromBody] UComentario comentario, [FromUri] int objectId) {
 
-            this.listaPuntuaciones = new LPuntuacion().LeerPuntuacionesObjeto(puntuacion.Puntero, puntuacion.PunteroId);
-            if (this.listaPuntuaciones.Count > 0) {
+            if (table != null) {
 
-                this.contador = puntuacion.Puntuacion;
+                bool created = false;
+                bool updated = false;
+                double calificacion;
 
-                foreach (UPuntuacion punt in this.listaPuntuaciones)
-                    this.contador += punt.Puntuacion;
+                switch (table) {
 
-                this.contador = this.contador / (this.listaPuntuaciones.Count + 1);
+                    case "evento":
 
-                new DAOPuntuacion().AgregarPuntuacion(puntuacion);
+                        UEvento evento = new UEvento();
+                        UComentarioEvento comentarioEvento = new UComentarioEvento();
+                        List<UComentarioEvento> listaComentariosEvento = new List<UComentarioEvento>();
 
-                switch (puntuacion.Puntero) {
+                        comentarioEvento.Id = comentario.Id;
+                        comentarioEvento.FechaPublicacion = comentario.FechaPublicacion;
+                        comentarioEvento.Descripcion = comentario.Descripcion;
+                        comentarioEvento.Calificacion = comentario.Calificacion;
+                        comentarioEvento.LastModification = DateTime.Now;
+                        comentarioEvento.Token = "Token";
+                        comentarioEvento.EventoId = objectId;
+                        comentarioEvento.UsuarioId = comentario.UsuarioId;
 
-                    // Tabla Pictograma
-                    case 1:
+                        created = new LComentarioEvento().CrearComentario(comentarioEvento);
+
+                        if (created) {
+
+                            listaComentariosEvento = new LComentarioEvento().LeerComentariosId(comentarioEvento);
+                            calificacion = listaComentariosEvento.Sum(x => x.Calificacion) / listaComentariosEvento.Count;
+                            evento = new LEvento().Buscar(comentarioEvento.EventoId);
+                            evento.Calificacion = Math.Floor(calificacion);
+                            updated = new LEvento().Actualizar(evento.Id, evento);                            
+                        }                             
 
                         break;
 
-                    // Tabla Evento
-                    case 2:
-                        this.evento = new DaoEvento().Buscar(puntuacion.PunteroId);
-                        this.evento.Calificacion = this.contador;
-                        new DaoEvento().Actualizar(this.evento.Id, this.evento);
+                    case "noticia":
+
+                        UNoticia noticia = new UNoticia();
+                        UComentarioNoticia comentarioNoticia = new UComentarioNoticia();
+                        List<UComentarioNoticia> listaComentariosNoticia = new List<UComentarioNoticia>();
+
+                        comentarioNoticia.Id = comentario.Id;
+                        comentarioNoticia.FechaPublicacion = comentario.FechaPublicacion;
+                        comentarioNoticia.Descripcion = comentario.Descripcion;
+                        comentarioNoticia.Calificacion = comentario.Calificacion;
+                        comentarioNoticia.LastModification = DateTime.Now;
+                        comentarioNoticia.Token = "Token";
+                        comentarioNoticia.Noticia_id = objectId;
+                        comentarioNoticia.UsuarioId = comentario.UsuarioId;
+
+                        created = new LComentarioNoticias().CrearComentario(comentarioNoticia);
+
+                        if (created) {
+
+                            listaComentariosNoticia = new LComentarioNoticias().LeerComentariosId(comentarioNoticia);
+                            calificacion = listaComentariosNoticia.Sum(x => x.Calificacion) / listaComentariosNoticia.Count;
+                            noticia = new LNoticia().Buscar(comentarioNoticia.Noticia_id);
+                            noticia.Calificacion = Math.Floor(calificacion);
+                            updated = new LNoticia().Actualizar(noticia.Id, noticia);                            
+                        }                             
+
                         break;
 
-                    // Tabla Noticia
-                    case 3:
+                    case "pictograma":
+
+                        UPictograma pictograma = new UPictograma();
+                        UComentarioPictograma comentarioPictograma = new UComentarioPictograma();
+                        List<UComentarioPictograma> listaComentariosPictograma = new List<UComentarioPictograma>();
+
+                        comentarioPictograma.Id = comentario.Id;
+                        comentarioPictograma.FechaPublicacion = comentario.FechaPublicacion;
+                        comentarioPictograma.Descripcion = comentario.Descripcion;
+                        comentarioPictograma.Calificacion = comentario.Calificacion;
+                        comentarioPictograma.LastModification = DateTime.Now;
+                        comentarioPictograma.Token = "Token";
+                        comentarioPictograma.PictogramaId = objectId;
+                        comentarioPictograma.UsuarioId = comentario.UsuarioId;
+
+                        created = new LComentarioPictograma().CrearComentario(comentarioPictograma);
+
+                        if (created) {
+
+                            listaComentariosPictograma = new LComentarioPictograma().LeerComentariosId(comentarioPictograma);
+                            calificacion = listaComentariosPictograma.Sum(x => x.Calificacion) / listaComentariosPictograma.Count;
+                            pictograma = new LPictograma().Buscar(comentarioPictograma.PictogramaId);
+                            pictograma.Calificacion = Math.Floor(calificacion);
+                            new LPictograma().Actualizar(pictograma, pictograma.Id);
+                            updated = true;
+                        }                             
 
                         break;
 
-                    // Cabana
-                    case 4:
-                        this.cabana = new DAOCabana().LeerCabana(puntuacion.PunteroId);
-                        this.cabana.Calificacion = this.contador;
-                        new DAOCabana().ActualizarCabana(this.cabana);
+                    case "cabana":
+
+                        UCabana cabana = new UCabana();
+                        UComentarioCabana comentarioCabana = new UComentarioCabana();
+                        List<UComentarioCabana> listaComentariosCabana = new List<UComentarioCabana>();
+
+                        comentarioCabana.Id = comentario.Id;
+                        comentarioCabana.FechaPublicacion = comentario.FechaPublicacion;
+                        comentarioCabana.Descripcion = comentario.Descripcion;
+                        comentarioCabana.Calificacion = comentario.Calificacion;
+                        comentarioCabana.LastModification = DateTime.Now;
+                        comentarioCabana.Token = "Token";
+                        comentarioCabana.CabanaId = objectId;
+                        comentarioCabana.UsuarioId = comentario.UsuarioId;
+
+                        created = new LComentarioCabana().CrearComentario(comentarioCabana);
+
+                        if (created) {
+
+                            listaComentariosCabana = new LComentarioCabana().LeerComentariosId(comentarioCabana);
+                            calificacion = listaComentariosCabana.Sum(x => x.Calificacion) / listaComentariosCabana.Count;
+                            cabana = new LCabana().LeerCabana(comentarioCabana.CabanaId);
+                            cabana.Calificacion = Math.Floor(calificacion);
+                            updated = new LCabana().Actualizar(cabana.Id, cabana);
+                        }
+
                         break;
 
                     default:
-                        return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: Ha ocurrido un problema con el servidor" });
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" });
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "" });
+                if (created && updated)
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Puntuación y comentario agregado correctamente" });
+                else
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Ha ocurrido un error" });
 
-            } else if (this.listaPuntuaciones == null || this.listaPuntuaciones.Count == 0) {
-
-                new DAOPuntuacion().AgregarPuntuacion(puntuacion);
-
-                switch (puntuacion.Puntero) {
-
-                    // Tabla Pictograma
-                    case 1:
-
-                        break;
-
-                    // Tabla Evento
-                    case 2:
-                        this.evento = new DaoEvento().Buscar(puntuacion.PunteroId);
-                        this.evento.Calificacion = this.contador;
-                        new DaoEvento().Actualizar(this.evento.Id, this.evento);
-                        break;
-
-                    // Tabla Noticia
-                    case 3:
-
-                        break;
-
-                    // Cabana
-                    case 4:
-                        this.cabana = new DAOCabana().LeerCabana(puntuacion.PunteroId);
-                        this.cabana.Calificacion = this.contador;
-                        new DAOCabana().ActualizarCabana(this.cabana);
-                        break;
-
-                    default:
-                        return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: Ha ocurrido un problema con el servidor" });
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "" });
-
-            } else
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "ERROR: Ha ocurrido un problema con el servidor" });
-        }        
+            } else { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" }); }
+        }                
     }
 }

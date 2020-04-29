@@ -9,8 +9,7 @@ namespace Utilitarios {
 
         // Variables
         private int eventoId;
-
-        [ForeignKey("EventoId")]
+        
         [Column("evento_id")]
         public int EventoId { get => eventoId; set => eventoId = value; }
     }

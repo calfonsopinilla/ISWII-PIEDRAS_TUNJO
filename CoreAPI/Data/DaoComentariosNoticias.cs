@@ -12,18 +12,50 @@ namespace Data
 
         private readonly Mapeo db = new Mapeo();
 
+        /* Métodos */
 
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para agregar un comentario de una noticia
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool CrearComentario(UComentarioNoticia comentario) {
+            
+            try {
+
+                using (this.db) {
+
+                    this.db.ComentariosNoticias.Add(comentario);
+                    this.db.SaveChanges();
+                    return true;
+                }
+
+            } catch { return false; }
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para leer todos los comentarios de unna noticia
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos del evento que se desea leer
+         * Retorna: Lista de comentarios
+         */
+        public List<UComentarioNoticia> LeerComentariosId(UComentarioNoticia comentario) {
+
+            using (this.db) {
+
+                return this.db.ComentariosNoticias.Where(
+                        x => x.Noticia_id == comentario.Noticia_id
+                    ).ToList();
+            }
+        }
         
         public IEnumerable<UComentarioNoticia> ListaComentariosAdministrador()
         {
             return db.ComentariosNoticias.ToList();
         }
-
-
-
-
-
-      
 
         public List<UComentarioNoticia> ListaComentariosNoticia(int noticiaId)
         {

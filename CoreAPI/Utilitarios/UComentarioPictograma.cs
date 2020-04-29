@@ -9,10 +9,9 @@ namespace Utilitarios {
 
         // Variables
         private int pictogramaId;
-
-        [ForeignKey("PictogramaId")]
+        
         [Column("pictograma_id")]
-        public int PictogramaId { get => pictogramaId; set => pictogramaId = value; }
+        public int PictogramaId { get; set; }
     }
 }
 

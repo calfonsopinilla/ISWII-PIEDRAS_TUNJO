@@ -106,6 +106,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOComentarioCabana.cs" />
+    <Compile Include="DAOComentarioEvento.cs" />
+    <Compile Include="DAOComentarioPictograma.cs" />
     <Compile Include="DaoComentariosNoticias.cs" />
     <Compile Include="DaoPush.cs" />
     <Compile Include="DaoRecorrido.cs" />

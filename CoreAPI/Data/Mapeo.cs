@@ -27,7 +27,7 @@ namespace Data
         public DbSet<UCabana> Cabana { get; set; }
         public DbSet<UPuntoInteres> PuntosInteres { get; set; }
         public DbSet<UPictograma> Pictograma { get; set; }
-        public DbSet<UComentarioPic> ComentarioPic { get; set; }
+        //public DbSet<UComentarioPic> ComentarioPic { get; set; }
         public DbSet<UPuntuacion> Puntuacion { get; set; }
         public DbSet<UPQR> PQR { get; set; }
         public DbSet<UEstadoPQR> EstadoPqr { get; set; }
@@ -38,6 +38,12 @@ namespace Data
         public DbSet<UReservaPromocion> ReservaPromocion { get; set; }
         public DbSet<URecorrido> Recorridos { get; set; }
         public DbSet<URol> Roles { get; set; }
+
+        /* Mapeo para comentarios */
+        public DbSet<UComentarioCabana> ComentarioCabana { get; set; }
+        public DbSet<UComentarioEvento> ComentarioEvento { get; set; }
+        //public DbSet<UComentarioNoticia> ComentarioNoticia { get; set; }
+        public DbSet<UComentarioPictograma> ComentarioPictograma { get; set; }        
 
         public DbSet<UPush> Push { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
