@@ -11,6 +11,11 @@
         <img class="pick-cabana" 
             [src]="cabana.ImagenesUrl | imgServer: 'cabana'"
             [ngClass]="{ 'pick-cabana-seleccionada':  (idSelected === cabana.Id)}">
+        <ion-button [disabled]="idSelected !== cabana.Id" expand="full" color="secondary" 
+                    [routerLink]="['/cabanas', 'detalles-cabana', cabana.Id]">
+          ver detalles
+          <ion-icon name="eye-outline" slot="end"></ion-icon>
+        </ion-button>
         <ion-card-content>
           <b>Valor: </b><span>{{ cabana.Precio | currency:'COP' }}</span>
           <ion-button expand="full" [fill]="(idSelected === cabana.Id)? 'solid':'outline'" color="tertiary"

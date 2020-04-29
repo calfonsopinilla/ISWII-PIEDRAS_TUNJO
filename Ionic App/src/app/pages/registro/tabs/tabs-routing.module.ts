@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'registro',
-        loadChildren: () => import('../registro.module').then(mod => mod.RegistroPageModule)
+        loadChildren: () => import('../inicio/registro.module').then(mod => mod.RegistroPageModule)
       },
       {
         path: 'ingresar-codigo',
@@ -24,7 +24,7 @@ const routes: Routes = [
         path: '', pathMatch: 'full', redirectTo: 'registro'
       },
       {
-        path: '**', pathMatch: 'full', redirectTo: '../registro'
+        path: '**', pathMatch: 'full', redirectTo: 'registro'
       }
     ]
   }

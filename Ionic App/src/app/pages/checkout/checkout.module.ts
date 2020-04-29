@@ -5,14 +5,16 @@ import { IonicModule } from '@ionic/angular';
 import { CheckoutPage } from './checkout.page';
 import { ExpireDateDirective } from '../../directives/expire-date.directive';
 import { MaxLengthDirective } from '../../directives/max-length.directive';
+import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
+    DirectivesModule
   ],
-  declarations: [CheckoutPage, MaxLengthDirective, ExpireDateDirective]
+  declarations: [CheckoutPage]
 })
 export class CheckoutPageModule {}

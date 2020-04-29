@@ -19,7 +19,7 @@ export class NumeroDocValidator implements AsyncValidator {
                   );
   }
 
-  validateToken(ctrl: AbstractControl) : Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+  validateToken(ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.userService.existeNumeroDocumentoToken(ctrl.value)
                             .pipe(
                               map(exists => (exists ? {numeroDocTokenExists: true} : null)),
@@ -28,12 +28,12 @@ export class NumeroDocValidator implements AsyncValidator {
   }
 }
 
-@Directive({
-  selector: '[appNumeroDoc]'
-})
-export class NumeroDocDirective {
+// @Directive({
+//   selector: '[appNumeroDoc]'
+// })
+// export class NumeroDocDirective {
 
-  constructor() { }
+//   constructor() { }
 
-}
+// }
 

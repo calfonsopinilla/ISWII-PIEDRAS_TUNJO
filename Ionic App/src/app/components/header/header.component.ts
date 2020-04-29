@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() tipo: string;
-  @Input() defaultH: string;
+  @Input() defaultH = '/inicio';
 
   constructor() { }
 

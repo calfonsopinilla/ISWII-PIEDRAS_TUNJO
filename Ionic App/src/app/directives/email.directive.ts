@@ -19,7 +19,7 @@ export class EmailValidator implements AsyncValidator {
                   );
   }
 
-  validateToken(ctrl: AbstractControl) : Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+  validateToken(ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.userService.existeCorreoToken(ctrl.value)
                             .pipe(
                               map(exists => (exists ? {emailTokenExists: true} : null)),
@@ -28,11 +28,11 @@ export class EmailValidator implements AsyncValidator {
   }
 }
 
-@Directive({
-  selector: '[appEmail]'
-})
-export class EmailDirective {
+// @Directive({
+//   selector: '[appEmail]'
+// })
+// export class EmailDirective {
 
-  constructor() { }
+//   constructor() { }
 
-}
+// }

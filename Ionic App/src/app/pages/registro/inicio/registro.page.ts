@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { UserRegister } from '../../interfaces/user-regster.interface';
-import { EmailValidator } from '../../directives/email.directive';
-import { NumeroDocValidator } from '../../directives/numero-doc.directive';
+import { UserService } from '../../../services/user.service';
+import { UserRegister } from '../../../interfaces/user-regster.interface';
+import { EmailValidator } from '../../../directives/email.directive';
+import { NumeroDocValidator } from '../../../directives/numero-doc.directive';
 import { AlertController } from '@ionic/angular';
-import { NavController, LoadingController, ToastController } from '@ionic/angular';
-import { InfoParqueService } from '../../services/info-parque.service';
+import { ToastController } from '@ionic/angular';
+import { InfoParqueService } from '../../../services/info-parque.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,7 +18,7 @@ export class RegistroPage implements OnInit {
   formUser: FormGroup;
   userRegister = new UserRegister();
   avatar = undefined;
-  terminosCondiciones: string;  
+  terminosCondiciones: string;
 
   constructor(
     private infoParqueService: InfoParqueService,
@@ -48,7 +48,7 @@ export class RegistroPage implements OnInit {
         [Validators.required, Validators.minLength(7), Validators.maxLength(10)],
         [
           this.numDocValidator.validateToken.bind(this.numDocValidator), // Validar tabla Token Correo
-          this.numDocValidator.validate.bind(this.numDocValidator)     
+          this.numDocValidator.validate.bind(this.numDocValidator)
         ]
       ]
     });
