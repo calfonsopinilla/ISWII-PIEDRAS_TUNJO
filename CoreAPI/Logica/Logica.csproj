@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LComentarioNoticias.cs" />
+    <Compile Include="LGestionTickets.cs" />
     <Compile Include="Lpush.cs" />
     <Compile Include="LRecorrido.cs" />
     <Compile Include="LReservaCabana.cs" />

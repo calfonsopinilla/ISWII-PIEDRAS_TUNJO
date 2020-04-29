@@ -269,6 +269,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ComentarioNoticiaController.cs" />
+    <Compile Include="Controllers\GestionTicketsController.cs" />
     <Compile Include="Controllers\PictogramasController.cs" />
     <Compile Include="Controllers\PqrController.cs" />
     <Compile Include="Controllers\PushController.cs" />
