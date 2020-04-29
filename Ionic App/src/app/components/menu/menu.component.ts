@@ -13,37 +13,37 @@ export class MenuComponent implements OnInit {
     {
       label: 'Inicio',
       ruta: '/inicio',
-      icon: 'home-outline'
+      icon: 'home'
     },
     {
       label: 'Descripción',
       ruta: '/descripcion-parque/2',
-      icon: 'book-outline'
+      icon: 'book'
     },
     {
       label: 'Reseña histórica',
       ruta: '/resenia-historica/4',
-      icon: 'book-outline'
+      icon: 'book'
     },
     {
       label: 'Ubicación',
       ruta: '/ubicacion-parque/5',
-      icon: 'location-outline'
+      icon: 'location'
     },
     {
       label: 'Piedras',
       ruta: '/piedras-parque/6',
-      icon: 'aperture-outline'
+      icon: 'aperture'
     },
     {
       label: 'PQR´s',
       ruta: '/pqr-parque',
-      icon: 'help-circle-outline'
+      icon: 'help-circle'
     },
     {
       label: 'Preguntas frecuentes',
       ruta: '/preguntas-frecuentes',
-      icon: 'help-circle-outline'
+      icon: 'help-circle'
     }
   ];
 
@@ -51,22 +51,22 @@ export class MenuComponent implements OnInit {
     {
       label: 'Recorridos',
       ruta: '/recorridos',
-      icon: 'compass-outline'
+      icon: 'compass'
     },
     {
       label: 'Pictogramas',
       ruta: '/pictogramas',
-      icon: 'bonfire-outline'
+      icon: 'bonfire'
     },
     {
       label: 'Tickets',
       ruta: '/tickets',
-      icon: 'map-outline'
+      icon: 'map'
     },
     {
       label: 'Reserva de Cabañas',
       ruta: '/cabanas',
-      icon: 'calendar-outline'
+      icon: 'calendar'
     },
     {
       label : 'Promociones',
@@ -84,12 +84,12 @@ export class MenuComponent implements OnInit {
     {
       label: 'Iniciar sesión',
       ruta: '/login',
-      icon: 'log-in-outline'
+      icon: 'log-in'
     },
     {
       label: 'Registrarse',
       ruta: '/registro',
-      icon: 'disc-outline'
+      icon: 'disc'
     },
   ];
 

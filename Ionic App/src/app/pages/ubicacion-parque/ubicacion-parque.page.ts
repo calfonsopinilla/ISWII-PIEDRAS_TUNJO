@@ -85,13 +85,6 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
 
     // controls del mapa
     this.mapa.addControl(new Mapboxgl.NavigationControl());
-    // geolocation
-    this.mapa.addControl(new Mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-      trackUserLocation: false
-    }));
   }
 
   loadPuntosInteres(puntosInt: PuntoInteres[]) {

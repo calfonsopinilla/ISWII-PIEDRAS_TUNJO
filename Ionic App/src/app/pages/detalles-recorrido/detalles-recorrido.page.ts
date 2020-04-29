@@ -90,13 +90,6 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
 
     // controls del mapa
     this.mapbox.addControl(new Mapboxgl.NavigationControl());
-    // geolocation
-    this.mapbox.addControl(new Mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-      trackUserLocation: false
-    }));
   }
 
   async obtenerRecorrido(id: number) {

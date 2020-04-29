@@ -18,7 +18,6 @@ export class LoginPage implements OnInit {
   };
 
   loginForm: FormGroup;
-  seePassword = false;
 
   constructor(
     private fb: FormBuilder,

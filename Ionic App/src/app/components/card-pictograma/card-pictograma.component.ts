@@ -41,13 +41,6 @@ export class CardPictogramaComponent implements OnInit, AfterViewInit {
                                 .addTo(this.mapboxgl);
     // navigation controls
     this.mapboxgl.addControl(new Mapboxgl.NavigationControl());
-    // geolocation
-    this.mapboxgl.addControl(new Mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-      trackUserLocation: false
-    }));
   }
 
 }
