@@ -109,7 +109,11 @@
     <Compile Include="LComentarioCabana.cs" />
     <Compile Include="LComentarioEvento.cs" />
     <Compile Include="LComentarioNoticias.cs" />
+<<<<<<< HEAD
     <Compile Include="LComentarioPictograma.cs" />
+=======
+    <Compile Include="LGestionTickets.cs" />
+>>>>>>> 645fe349b9d1f1bd4574d335e2fa23fce44baa96
     <Compile Include="Lpush.cs" />
     <Compile Include="LRecorrido.cs" />
     <Compile Include="LReservaCabana.cs" />
