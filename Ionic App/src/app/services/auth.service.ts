@@ -46,9 +46,15 @@ export class AuthService {
                     // decode jwt
                     const decode = jwt_decode(res['token']);
                     const user = JSON.parse(decode['usuario']);
-                    // no acceso al usuario administrador
-                    if (user['RolId'] === 1) {
-                      this.presentToast('No puedes acceder como administrador');
+                    // console.log(user);
+                    // no acceso al usuario administrador o cajero
+                    if (user['RolId'] === 1 || user['RolId'] === 3) {
+                      this.presentToast('No puedes acceder como administrador o cajero');
+                      return;
+                    }
+                    // no acceso a usuario desactivado o deshabilitado
+                    if (user['EstadoCuenta'] === false) {
+                      this.presentToast('Tu cuenta ha sido deshabilitada.');
                       return;
                     }
                     // Almacenar token
@@ -72,7 +78,7 @@ export class AuthService {
         this.loginState$.emit(true);
         this.router.navigateByUrl('/inicio');
       }
-    } else if (Number(userLogin['RolId'] === 3)) {
+    } else if (Number(userLogin['RolId'] === 4)) {
       this.router.navigateByUrl('/vigilante');
     }
   }

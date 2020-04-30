@@ -34,7 +34,7 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-translate/core": "^12.1.2",
     "@types/jwt-decode": "^2.2.1",
-    "cordova-android": "8.1.0",
+    "cordova-android": "^8.1.0",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-file": "^6.0.2",
