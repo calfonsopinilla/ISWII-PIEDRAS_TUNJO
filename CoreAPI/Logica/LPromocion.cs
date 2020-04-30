@@ -58,13 +58,21 @@ namespace Logica {
         public bool validarPromocion(UPromocion promocion) {
             List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.TicketId == promocion.TicketId).ToList();
             for (int x = 0; x < promociones.Count(); x++) {
-                if (promociones[x].FechaInicio <= promocion.FechaInicio && promociones[x].FechaFin >= promocion.FechaInicio)
+                if (promocion.FechaInicio.Date >= promociones[x].FechaInicio.Date && promocion.FechaInicio.Date <= promociones[x].FechaFin.Date)
+                {
+                    return false;
+
+                }
+                else if (promocion.FechaFin.Date >= promociones[x].FechaInicio.Date && promocion.FechaFin.Date <= promociones[x].FechaFin.Date)
                 {
                     return false;
                 }
-                else if (promociones[x].FechaFin >= promocion.FechaFin && promociones[x].FechaInicio <= promociones[x].FechaInicio)
+                else if (promocion.FechaInicio.Date < promociones[x].FechaFin.Date && promocion.FechaFin.Date > promociones[x].FechaFin.Date)
                 {
-                    int contador2 = promociones.Where(i => i.FechaFin >= promocion.FechaFin && i.FechaInicio <= promocion.FechaInicio).Count();
+                    return false;
+                }
+                else if (promocion.FechaInicio.Date < promociones[x].FechaInicio.Date && promocion.FechaFin.Date > promociones[x].FechaInicio.Date && promocion.FechaFin.Date < promociones[x].FechaFin.Date)
+                {
                     return false;
                 }
             }
@@ -83,13 +91,21 @@ namespace Logica {
 
             for (int x = 0; x < promociones.Count(); x++) {
 
-                if (promocion.FechaInicio.Date >= promociones[x].FechaInicio.Date && promociones[x].FechaFin.Date >= promocion.FechaInicio.Date) {
+                if (promocion.FechaInicio.Date >= promociones[x].FechaInicio.Date && promocion.FechaInicio.Date <= promociones[x].FechaFin.Date)
+                {
                     return false;
 
-                } else if (promocion.FechaFin.Date >= promociones[x].FechaInicio && promociones[x].FechaFin <= promocion.FechaFin)
+                }
+                else if (promocion.FechaFin.Date >= promociones[x].FechaInicio.Date && promocion.FechaFin.Date <= promociones[x].FechaFin.Date)
                 {
-
-
+                    return false;
+                }
+                else if (promocion.FechaInicio.Date < promociones[x].FechaFin.Date && promocion.FechaFin.Date > promociones[x].FechaFin.Date)
+                {
+                    return false;
+                }
+                else if (promocion.FechaInicio.Date < promociones[x].FechaInicio.Date && promocion.FechaFin.Date > promociones[x].FechaInicio.Date && promocion.FechaFin.Date < promociones[x].FechaFin.Date)
+                {
                     return false;
                 }
             }
