@@ -54,7 +54,9 @@ namespace Data {
 
                 using (this.db) {
 
-                    this.listaPromociones = this.db.promocion.Where(x => x.Estado.Equals(estado)).OrderBy(x => x.Id).ToList();
+                    this.listaPromociones = this.db.promocion
+                                            .Where(x => x.Estado.Equals(estado) && x.FechaFin >= DateTime.Now)
+                                            .OrderBy(x => x.Id).ToList();
                     return this.listaPromociones;
                 }
 

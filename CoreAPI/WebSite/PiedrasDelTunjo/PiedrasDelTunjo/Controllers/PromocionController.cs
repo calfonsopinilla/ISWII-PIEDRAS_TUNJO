@@ -76,9 +76,6 @@ namespace PiedrasDelTunjo.Controllers {
             var promociones = new LPromocion().ObtenerPromociones();
             return Request.CreateResponse(HttpStatusCode.OK, promociones);
         }
-
-
-
         
         
         /*
