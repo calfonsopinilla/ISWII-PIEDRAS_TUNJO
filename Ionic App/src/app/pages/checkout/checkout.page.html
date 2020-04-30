@@ -11,7 +11,7 @@
               <ion-item>
                 <ion-label position="floating">NÚMERO DE TARJETA</ion-label>
                 <ion-input formControlName="cardNumber" type="text" placeholder="Card number"></ion-input>
-                <ion-icon name="card-outline" slot="end"></ion-icon>
+                <ion-icon name="card" slot="end"></ion-icon>
                 <span class="text-danger"
                       *ngIf="cardNumber.touched && cardNumber.dirty && cardNumber.errors?.required">
                       Requerido</span>

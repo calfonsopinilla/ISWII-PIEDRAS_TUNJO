@@ -17,3 +17,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.chip1 {
+    position: relative;
+    bottom: 60px;
+    left: 30px;
+    background-color: var(--ion-color-success) !important;
+    color: #fff;
+}

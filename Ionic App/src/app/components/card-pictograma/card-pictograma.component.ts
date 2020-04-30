@@ -3,6 +3,8 @@ import { Pictograma } from '../../interfaces/pictograma.interface';
 import * as Mapboxgl from 'mapbox-gl';
 import { environment } from '../../../environments/environment';
 
+declare var $: any;
+
 @Component({
   selector: 'app-card-pictograma',
   templateUrl: './card-pictograma.component.html',
@@ -30,15 +32,14 @@ export class CardPictogramaComponent implements OnInit, AfterViewInit {
       zoom: 15
     });
 
-    // Agregar Popup
-    const popup = new Mapboxgl.Popup({ offset: 25 })
-                              .setText(this.pictograma.Nombre);
-
+    // // Agregar Popup
+    // const popup = new Mapboxgl.Popup({ offset: 25 }).setText(this.pictograma.Nombre);
     // Agregar el marcador del centro del parque
-    new Mapboxgl.Marker({draggable: false})
-                                .setLngLat([this.pictograma.Longitud, this.pictograma.Latitud])
-                                .setPopup(popup)
-                                .addTo(this.mapboxgl);
+    new Mapboxgl.Marker({ color: '#28a745' })
+                // .setPopup(popup)
+                .setLngLat([this.pictograma.Longitud, this.pictograma.Latitud])
+                .addTo(this.mapboxgl);
+
     // navigation controls
     this.mapboxgl.addControl(new Mapboxgl.NavigationControl());
   }

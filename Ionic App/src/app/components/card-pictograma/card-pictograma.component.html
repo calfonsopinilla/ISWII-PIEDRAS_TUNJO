@@ -1,4 +1,4 @@
-<ion-card class="ion-margin-bottom" color="dark">
+<ion-card class="ion-margin-bottom">
   <ion-slides pager="true" [options]="{}">
     <ion-slide *ngFor="let image of (pictograma.ImagenesUrl | imgUrlToArray)" class="image-slide"
                 [style]="(image | imgServer: 'picto') | domSanitizer" ></ion-slide>
@@ -11,5 +11,8 @@
 
   <ion-card-content>
     <div #map id="map"></div>
+    <ion-chip class="chip1" color="primary" mode="ios" outline="true">
+      <ion-label>{{ pictograma.Nombre }}</ion-label>
+    </ion-chip>
   </ion-card-content>
 </ion-card>

@@ -14,7 +14,7 @@
         <ion-button [disabled]="idSelected !== cabana.Id" expand="full" color="secondary" 
                     [routerLink]="['/cabanas', 'detalles-cabana', cabana.Id]">
           ver detalles
-          <ion-icon name="eye-outline" slot="end"></ion-icon>
+          <ion-icon name="eye" slot="end"></ion-icon>
         </ion-button>
         <ion-card-content>
           <b>Valor: </b><span>{{ cabana.Precio | currency:'COP' }}</span>
