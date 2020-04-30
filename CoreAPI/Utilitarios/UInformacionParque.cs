@@ -15,8 +15,6 @@ namespace Utilitarios {
         private string descripcion;
         private string imagenesUrl;
         private List<string> listaImagenesUrl;
-        private string token;
-        private DateTime lastModification;
 
         [Key]
         [Column("id")]
@@ -27,11 +25,6 @@ namespace Utilitarios {
         public string Descripcion { get => descripcion; set => descripcion = value; }
         [Column("imagenes_url")]
         public string ImagenesUrl { get => imagenesUrl; set => imagenesUrl = value; }
-        [Column("token")]
-        public string Token { get => token; set => token = value; }
-        [Column("last_modification")]
-        public DateTime LastModification { get => lastModification; set => lastModification = value; }
-
         [NotMapped]
         public List<string> ListaImagenesUrl { get => listaImagenesUrl; set => listaImagenesUrl = value; }
     }
