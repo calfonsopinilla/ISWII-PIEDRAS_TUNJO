@@ -7,19 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { InicioPageRoutingModule } from './inicio-routing.module';
 
 import { InicioPage } from './inicio.page';
-import { ComponentsModule } from '../../../components/components.module';
-import { CheckoutPage } from '../../checkout/checkout.page';
-import { CheckoutPageModule } from '../../checkout/checkout.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
-  entryComponents: [CheckoutPage],
+  entryComponents: [],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     InicioPageRoutingModule,
-    ComponentsModule,
-    CheckoutPageModule
+    ComponentsModule
   ],
   declarations: [InicioPage]
 })

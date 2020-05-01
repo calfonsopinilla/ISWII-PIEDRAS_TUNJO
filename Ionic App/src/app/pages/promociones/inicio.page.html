@@ -1,0 +1,34 @@
+<app-header titulo="Promociones" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+    <ion-card *ngFor="let promo of promociones">
+        <ion-card-header>
+            <ion-title>{{ promo.Nombre }}</ion-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{ promo.Descripcion }}
+            <ion-grid>
+                <ion-row class="ion-text-center">
+                    <ion-col>
+                        Comienza:
+                        <br>
+                        <ion-chip>
+                            <ion-label color="success">
+                                {{ promo.FechaInicio | date: 'dd MMM yyyy' }}
+                            </ion-label>
+                        </ion-chip>
+                    </ion-col>
+                    <ion-col>
+                        Termina:
+                        <br>
+                        <ion-chip>
+                            <ion-label color="danger">
+                                {{ promo.FechaFin | date: 'dd MMM yyyy' }}
+                            </ion-label>
+                        </ion-chip>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>          
+        </ion-card-content>
+    </ion-card>
+</ion-content>

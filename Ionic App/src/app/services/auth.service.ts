@@ -62,7 +62,7 @@ export class AuthService {
                     // Redireccionamiento del usuario
                     this.loginNavigate(user);
                   } else {
-                    this.presentToast(res['message']);
+                    this.presentToast('Usuario y/o contraseña incorrectos');
                   }
                 },
                 (err) => {},

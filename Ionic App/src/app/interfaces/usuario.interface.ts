@@ -9,6 +9,7 @@ export interface Usuario {
     Clave?: string;
     Icono_url?: string;
     VerificacionCuenta?: boolean;
+    FechaNacimiento?: any;
     EstadoCuenta?: boolean;
     RolId?: number;
     Imagen_documento?: string;

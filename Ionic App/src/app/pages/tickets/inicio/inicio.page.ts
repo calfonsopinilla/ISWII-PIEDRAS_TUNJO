@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class InicioPage implements OnInit {
 
   reservas: ReservaTicket[] = [];
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
 
   constructor(
     private reservaTicketService: ReservaTicketService,

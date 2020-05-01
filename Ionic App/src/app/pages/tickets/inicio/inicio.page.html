@@ -1,13 +1,13 @@
 <app-header titulo="Tus reservas de Tickets" tipo="menu"></app-header>
 
 <ion-content [fullscreen] class="ion-padding">
-  <ion-list>
+  <ion-list *ngIf="reservas.length > 0">
     <ion-list-header>
       <ion-label><strong>Tus reservas</strong></ion-label>
     </ion-list-header>
     <ion-item *ngFor="let item of reservas">
       <ion-label>
-        <h4>{{ item.FechaIngreso | date: 'fullDate' }}</h4>
+        <h4>{{ item.FechaIngreso | date: 'dd MMM yyyy' }}</h4>
         <p><strong>Cantidad: </strong>{{ item.Cantidad }} </p>
         <p><strong>Precio: </strong>{{ item.Precio }}</p>
       </ion-label>
@@ -16,4 +16,10 @@
       </ion-button>
     </ion-item>
   </ion-list>
+
+  <ion-slides mode="ios" [options]="slidesOpts" *ngIf="reservas.length === 0">
+    <ion-slide>
+      <ion-button expand="full" size="large" fill="outline">NO HAY TICKETS RESERVADOS</ion-button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

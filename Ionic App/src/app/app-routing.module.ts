@@ -92,7 +92,7 @@ const routes: Routes = [
     path: 'promociones',
     canLoad: [ VerifiedAccountGuard, AuthGuard ],
     canActivate: [ AuthGuard ],
-    loadChildren: () => import('./pages/promociones/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/promociones/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'recorridos',

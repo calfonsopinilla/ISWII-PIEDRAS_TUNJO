@@ -40,7 +40,7 @@ export class CuentaPage implements OnInit {
   }
 
   async onSubmit() {
-    
+
     const {nombre, apellido} = this.editForm.value;
     this.usuario.Nombre = nombre;
     this.usuario.Apellido = apellido;
