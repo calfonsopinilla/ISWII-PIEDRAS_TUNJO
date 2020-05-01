@@ -43,7 +43,9 @@ namespace Data
         public DbSet<UComentarioCabana> ComentarioCabana { get; set; }
         public DbSet<UComentarioEvento> ComentarioEvento { get; set; }
         //public DbSet<UComentarioNoticia> ComentarioNoticia { get; set; }
-        public DbSet<UComentarioPictograma> ComentarioPictograma { get; set; }        
+        public DbSet<UComentarioPictograma> ComentarioPictograma { get; set; }
+
+        public DbSet<UNotificacion> Notificacion { get; set; }
 
         public DbSet<UPush> Push { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -119,7 +119,9 @@
     <Compile Include="UEstadoPQR.cs" />
     <Compile Include="UEvento.cs" />
     <Compile Include="UInformacionParque.cs" />
+    <Compile Include="UMensajeNotificacion.cs" />
     <Compile Include="UNoticia.cs" />
+    <Compile Include="UNotificacion.cs" />
     <Compile Include="UPictograma.cs" />
     <Compile Include="UPQR.cs" />
     <Compile Include="UpqrInformacion.cs" />

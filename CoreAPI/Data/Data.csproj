@@ -110,6 +110,7 @@
     <Compile Include="DAOComentarioEvento.cs" />
     <Compile Include="DAOComentarioPictograma.cs" />
     <Compile Include="DaoComentariosNoticias.cs" />
+    <Compile Include="DaoNotificacion.cs" />
     <Compile Include="DaoPush.cs" />
     <Compile Include="DaoRecorrido.cs" />
     <Compile Include="DAOReservaPromocion.cs" />
