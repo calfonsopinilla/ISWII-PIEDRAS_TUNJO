@@ -30,14 +30,10 @@ namespace Utilitarios
         public DateTime LastModification { get; set; } = DateTime.Now;
         [Column("estado_id")]
         public int EstadoId { get; set; } = 1;
-
-
         [Column("id_ticket")]
         public int idTicket { get; set; }
-
-
-
-
+        [Column("numero_documento")]
+        public string NumeroDocumento { get; set; }
         [Column("usuario_id")]
         public int UUsuarioId { get; set; }
         public UUsuario UUsuario { get; set; }

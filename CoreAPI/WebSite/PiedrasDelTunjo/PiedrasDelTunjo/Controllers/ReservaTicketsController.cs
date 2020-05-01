@@ -125,15 +125,6 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = removed });
         }
 
-        [HttpGet]
-        [Route("obtenerPrecio")]
-        // GET: reserva-tickets/obtenerPrecio?userId
-        public HttpResponseMessage ObtenerPrecio([FromUri] int userId)
-        {
-            double precio = new LReservaTicket().CalcularPrecio(userId);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, precio });
-        }
-
 
         /*
        * Autor: Jose Luis Soriano Roa 
