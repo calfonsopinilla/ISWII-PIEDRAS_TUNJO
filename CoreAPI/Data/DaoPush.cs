@@ -16,16 +16,28 @@ namespace Data
 
 
         public bool insertarPush( UPush push) {
+            try {
+                push.Fecha = DateTime.Now;
+                if (db.Push.Where(x => x.ObjetoPush == push.ObjetoPush).Count() == 0)
+                {
+                    db.Push.Add(push);
+                    db.SaveChanges();
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }catch (Exception ex) {
+                return false; 
+            }
+        }
+
+        public IEnumerable<UPush> Tokensnotificaciones() {
 
             try{
-                push.Fecha = DateTime.Now;
-                db.Push.Add(push);
-                db.SaveChanges();
-                return true;
-            }catch (Exception ex) {
-                return false;
-            }
-
+                return db.Push.Where(x => x.EstadoId == 1);
+            }catch (Exception ex) { throw ex; }
+   
         }
 
 

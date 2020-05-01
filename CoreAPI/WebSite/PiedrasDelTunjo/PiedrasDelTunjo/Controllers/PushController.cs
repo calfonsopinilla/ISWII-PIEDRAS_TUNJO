@@ -23,13 +23,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
 
-        [HttpGet]
-        [Route("push")]
-        public HttpResponseMessage psuh(){
-            //string retured = new Lpush().SendNotification();
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "push sent");
-
-        }
+        
     }
 
 
