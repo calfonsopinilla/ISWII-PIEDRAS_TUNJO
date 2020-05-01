@@ -23,5 +23,14 @@ namespace Logica {
          * Retorna: Lista de comentarios
          */
         public List<UComentarioPictograma> LeerComentariosId(UComentarioPictograma comentario) { return new DAOComentarioPictograma().LeerComentariosId(comentario); }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Fecha creación: 29/04/2020
+         * Descripción: Método que sirve para leer los comentarios de un evento, noticia, pictograma etc de un usuario.
+         * Recibe: String table: nombre de la tabla a referenciar - Int objectId: Identificador del objeto del cual se quiere obtener los comentarios - Int userId: Identificador del usuario
+         * Retorna: Comentario del usuario
+         */
+        public UComentarioPictograma LeerComentarioUsuario(UComentarioPictograma comentario) { return new DAOComentarioPictograma().LeerComentarioUsuario(comentario); }
     }
 }

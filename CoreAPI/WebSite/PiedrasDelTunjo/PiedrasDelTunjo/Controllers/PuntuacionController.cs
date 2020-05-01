@@ -12,6 +12,7 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("puntuacion")]
+    [Authorize]
     public class PuntuacionController : ApiController {        
 
         /*
@@ -22,8 +23,7 @@ namespace PiedrasDelTunjo.Controllers {
          * Retorna:
          * Ruta: .../puntuacion/crear?table=noticia&objectId=1
         */
-        [HttpPost]
-        //[Authorize]
+        [HttpPost]        
         [Route("crear")]
         public HttpResponseMessage CrearComentario([FromUri] string table, [FromBody] UComentario comentario, [FromUri] int objectId) {
 
@@ -168,8 +168,7 @@ namespace PiedrasDelTunjo.Controllers {
          * Retorna: Lista de comentarios
          * Ruta: .../puntuacion/leer?table=noticia&objectId=1
         */
-        [HttpGet]
-        //[Authorize]
+        [HttpGet]        
         [Route("leer")]
         public HttpResponseMessage LeerComentarios([FromUri] string table, [FromUri] int objectId) {
 
@@ -212,6 +211,78 @@ namespace PiedrasDelTunjo.Controllers {
                         listaComentariosCabana = new LComentarioCabana().LeerComentariosId(comentarioCabana);
 
                         return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, lista = listaComentariosCabana });
+
+                    default:
+
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" });
+                }
+
+            } else { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" }); }
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Fecha creación: 29/04/2020
+         * Descripción: Método que sirve para leer los comentarios de un evento, noticia, pictograma etc de un usuario.
+         * Recibe: String table: nombre de la tabla a referenciar - Int objectId: Identificador del objeto del cual se quiere obtener los comentarios - Int userId: Identificador del usuario
+         * Retorna: Comentario del usuario
+         * Ruta: .../puntuacion/leer-usuario?table=noticia&objectId=1&userId=1
+        */
+        [HttpGet]        
+        [Route("leer-usuario")]
+        public HttpResponseMessage LeerComentarioUsuario([FromUri] string table, [FromUri] int objectId, [FromUri] int userId) {
+
+            if (table != null) {
+
+                switch (table) {
+
+                    case "evento":
+
+                        UComentarioEvento comentarioEvento = new UComentarioEvento();                        
+                        comentarioEvento.EventoId = objectId;
+                        comentarioEvento.UsuarioId = userId;
+                        comentarioEvento = new LComentarioEvento().LeerComentarioUsuario(comentarioEvento);
+
+                        if (comentarioEvento != null)
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, comentario = comentarioEvento });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = false });
+
+                    case "noticia":
+
+                        UComentarioNoticia comentarioNoticia = new UComentarioNoticia();                        
+                        comentarioNoticia.Noticia_id = objectId;
+                        comentarioNoticia.UsuarioId = userId;
+                        comentarioNoticia = new LComentarioNoticias().LeerComentarioUsuario(comentarioNoticia);
+
+                        if (comentarioNoticia != null)
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, comentario = comentarioNoticia });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = false });
+
+                    case "pictograma":
+
+                        UComentarioPictograma comentarioPictograma = new UComentarioPictograma();                        
+                        comentarioPictograma.PictogramaId = objectId;
+                        comentarioPictograma.UsuarioId = userId;
+                        comentarioPictograma = new LComentarioPictograma().LeerComentarioUsuario(comentarioPictograma);
+
+                        if (comentarioPictograma != null)
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, comentario = comentarioPictograma });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = false });
+
+                    case "cabana":
+
+                        UComentarioCabana comentarioCabana = new UComentarioCabana();                        
+                        comentarioCabana.CabanaId = objectId;
+                        comentarioCabana.UsuarioId = userId;
+                        comentarioCabana = new LComentarioCabana().LeerComentarioUsuario(comentarioCabana);
+
+                        if (comentarioCabana != null)
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, comentario = comentarioCabana });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = false });
 
                     default:
 

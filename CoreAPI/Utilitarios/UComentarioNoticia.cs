@@ -17,6 +17,7 @@ namespace Utilitarios {
         private int usuarioId;
         private int noticia_id;
         private string nombreUsuario;
+        private UUsuario usuario;
 
         [Key]
         [Column("id")]
@@ -31,6 +32,7 @@ namespace Utilitarios {
         public bool Reportado { get => reportado; set => reportado = value; }
         [Column("usuario_id")]
         public int UsuarioId { get => usuarioId; set => usuarioId = value; }
+        public UUsuario Usuario { get => usuario; set => usuario = value; }
         [Column("noticia_id")]
         public int Noticia_id { get => noticia_id; set => noticia_id = value; }
         [Column("token")]
@@ -38,6 +40,6 @@ namespace Utilitarios {
         [Column("last_modification")]
         public DateTime LastModification { get; set; } = DateTime.Now;
         [NotMapped]
-        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
+        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }        
     }
 }

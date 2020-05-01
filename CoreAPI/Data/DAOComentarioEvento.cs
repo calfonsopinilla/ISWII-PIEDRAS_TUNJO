@@ -46,9 +46,30 @@ namespace Data {
 
             using (this.dataBase) {
 
-                return this.dataBase.ComentarioEvento.Where(
+                return this.dataBase.ComentarioEvento
+                    .Include("Usuario")
+                    .Where(
                         x => x.EventoId == comentario.EventoId
                     ).ToList();
+            }
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Fecha creación: 29/04/2020
+         * Descripción: Método que sirve para leer los comentarios de un evento, noticia, pictograma etc de un usuario.
+         * Recibe: String table: nombre de la tabla a referenciar - Int objectId: Identificador del objeto del cual se quiere obtener los comentarios - Int userId: Identificador del usuario
+         * Retorna: Comentario del usuario
+         */
+        public UComentarioEvento LeerComentarioUsuario(UComentarioEvento comentario) {
+
+            using (this.dataBase) {
+
+                return this.dataBase.ComentarioEvento
+                    .Include("Usuario")
+                    .Where(
+                        x => x.UsuarioId == comentario.UsuarioId
+                    ).FirstOrDefault();
             }
         }
     }
