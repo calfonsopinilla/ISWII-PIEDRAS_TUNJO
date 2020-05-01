@@ -6,7 +6,12 @@
             <ion-title>{{ promo.Nombre }}</ion-title>
         </ion-card-header>
         <ion-card-content>
-            {{ promo.Descripcion }}
+            <p>{{ promo.Descripcion }}</p>
+            <p class="ion-text-center">
+                <ion-chip color="warning">
+                    <ion-label>{{ promo.PorcentajeDescuento }} % de descuento</ion-label>
+                </ion-chip>
+            </p>
             <ion-grid>
                 <ion-row class="ion-text-center">
                     <ion-col>

@@ -27,11 +27,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     // queryString login
     // this.redirect = this.route.snapshot.queryParamMap.get('redirect');
-
     this.loginForm = this.fb.group({
       correoElectronico: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       clave: ['', [Validators.required, Validators.minLength(5)]]
     });
+
+    this.authService.loginState$.subscribe(_ => this.loginForm.reset());
   }
 
   async login() {

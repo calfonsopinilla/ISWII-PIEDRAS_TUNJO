@@ -7,9 +7,9 @@
     </ion-list-header>
     <ion-item *ngFor="let item of reservas">
       <ion-label>
-        <h4>{{ item.FechaIngreso | date: 'dd MMM yyyy' }}</h4>
+        <p><strong>Fecha: </strong>{{ item.FechaIngreso | date: 'dd MMM yyyy' }}</p>
         <p><strong>Cantidad: </strong>{{ item.Cantidad }} </p>
-        <p><strong>Precio: </strong>{{ item.Precio }}</p>
+        <p><strong>Precio: </strong>{{ item.Precio | currency: 'COP ' }}</p>
       </ion-label>
       <ion-button slot="end" color="secondary" (click)="verDetalles(item.Id)">
         <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
@@ -19,7 +19,7 @@
 
   <ion-slides mode="ios" [options]="slidesOpts" *ngIf="reservas.length === 0">
     <ion-slide>
-      <ion-button expand="full" size="large" fill="outline">NO HAY TICKETS RESERVADOS</ion-button>
+      <ion-button expand="full" size="large" fill="outline">No hay tickets para mostrar</ion-button>
     </ion-slide>
   </ion-slides>
 </ion-content>

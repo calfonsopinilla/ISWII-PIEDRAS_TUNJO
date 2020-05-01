@@ -1,6 +1,6 @@
 <app-header titulo="Compra ticket" tipo="menu"></app-header>
 
-<ion-content [fullscreen] class="ion-padding">
+<ion-content [fullscreen] class="ion-padding" *ngIf="!excentoPago">
   <ion-list>
     <ion-list-header>
       <ion-label>El tipo de ticket es definido por tus datos de registro</ion-label>
@@ -73,15 +73,50 @@
         <ion-select-option *ngFor="let num of array" [value]="num">{{ num }}</ion-select-option>
       </ion-select>
     </ion-item>
-    
-    <ion-item>
-      <ion-label position="fixed">Total Compra</ion-label>
-      <ion-chip color="success">
-        <ion-label>{{ total | currency: 'COP ' }}</ion-label>
-      </ion-chip>
-    </ion-item>
 
-    <ion-button expand="full" shape="round" id="btn-reservar" 
+    <ion-card class="ion-margin-top">
+      <ion-card-content>
+        <ion-item *ngIf="promocion">
+          <ion-label position="fixed">Subtotal:</ion-label>
+          <ion-chip color="success">
+            <ion-label>{{ getSubtotal | currency: 'COP ' }}</ion-label>
+          </ion-chip>
+        </ion-item>
+        <ion-item *ngIf="promocion">
+          <ion-label position="fixed">Promoción:</ion-label>
+          <ion-chip color="warning">
+            <ion-label>{{ promocion.PorcentajeDescuento }} % de descuento</ion-label>
+          </ion-chip>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Total:</ion-label>
+          <ion-chip color="success">
+            <ion-label>{{ getTotal | currency: 'COP ' }}</ion-label>
+          </ion-chip>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" color="success" shape="round" id="btn-reservar" 
                 (click)="reservar()">Comprar</ion-button>
   </ion-list>
+</ion-content>
+
+<ion-content *ngIf="excentoPago" color="dark">
+  <ion-slides [options]="slidesOpts">
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-button expand="full" size="large" fill="outline" color="success">INGRESO GRATUITO</ion-button>
+          <ion-card-subtitle>
+            Para menores de 5 años y mayores de 65 años.
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <img src="/assets/mock-images/gratis.png" alt="gratis">
+          Puedes acceder al Parque Piedras del Tunjo de manera gratuita
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -8,6 +8,8 @@ import { NavController, ToastController, ModalController } from '@ionic/angular'
 import { Ticket } from '../../../interfaces/ticket.interface';
 import { CheckoutPage } from '../../checkout/checkout.page';
 import { TicketsService } from '../../../services/tickets.service';
+import { Promocion } from '../../../interfaces/promocion.interface';
+import { PromocionesService } from '../../../services/promociones.service';
 
 
 declare var $: any;
@@ -18,6 +20,11 @@ declare var $: any;
 })
 
 export class CompraPage implements OnInit {
+
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
 
   // ticket
   tickets: Ticket[] = [];
@@ -33,6 +40,9 @@ export class CompraPage implements OnInit {
                'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
   cantidad = 1;
+  // actual-promocion
+  promocion: Promocion = undefined;
+  excentoPago = false;
 
   constructor(
     private router: Router,
@@ -40,33 +50,43 @@ export class CompraPage implements OnInit {
     private toastCtrl: ToastController,
     private modalCtrl: ModalController,
     private ticketService: TicketsService,
-    private reservaTickService: ReservaTicketService,
+    private promocionService: PromocionesService,
+    private reservaTickService: ReservaTicketService
   ) {}
 
   ngOnInit() {
     // nuevo login emit
-    this.authService.loginState$.subscribe(_ => {
-      this.cargarTiposTickets();
-      this.loadDates();
+    this.authService.loginState$.subscribe(res => {
+      if (res === true) { this.init(); }
     });
     // eliminando reserva emit
-    this.reservaTickService.reservaEliminada$.subscribe(_ => {
-      this.cargarTiposTickets();
-      this.loadDates();
+    this.reservaTickService.reservaEliminada$.subscribe(res => {
+      if (res === true) { this.init(); }
     });
     // normal ngOnInit
+    this.init();
+  }
+
+  init() {
     this.cargarTiposTickets();
     this.loadDates();
+    this.obtenerActualPromocion();
   }
 
   async cargarTiposTickets() {
     this.tickets = await this.ticketService.getTiposTickets();
     const usuario = await this.authService.getUsuario();
     // console.log(usuario);
+
+    const edad = await this.ticketService.getAgeUser();
+    if (edad < 5 || edad > 65) {
+      this.excentoPago = true;
+      return;
+    }
+
     if (usuario.LugarExpedicion === 'Facatativa') {
       this.idSelected = 2; // id residente
     } else {
-      const edad = await this.ticketService.getAgeUser();
       console.log({edad});
       if (edad >= 5 && edad <= 10) {
         this.idSelected = 3; // id niño 5 - 10 años
@@ -83,6 +103,11 @@ export class CompraPage implements OnInit {
     this.yearValues = this.reservaTickService.getYearValues(this.dates);
     this.monthValues = this.reservaTickService.getMonthValues(this.dates);
     this.getDayValuesByMonth(this.monthValues[0]);
+  }
+
+  async obtenerActualPromocion() {
+    this.promocion = await this.promocionService.obtenerActualPromocion();
+    // console.log(this.promocion);
   }
 
   getDayValuesByMonth(month: any) {
@@ -107,10 +132,11 @@ export class CompraPage implements OnInit {
       FechaCompra: new Date(),
       FechaIngreso: new Date(year, month, day), // fecha de reserva
       Cantidad: this.cantidad,
-      Precio: (this.cantidad * this.ticketSelected.Precio),
+      Precio: this.getTotal,
       EstadoId: 1,
       idTicket: this.idSelected
     };
+    // console.log(reserva.Precio);
 
     // modal para el checkout del pago
     const modal = await this.modalCtrl.create({
@@ -130,8 +156,8 @@ export class CompraPage implements OnInit {
         const created = await this.reservaTickService.agregarReserva(reserva);
         if (created) {
           $('#month')[0].value = this.monthValues[0];
-          this.loadDates();
-          this.router.navigateByUrl('/tickets');
+          this.init();
+          this.router.navigateByUrl('/tickets/inicio');
         }
       }
     }
@@ -146,8 +172,17 @@ export class CompraPage implements OnInit {
     await toast.present();
   }
 
-  get total() {
-    return (this.ticketSelected.Precio * this.cantidad);
+  get getSubtotal() {
+    return this.ticketSelected.Precio * this.cantidad;
+  }
+
+  get getTotal() {
+    const total = this.ticketSelected.Precio * this.cantidad;
+    let descuento = 0;
+    if (this.promocion) {
+      descuento = total * (this.promocion.PorcentajeDescuento / 100);
+    }
+    return total - descuento;
   }
 
   get array() {

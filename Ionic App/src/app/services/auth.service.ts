@@ -70,12 +70,13 @@ export class AuthService {
               );
   }
 
-  loginNavigate(userLogin: Usuario) {
+  async loginNavigate(userLogin: Usuario) {
+    await this.validateToken();
     if (Number(userLogin['RolId'] === 2)) {
+      this.loginState$.emit(true);
       if (!Boolean(userLogin['VerificacionCuenta']) && userLogin['LugarExpedicion'] == null) {
         this.router.navigate(['/registro', 'foto-documento']);
       } else {
-        this.loginState$.emit(true);
         this.router.navigateByUrl('/inicio');
       }
     } else if (Number(userLogin['RolId'] === 4)) {

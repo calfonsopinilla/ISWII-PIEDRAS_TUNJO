@@ -9,6 +9,11 @@ import { Pictograma } from '../../interfaces/pictograma.interface';
 })
 export class PictogramasPage implements OnInit {
 
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
+
   pictogramas: Pictograma[] = [];
 
   constructor(

@@ -59,6 +59,11 @@ export class MenuComponent implements OnInit {
       icon: 'bonfire'
     },
     {
+      label : 'Promociones',
+      ruta : '/promociones',
+      icon : 'clipboard'
+    },
+    {
       label: 'Tickets',
       ruta: '/tickets',
       icon: 'map'
@@ -67,11 +72,6 @@ export class MenuComponent implements OnInit {
       label: 'Reserva de Cabañas',
       ruta: '/cabanas',
       icon: 'calendar'
-    },
-    {
-      label : 'Promociones',
-      ruta : '/promociones',
-      icon : 'clipboard'
     },
     {
       label : 'Noticias',

@@ -51,49 +51,31 @@ export class PromocionesService {
                   catchError(err => of({ ok: false }))
                 )
                 .subscribe(res => {
-                  console.log(res);
+                  // console.log(res);
                   resolve(res['promociones']);
                 });
     });
   }
 
-  // async reservarPromocion(reserva: ReservaPromocion) {
-  //   const prepare = await this.prepareHeaders();
-  //   if (!prepare) {
-  //     console.log('token not found');
-  //     return Promise.resolve([]);
-  //   }
-  //   const usuario = await this.authService.getUsuario();
-  //   reserva.UsuarioId = usuario.Id;
-  //   return new Promise(resolve => {
-  //     this.http.post(`${ apiUrl }/reserva_promocion/crear`, reserva, { headers: this.headers })
-  //               .pipe(
-  //                 catchError(err => of({ ok: false }))
-  //               )
-  //               .subscribe(res => {
-  //                 this.nuevaReservaPromo$.emit(true);
-  //                 resolve(res['ok']);
-  //               });
-  //   });
-  // }
-
-  // async getReservasByUserId(): Promise<ReservaPromocion[]> {
-  //   const prepare = await this.prepareHeaders();
-  //   if (!prepare) {
-  //     console.log('token not found');
-  //     return Promise.resolve([]);
-  //   }
-  //   const usuario = await this.authService.getUsuario();
-  //   return new Promise(resolve => {
-  //     this.http.get(`${ apiUrl }/reserva_promocion/leer_usuario?id=${ usuario.Id }`, { headers: this.headers })
-  //               .pipe(
-  //                 catchError(_ => of({ promociones: [] }))
-  //               )
-  //               .subscribe(res => {
-  //                 console.log();
-  //                 resolve(res['promociones']);
-  //               });
-  //   });
-  // }
+  async obtenerActualPromocion() {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(undefined);
+    }
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/promocion/actual-promocion`, { headers: this.headers })
+                .pipe(
+                  catchError(err => of({ ok: false }))
+                )
+                .subscribe(res => {
+                  if (res['ok'] === true) {
+                    resolve(res['promocion']);
+                  } else {
+                    resolve(undefined);
+                  }
+                });
+    });
+  }
 }
 
