@@ -163,18 +163,27 @@ namespace Logica
         }
 
 
-        public List<DateTime> fechasValidas()
+        public List<DateTime> fechasValidas(int userId)
         {
-
             List<DateTime> diasHabliles = diasHabilesTicket();
-
             if (DateTime.Now.Hour >= 17)
             {
                 diasHabliles.RemoveAt(0);
             }
+            // excluir las fechas con reservas
+            var reservas = new LReservaTicket().ObtenerPorUser(userId);
+            diasHabliles = diasHabliles.Where(x => {
+                foreach(var res in reservas)
+                {
+                    if (x == res.FechaIngreso)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }).ToList();
 
             return diasHabliles.OrderBy(x => x.Month & x.Year).ToList();
-
         }
 
         /*
