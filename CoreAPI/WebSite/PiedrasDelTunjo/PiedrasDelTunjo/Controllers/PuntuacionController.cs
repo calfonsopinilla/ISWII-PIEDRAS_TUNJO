@@ -158,6 +158,67 @@ namespace PiedrasDelTunjo.Controllers {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Ha ocurrido un error" });
 
             } else { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" }); }
-        }                
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Fecha creación: 29/04/2020
+         * Descripción: Método que sirve para leer los comentarios de un evento, noticia, pictograma etc.
+         * Recibe: String table: nombre de la tabla a referenciar - Int objectId: Identificador del objeto del cual se quiere obtener los comentarios
+         * Retorna: Lista de comentarios
+         * Ruta: .../puntuacion/leer?table=noticia&objectId=1
+        */
+        [HttpGet]
+        //[Authorize]
+        [Route("leer")]
+        public HttpResponseMessage LeerComentarios([FromUri] string table, [FromUri] int objectId) {
+
+            if (table != null) {
+
+                switch (table) {
+
+                    case "evento":
+
+                        UComentarioEvento comentarioEvento = new UComentarioEvento();
+                        List<UComentarioEvento> listaComentariosEvento = new List<UComentarioEvento>();
+                        comentarioEvento.EventoId = objectId;
+                        listaComentariosEvento = new LComentarioEvento().LeerComentariosId(comentarioEvento);
+
+                        return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, lista = listaComentariosEvento });
+
+                    case "noticia":
+
+                        UComentarioNoticia comentarioNoticia = new UComentarioNoticia();
+                        List<UComentarioNoticia> listaComentariosNoticia = new List<UComentarioNoticia>();
+                        comentarioNoticia.Noticia_id = objectId;
+                        listaComentariosNoticia = new LComentarioNoticias().LeerComentariosId(comentarioNoticia);
+
+                        return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, lista = listaComentariosNoticia });
+
+                    case "pictograma":
+
+                        UComentarioPictograma comentarioPictograma = new UComentarioPictograma();
+                        List<UComentarioPictograma> listaComentariosPictograma = new List<UComentarioPictograma>();
+                        comentarioPictograma.PictogramaId = objectId;
+                        listaComentariosPictograma = new LComentarioPictograma().LeerComentariosId(comentarioPictograma);
+
+                        return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, lista = listaComentariosPictograma });
+
+                    case "cabana":
+
+                        UComentarioCabana comentarioCabana = new UComentarioCabana();
+                        List<UComentarioCabana> listaComentariosCabana = new List<UComentarioCabana>();
+                        comentarioCabana.CabanaId = objectId;
+                        listaComentariosCabana = new LComentarioCabana().LeerComentariosId(comentarioCabana);
+
+                        return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, lista = listaComentariosCabana });
+
+                    default:
+
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" });
+                }
+
+            } else { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Referencia a tabla desconocida" }); }
+        }
     }
 }
