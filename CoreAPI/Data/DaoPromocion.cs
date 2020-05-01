@@ -21,6 +21,25 @@ namespace Data {
         private List<UPromocion> listaPromociones;
 
         /*
+            Autor: Steven Cruz
+            Descripción: Obtener la promoción actual para la compra de tickets
+            Fecha: 30/04/2020
+        */
+        public UPromocion ObtenerActualPromocion()
+        {
+            try
+            {
+                return db.promocion
+                         .Where(x => x.FechaInicio <= DateTime.Now && x.FechaFin >= DateTime.Now)
+                         .FirstOrDefault();
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+       
+
+        /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para crear promociones
             * Fecha de modificación: 15-04-2020
@@ -56,7 +75,7 @@ namespace Data {
 
                     this.listaPromociones = this.db.promocion
                                             .Where(x => x.Estado.Equals(estado) && x.FechaFin >= DateTime.Now)
-                                            .OrderBy(x => x.Id).ToList();
+                                            .OrderBy(x => x.FechaInicio).ToList();
                     return this.listaPromociones;
                 }
 

@@ -11,6 +11,7 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva_promocion")]
+    [Authorize]
     public class ReservaPromocionController : ApiController {   
         
 
@@ -31,7 +32,6 @@ namespace PiedrasDelTunjo.Controllers {
            * Ruta: reserva_promocion/crear
         */
         [HttpPost]
-        //[Authorize]
         [Route("crear")]
         public HttpResponseMessage CrearReserva([FromBody] UReservaPromocion promocion) {
 
@@ -56,7 +56,6 @@ namespace PiedrasDelTunjo.Controllers {
             * Ruta: reserva_promocion/leer_usuario?id=1
         */
         [HttpGet]
-        //[Authorize]
         [Route("leer_usuario")]
         public HttpResponseMessage LeerPromocionesUsuario([FromUri] int id) {
 

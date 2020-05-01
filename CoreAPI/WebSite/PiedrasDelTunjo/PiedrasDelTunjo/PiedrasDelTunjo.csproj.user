@@ -35,7 +35,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>http://localhost:61629/informacion</StartExternalURL>
+          <StartExternalURL>http://localhost:61629/usuarios</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>

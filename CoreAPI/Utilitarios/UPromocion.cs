@@ -13,7 +13,7 @@ namespace Utilitarios
         private int id;
         private string nombre;
         private string descripcion;
-        private double precio;
+        //private double precio;
         private string estado; // 1 significa que la promoción esta activa - 2 significa que la promoción no esta activa        
         private DateTime fechaInicio;
         private DateTime fechaFin;
@@ -27,8 +27,8 @@ namespace Utilitarios
         public string Nombre { get => nombre; set => nombre = value; }
         [Column("descripcion")]
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        [Column("precio")]
-        public double Precio { get => precio; set => precio = value; }
+        //[Column("precio")]
+        //public double Precio { get => precio; set => precio = value; }
         [Column("fecha_inicio")]
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
         [Column("fecha_fin")]

@@ -11,6 +11,7 @@ using Utilitarios;
 namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
     [RoutePrefix("promocion")]
     public class PromocionController : ApiController {
 
@@ -25,7 +26,6 @@ namespace PiedrasDelTunjo.Controllers {
             * que estas interfieran en otro rango.
         */
         [HttpPost]
-        [Authorize]
         [Route("crear")]
         public HttpResponseMessage CrearPromocion([FromBody] UPromocion promocion) {
 
@@ -61,6 +61,15 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
+        [HttpGet]
+        [Route("actual-promocion")]
+        public HttpResponseMessage ObtenerActualPromocion()
+        {
+            var promocion = new LPromocion().ObtenerActualPromocion();
+            bool ok = promocion != null;
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok, promocion });
+        }
+
         /*
           * Autor: Jose Luis Soriano Roa 
           * Fecha de modificación: 21-04-2020
@@ -68,7 +77,6 @@ namespace PiedrasDelTunjo.Controllers {
           * Retorna la lista de las promociones  
       */
         [HttpGet]
-        
         [Route("")]
         public HttpResponseMessage ObtenerPromociones()
         {
@@ -88,7 +96,6 @@ namespace PiedrasDelTunjo.Controllers {
        */
 
         [HttpGet]
-        //[Authorize]
         [Route("leer")]
         public HttpResponseMessage LeerPromociones([FromUri] string estado) {
 
@@ -105,7 +112,6 @@ namespace PiedrasDelTunjo.Controllers {
             * Ruta: promocion/cambiar_estado?id=1
         */
         [HttpGet]
-        [Authorize]
         [Route("cambiar_estado")]
         public HttpResponseMessage CambiarEstado([FromUri] int id) {
 
@@ -125,7 +131,6 @@ namespace PiedrasDelTunjo.Controllers {
             *Retorna respuesta de que si ocurrio un error, incumple la validacionde las fechas o si en verdad fue insertado 
         */
         [HttpPut]
-        [Authorize]
         [Route("editar")]
         public HttpResponseMessage Actualizar([FromBody] UPromocion promocion) {
 
@@ -165,7 +170,6 @@ namespace PiedrasDelTunjo.Controllers {
 
 
         [HttpDelete]
-        [Authorize]
         [Route("{id}")]
         // DELETE: promocion/id
         public HttpResponseMessage Eliminar([FromUri] int id)

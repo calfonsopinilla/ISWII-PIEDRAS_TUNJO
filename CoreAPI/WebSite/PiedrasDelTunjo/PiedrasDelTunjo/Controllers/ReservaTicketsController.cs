@@ -23,15 +23,6 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("")]
-        // GET: reserva-tickets/
-        public HttpResponseMessage ObtenerTickets()
-        {
-            var reservas = new LReservaTicket().ObtenerTickets();
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = reservas });
-        }
-
-        [HttpGet]
-        [Route("")]
         // GET: reserva-tickets?user_id=5
         public HttpResponseMessage ObtenerPorUser([FromUri] int userId)
         {
@@ -65,21 +56,15 @@ namespace PiedrasDelTunjo.Controllers
         [Route("crear")]
         public HttpResponseMessage GenerarQr([FromBody] UReservaTicket reserva)
         {
-
-            string tipo = reserva.Token;
-
             if (reserva == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Reserva null" });
             }
-            string validarTipo = new LReservaTicket().validarTipos(tipo, reserva.UUsuarioId, reserva.FechaIngreso.Date);
 
-
-            if (validarTipo.Equals("1"))
+            reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
+            reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
+            try
             {
-
-                reserva.Token = this.Encriptar(JsonConvert.SerializeObject(reserva));
-                reserva.Qr = this.Encriptar(JsonConvert.SerializeObject(reserva));
                 QRCodeEncoder encoder = new QRCodeEncoder();
                 Bitmap img = encoder.Encode(reserva.Qr);
                 System.Drawing.Image QR = (System.Drawing.Image)img;
@@ -92,29 +77,26 @@ namespace PiedrasDelTunjo.Controllers
                     Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
                     imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ reserva.Qr }.jpeg"));
                 }
-                reserva.FechaIngreso = reserva.FechaIngreso.Date;
-                bool created = new LReservaTicket().NuevaReserva(reserva);
-                return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
-
             }
-            else if (validarTipo.Equals("2"))
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes obtener una entrada gratis por dia" });
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = ex.Message });
             }
-            else if (validarTipo.Equals("3"))
-            {
-                return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Solo puedes adquirir una entrada de residente por dia" });
-
-            }
-
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Bad resquest" });
-            }
+            reserva.FechaIngreso = reserva.FechaIngreso.Date;
+            bool created = new LReservaTicket().NuevaReserva(reserva);
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = created });
         }
 
 
-
+        [HttpGet]
+        [Route("getAgeUser")]
+        // GET: reserva-tickets/getAgeUser?userId=149
+        public HttpResponseMessage ObtenerEdad([FromUri] int userId)
+        {
+            var user = new LUsuario().Buscar(userId);
+            int edad = new LReservaTicket().CalcularEdad(user.FechaNacimiento);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, edad });
+        }
 
         [HttpPut]
         [Route("{id}")]
@@ -263,29 +245,21 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("validarFechas")]
-
-
-        public HttpResponseMessage ValidarFechas()
+        public HttpResponseMessage ValidarFechas([FromUri] int userId)
         {
-            var fechas = new LReservaTicket().fechasValidas();
+            var fechas = new LReservaTicket().fechasValidas(userId);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
-
         }
 
 
         [HttpGet]
         [Route("validarFechasUser")]
-
-
         public HttpResponseMessage ValidarFechasUser( [FromUri] int idUser, int idTicket   ){
 
             var fechas = new LReservaTicket().ObtenerDiasHabilesTicketUser(idUser, idTicket);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, results = fechas });
 
         }
-
-
-
 
         /*
             Autor: Jhonattan Alejandro Pulido Arenas
