@@ -10,6 +10,11 @@ namespace Logica {
 
     public class LPromocion {
 
+        public UPromocion ObtenerActualPromocion()
+        {
+            return new DaoPromocion().ObtenerActualPromocion();
+        }
+
         /*
             * Autor: Jhonattan Pulido
             * Descripción: Método que sirve para crear promociones

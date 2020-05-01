@@ -61,6 +61,15 @@ namespace PiedrasDelTunjo.Controllers {
             }
         }
 
+        [HttpGet]
+        [Route("actual-promocion")]
+        public HttpResponseMessage ObtenerActualPromocion()
+        {
+            var promocion = new LPromocion().ObtenerActualPromocion();
+            bool ok = promocion != null;
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok, promocion });
+        }
+
         /*
           * Autor: Jose Luis Soriano Roa 
           * Fecha de modificación: 21-04-2020
