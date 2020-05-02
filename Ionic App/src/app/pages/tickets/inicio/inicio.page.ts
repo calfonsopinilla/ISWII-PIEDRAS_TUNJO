@@ -37,6 +37,7 @@ export class InicioPage implements OnInit {
 
   async obtenerReservas() {
     this.reservas = await this.reservaTicketService.getTicketsUser();
+    console.log(this.reservas);
   }
 
   verDetalles(id: number) {

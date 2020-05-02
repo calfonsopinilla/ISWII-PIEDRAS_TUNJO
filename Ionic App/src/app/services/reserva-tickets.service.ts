@@ -43,6 +43,7 @@ export class ReservaTicketService {
   async agregarReserva(reserva: ReservaTicket): Promise<boolean> {
     const user = await this.auth.getUsuario();
     reserva.UUsuarioId = user.Id;
+    reserva.NumeroDocumento = user.NumeroDocumento;
     return new Promise(resolve => {
       if (user) {
         this.http.post(`${ apiUrl }/reserva-tickets/crear`, reserva)
