@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { PqrService } from 'src/app/services/pqr.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Pqr } from '../../interfaces/pqr.interface';
+import { OneSignalService } from 'src/app/services/one-signal.service';
 
 @Component({
   selector: 'app-pqr-parque',
   templateUrl: './pqr-parque.page.html',
   styleUrls: ['./pqr-parque.page.scss'],
 })
+
 export class PqrParquePage implements OnInit {
 
   pqrs: Pqr[] = [];
   pqrsA: Pqr[] = [];
   pqrsB: Pqr[] = [];
- 
+
   constructor(
     private pqrService: PqrService,
     private toastCtrl: ToastController,
@@ -26,11 +28,11 @@ export class PqrParquePage implements OnInit {
 
   async obtenerPqrs() {
     this.pqrs = await this.pqrService.getPqrUser();
-    console.log(this.pqrs);
-    await this.pqrs.forEach(val => {    
-      if (Number(val["UEstadoPQRId"]) == 1) { this.pqrsB.unshift(val); } else { this.pqrsA.unshift(val); }
+    // console.log(this.pqrs);
+    await this.pqrs.forEach(val => {
+      if (Number(val['UEstadoPQRId']) == 1) { this.pqrsB.unshift(val); } else { this.pqrsA.unshift(val); }
     });
-    console.log(this.pqrsA);
+    // console.log(this.pqrsA);
   }
 
   async presentAlert(pqr: Pqr) {
@@ -114,14 +116,12 @@ export class PqrParquePage implements OnInit {
   }
 
   async agregarPQR(pregunta: string) {
-    const pqr: Pqr = {      
+    const pqr: Pqr = {
       FechaPublicacion: new Date(),
       Pregunta: pregunta,
-      Respuesta: ''                                       
+      Respuesta: ''
     };
-        
     const ok = await this.pqrService.agregarPqr(pqr);
-    console.log(ok);
     if (ok) {
       // Refrescar lista
       this.pqrsB.unshift(pqr);

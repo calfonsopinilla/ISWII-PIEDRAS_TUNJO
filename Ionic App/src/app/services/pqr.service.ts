@@ -7,8 +7,10 @@ import { Pqr } from '../interfaces/pqr.interface';
 import { Storage } from '@ionic/storage';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { OneSignalService } from './one-signal.service';
 
 const URL = environment.servicesAPI;
+const redirectUrl = 'http://piedras-tunjo.herokuapp.com/pqr';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,7 @@ export class PqrService {
     private http: HttpClient,
     private auth: AuthService,
     private storage: Storage,
+    private oneSignalService: OneSignalService,
     private router: Router
   ) { }
 
@@ -66,13 +69,16 @@ export class PqrService {
   async agregarPqr(pqr: Pqr): Promise<boolean> {
     const build = await this.buildService();
     if (!build) { return Promise.resolve(false); }
-    pqr.UUsuarioId = this.user.Id;    
+    pqr.UUsuarioId = this.user.Id;
     return new Promise(resolve => {
       this.http.post(`${ URL }/pqr`, pqr, { headers: this.headers })
                 .pipe(
                   catchError(err =>  of({ ok: false }))
                 )
                 .subscribe(res => {
+                  if (res['ok'] === true) {
+                    this.oneSignalService.sendNotification('Nuevo PQR de usuario', redirectUrl);
+                  }
                   resolve(res['ok']);
                 });
     });

@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
-import { Usuario } from '../interfaces/usuario.interface';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { map, catchError } from 'rxjs/operators';
+import { OneSignalService } from './one-signal.service';
 
 const urlApi = environment.servicesAPI;
+const redirectUrl = 'http://piedras-tunjo.herokuapp.com/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ const urlApi = environment.servicesAPI;
         private storage: Storage,
         private toastCtrl: ToastController,
         private loadingCtrl: LoadingController,
+        private oneSignalService: OneSignalService
     ) { }
 
     leerUsuario(id: number) {
@@ -27,14 +29,14 @@ const urlApi = environment.servicesAPI;
     async crearUsuario(user: any) {
         const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
         await loading.present();
-        console.log(user);
-
+        // console.log(user);
         return this.http.post(`${ urlApi }/usuario/registro/generar_token`, user)
                 .pipe(catchError(err => {
                     return of( err.error );
                 }))
                 .subscribe(res => {
                     setTimeout(_ => {}, 2000);
+                    this.oneSignalService.sendNotification('Nuevo usuario registrado', redirectUrl);
                     this.presentToast(res['message']);
                 },
                 (err) => {},
@@ -60,24 +62,6 @@ const urlApi = environment.servicesAPI;
                 );
     }
 
-    // actualizarDatos(usuario: Usuario) {
-    //     return new Promise(async resolve => {
-    //         const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    //         await loading.present();
-    //         this.http.put(`${ urlApi }/usuarios/${ usuario.Id }`, usuario)
-    //                     .subscribe(async res => {
-    //                         if (res['ok'] === true) {
-    //                             await this.storage.clear();
-    //                             await this.storage.set('usuario', usuario);
-    //                         }
-    //                         resolve(res['ok']);
-    //                     },
-    //                     (err) => {},
-    //                     () => loading.dismiss()
-    //                 );
-    //     });
-    // }
-
     existeCorreo(correo: string) {
         return this.http.get(`${ urlApi }/registro/existeCorreo?correo=${ correo }`)
                             .pipe(map(res => res['existe']));
@@ -99,7 +83,7 @@ const urlApi = environment.servicesAPI;
         return this.http.get(`${ urlApi }/usuario/registro/existeNumeroDoc?numeroDoc=${ numeroDoc }`)
                         .pipe(map(res => res['existe']));
     }
-    
+
     async presentToast(message: string) {
         const toast = await this.toastCtrl.create({
             message,
