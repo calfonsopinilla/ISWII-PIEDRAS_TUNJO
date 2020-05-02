@@ -22,16 +22,26 @@ namespace Data
         public UReservaTicket LeerReservaDNI(string numeroDocumento) {
 
             try {
-
-                using (this.db) {
-
+                /*
+                 * para que cuando sea un ticket de un usuario no registrado se valide con su
+                 * número de documento y no con el del cajero
+                 */
+                using (this.db)
+                {
                     return this.db.ReservaTickets
-                        .Include("UUsuario")
-                        .Where(
-                            x => x.UUsuario.NumeroDocumento == numeroDocumento &&
-                            x.EstadoId == 1
-                        ).FirstOrDefault();
+                               .Include("UUsuario")
+                               .Where(x => x.NumeroDocumento == numeroDocumento && x.EstadoId == 1)
+                               .FirstOrDefault();
                 }
+                //using (this.db) {
+
+                //    return this.db.ReservaTickets
+                //        .Include("UUsuario")
+                //        .Where(
+                //            x => x.UUsuario.NumeroDocumento == numeroDocumento &&
+                //            x.EstadoId == 1
+                //        ).FirstOrDefault();
+                //}
 
             } catch { return null; }
         }
@@ -55,7 +65,8 @@ namespace Data
             {
                 return db.ReservaTickets
                           .Include("UUsuario")
-                          .Where(x => x.UUsuarioId == user_id)
+                          // donde el userId y la fechaIngreso(al parque) sea mayor o igual al día actual (futuro) y no mostrar tickets pasados
+                          .Where(x => x.UUsuarioId == user_id && x.FechaIngreso >= DateTime.Today)
                           .OrderBy(x => x.FechaIngreso)
                           .ToList();
             }catch(Exception ex)
