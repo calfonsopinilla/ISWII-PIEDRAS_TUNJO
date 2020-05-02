@@ -1,6 +1,13 @@
 <app-header titulo="Promociones" tipo="menu"></app-header>
 
 <ion-content [fullscreen] class="ion-padding">
+
+    <ion-slides [options]="slidesOpts" mode="ios" *ngIf="promociones.length === 0">
+        <ion-slide>
+          <ion-button expand="full" size="large" fill="outline">No hay promociones vigentes</ion-button>
+        </ion-slide>
+      </ion-slides>
+
     <ion-card *ngFor="let promo of promociones">
         <ion-card-header>
             <ion-title>{{ promo.Nombre }}</ion-title>

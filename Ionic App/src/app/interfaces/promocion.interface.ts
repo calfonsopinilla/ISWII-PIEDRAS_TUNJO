@@ -6,7 +6,6 @@ export interface Promocion {
     FechaInicio?: Date;
     FechaFin?: Date;
     PorcentajeDescuento?: number;
-    TicketId?: number;
     Estado?: number;
     LastModification?: Date;
     Token?: string;

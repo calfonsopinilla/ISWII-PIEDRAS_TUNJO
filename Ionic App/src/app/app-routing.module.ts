@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { VigilateGuard } from './guards/vigilante.guard';
 import { VerifiedAccountGuard } from './guards/verified-account.guard';
+import { AnonymousGuard } from './guards/anonymous.guard';
 
 const routes: Routes = [
   {
@@ -32,11 +33,19 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canLoad: [ AnonymousGuard ],
+    canActivate: [ AnonymousGuard ]
   },
   {
     path: 'registro',
-    loadChildren: () => import('./pages/registro/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/registro/tabs/tabs.module').then( m => m.TabsPageModule),
+    canLoad: [ AnonymousGuard ],
+    canActivate: [ AnonymousGuard ]
+  },
+  {
+    path: 'foto-documento',
+    loadChildren: () => import('./pages/registro/foto-documento/foto-documento.module').then(mod => mod.FotoDocumentoPageModule)
   },
   {
     path: 'tickets',

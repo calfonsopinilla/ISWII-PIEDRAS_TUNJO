@@ -79,8 +79,8 @@ export class CompraPage implements OnInit {
     // console.log(usuario);
 
     const edad = await this.ticketService.getAgeUser();
-    if (edad < 5 || edad > 65) {
-      this.excentoPago = true;
+    this.excentoPago = (edad < 5 || edad > 65);
+    if (this.excentoPago) {
       return;
     }
 

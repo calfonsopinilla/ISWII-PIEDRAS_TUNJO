@@ -13,6 +13,10 @@ import { CheckoutPage } from '../checkout/checkout.page';
 })
 export class InicioPage implements OnInit {
 
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
   promociones: Promocion[] = [];
 
   constructor(

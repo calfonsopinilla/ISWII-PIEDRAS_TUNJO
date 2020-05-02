@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'registro',
+        path: 'inicio',
         loadChildren: () => import('../inicio/registro.module').then(mod => mod.RegistroPageModule)
       },
       {
@@ -17,14 +17,7 @@ const routes: Routes = [
         loadChildren: () => import('../ingresar-codigo/ingresar-codigo.module').then(mod => mod.IngresarCodigoPageModule)
       },
       {
-        path: 'foto-documento',
-        loadChildren: () => import('../foto-documento/foto-documento.module').then(mod => mod.FotoDocumentoPageModule)
-      },
-      {
-        path: '', pathMatch: 'full', redirectTo: 'registro'
-      },
-      {
-        path: '**', pathMatch: 'full', redirectTo: 'registro'
+        path: '**', pathMatch: 'full', redirectTo: 'inicio'
       }
     ]
   }

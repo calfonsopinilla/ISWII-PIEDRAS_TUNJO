@@ -75,7 +75,7 @@ export class AuthService {
     if (Number(userLogin['RolId'] === 2)) {
       this.loginState$.emit(true);
       if (!Boolean(userLogin['VerificacionCuenta']) && userLogin['LugarExpedicion'] == null) {
-        this.router.navigate(['/registro', 'foto-documento']);
+        this.router.navigate(['/foto-documento']);
       } else {
         this.router.navigateByUrl('/inicio');
       }
@@ -185,7 +185,7 @@ export class AuthService {
     return new Promise(async resolve => {
       const usuario = await this.getUsuario();
       if (usuario.VerificacionCuenta === false) {
-        this.router.navigateByUrl('/registro/foto-documento');
+        this.router.navigateByUrl('/foto-documento');
       }
       resolve(usuario.VerificacionCuenta);
     });
