@@ -45,8 +45,14 @@ namespace Data
             {
                 db.Eventos.Add(evento);
                 db.SaveChanges();
+                //crear notificaciones
+                DaoNotificacion notificaciones = new DaoNotificacion();
+                notificaciones.GenerarNotificaciones("Nuevo evento", "Evento", evento.Nombre + "Para el dia :" + evento.Fecha.Date);
                 return true;
-            }catch(Exception ex)
+                
+
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }

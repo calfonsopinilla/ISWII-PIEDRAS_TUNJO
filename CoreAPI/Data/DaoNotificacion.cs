@@ -13,7 +13,7 @@ namespace Data
     public class DaoNotificacion
     {
 
-        public bool GenerarNotificaciones(string titulo,string tipo,string descripcion) {
+        public void GenerarNotificaciones(string titulo,string tipo,string descripcion) {
             DataTable agregar = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString);
             try {
@@ -37,7 +37,7 @@ namespace Data
                     conection.Close();
                 }
             }
-            return true;
+            
         }
 
 

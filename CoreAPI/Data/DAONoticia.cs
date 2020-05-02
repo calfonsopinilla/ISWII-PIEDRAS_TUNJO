@@ -48,6 +48,9 @@ namespace Data
                 {
                     db.Noticias.Add(noticia);
                     db.SaveChanges();
+                    //crear notificaciones
+                    DaoNotificacion notificaciones = new DaoNotificacion();
+                    notificaciones.GenerarNotificaciones("Nueva noticia", "Noticia", noticia.Titulo);
                     return true;
                 }
                 catch (Exception ex)
