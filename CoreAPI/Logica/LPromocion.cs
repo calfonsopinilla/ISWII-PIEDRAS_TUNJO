@@ -61,7 +61,7 @@ namespace Logica {
 
         //validacion de promocion para insert 
         public bool validarPromocion(UPromocion promocion) {
-            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.TicketId == promocion.TicketId).ToList();
+            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().ToList();
             for (int x = 0; x < promociones.Count(); x++) {
                 if (promocion.FechaInicio.Date >= promociones[x].FechaInicio.Date && promocion.FechaInicio.Date <= promociones[x].FechaFin.Date)
                 {
@@ -92,7 +92,7 @@ namespace Logica {
 
         public bool validarPromocionUpdate(UPromocion promocion)
         {
-            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.TicketId == promocion.TicketId && x.Id != promocion.Id).ToList();
+            List<UPromocion> promociones = new DaoPromocion().ObtenerPromociones().Where(x => x.Id != promocion.Id).ToList();
 
             for (int x = 0; x < promociones.Count(); x++) {
 

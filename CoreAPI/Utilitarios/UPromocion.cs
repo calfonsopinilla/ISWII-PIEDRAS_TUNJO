@@ -13,11 +13,9 @@ namespace Utilitarios
         private int id;
         private string nombre;
         private string descripcion;
-        //private double precio;
         private string estado; // 1 significa que la promoción esta activa - 2 significa que la promoción no esta activa        
         private DateTime fechaInicio;
         private DateTime fechaFin;
-        private int ticketId;
         private double porcentajeDescuento;
 
         [Key]
@@ -33,8 +31,6 @@ namespace Utilitarios
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
         [Column("fecha_fin")]
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
-        [Column("ticket_id")]
-        public int TicketId { get => ticketId; set => ticketId = value; }
         [Column("porcentaje_descuento")]
         public double PorcentajeDescuento { get => porcentajeDescuento; set => porcentajeDescuento = value; }
         [Column("estado")]
