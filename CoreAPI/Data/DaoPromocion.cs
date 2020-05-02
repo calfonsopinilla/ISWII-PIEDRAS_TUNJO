@@ -54,6 +54,9 @@ namespace Data {
 
                     this.db.promocion.Add(nuevaPromocion);
                     this.db.SaveChanges();
+                    //crear notificaciones
+                    DaoNotificacion notificaciones = new DaoNotificacion();
+                    notificaciones.GenerarNotificaciones("Nueva promocion tickets", "Promocion", nuevaPromocion.Descripcion + "inicia : " + nuevaPromocion.FechaInicio.Date + " y finaliza : " + nuevaPromocion.FechaFin);
                     return true;
                 }
 
