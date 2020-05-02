@@ -91,5 +91,23 @@ namespace Logica
 
         }
 
+
+        /**
+          * Autor: Gabriel Zapata
+          * fecha: 28/04/2020
+          * Parametro de recepcion: la info a modificar de terminos y condiciones
+          * Return: bool 
+          **/
+
+        public bool ActualizarTerminosYCond(UInformacionParque infoParque)
+        {
+            return new DaoInformacion().ActualizarTerminosYCond(infoParque);
+        }
+
+
+
+
+
+
     }
 }
