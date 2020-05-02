@@ -23,6 +23,14 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("")]
+        public HttpResponseMessage ObtenerTodos()
+        {
+            var reservas = new LReservaTicket().ObtenerTickets();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
+        }
+
+        [HttpGet]
+        [Route("")]
         // GET: reserva-tickets?user_id=5
         public HttpResponseMessage ObtenerPorUser([FromUri] int userId)
         {
