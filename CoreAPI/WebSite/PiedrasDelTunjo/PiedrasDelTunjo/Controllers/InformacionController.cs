@@ -71,5 +71,23 @@ namespace PiedrasDelTunjo.Controllers
             }
         }
 
+        /**
+         * Autor: Gabriel Zapata
+         * fecha: 28/04/2020
+         * Parametro de recepcion: la info a modificar de terminos y condiciones
+         * Return: bool 
+         **/
+        [HttpPut]
+        [Route("informacion/Actualizar")]
+        [Authorize]
+        public HttpResponseMessage ActualizarTerminosYCond([FromBody] UInformacionParque infoParque)
+        {
+            infoParque.Token = Guid.NewGuid().ToString();
+            infoParque.LastModification = DateTime.Now;
+            bool actualizado = new LInformacion().ActualizarTerminosYCond(infoParque);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
+        }
+
+
     }
 }

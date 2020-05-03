@@ -269,6 +269,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ComentarioNoticiaController.cs" />
+    <Compile Include="Controllers\GestionTicketsController.cs" />
     <Compile Include="Controllers\PictogramasController.cs" />
     <Compile Include="Controllers\PqrController.cs" />
     <Compile Include="Controllers\PushController.cs" />
@@ -434,6 +435,13 @@
     <Content Include="Imagenes\Noticias\noticia2.jpg" />
     <Content Include="Imagenes\Noticias\noticia3.jpg" />
     <Content Include="Imagenes\Noticias\noticia4.jpg" />
+    <Content Include="Imagenes\Reserva\Tickets\02243185831e6a72b9ef7c3ec7d588a3d8f68f08278112d1bf2ac62dffb19ab8.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\1664456e36ec0bdfa91edb8fb9c723a09c1561f0bdb867e3ac0b82f16ae56e44.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\1bebd654c7845ec8f247d3715dcb9b2f38f0247c991e419340758c461bb751e9.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\5356ca19608d8fcf39021bb4db04fab484d2aa305f7daa03bf70f901ba3df695.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\62b69eb009c45bad26645e56d75ef7cb5d6868ab704b34d0d053c5ca04af9219.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\78e7c1b2c8495535e2f3635313e4109cbefcd5e4b9b897ab5d89c9bd12ae6269.jpeg" />
+    <Content Include="Imagenes\Reserva\Tickets\904ef1c10a094864a8653a1846cad9251281d1c38e51facb6f45167a9c35f3fc.jpeg" />
     <Content Include="Imagenes\Usuarios\Avatars\av-1.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-2.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
@@ -466,6 +474,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -485,8 +494,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Cabanas\" />
     <Folder Include="Imagenes\Pictogramas\" />
-    <Folder Include="Imagenes\Qr\" />
-    <Folder Include="Imagenes\Reserva\Tickets\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,14 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("")]
+        public HttpResponseMessage ObtenerTodos()
+        {
+            var reservas = new LReservaTicket().ObtenerTickets();
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reservas });
+        }
+
+        [HttpGet]
+        [Route("")]
         // GET: reserva-tickets?user_id=5
         public HttpResponseMessage ObtenerPorUser([FromUri] int userId)
         {
@@ -123,15 +131,6 @@ namespace PiedrasDelTunjo.Controllers
             }
             var removed = new LReservaTicket().EliminarReserva(id);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = removed });
-        }
-
-        [HttpGet]
-        [Route("obtenerPrecio")]
-        // GET: reserva-tickets/obtenerPrecio?userId
-        public HttpResponseMessage ObtenerPrecio([FromUri] int userId)
-        {
-            double precio = new LReservaTicket().CalcularPrecio(userId);
-            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, precio });
         }
 
 

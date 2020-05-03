@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Logica;
 using Utilitarios;
+using Data;
 namespace PiedrasDelTunjo.Controllers
 {
 
@@ -21,15 +22,8 @@ namespace PiedrasDelTunjo.Controllers
             bool creado = new Lpush().insertarPush(push);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
+       
 
-
-        [HttpGet]
-        [Route("push")]
-        public HttpResponseMessage psuh(){
-            //string retured = new Lpush().SendNotification();
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "push sent");
-
-        }
     }
 
 

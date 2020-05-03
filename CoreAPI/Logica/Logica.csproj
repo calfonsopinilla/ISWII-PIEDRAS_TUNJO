@@ -110,6 +110,7 @@
     <Compile Include="LComentarioEvento.cs" />
     <Compile Include="LComentarioNoticias.cs" />
     <Compile Include="LComentarioPictograma.cs" />
+    <Compile Include="LGestionTickets.cs" />
     <Compile Include="Lpush.cs" />
     <Compile Include="LRecorrido.cs" />
     <Compile Include="LReservaCabana.cs" />
