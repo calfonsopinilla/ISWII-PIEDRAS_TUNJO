@@ -11,6 +11,7 @@ namespace Data {
 
         // Variables
         private readonly Mapeo dataBase = new Mapeo();
+        private UComentarioEvento comentario;
 
         /* Métodos */
 
@@ -49,7 +50,7 @@ namespace Data {
                 return this.dataBase.ComentarioEvento
                     .Include("Usuario")
                     .Where(
-                        x => x.EventoId == comentario.EventoId
+                        x => x.EventoId == comentario.EventoId && x.Reportado == false
                     ).ToList();
             }
         }
@@ -71,6 +72,53 @@ namespace Data {
                         x => x.UsuarioId == comentario.UsuarioId
                     ).FirstOrDefault();
             }
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para actualizar un comentario de un evento
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool ActualizarComentario(UComentarioEvento comentario) {
+
+            this.comentario = new UComentarioEvento();
+
+            using (this.dataBase) {
+
+                this.comentario = this.dataBase.ComentarioEvento.Where(
+                    x => x.Id == comentario.Id).FirstOrDefault();
+
+                if (this.comentario != null) {
+
+                    this.dataBase.Entry(this.comentario).CurrentValues.SetValues(comentario);
+                    this.dataBase.SaveChanges();
+                    return true;
+
+                } else
+                    return false;                                
+            }
+        }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para borrar un comentario de un evento
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool BorrarComentario(long id) {
+
+            this.comentario = new UComentarioEvento();
+
+            using (this.dataBase) {
+
+                this.comentario = this.dataBase.ComentarioEvento.Where(x => x.Id == id).FirstOrDefault();
+                this.dataBase.ComentarioEvento.Remove(this.comentario);
+                this.dataBase.SaveChanges();
+                return true;
+            }            
         }
     }
 }

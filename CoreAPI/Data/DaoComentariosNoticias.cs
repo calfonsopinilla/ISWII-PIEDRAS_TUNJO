@@ -11,6 +11,7 @@ namespace Data
     {
 
         private readonly Mapeo db = new Mapeo();
+        private UComentarioNoticia comentario;
 
         /* Métodos */
 
@@ -72,7 +73,54 @@ namespace Data
                     ).FirstOrDefault();
             }
         }
-        
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para actualizar un comentario de una noticia
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool ActualizarComentario(UComentarioNoticia comentario) {
+
+            this.comentario = new UComentarioNoticia();
+
+            using (this.db) {
+
+                this.comentario = this.db.ComentariosNoticias.Where(
+                    x => x.Id == comentario.Id).FirstOrDefault();
+
+                if (this.comentario != null) {
+
+                    this.db.Entry(this.comentario).CurrentValues.SetValues(comentario);
+                    this.db.SaveChanges();
+                    return true;
+
+                } else
+                    return false;                                
+            }
+        }
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para borrar un comentario de una noticia
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool BorrarComentario(long id) {
+
+            this.comentario = new UComentarioNoticia();
+
+            using (this.db) {
+
+                this.comentario = this.db.ComentariosNoticias.Find(id);
+                this.db.ComentariosNoticias.Remove(this.comentario);
+                this.db.SaveChanges();
+                return true;
+            }
+        }
+
         public IEnumerable<UComentarioNoticia> ListaComentariosAdministrador()
         {
             return db.ComentariosNoticias.ToList();

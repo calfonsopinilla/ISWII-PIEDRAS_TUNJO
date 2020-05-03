@@ -32,5 +32,23 @@ namespace Logica {
          * Retorna: Comentario del usuario
          */
         public UComentarioPictograma LeerComentarioUsuario(UComentarioPictograma comentario) { return new DAOComentarioPictograma().LeerComentarioUsuario(comentario); }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para actualizar un comentario de un pictograma
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioPictograma comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool ActualizarComentario(UComentarioPictograma comentario) { return new DAOComentarioPictograma().ActualizarComentario(comentario); }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para borrar un comentario de un pictograma
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioPictograma comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool BorrarComentario(long id) { return new DAOComentarioPictograma().BorrarComentario(id); }
     }
 }

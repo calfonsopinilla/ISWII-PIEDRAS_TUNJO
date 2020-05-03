@@ -32,5 +32,23 @@ namespace Logica {
          * Retorna: Comentario del usuario
          */
         public UComentarioEvento LeerComentarioUsuario(UComentarioEvento comentario) { return new DAOComentarioEvento().LeerComentarioUsuario(comentario); }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para actualizar un comentario de un evento
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool ActualizarComentario(UComentarioEvento comentario) { return new DAOComentarioEvento().ActualizarComentario(comentario); }
+
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para borrar un comentario de un evento
+         * Fecha Creación: 29/04/2020
+         * Parámetros: UComentarioEvento comentario: Objeto con los datos a insertar
+         * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+         */
+        public bool BorrarComentario(long id) { return new DAOComentarioEvento().BorrarComentario(id); }
     }
 }

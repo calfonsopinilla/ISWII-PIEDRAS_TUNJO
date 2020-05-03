@@ -8,6 +8,7 @@ namespace Data {
 
         // Variables
         private readonly Mapeo dataBase = new Mapeo();
+        private UComentarioCabana comentario;
 
         /* Métodos */
 
@@ -66,6 +67,53 @@ namespace Data {
                         x => x.UsuarioId == comentario.UsuarioId
                     ).FirstOrDefault();
             }
+        }
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para actualizar un comentario de una cabaña
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioCabana comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool ActualizarComentario(UComentarioCabana comentario) {
+
+            this.comentario = new UComentarioCabana();
+
+            using (this.dataBase) {
+
+                this.comentario = this.dataBase.ComentarioCabana.Where(
+                    x => x.Id == comentario.Id).FirstOrDefault();
+
+                if (this.comentario != null) {
+
+                    this.dataBase.Entry(this.comentario).CurrentValues.SetValues(comentario);
+                    this.dataBase.SaveChanges();
+                    return true;
+
+                } else
+                    return false;                                
+            }
+        }
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para borrar un comentario de una cabaña
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioCabana comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool BorrarComentario(long id) {
+
+            this.comentario = new UComentarioCabana();
+
+            using (this.dataBase) {
+
+                this.comentario = this.dataBase.ComentarioCabana.Find(id);
+                this.dataBase.ComentarioCabana.Remove(this.comentario);
+                this.dataBase.SaveChanges();
+                return true;                    
+            }  
         }
     }
 }

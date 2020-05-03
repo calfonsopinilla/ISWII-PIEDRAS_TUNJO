@@ -35,14 +35,30 @@ namespace Logica
          * Recibe: String table: nombre de la tabla a referenciar - Int objectId: Identificador del objeto del cual se quiere obtener los comentarios - Int userId: Identificador del usuario
          * Retorna: Comentario del usuario
          */
-        public UComentarioNoticia LeerComentarioUsuario(UComentarioNoticia comentario) { return new DaoComentariosNoticias().LeerComentarioUsuario(comentario); }        
+        public UComentarioNoticia LeerComentarioUsuario(UComentarioNoticia comentario) { return new DaoComentariosNoticias().LeerComentarioUsuario(comentario); }
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para actualizar un comentario de una noticia
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool ActualizarComentario(UComentarioNoticia comentario) { return new DaoComentariosNoticias().ActualizarComentario(comentario); }
+
+        /*
+        * Autor: Jhonattan Pulido
+        * Descripción: Método que funciona para borrar un comentario de una noticia
+        * Fecha Creación: 29/04/2020
+        * Parámetros: UComentarioNoticia comentario: Objeto con los datos a insertar
+        * Retorna: True si la inserción se hizo de forma correcta - False si ocurre un error durante la ejecución del método
+        */
+        public bool BorrarComentario(long id) { return new DaoComentariosNoticias().BorrarComentario(id); }
 
         public bool agregarComentarioNoticia(UComentarioNoticia comentarioNotica) {
             return new DaoComentariosNoticias().agregarComentarioNoticia(comentarioNotica);
         }
-
-        
-
+       
         public IEnumerable<UComentarioNoticia> listaComentariosNoticia(int noticiaId)
         {
             return new DaoComentariosNoticias().ListaComentariosNoticia(noticiaId);
