@@ -12,7 +12,7 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("puntuacion")]
-    //[Authorize]
+    [Authorize]
     public class PuntuacionController : ApiController {        
 
         /*
