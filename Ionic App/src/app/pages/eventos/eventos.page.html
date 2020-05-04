@@ -1,0 +1,20 @@
+<app-header titulo="Eventos" tipo="back"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+    
+    <ion-list *ngIf="eventos">
+
+        <ion-card *ngFor="let evento of eventos">
+          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=evento&nombre={{ evento.ImagenesUrl }}" />
+          <ion-card-header>            
+            <ion-card-title>{{ evento.Nombre }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ evento.Descripcion }}
+          </ion-card-content>
+          <ion-button color="success" style="display: flex; width: 30%; margin: 0 auto; margin-bottom: 15px;" (click)="verDetalles(evento.Id)">Ver Mas</ion-button>
+        </ion-card>
+
+    </ion-list>
+
+</ion-content>

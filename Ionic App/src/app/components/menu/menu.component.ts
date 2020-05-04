@@ -62,16 +62,16 @@ export class MenuComponent implements OnInit {
       label: 'Reserva de Cabañas',
       ruta: '/cabanas',
       icon: 'calendar-outline'
-    },
-    {
-      label : 'Promociones',
-      ruta : '/promociones',
-      icon : 'clipboard'
-    },
+    },    
     {
       label : 'Noticias',
       ruta : '/noticias',
       icon : 'flash'
+    },
+    {
+      label: 'Eventos',
+      ruta: '/eventos',
+      icon: 'megaphone'
     }
   ];
 

@@ -22,6 +22,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FCM} from '@ionic-native/fcm/ngx' ;
 import { Push } from '@ionic-native/push/ngx' ; 
 
+import { IonicRatingModule } from 'ionic4-rating';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { Push } from '@ionic-native/push/ngx' ;
     NgxQRCodeModule,
     FormsModule,
     ReactiveFormsModule,
+    IonicRatingModule    
   ],
   providers: [
     FCM,

@@ -5,18 +5,21 @@ import { ComponentsModule } from '../../components/components.module';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PreguntasFrecuentesPageRoutingModule } from './preguntas-frecuentes-routing.module';
+import { EventosPageRoutingModule } from './eventos-routing.module';
 
-import { PreguntasFrecuentesPage } from './preguntas-frecuentes.page';
+import { EventosPage } from './eventos.page';
+
+import { IonicRatingModule } from "ionic4-rating";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PreguntasFrecuentesPageRoutingModule,
-    ComponentsModule
+    EventosPageRoutingModule,
+    ComponentsModule,
+    IonicRatingModule
   ],
-  declarations: [PreguntasFrecuentesPage]
+  declarations: [EventosPage]
 })
-export class PreguntasFrecuentesPageModule {}
+export class EventosPageModule {}

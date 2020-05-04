@@ -106,12 +106,21 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/detalles-recorrido/detalles-recorrido.module').then( m => m.DetallesRecorridoPageModule)
   },
+  {
+    path: 'eventos',
+    loadChildren: () => import('./pages/eventos/eventos.module').then( m => m.EventosPageModule)
+  },
+  {
+    path: 'detalle-evento/:id',
+    canLoad: [ VerifiedAccountGuard, AuthGuard ],
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./pages/eventos/detalle-evento/detalle-evento.module').then( m => m.DetalleEventoPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
-
 ];
 
 @NgModule({

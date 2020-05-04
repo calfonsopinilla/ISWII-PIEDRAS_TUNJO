@@ -1,0 +1,90 @@
+.comentario_usuario_cntr {
+    display: flex;
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+    padding: 20px 0;
+    flex-flow: row;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;    
+}
+
+.comentario_usuario_cntr ion-label {
+    display: flex;
+    width: 85%;
+    height: auto;
+    flex-flow: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: #ededed;
+    border: 8px solid #ededed;
+    border-radius: 12px;    
+}
+
+.comentario_usuario_cntr ion-label > h2 {
+    display: block;
+    width: 90%;    
+    margin: 0 auto;
+    padding-top: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.comentario_usuario_cntr ion-label > p {
+    display: block;
+    width: 90%;    
+    margin: 0 auto;
+    text-align: left;
+}
+
+.comentario_usuario_cntr ion-label > form {
+    display: block;
+    width: 90%;    
+    margin: 0 auto; 
+}
+
+.comentario_usuario_cntr ion-label > form rating {
+    display: block;
+    width: 100%;    
+    margin: 0 auto; 
+}
+
+.comentario_usuario_cntr ion-label > form h5 {
+    display: block;
+    width: 100%;    
+    margin: 0 auto;
+    margin-top: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.comentario_usuario_cntr ion-label > form ion-textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.comentario_usuario_cntr ion-label > form ion-button {
+    display: block;
+    width: auto;
+    float: right;
+}
+
+.comentario_usuario_cntr ion-avatar {
+    display: flex;
+    width: 15%;
+    height: 100%;
+    justify-content: left;
+    align-items: center;    
+}
+
+.comentario_usuario_cntr ion-avatar img {
+    display: block;
+    width: 96%;
+    height: auto;    
+    border-radius: 100%;
+    border: 3px solid #ededed;
+}
