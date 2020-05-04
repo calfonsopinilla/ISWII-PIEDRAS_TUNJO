@@ -7,4 +7,5 @@ export interface Evento {
     Calificacion?: number;
     ComentariosId?: string;
     Token?: string;
+    ImagenesUrl?: string;
 }
