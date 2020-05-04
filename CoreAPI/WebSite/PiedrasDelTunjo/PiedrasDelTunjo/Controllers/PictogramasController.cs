@@ -19,7 +19,6 @@ namespace PiedrasDelTunjo.Controllers
          */
     [EnableCors(origins: "*", methods: "*", headers: "*")]
     [RoutePrefix("pictogramas")]
-    [Authorize]
     public class PictogramasController : ApiController
     {
         [HttpGet]
@@ -39,6 +38,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("")]
         public HttpResponseMessage Crear([FromBody] UPictograma pic)
         {
@@ -51,6 +51,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]
         public HttpResponseMessage Actualizar([FromBody] UPictograma pic, [FromUri] int id)
         {
@@ -63,6 +64,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public HttpResponseMessage Eliminar([FromUri] int id)
         {

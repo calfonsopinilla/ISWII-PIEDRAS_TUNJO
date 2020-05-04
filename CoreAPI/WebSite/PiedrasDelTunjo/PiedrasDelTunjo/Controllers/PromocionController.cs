@@ -11,7 +11,6 @@ using Utilitarios;
 namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [Authorize]
     [RoutePrefix("promocion")]
     public class PromocionController : ApiController {
 
@@ -26,6 +25,7 @@ namespace PiedrasDelTunjo.Controllers {
             * que estas interfieran en otro rango.
         */
         [HttpPost]
+        [Authorize]
         [Route("crear")]
         public HttpResponseMessage CrearPromocion([FromBody] UPromocion promocion) {
 
@@ -112,6 +112,7 @@ namespace PiedrasDelTunjo.Controllers {
             * Ruta: promocion/cambiar_estado?id=1
         */
         [HttpGet]
+        [Authorize]
         [Route("cambiar_estado")]
         public HttpResponseMessage CambiarEstado([FromUri] int id) {
 
@@ -131,6 +132,7 @@ namespace PiedrasDelTunjo.Controllers {
             *Retorna respuesta de que si ocurrio un error, incumple la validacionde las fechas o si en verdad fue insertado 
         */
         [HttpPut]
+        [Authorize]
         [Route("editar")]
         public HttpResponseMessage Actualizar([FromBody] UPromocion promocion) {
 
@@ -170,6 +172,7 @@ namespace PiedrasDelTunjo.Controllers {
 
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         // DELETE: promocion/id
         public HttpResponseMessage Eliminar([FromUri] int id)
