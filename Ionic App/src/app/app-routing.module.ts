@@ -61,19 +61,11 @@ const routes: Routes = [
   },
   {
     path: 'preguntas-frecuentes',
-    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule),
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ]
+    loadChildren: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes.module').then( m => m.PreguntasFrecuentesPageModule)
   },
   {
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule),
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ]
-  },
-  {
-    path: 'suscripciones',
-    loadChildren: () => import('./pages/suscripciones/suscripciones.module').then( m => m.SuscripcionesPageModule),
     canLoad: [ VerifiedAccountGuard, AuthGuard ],
     canActivate: [ AuthGuard ]
   },
@@ -99,20 +91,14 @@ const routes: Routes = [
   },
   {
     path: 'promociones',
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/promociones/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'recorridos',
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/recorridos/recorridos.module').then( m => m.RecorridosPageModule)
   },
   {
     path: 'detalles-recorrido/:id',
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/detalles-recorrido/detalles-recorrido.module').then( m => m.DetallesRecorridoPageModule)
   },
   {
@@ -127,8 +113,6 @@ const routes: Routes = [
   },
   {
     path: 'pictogramas',
-    canLoad: [ VerifiedAccountGuard, AuthGuard ],
-    canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/pictogramas/pictogramas.module').then( m => m.PictogramasPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },

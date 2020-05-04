@@ -4,8 +4,6 @@ import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { Recorrido } from '../interfaces/recorrido.interface';
 import { environment } from '../../environments/environment';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 const apiUrl = environment.servicesAPI;
 
@@ -14,35 +12,13 @@ const apiUrl = environment.servicesAPI;
 })
 export class RecorridosService {
 
-  private headers: HttpHeaders;
-
   constructor(
-    private http: HttpClient,
-    private storage: Storage,
-    private router: Router
+    private http: HttpClient
   ) { }
 
-  async prepareHeaders() {
-    const token = await this.storage.get('token') || undefined;
-    if (!token) {
-      this.router.navigateByUrl('/login');
-      return false;
-    } else {
-      this.headers = new HttpHeaders({
-        Authorization: 'Bearer ' + token
-      });
-      return true;
-    }
-  }
-
   async getRecorridos(): Promise<Recorrido[]> {
-    const prepare = await this.prepareHeaders();
-    if (!prepare) {
-      console.log('token not found');
-      return Promise.resolve([]);
-    }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/recorridos`, { headers: this.headers })
+      this.http.get(`${ apiUrl }/recorridos`)
                 .subscribe(res => {
                   if (res['ok'] === true) {
                     resolve(res['recorridos']);
