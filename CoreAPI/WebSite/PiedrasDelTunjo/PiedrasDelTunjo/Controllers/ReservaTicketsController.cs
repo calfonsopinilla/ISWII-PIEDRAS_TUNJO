@@ -18,6 +18,7 @@ namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva-tickets")]
+    [Authorize]
     public class ReservaTicketsController : ApiController
     {
 
