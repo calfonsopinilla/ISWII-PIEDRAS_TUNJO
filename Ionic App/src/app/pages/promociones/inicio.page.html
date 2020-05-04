@@ -1,0 +1,46 @@
+<app-header titulo="Promociones" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+
+    <ion-slides [options]="slidesOpts" mode="ios" *ngIf="promociones.length === 0">
+        <ion-slide>
+          <ion-button expand="full" size="large" fill="outline">No hay promociones vigentes</ion-button>
+        </ion-slide>
+      </ion-slides>
+
+    <ion-card *ngFor="let promo of promociones">
+        <ion-card-header>
+            <ion-title>{{ promo.Nombre }}</ion-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p>{{ promo.Descripcion }}</p>
+            <p class="ion-text-center">
+                <ion-chip color="warning">
+                    <ion-label>{{ promo.PorcentajeDescuento }} % de descuento</ion-label>
+                </ion-chip>
+            </p>
+            <ion-grid>
+                <ion-row class="ion-text-center">
+                    <ion-col>
+                        Comienza:
+                        <br>
+                        <ion-chip>
+                            <ion-label color="success">
+                                {{ promo.FechaInicio | date: 'dd MMM yyyy' }}
+                            </ion-label>
+                        </ion-chip>
+                    </ion-col>
+                    <ion-col>
+                        Termina:
+                        <br>
+                        <ion-chip>
+                            <ion-label color="danger">
+                                {{ promo.FechaFin | date: 'dd MMM yyyy' }}
+                            </ion-label>
+                        </ion-chip>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>          
+        </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { TicketsService } from '../../../services/tickets.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  showInicio = false;
+
+  constructor(
+    private ticketService: TicketsService
+  ) { }
 
   ngOnInit() {
+    this.init();
+  }
+
+  async init() {
+    const edad = await this.ticketService.getAgeUser();
+    this.showInicio = !(edad < 5 || edad > 65);
   }
 
 }

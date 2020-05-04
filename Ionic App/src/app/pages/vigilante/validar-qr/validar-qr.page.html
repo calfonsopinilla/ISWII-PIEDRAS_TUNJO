@@ -19,14 +19,20 @@
 
   <ion-card *ngIf="reservaTicket">
     <ion-card-header>
-      <ion-card-subtitle>Descripcion</ion-card-subtitle>
-      <ion-card-title>{{ reservaTicket.UUsuario.Nombre }} {{ reservaTicket.UUsuario.Apellido }}</ion-card-title>
+      <ion-card-subtitle>Descripcion Reserva</ion-card-subtitle>
+      <ion-card-title *ngIf="reservaTicket.UUsuario.RolId !== 3">
+        {{ reservaTicket.UUsuario.Nombre }} {{ reservaTicket.UUsuario.Apellido }}
+      </ion-card-title>
+      <!-- usuario no registrado, cuando el rolId===3 es porque la reserva fue realizada por el cajero  -->
+      <ion-card-title *ngIf="reservaTicket.UUsuario.RolId === 3">
+        USUARIO NO REGISTRADO
+      </ion-card-title>
     </ion-card-header>
   
     <ion-card-content>      
-      <p>N. Documento: {{ reservaTicket.UUsuario.NumeroDocumento }}</p>
+      <p>N. Documento: {{ reservaTicket.NumeroDocumento }}</p>
       <p>Cantidad: {{ reservaTicket.Cantidad }}</p>   
-      <p>Fecha: {{ reservaTicket.FechaCompra }}</p>      
+      <p>Fecha: {{ reservaTicket.FechaCompra | date: 'dd MMM yyyy' }}</p>      
     </ion-card-content>    
 
     <ion-card-content style="display: flex; justify-content: center;">

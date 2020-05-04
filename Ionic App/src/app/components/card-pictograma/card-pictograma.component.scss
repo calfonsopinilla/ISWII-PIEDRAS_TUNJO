@@ -1,0 +1,27 @@
+#map {
+    width: 100%;
+    height: 250px;
+}
+
+.image-slide {
+    width: 100%;
+    height: 250px;
+
+    // background-color: red;
+
+    /* Full height */
+    // height: 100%; 
+
+    /* Imagen centrada y colocada de forma elegante */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chip1 {
+    position: relative;
+    bottom: 60px;
+    left: 30px;
+    background-color: var(--ion-color-success) !important;
+    color: #fff;
+}

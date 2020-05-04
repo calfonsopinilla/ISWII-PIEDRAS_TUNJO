@@ -16,14 +16,18 @@ const routes: Routes = [
         loadChildren: () => import('../compra/compra.module').then(mod => mod.CompraPageModule)
       },
       {
+        path: 'tarifas',
+        loadChildren: () => import('../tarifas/tarifas.module').then(mod => mod.TarifasPageModule)
+      },
+      {
         path: 'detalle-ticket/:id',
         loadChildren: () => import('../detalle-ticket/detalle-ticket.module').then( m => m.DetalleTicketPageModule)
       },
       {
-        path: '', pathMatch: 'full', redirectTo: 'inicio'
+        path: '', pathMatch: 'full', redirectTo: 'tarifas'
       },
       {
-        path: '**', pathMatch: 'full', redirectTo: '/inicio'
+        path: '**', pathMatch: 'full', redirectTo: '/tarifas'
       }
     ]
   }

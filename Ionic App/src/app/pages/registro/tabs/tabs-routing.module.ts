@@ -9,22 +9,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'registro',
-        loadChildren: () => import('../registro.module').then(mod => mod.RegistroPageModule)
+        path: 'inicio',
+        loadChildren: () => import('../inicio/registro.module').then(mod => mod.RegistroPageModule)
       },
       {
         path: 'ingresar-codigo',
         loadChildren: () => import('../ingresar-codigo/ingresar-codigo.module').then(mod => mod.IngresarCodigoPageModule)
       },
       {
-        path: 'foto-documento',
-        loadChildren: () => import('../foto-documento/foto-documento.module').then(mod => mod.FotoDocumentoPageModule)
-      },
-      {
-        path: '', pathMatch: 'full', redirectTo: 'registro'
-      },
-      {
-        path: '**', pathMatch: 'full', redirectTo: '../registro'
+        path: '**', pathMatch: 'full', redirectTo: 'inicio'
       }
     ]
   }

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaTicket } from '../../../interfaces/reserva-ticket.interface';
 import { AuthService } from '../../../services/auth.service';
 import { ReservaTicketService } from '../../../services/reserva-tickets.service';
-import { NavController, ToastController,ModalController } from '@ionic/angular';
-import { Ticket } from '../../../interfaces/ticket';
-import {formatDate} from '@angular/common';
+import { NavController, ToastController, ModalController } from '@ionic/angular';
+import { Ticket } from '../../../interfaces/ticket.interface';
 import { CheckoutPage } from '../../checkout/checkout.page';
+import { TicketsService } from '../../../services/tickets.service';
+import { Promocion } from '../../../interfaces/promocion.interface';
+import { PromocionesService } from '../../../services/promociones.service';
 
 
 declare var $: any;
@@ -15,228 +17,177 @@ declare var $: any;
   selector: 'app-compra',
   templateUrl: './compra.page.html',
   styleUrls: ['./compra.page.scss'],
-}) 
+})
+
 export class CompraPage implements OnInit {
 
-  reserva = {
-    fechaIngreso: undefined,
-    cantidad: 1,
-    precio: 0,
-    value: " ",
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
   };
 
-
+  // ticket
   tickets: Ticket[] = [];
-  precioTicket: number;
-  precioTicket1: number;
-  validar = false;
-  validarEdad: boolean = false;
-  validarResidencia: boolean = false;
-  precioResidente: number;
-  precioVisitante: number;
-  
+  idSelected = 1;
+  ticketSelected: Ticket = {};
+  // fecha
   dates = [];
+  datesReservas = [];
   yearValues = [];
   monthValues = [];
   dayValues = [];
-
   nameMonths = ['Ene', 'Feb', 'Mar', 'Abr', 'May',
-   'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+               'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+  cantidad = 1;
+  // actual-promocion
+  promocion: Promocion = undefined;
+  excentoPago = false;
 
   constructor(
-    private route: ActivatedRoute,
-    private reservaTicketsService: ReservaTicketService,
-    private navCtrl: NavController,
-    private toastCtrl: ToastController,
+    private router: Router,
     private authService: AuthService,
-    private toastCntrl : ToastController,
-    private modalCtrl: ModalController
-  ) { }
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController,
+    private ticketService: TicketsService,
+    private promocionService: PromocionesService,
+    private reservaTickService: ReservaTicketService
+  ) {}
 
   ngOnInit() {
-    this.validarResidencias();
-    this.validarEdades();
-    this.obtenerTickets();
+    // nuevo login emit
+    this.authService.loginState$.subscribe(res => {
+      if (res === true) { this.init(); }
+    });
+    // eliminando reserva emit
+    this.reservaTickService.reservaEliminada$.subscribe(res => {
+      if (res === true) { this.init(); }
+    });
+    // normal ngOnInit
+    this.init();
+  }
+
+  init() {
+    this.cargarTiposTickets();
     this.loadDates();
+    this.obtenerActualPromocion();
   }
 
-   async obtenerTickets() {
-    try {
-      this.reservaTicketsService.obtenerTickets().subscribe(resp => { this.tickets = resp })
-    } catch{
+  async cargarTiposTickets() {
+    this.tickets = await this.ticketService.getTiposTickets();
+    const usuario = await this.authService.getUsuario();
+    // console.log(usuario);
+
+    const edad = await this.ticketService.getAgeUser();
+    this.excentoPago = (edad < 5 || edad > 65);
+    if (this.excentoPago) {
+      return;
     }
+
+    if (usuario.LugarExpedicion === 'Facatativa') {
+      this.idSelected = 2; // id residente
+    } else {
+      console.log({edad});
+      if (edad >= 5 && edad <= 10) {
+        this.idSelected = 3; // id niño 5 - 10 años
+      } else {
+        this.idSelected = 1; // id visitante
+      }
+    }
+    this.ticketSelected = await this.ticketService.find(this.idSelected);
   }
 
+  async loadDates() {
+    // obtener días disponibles de la cabana
+    this.dates = await this.reservaTickService.obtenerFechasDisponibles();
+    this.yearValues = this.reservaTickService.getYearValues(this.dates);
+    this.monthValues = this.reservaTickService.getMonthValues(this.dates);
+    this.getDayValuesByMonth(this.monthValues[0]);
+  }
 
-  async validarResidencias() {
-    this.validarResidencia = await this.reservaTicketsService.validarResidencia();
-    console.log(this.validarResidencia);
+  async obtenerActualPromocion() {
+    this.promocion = await this.promocionService.obtenerActualPromocion();
+    // console.log(this.promocion);
   }
-  
-  async validarEdades() {
-    this.validarEdad = await this.reservaTicketsService.validarEdad();
-    
+
+  getDayValuesByMonth(month: any) {
+    this.dayValues = this.reservaTickService.getDayValues(this.dates, month);
   }
-  
-  async onSubmit(form: NgForm) {
+
+  monthChange(event: any) {
+    const month = event.target.value;
+    this.getDayValuesByMonth(month);
+  }
+
+  convertNumber(num: string) {
+    return Number(num);
+  }
+
+  async reservar() {
     const year = $('#year')[0].value;
     const month = Number($('#month')[0].value) - 1;
     const day = $('#day')[0].value;
-    const id = this.route.snapshot.paramMap.get('id');
-    const { fechaIngreso, cantidad } = form.value;
+    // construyecto objeto de reserva de ticket
     const reserva: ReservaTicket = {
-      FechaIngreso: new Date(year, month, day),
-      Cantidad: cantidad,
       FechaCompra: new Date(),
-      Precio: this.precioTicket,
-      idTicket: 1,
+      FechaIngreso: new Date(year, month, day), // fecha de reserva
+      Cantidad: this.cantidad,
+      Precio: this.getTotal,
+      EstadoId: 1,
+      idTicket: this.idSelected
     };
-    reserva.Qr = '';
-    reserva.Token = this.reserva.value;
-    console.log(reserva);
+    // console.log(reserva.Precio);
 
-    if (this.reserva.value == "3") {
-      reserva.idTicket = 5;
-      reserva.Cantidad = 1;
-    } else if (this.reserva.value == "2") {
-      reserva.idTicket = 4;
-      reserva.Cantidad = this.reserva.cantidad;
-    } else if (this.reserva.value == "1") {
-      reserva.idTicket = 3;
-      reserva.Cantidad = 1;
-    }
-    reserva.Precio = this.precioTicket;
-    //this.reserva.fechaIngreso = formatDate(this.reserva.fechaIngreso, 'yyyy/MM/dd', 'en');
-    if (this.precioTicket == 0) {
-      console.log("entra");
-      const ok = await this.reservaTicketsService.agregarReserva(reserva);
-      this.presentToast('Transacción exitosa');
-      form.reset();
-      this.cambiarEstado();
-      this.navCtrl.navigateForward('/tickets');
-    } else {
-      //modulo de pago// 
-      const modal = await this.modalCtrl.create({
-        component: CheckoutPage,
-        componentProps: {
-          amount: this.precioTicket
-        }
-      });
-      await modal.present();
-      const { data } = await modal.onDidDismiss();
-      if (data) {
-        this.presentToast(data.message);
-        if (data.ok === true) {
-          // agregar la reserva de cabaña
-          const ok = await this.reservaTicketsService.agregarReserva(reserva);
-          if (ok == true) {
-            //mensaje de transaccion exitosa.
-            this.presentToast('Transacción exitosa');
-            form.reset();
-            this.cambiarEstado();
-            this.navCtrl.navigateForward('/tickets');
-          } else {
-            this.presentToast(ok);
-          }
+    // modal para el checkout del pago
+    const modal = await this.modalCtrl.create({
+      component: CheckoutPage,
+      componentProps: {
+        amount: reserva.Precio
+      }
+    });
+    // finalizar proceso
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    // console.log(data);
+    if (data) {
+      this.presentToast(data.message);
+      if (data.ok === true) {
+        // agregar la reserva de cabaña
+        const created = await this.reservaTickService.agregarReserva(reserva);
+        if (created) {
+          $('#month')[0].value = this.monthValues[0];
+          this.init();
+          this.router.navigateByUrl('/tickets/inicio');
         }
       }
     }
   }
 
-  async cambiarEstado(){
-    this.validar= false; 
-    
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      position: 'top',
+      duration: 3000
+    });
+    await toast.present();
   }
 
-  get reservaValida() {
-    return this.reserva.cantidad > 0;
+  get getSubtotal() {
+    return this.ticketSelected.Precio * this.cantidad;
   }
 
-  get precioTotal() {
-    return this.reserva.cantidad >= 0 ? (this.reserva.cantidad * this.precioTicket) : 0;
-  }
-
-  
-  async calcularPrecioTotal() {
-    this.precioTicket = this.precioTicket1 * this.reserva.cantidad;
-    
-  }
-
-
-  async precios() {
-    for (let item = 0; item < this.tickets.length; item++) {
-      if (this.tickets[item].Id == 3) {
-        this.precioResidente = this.tickets[item].Precio;
-      } else if (this.tickets[item].Id == 4) {
-        this.precioVisitante = this.tickets[item].Precio;
-      }
+  get getTotal() {
+    const total = this.ticketSelected.Precio * this.cantidad;
+    let descuento = 0;
+    if (this.promocion) {
+      descuento = total * (this.promocion.PorcentajeDescuento / 100);
     }
+    return total - descuento;
   }
 
-  async onSelectChange() {
-    //traer fechas dinamicas;
-    this.precios();
-    this.validar = true;
-    if (this.reserva.value == "1") {
-      this.precioTicket1 = this.precioResidente;
-      this.precioTicket = this.precioResidente;
-      //id ticket para residente es 3
-      this.loadDatesForUser(3);
-        this.reserva.cantidad = 1;
-    } else if (this.reserva.value == "2") {
-      this.loadDates();
-      this.precioTicket1 = this.precioVisitante;
-      this.precioTicket = this.precioVisitante;
-    } else if (this.reserva.value == "3") {
-      //ticket gratis
-      this.loadDatesForUser(5);
-      this.precioTicket1 = 0;
-      this.precioTicket = 0;
-      this.reserva.cantidad = 1;
-    }
+  get array() {
+    const arr = [];
+    for (let i = 1; i <= 20; i++) { arr.push(i); }
+    return arr;
   }
-
-    async presentToast(message: any) {
-      const toast = await this.toastCntrl.create({
-        message,
-        position: 'bottom',
-        duration: 3500
-      });
-      await toast.present();
-    }
-
-
-//cargar dias de los tickets
-
-async loadDates() {
-  // obtener días disponibles de la cabana
-  this.dates = await this.reservaTicketsService.obtenerFechasDisponibles2();
-  this.yearValues = this.reservaTicketsService.getYearValues(this.dates);
-  this.monthValues = this.reservaTicketsService.getMonthValues(this.dates);
-  this.getDayValuesByMonth(this.monthValues[0]);
-} 
-
-
-async loadDatesForUser(idTicket){
-  this.dates = await this.reservaTicketsService.obtenerFechasDisponiblesPorTicket(idTicket);
-  this.yearValues = this.reservaTicketsService.getYearValues(this.dates);
-  this.monthValues = this.reservaTicketsService.getMonthValues(this.dates);
-  this.getDayValuesByMonth(this.monthValues[0]);
-}
-
-getDayValuesByMonth(month: any) {
-  this.dayValues = this.reservaTicketsService.getDayValues(this.dates, month);
-}
-
-
-monthChange(event: any) {
-  const month = event.target.value;
-  this.getDayValuesByMonth(month);
-}
-
-convertNumber(num: string) {
-  return Number(num);
-}
-
-
 }

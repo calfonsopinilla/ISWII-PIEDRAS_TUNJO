@@ -9,6 +9,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { CabanaSelectorComponent } from './cabana-selector/cabana-selector.component';
 import { CardRecorridoComponent } from './card-recorrido/card-recorrido.component';
+import { CardPictogramaComponent } from './card-pictograma/card-pictograma.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CardRecorridoComponent } from './card-recorrido/card-recorrido.componen
     ItemInfoComponent,
     AvatarSelectorComponent,
     CabanaSelectorComponent,
-    CardRecorridoComponent
+    CardRecorridoComponent,
+    CardPictogramaComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { CardRecorridoComponent } from './card-recorrido/card-recorrido.componen
     ItemInfoComponent,
     AvatarSelectorComponent,
     CabanaSelectorComponent,
-    CardRecorridoComponent
+    CardRecorridoComponent,
+    CardPictogramaComponent
   ]
 })
 export class ComponentsModule { }

@@ -3,5 +3,10 @@ export interface Promocion {
     Nombre?: string;
     Descripcion?: string;
     Precio?: number;
+    FechaInicio?: Date;
+    FechaFin?: Date;
+    PorcentajeDescuento?: number;
     Estado?: number;
+    LastModification?: Date;
+    Token?: string;
 }

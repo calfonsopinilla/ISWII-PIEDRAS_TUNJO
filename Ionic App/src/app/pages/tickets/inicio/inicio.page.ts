@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class InicioPage implements OnInit {
 
   reservas: ReservaTicket[] = [];
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
 
   constructor(
     private reservaTicketService: ReservaTicketService,
@@ -33,6 +37,7 @@ export class InicioPage implements OnInit {
 
   async obtenerReservas() {
     this.reservas = await this.reservaTicketService.getTicketsUser();
+    console.log(this.reservas);
   }
 
   verDetalles(id: number) {

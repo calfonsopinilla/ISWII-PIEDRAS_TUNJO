@@ -16,6 +16,10 @@ const routes: Routes = [
         path: 'tus-reservas',
         loadChildren: () => import('../tus-reservas/tus-reservas.module').then(mod => mod.TusReservasPageModule)
       },
+      {
+        path: 'detalles-cabana/:id',
+        loadChildren: () => import('../detalles-cabana/detalles-cabana.module').then(mod => mod.DetallesCabanaPageModule)
+      },
       { path: '', pathMatch: '', redirectTo: 'tus-reservas' }
     ]
   }

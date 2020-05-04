@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { PreguntasFrecuentesPageRoutingModule } from './preguntas-frecuentes-routing.module';
 
 import { PreguntasFrecuentesPage } from './preguntas-frecuentes.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [

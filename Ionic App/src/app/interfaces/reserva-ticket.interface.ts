@@ -10,7 +10,8 @@ export interface ReservaTicket {
     Token?: string;
     LastModification?: Date;
     EstadoId?: number;
+    NumeroDocumento?: string;
     UUsuarioId?: number;
     UUsuario?: Usuario;
-    idTicket? : number;
+    idTicket?: number;
 }

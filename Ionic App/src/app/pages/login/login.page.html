@@ -1,33 +1,46 @@
-<app-header titulo="Iniciar Sesión" tipo="back"></app-header>
+<app-header titulo="" tipo="back" color="dark"></app-header>
 
-<ion-content [fullscreen] class="ion-padding">
-
-  <img src="assets/mock-images/ionic-logo.png" id="logo"/>
-
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Correo</ion-label>
-        <ion-input type="text" formControlName="correoElectronico"></ion-input>
-
-        <span class="text-danger"
-          *ngIf="correo.touched && correo.dirty && correo.errors?.required">El correo es requerido</span>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" formControlName="clave"></ion-input>
-
-        <span class="text-danger" 
-          *ngIf="clave.touched && clave.dirty && clave.errors?.required">La contraseña es requerida</span>
-        <span class="text-danger" 
-          *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
-            La contraseña requiere minimo {{ clave.errors?.minlength.requiredLength }} caracteres
-        </span>
-      </ion-item>
-
-      <ion-button [disabled]="loginForm.invalid" id="button-submit" type="submit" 
-            expand="full">Ingresar</ion-button>
-    </ion-list>
-  </form>
+<ion-content [fullscreen] color="dark">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col  size-md="8" size-sm="8" size-xs="12">
+        <ion-card>
+          <img src="assets/logo/piedrasdeltunjo.jpg" id="logo"/>
+          <ion-card-content>
+            <ion-button expand="full" fill="outline" color="success">INICIAR SESIÓN</ion-button>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <ion-list>
+                <ion-item class="ion-margin-bottom">
+                  <ion-label position="floating">Correo electrónico</ion-label>
+                  <ion-input type="text" formControlName="correoElectronico"></ion-input>
+  
+                  <span class="text-danger"
+                    *ngIf="correo.touched && correo.dirty && correo.errors?.required">Requerido</span>
+                  <span class="text-danger"
+                    *ngIf="correo.touched && correo.dirty && correo.errors?.pattern">
+                    Formato incorrecto
+                  </span>
+                </ion-item>
+          
+                <ion-item>
+                  <ion-label position="floating">Contraseña</ion-label>
+                  <ion-input type="password" formControlName="clave"></ion-input>
+          
+                  <span class="text-danger" 
+                    *ngIf="clave.touched && clave.dirty && clave.errors?.required">Requerido</span>
+                  <span class="text-danger" 
+                    *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
+                      Mínimo {{ clave.errors?.minlength.requiredLength }} caracteres
+                  </span>
+                </ion-item>
+          
+                <ion-button [disabled]="loginForm.invalid" color="success" id="button-submit" type="submit" 
+                      expand="full">Ingresar</ion-button>
+              </ion-list>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

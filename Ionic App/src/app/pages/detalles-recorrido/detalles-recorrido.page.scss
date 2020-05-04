@@ -21,3 +21,19 @@
     top: 60px;
     left: 40px;
 }
+
+#chip2 {
+    position: fixed;
+    background-color: var(--ion-color-primary) !important;
+    color: #fff !important;
+    bottom: 60px;
+    left: 10px;
+}
+
+#chip1 {
+    position: fixed;
+    background-color: var(--ion-color-danger) !important;
+    color: #fff !important;
+    bottom: 20px;
+    left: 10px;
+}

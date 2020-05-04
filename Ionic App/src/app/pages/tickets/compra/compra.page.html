@@ -1,37 +1,36 @@
-<app-header titulo="Compra de tickets" tipo="menu"></app-header>
+<app-header titulo="Compra ticket" tipo="menu"></app-header>
 
-<ion-content [fullscreen] class="ion-padding">
-  <form #formReserva="ngForm" (ngSubmit)="onSubmit(formReserva)">
-    <ion-list class="margin-top">
-      <ion-list-header>
-        <ion-label><strong>Nueva reserva</strong></ion-label>
-      </ion-list-header>
-      <div style="text-align: center;"> Elije un ticket</div>
-      <ion-item>
-        <ion-label>Tickets </ion-label>
+<ion-content [fullscreen] class="ion-padding" *ngIf="!excentoPago">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>El tipo de ticket es definido por tus datos de registro</ion-label>
+    </ion-list-header>
+    
+    <ion-item *ngIf="ticketSelected" class="ion-margin-bottom">
+      <ion-label>Tipo ticket</ion-label>
+      <!-- <ion-select value="peperoni" multiple="true" placeholder="Select Pizza"> -->
+      <ion-select [value]="idSelected">
+        <ion-select-option *ngFor="let ticket of tickets" [disabled]="ticket.Id !== idSelected"
+            [value]="ticket.Id">
+          {{ ticket.Nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-chip color="primary">
+      <ion-label>{{ ticketSelected.Descripcion }}</ion-label>
+    </ion-chip>
 
-        <ion-select name="value"   [(ngModel)]="reserva.value" interface="action-sheet"  (ionChange)="onSelectChange()" cancelText="Cancelar">
-
-          <div *ngIf="validarResidencia">
-            <ion-select-option value="1">Entrada Residente </ion-select-option>
-          </div>
-          <ion-select-option value="2">Entrada Visitante</ion-select-option>
-          <div *ngIf="validarEdad">
-            <ion-select-option value="3">Entrada gratuita</ion-select-option>
-          </div>
-        </ion-select>
-      </ion-item>
-      
-  
-      <ion-row *ngIf="validar">
+    <ion-item class="ion-margin-top">
+      <ion-label>Selecciona una fecha de reserva</ion-label>
+    </ion-item>
+    <ion-grid fixed>
+      <ion-row>
         <ion-col size="4">
-          <ion-label style="text-align: center;">Año</ion-label>
+          <ion-label>Año</ion-label>
           <ion-select id="year" *ngIf="yearValues"
                       [value]="yearValues[0]"
                       [disabled]="yearValues.length === 1" 
-                      placeholder="Select"
-                      okText="Aceptar"
-                      >
+                      placeholder="Select">
             <ion-select-option *ngFor="let year of yearValues" [value]="year">{{ year }}</ion-select-option>
           </ion-select>
         </ion-col>
@@ -41,11 +40,9 @@
                       [value]="monthValues[0]"
                       (ionChange)="monthChange($event)"
                       [disabled]="monthValues.length === 1" 
-                      placeholder="Select"
-                      okText="Aceptar">
-            <ion-select-option *ngFor="let month of monthValues;" [value]="month">
-                {{ nameMonths[convertNumber(month)-1] }} 
-  
+                      placeholder="Select">
+            <ion-select-option *ngFor="let month of monthValues" [value]="month">
+              {{ nameMonths[convertNumber(month)-1] }}
             </ion-select-option>
           </ion-select>
         </ion-col>
@@ -54,41 +51,72 @@
           <ion-select id="day" *ngIf="dayValues"
                       [value]="dayValues[0]"
                       [disabled]="dayValues.length === 1"
-                      placeholder="Select"
-                      okText="Aceptar"
-                      >
+                      placeholder="Select">
             <ion-select-option *ngFor="let day of dayValues" [value]="day">{{ day }}</ion-select-option>
           </ion-select>
         </ion-col>
       </ion-row>
+    </ion-grid>
 
-
-      <ion-item *ngIf="(reserva.value=='1' && validar ) ">          
-        <ion-label position="floating">Cantidad</ion-label>  
-        <ion-input type="number" disabled ="true" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
-      </ion-item>
-    
-      <ion-item *ngIf="(reserva.value=='2'  && validar )">          
-        <ion-label position="floating">Cantidad</ion-label>  
-        <ion-input (ionChange)="calcularPrecioTotal()" type="number" disabled ="false" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
-      </ion-item>
-    
-      <ion-item *ngIf="(reserva.value=='3'  && validar )">        
-        <ion-label position="floating">Cantidad</ion-label>  
-        <ion-input type="number" disabled ="true" name="cantidad" min="1" max="1" [(ngModel)]="reserva.cantidad"></ion-input>
-      </ion-item>
-    
-    <ion-item *ngIf="validar">
-        <ion-label position="fixed">Precio </ion-label>
-        <ion-label>$ {{ precioTicket }}</ion-label>
+    <ion-item>
+      <ion-label position="fixed">Precio ticket</ion-label>
+      <ion-chip color="primary">
+        <ion-label>
+          {{ ticketSelected.Precio | currency: 'COP ' }}
+        </ion-label>
+      </ion-chip>
     </ion-item>
-      <ion-button expand="full" shape="round" type="submit" 
-                  [disabled]="!reservaValida" class="btn-form">Reservar</ion-button>
-                            
-    </ion-list>
+    
+    <ion-item>
+      <ion-label>Cantidad</ion-label>
+      <ion-select id="month" [(ngModel)]="cantidad" placeholder="Select">
+        <ion-select-option *ngFor="let num of array" [value]="num">{{ num }}</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  </form>
+    <ion-card class="ion-margin-top">
+      <ion-card-content>
+        <ion-item *ngIf="promocion">
+          <ion-label position="fixed">Subtotal:</ion-label>
+          <ion-chip color="success">
+            <ion-label>{{ getSubtotal | currency: 'COP ' }}</ion-label>
+          </ion-chip>
+        </ion-item>
+        <ion-item *ngIf="promocion">
+          <ion-label position="fixed">Promoción:</ion-label>
+          <ion-chip color="warning">
+            <ion-label>{{ promocion.PorcentajeDescuento }} % de descuento</ion-label>
+          </ion-chip>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Total:</ion-label>
+          <ion-chip color="success">
+            <ion-label>{{ getTotal | currency: 'COP ' }}</ion-label>
+          </ion-chip>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
+    <ion-button expand="full" color="success" shape="round" id="btn-reservar" 
+                (click)="reservar()">Comprar</ion-button>
+  </ion-list>
+</ion-content>
 
-
+<ion-content *ngIf="excentoPago" color="dark">
+  <ion-slides [options]="slidesOpts">
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-button expand="full" size="large" fill="outline" color="success">INGRESO GRATUITO</ion-button>
+          <ion-card-subtitle>
+            Para menores de 5 años y mayores de 65 años.
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <img src="/assets/mock-images/gratis.png" alt="gratis">
+          Puedes acceder al Parque Piedras del Tunjo de manera gratuita
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

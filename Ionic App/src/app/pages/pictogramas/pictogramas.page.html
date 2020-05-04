@@ -1,0 +1,15 @@
+<app-header titulo="Pictogramas" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+  <ion-row *ngIf="pictogramas.length > 0">
+    <ion-col size="12" *ngFor="let picto of pictogramas">
+      <app-card-pictograma [pictograma]="picto"></app-card-pictograma>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides [options]="slidesOpts" mode="ios" *ngIf="pictogramas.length === 0">
+    <ion-slide>
+      <ion-button expand="full" size="large" fill="outline">No hay pictogramas para mostrar</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -46,9 +46,15 @@ export class AuthService {
                     // decode jwt
                     const decode = jwt_decode(res['token']);
                     const user = JSON.parse(decode['usuario']);
-                    // no acceso al usuario administrador
-                    if (user['RolId'] === 1) {
-                      this.presentToast('No puedes acceder como administrador');
+                    // console.log(user);
+                    // no acceso al usuario administrador o cajero
+                    if (user['RolId'] === 1 || user['RolId'] === 3) {
+                      this.presentToast('No puedes acceder como administrador o cajero');
+                      return;
+                    }
+                    // no acceso a usuario desactivado o deshabilitado
+                    if (user['EstadoCuenta'] === false) {
+                      this.presentToast('Tu cuenta ha sido deshabilitada.');
                       return;
                     }
                     // Almacenar token
@@ -56,7 +62,7 @@ export class AuthService {
                     // Redireccionamiento del usuario
                     this.loginNavigate(user);
                   } else {
-                    this.presentToast(res['message']);
+                    this.presentToast('Usuario y/o contraseña incorrectos');
                   }
                 },
                 (err) => {},
@@ -64,15 +70,16 @@ export class AuthService {
               );
   }
 
-  loginNavigate(userLogin: Usuario) {
+  async loginNavigate(userLogin: Usuario) {
+    await this.validateToken();
     if (Number(userLogin['RolId'] === 2)) {
+      this.loginState$.emit(true);
       if (!Boolean(userLogin['VerificacionCuenta']) && userLogin['LugarExpedicion'] == null) {
-        this.router.navigate(['/registro', 'foto-documento']);
+        this.router.navigate(['/foto-documento']);
       } else {
-        this.loginState$.emit(true);
         this.router.navigateByUrl('/inicio');
       }
-    } else if (Number(userLogin['RolId'] === 3)) {
+    } else if (Number(userLogin['RolId'] === 4)) {
       this.router.navigateByUrl('/vigilante');
     }
   }
@@ -178,7 +185,7 @@ export class AuthService {
     return new Promise(async resolve => {
       const usuario = await this.getUsuario();
       if (usuario.VerificacionCuenta === false) {
-        this.router.navigateByUrl('/registro/foto-documento');
+        this.router.navigateByUrl('/foto-documento');
       }
       resolve(usuario.VerificacionCuenta);
     });

@@ -8,7 +8,7 @@
     </ion-col>
   </ion-row>
 
-  <app-avatar-selector *ngIf="updateUser && usuario" 
+  <app-avatar-selector *ngIf="updateUser && usuario"
         [current]="usuario.Icono_url" (avatarSelected)="avatar = $event"></app-avatar-selector>
 
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngIf="editForm">
@@ -28,6 +28,10 @@
       <ion-item>
         <ion-label position="fixed"><strong>Correo</strong></ion-label>
         <ion-label>{{ usuario.CorreoElectronico }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed"><strong>Fecha Nac</strong></ion-label>
+        <ion-label>{{ usuario.FechaNacimiento | date: 'dd MMM yyyy' }}</ion-label>
       </ion-item>
     </ion-list>
 

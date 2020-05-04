@@ -1,0 +1,95 @@
+<<<<<<< HEAD:Ionic App/src/app/pages/registro/registro.page.html
+<app-header titulo="Crear Cuenta" tipo="back"></app-header>
+=======
+<app-header titulo="Crear cuenta" tipo="back"></app-header>
+>>>>>>> a6b6240a229fd8825a9ddad9b700f69198bdee82:Ionic App/src/app/pages/registro/inicio/registro.page.html
+
+<ion-content [fullscreen] class="ion-padding">
+
+  <app-avatar-selector (avatarSelected)="avatar = $event"></app-avatar-selector>
+
+  <form [formGroup]="formUser" (ngSubmit)="crearUsuario()" *ngIf="formUser">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Registro</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+
+        <span class="text-danger" 
+                *ngIf="nombre.touched && nombre.dirty && nombre.errors?.required">El nombre es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" formControlName="apellido"></ion-input>
+
+        <span class="text-danger" 
+                *ngIf="apellido.touched && apellido.dirty && apellido.errors?.required">El apellido es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha Nacimiento</ion-label>
+        <ion-datetime displayFormat="DD MMMM YYYY" formControlName="fechaNacimiento"></ion-datetime>
+        
+        <span class="text-danger" 
+                *ngIf="fechaNac.touched && fechaNac.dirty && fechaNac.errors?.required">La fecha es requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="text" formControlName="correoElectronico"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="correo.touched && correo.dirty && correo.errors?.required">El correo es requerido</span>
+        <span class="text-danger" 
+              *ngIf="correo.touched && correo.dirty && correo.errors?.emailExists || correo.errors?.emailTokenExists">El correo ya existe</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="clave"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="clave.touched && clave.dirty && clave.errors?.required">La contraseña es requerida</span>
+        <span class="text-danger" 
+              *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
+            La contraseña requiere minimo {{ clave.errors?.minlength.requiredLength }} caracteres
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-item>
+          <ion-label>Tipo Documento</ion-label>
+          <ion-select formControlName="tipoDocumento">
+            <ion-select-option value="TI">Tarjeta Identidad</ion-select-option>
+            <ion-select-option value="CC">Cédula Ciudadania</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número Documento</ion-label>
+        <ion-input type="text" (keypress)="keypressNumDoc($event)" formControlName="numeroDocumento"></ion-input>
+
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.required">
+              El número de documento es requerido</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.minlength">
+              Mínimo {{ numeroDoc.errors?.minlength.requiredLength }} caracteres</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.maxlength">
+              Máximo {{ numeroDoc.errors?.maxlength.requiredLength }} caracteres</span>
+        <span class="text-danger" 
+              *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.numeroDocExists || numeroDoc.errors?.numeroDocTokenExists">
+              El número de documento ya existe</span>                      
+
+      </ion-item>
+
+      <ion-item style="display: flex; justify-content: center;">
+        <ion-checkbox (ionChange)="mostrarTerminosCondiciones()"></ion-checkbox>
+        <ion-label style="display: flex; margin-left: 14px;">Acepto los términos y condiciones</ion-label>
+      </ion-item>
+
+      <ion-button [disabled]="formUser.invalid || formUser.pending" id="button-submit" type="submit" 
+                  expand="full">Registrarse</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

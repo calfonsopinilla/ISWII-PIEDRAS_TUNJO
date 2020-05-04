@@ -1,0 +1,22 @@
+<app-header titulo="Tarifas de tickets" tipo="menu"></app-header>
+
+<ion-content [fullscreen] class="ion-padding" color="dark">
+  
+  <ion-slides [options]="slidesOpts" pager="true" class="slide-full">
+    <ion-slide *ngFor="let tarifa of tarifas">
+      <ion-card>
+        <img [src]="'/assets/mock-images/' + tarifa.img" class="slide-image">
+        <ion-card-header>
+          <ion-card-subtitle *ngIf="tarifa.precio === 0">{{ tarifa.text }}</ion-card-subtitle>
+          <ion-card-title *ngIf="tarifa.precio !== 0">{{ tarifa.text }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-chip color="success">
+            <ion-label>{{ tarifa.precio | currency: 'COP ' }}</ion-label>
+          </ion-chip>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

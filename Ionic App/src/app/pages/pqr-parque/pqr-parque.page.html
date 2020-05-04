@@ -4,7 +4,7 @@
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" (click)="presentAlertPrompt()">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
@@ -24,7 +24,7 @@
             <p><small>{{ pqr.FechaPublicacion | date: 'MMM d, y' }}</small></p>
             <b>{{ pqr.Pregunta }}</b>            
           </ion-label>
-          <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
+          <ion-icon slot="end" color="danger" name="trash" (click)="presentAlertConfirm(pqr)"></ion-icon>
         </ion-item>
       </ion-card-content>
     </ion-card>        
@@ -44,7 +44,7 @@
             <p> {{ pqr.FechaRespuesta | date: 'MMM d, y' }}</p>
             <p> {{ pqr.Respuesta }} </p>            
           </ion-label>
-          <ion-icon slot="end" color="danger" name="trash-outline" (click)="presentAlertConfirm(pqr)"></ion-icon>
+          <ion-icon slot="end" color="danger" name="trash" (click)="presentAlertConfirm(pqr)"></ion-icon>
         </ion-item>
       </ion-card-content>
     </ion-card>

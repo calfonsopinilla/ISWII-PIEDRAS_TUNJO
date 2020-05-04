@@ -6,7 +6,7 @@ import { ReservaTicket } from '../interfaces/reserva-ticket.interface';
 import { UserLogin } from '../interfaces/user-login.interface';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import {Ticket} from '../interfaces/ticket';
+import {Ticket} from '../interfaces/ticket.interface';
 const apiUrl = environment.servicesAPI;
 
 @Injectable({
@@ -43,6 +43,7 @@ export class ReservaTicketService {
   async agregarReserva(reserva: ReservaTicket): Promise<boolean> {
     const user = await this.auth.getUsuario();
     reserva.UUsuarioId = user.Id;
+    reserva.NumeroDocumento = user.NumeroDocumento;
     return new Promise(resolve => {
       if (user) {
         this.http.post(`${ apiUrl }/reserva-tickets/crear`, reserva)
@@ -166,25 +167,28 @@ async validarEdad():Promise<boolean> {
               });
   });
 }
-obtenerTicket( id:number) : Observable<Ticket> {
+obtenerTicket( id: number): Observable<Ticket> {
     return this.http.get<Ticket>(`${ apiUrl }/tickets/${id}`);
 }
-obtenerTickets() : Observable<Ticket[]>{
+obtenerTickets(): Observable<Ticket[]>{
   return this.http.get<Ticket[]>(`${ apiUrl }/tickets`);
 }
 
-obtenerFechasDisponibles() : Promise<Date []>{
-  return new Promise(resolve => {
-      return this.http.get<Date[]>(`${ apiUrl }/reserva-tickets/validarFechas`)
-                .subscribe(res => {
-                  if (res['ok'] === true) {
-                    resolve(res['results']);
-                  } else {
-                    resolve([]);
-                  }
-                });
-  });
- }
+  async obtenerFechasDisponibles(): Promise<any[]> {
+    const user = await this.auth.getUsuario();
+    return new Promise(resolve => {
+        return this.http.get(`${ apiUrl }/reserva-tickets/validarFechas?userId=${ user.Id }`)
+                  .subscribe(res => {
+                    if (res['ok'] === true) {
+                      const dates = [];
+                      res['results'].forEach(x => dates.push(x.split('T')[0]));
+                      resolve(dates);
+                    } else {
+                      resolve([]);
+                    }
+                  });
+    });
+   }
  
  obtenerFechasDisponibles2(): Promise<any[]> {
   return new Promise(resolve => {
