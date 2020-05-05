@@ -19,9 +19,16 @@ export class FotoDocumentoPage implements OnInit {
 
   imgData: any;
   img: any;
-  response: any;  
+  response: any;
   user: any;
-  userAux: Usuario;    
+  userAux: Usuario;
+
+  // verificar que la imagen esté pendiente de revisión
+  pendingConfirmation = false;
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
 
   constructor(
     private router: Router,
@@ -29,15 +36,14 @@ export class FotoDocumentoPage implements OnInit {
     private imagesService: ImagesService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService,
-    private userService: UserService
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-
     this.authService.getUsuario().then(data => {
       this.user = data;
-    });    
+      this.pendingConfirmation = this.user.Imagen_documento !== null;
+    });
   }
 
   openCamera() {

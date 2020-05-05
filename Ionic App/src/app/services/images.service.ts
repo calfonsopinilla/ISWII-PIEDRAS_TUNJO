@@ -11,7 +11,7 @@ export class ImagesService {
     private fileTransfer: FileTransfer,
   ) { }
 
-  async uploadDni(imgData: string, id: number) : Promise<any> {
+  async uploadDni(imgData: string, id: number): Promise<any> {
     const filename = imgData.split('/').pop();
     const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
@@ -24,16 +24,9 @@ export class ImagesService {
     };
 
     await fileTransfer
-                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                  
-                    .then(res => {  
-                      alert(" ----------------- ");
-                      alert(res);
+                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                                      
+                    .then(res => {
                       return true;
-                      /*if (res['ok'] === true) {
-                        return true;
-                      } else {
-                        return false;
-                      }*/                      
                     }, err => {
                       return false;
                     });
