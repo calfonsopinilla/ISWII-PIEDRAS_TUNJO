@@ -19,9 +19,7 @@ export class FotoDocumentoPage implements OnInit {
 
   imgData: any;
   img: any;
-  response: any;
   user: any;
-  userAux: Usuario;
 
   // verificar que la imagen esté pendiente de revisión
   pendingConfirmation = false;
@@ -74,16 +72,21 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);
-    loading.dismiss();
-    this.user.Imagen_documento = this.imgData.split('/').pop();
-    this.presentToast('Imagen subida con exito al servidor');
-    this.router.navigate(['/inicio']);
+    const response = await this.imagesService.uploadDni(this.imgData, this.user['Id']);
+    if (response['ok'] === true) {
+      this.user.Imagen_documento = this.imgData.split('/').pop();
+      const update = await this.authService.actualizarUsuario(this.user);
+      this.presentToast('La imagen se ha subido exitosamente');
+      this.router.navigate(['/inicio']);
+      loading.dismiss();
+    } else {
+      this.presentToast('Ha ocurrido un error cargando la foto');
+    }
   }
 
-  async presentToast(message: any) {
+  async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
-      message: JSON.stringify(message),
+      message,
       duration: 3000
     });
     await toast.present();

@@ -8,7 +8,7 @@ import { resolve } from 'url';
 export class ImagesService {
 
   constructor(
-    private fileTransfer: FileTransfer,
+    private fileTransfer: FileTransfer
   ) { }
 
   async uploadDni(imgData: string, id: number): Promise<any> {
@@ -22,17 +22,17 @@ export class ImagesService {
       mimeType: 'image/jpg',
       params: { title: 'title' }
     };
-
-    await fileTransfer
-                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                                      
-                    .then(res => {
-                      return true;
-                    }, err => {
-                      return false;
-                    });
+    return new Promise(resolve => {
+      fileTransfer.upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)
+                  .then(res => resolve({ ok: true, res }))
+                  .catch(err => {
+                    console.log('Error en carga', err);
+                    resolve({ ok: false, err });
+                  });
+    });
   }
 
-  async uploadImage(imgData: string, tipo: string) : Promise<any> {
+  async uploadImage(imgData: string, tipo: string): Promise<any> {
     const filename = imgData.split('/').pop();
     const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
@@ -44,17 +44,14 @@ export class ImagesService {
       params: { title: 'title' }
     };
 
-    // Proceso de carga de imagen
-    await fileTransfer
-                    .upload(imgData, `${environment.servicesAPI}/images/uploadImage?tipo=${ tipo }`, options)                  
-                    .then(res => {                      
-                      if (res['ok'] === true) {
-                        return true;
-                      } else {
-                        return false;
-                      }                      
-                    }, err => {
-                      return false;
-                    });
+    return new Promise(resolve => {
+      // Proceso de carga de imagen
+      fileTransfer.upload(imgData, `${environment.servicesAPI}/images/uploadImage?tipo=${ tipo }`, options)
+                  .then(res => resolve({ ok: true, res }))
+                  .catch(err => {
+                    console.log('Error en carga', err);
+                    resolve({ ok: false, err });
+                  });
+    });
   }
 }

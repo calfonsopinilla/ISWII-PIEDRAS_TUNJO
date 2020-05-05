@@ -15,10 +15,6 @@
   </ion-item>
 
   <img *ngIf="this.img" [src]="this.img" alt="img1" style="margin: 30px auto">
-
-  <!--<ion-button (click)="openCamera()" expand="full" shape="round">
-    Tomar foto
-  </ion-button>-->
   
   <ion-button *ngIf="this.imgData" (click)="sendImage()" expand="full" shape="round">
     Subir imagen
@@ -29,11 +25,6 @@
       <ion-icon name="camera-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <p>
-    {{ response | json }}
-  </p>
-  <br>
 </ion-content>
 
 <ion-content *ngIf="pendingConfirmation" color="dark" class="ion-padding">
