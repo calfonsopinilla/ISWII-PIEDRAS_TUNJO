@@ -144,7 +144,7 @@ namespace Data
             }
         }
 
-        public bool CambiarEstado(int id)
+        public bool CambiarEstado(int id, string token)
         {
             using (var db = new Mapeo())
             {
@@ -152,6 +152,8 @@ namespace Data
                 {
                     var ticktes = db.Tickets.Find(id);
                     ticktes.Estado = 2;
+                    ticktes.Token = token;
+                    ticktes.LastModificacion = DateTime.Now;
                     db.Entry(ticktes).State = EntityState.Modified;
                     db.SaveChanges();
                     return true;
@@ -162,7 +164,7 @@ namespace Data
                 }
             }
         }
-        public bool HabilitarTickets(int id)
+        public bool HabilitarTickets(int id, string token)
         {
             using (var db = new Mapeo())
             {
@@ -170,6 +172,8 @@ namespace Data
                 {
                     var ticktes = db.Tickets.Find(id);
                     ticktes.Estado = 1;
+                    ticktes.Token = token;
+                    ticktes.LastModificacion = DateTime.Now;
                     db.Entry(ticktes).State = EntityState.Modified;                    
                     db.SaveChanges();
                     return true;

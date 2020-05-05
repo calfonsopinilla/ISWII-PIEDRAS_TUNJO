@@ -88,8 +88,7 @@ namespace Logica
                     case 3:
                         try
                         {
-                            datosTicket.Estado = 1;
-                            datosTicket.Token = "";
+                            datosTicket.Estado = 1;                            
                             datosTicket.LastModificacion = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
                             new DaoTicket().AgregarTicktet(datosTicket);
                             estado = "Ticket insertado satisfactoriamente";
@@ -127,8 +126,7 @@ namespace Logica
          **/
         public bool Actualizar(int id, UTicket ticket)
         {
-            ticket.Estado = 1;
-            ticket.Token = "";
+            ticket.Estado = 1;            
             ticket.LastModificacion = DateTime.Now;
             return new DaoTicket().actualizarTicket(id, ticket);
         }
@@ -140,11 +138,12 @@ namespace Logica
          * Recibe: id del ticket
          * Retorna: bool de confirmacion
          **/
-        public bool EliminarTicket(int id)
+        public bool EliminarTicket(int id, string token)
         {
             try
-            {               
-                new DaoTicket().CambiarEstado(id);
+            {            
+                
+                new DaoTicket().CambiarEstado(id, token);
                 return true;
             }
             catch (Exception ex)
@@ -159,18 +158,18 @@ namespace Logica
         * Recibe: id del ticket
         * Retorna: bool de confirmacion
         **/
-        public bool HabilitarTicket(int id, int estado)
+        public bool HabilitarTicket(int id, int estado,string token)
         {
             try
             {
                 if (estado == 1)
                 {
-                    new DaoTicket().HabilitarTickets(id);
+                    new DaoTicket().HabilitarTickets(id, token);
                     return true;
                 }
                 else if (estado == 2)
                 {
-                    new DaoTicket().CambiarEstado(id);
+                    new DaoTicket().CambiarEstado(id, token);
                     return true;
                 }
                 return true;

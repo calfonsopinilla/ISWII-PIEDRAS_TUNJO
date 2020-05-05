@@ -161,5 +161,23 @@ namespace Data
             }
         }
 
+
+     
+        public List<UReservaTicket> ObtenerVendidos_TicketsFechaYTipo(int tipoTicket)
+        {
+            using (var db = new Mapeo())
+            {
+                try
+                {
+                    return db.ReservaTickets.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
     }
 }

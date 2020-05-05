@@ -322,7 +322,61 @@ namespace Logica
         }
 
 
+        public List<UReporteTicket> ObtenerVendidos_TicketsFechaYTipo(DateTime fecha, int tipoTicket)
+        {
+           
 
+            try
+            {
+                List<UReservaTicket> listaTickets = new DaoReservaTicket().ObtenerVendidos_TicketsFechaYTipo(tipoTicket);
+                List<UReporteTicket> listadoTickets = new List<UReporteTicket>();
+                List<UTicket> TiposTicket = new DaoTicket().ObtenerTickets();
+
+
+                if (listaTickets.Count < 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    for (int x = 0; x < listaTickets.Count(); x++)
+                    {
+                        if ((fecha == listaTickets[x].FechaIngreso) && (tipoTicket == listaTickets[x].idTicket))
+                        {
+                            for (int i = 0; i< TiposTicket.Count; i++)
+                            {
+                                if ((tipoTicket == listaTickets[x].idTicket) && (tipoTicket == TiposTicket[i].Id))
+                                {
+
+                                    UReporteTicket info = new UReporteTicket();
+                                    info.Id = listaTickets[x].Id;
+                                    info.FechaCompra = listaTickets[x].FechaCompra;
+                                    info.FechaIngreso = listaTickets[x].FechaIngreso;
+                                    info.Precio = listaTickets[x].Precio;
+                                    info.Cantidad = listaTickets[x].Cantidad;
+                                    info.Qr = listaTickets[x].Qr;
+                                    info.Token = listaTickets[x].Token;
+                                    info.LastModification = listaTickets[x].LastModification;
+                                    info.EstadoId = listaTickets[x].EstadoId;
+                                    info.tipoTicket = TiposTicket[i].Nombre;
+                                    info.NumeroDocumento = listaTickets[x].NumeroDocumento;
+                                    info.UUsuarioId = listaTickets[x].UUsuarioId;
+                                    info.UUsuario = listaTickets[x].UUsuario;
+
+                                    listadoTickets.Add(info);
+                                }
+                            }                                                        
+                        }                        
+                    }                    
+                    return listadoTickets;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
 
     }
 

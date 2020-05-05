@@ -45,11 +45,13 @@ namespace PiedrasDelTunjo.Controllers
         **/
 
         [HttpPost]
-        [Route("")]
+        [Route("Agregar")]
+        [Authorize]
         public IHttpActionResult RegistroTickets([FromBody]UTicket datosTicket)
         {
             try
             {
+                datosTicket.Token = Guid.NewGuid().ToString();
                 return Ok(new LGestionTickets().RegistroTicket(datosTicket));
             }
             catch (Exception ex)
@@ -66,19 +68,32 @@ namespace PiedrasDelTunjo.Controllers
          *Recibe: una estreuctura json para agregar los datos
          *Retorna: un true para saber que se agregaron los datos
         */
-
+        /*
         [HttpGet]
         [Route("{id}")]
+        [Authorize]
         public IHttpActionResult BuscarTicket([FromUri] int id)
         {
             return Ok(new LGestionTickets().Buscar(id));
         }
-        
-      
+
+            */
+        [HttpGet]
+        [Route("{id}")]
+        [Authorize]
+        public HttpResponseMessage BuscarTicket([FromUri] int id)
+        {
+            //return Ok(new LGestionTickets().Buscar(id));
+            var informacion = new LGestionTickets().Buscar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, informacion });
+        }
+
+
         [HttpPut]
-        [Route("Actualizar")]
+        [Route("{id}")]
         public HttpResponseMessage ActualizarTicket([FromBody] UTicket ticket)
-        {          
+        {            
+            ticket.Token = Guid.NewGuid().ToString();
             bool actualizado = new LGestionTickets().Actualizar(ticket.Id, ticket);
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
@@ -92,11 +107,13 @@ namespace PiedrasDelTunjo.Controllers
           **/
         [HttpGet]
         [Route("Inhabilitar")]
+        [Authorize]
         public bool EliminarTicket([FromUri]int id)
         {
             try
-            {               
-                return new LGestionTickets().EliminarTicket(id);
+            {
+                string token = Guid.NewGuid().ToString();
+                return new LGestionTickets().EliminarTicket(id, token);
             }
             catch (Exception ex)
             {
@@ -113,11 +130,13 @@ namespace PiedrasDelTunjo.Controllers
          **/
         [HttpGet]
         [Route("Habilitar")]
+        [Authorize]
         public bool HabilitarTicket([FromUri]int id, [FromUri]int estado)
         {
             try
             {
-                return new LGestionTickets().HabilitarTicket(id, estado);
+                string token = Guid.NewGuid().ToString();
+                return new LGestionTickets().HabilitarTicket(id, estado, token);
             }
             catch (Exception ex)
             {
