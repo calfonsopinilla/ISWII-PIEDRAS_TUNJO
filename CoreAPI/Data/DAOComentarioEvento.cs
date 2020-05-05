@@ -69,7 +69,7 @@ namespace Data {
                 return this.dataBase.ComentarioEvento
                     .Include("Usuario")
                     .Where(
-                        x => x.UsuarioId == comentario.UsuarioId
+                        x => x.UsuarioId == comentario.UsuarioId && x.EventoId == comentario.EventoId
                     ).FirstOrDefault();
             }
         }
