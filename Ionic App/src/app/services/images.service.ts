@@ -24,7 +24,7 @@ export class ImagesService {
     };
 
     await fileTransfer
-                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                  
+                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                                      
                     .then(res => {
                       return true;
                     }, err => {

@@ -74,8 +74,9 @@ export class ComentarioService {
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/puntuacion/leer-usuario?table=${ table }&objectId=${ objectId }&userId=${ userId }`, { headers: this.headers })
         .subscribe(res => {          
-          if (res['ok'] === true) {            
-            resolve(res['comentario']);
+          if (res['ok'] === true) {    
+            console.log(res['comentario']);
+            resolve(res['comentario']);            
           } else {
             resolve(null);
           }
@@ -95,6 +96,7 @@ export class ComentarioService {
       this.http.get(`${ apiUrl }/puntuacion/leer?table=${ table }&objectId=${ objectId }`, { headers: this.headers })
         .subscribe(res => {
           if (res['ok'] === true) {
+            console.log(res['lista']);
             resolve(res['lista']);
           }
         }, (err) => {

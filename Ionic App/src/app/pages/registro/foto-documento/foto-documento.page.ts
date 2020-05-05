@@ -70,17 +70,10 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);
-    if (answer === true) {
-      // es necesario actualizar el usuario para obtener el nuevo token con los nuevos datos del user
-      const update = await this.authService.actualizarUsuario(this.user);
-      if (update) {
-        this.presentToast('Imagen subida con exito al servidor');
-        this.router.navigate(['/inicio']);
-      }
-    } else {
-      this.presentToast('ERROR: Ha ocurrido un error, intentelo nuevamente');
-    }
+    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);                               
+    loading.dismiss();
+    this.presentToast("Imagen subida con exito al servidor");
+    this.router.navigate(['/inicio']);                       
   }
 
   async presentToast(message: any) {
