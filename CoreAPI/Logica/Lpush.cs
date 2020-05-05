@@ -22,16 +22,17 @@ namespace Logica
         public List<UPush> obtenerTokens()
         {
             return new DaoPush().Tokensnotificaciones().ToList();
-        } 
+        }
 
-        
-        public void SendNotificationPrueba(){
 
-            try {
+        public void SendNotificationPrueba()
+        {
+            try
+            {
                 string keyService = "AAAAOwkpcno:APA91bFBQ-bWf461MVHDS8bpMDA0SFVUaQmkaqJMu_WtkXMJu3crJ68bmyGrLtYMKEed1RKaNtJWhDLfPDk9FbmyZ0WjDUbxiTVTAWL5gsiOX6OpoCW4MlrEn0LSCkxe6yEbKKJ-6pqG";
                 string SENDER_ID = "253556781690";
 
-                string idDevice = "eyOdtSsKK_g:APA91bEhaEShdIU5Iif3kiWu89VPB0AJxWeorT6FbaP1scpT_S_SYK3ByUvfeKS1nBr1KyMK2A5-jmkWv2KoixjaSvtox9NUijMcRRRObXqDxlxnYa7fD54ecrQxdddPrjv4d8hWG-st";
+                string idDevice = "ehsjilj4YQ:APA91bHeiE-cn-GfFfDHbpKCe6OwC0RgG5Ft-jb-NQOTz_kBtuqEqTvt7noFX7XtX_sWqU24_nRMC50O3coYLraTKgPLRQSG3ZEXKPhb8YoVmQxZEj9ekEw5ROi6CKK-O1-RAUgHf96W";
                 string menssage = "El parque vuelve a cobrar por que el COVID SE ACABO";
 
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
@@ -41,16 +42,21 @@ namespace Logica
                 //Sender Id - From firebase project setting  
                 tRequest.Headers.Add(string.Format("Sender: id={0}", SENDER_ID));
                 tRequest.ContentType = "application/json";
-                var payload = new{
+                var payload = new
+                {
                     to = idDevice,
                     priority = "high",
                     content_available = true,
+                    time_to_live = 5000,
                     notification = new
                     {
                         body = menssage,
                         title = "Test",
                         badge = 1,
                         sound = "default",
+                        //click_action="FCM_PLUGIN_ACTIVITY",
+                        icon = "favicon"
+
                     },
                     data = new
                     {
@@ -81,16 +87,11 @@ namespace Logica
                 throw ex;
             }
 
-            
         }
-
-
 
         public void SendNotification(UNotificacion notificacion)
         {
-
-            try
-            {
+            try{
                 string keyService = "AAAAOwkpcno:APA91bFBQ-bWf461MVHDS8bpMDA0SFVUaQmkaqJMu_WtkXMJu3crJ68bmyGrLtYMKEed1RKaNtJWhDLfPDk9FbmyZ0WjDUbxiTVTAWL5gsiOX6OpoCW4MlrEn0LSCkxe6yEbKKJ-6pqG";
                 string SENDER_ID = "253556781690";
                 string idDevice = notificacion.TokenId;
@@ -107,18 +108,19 @@ namespace Logica
                     to = idDevice,
                     priority = "high",
                     content_available = true,
+                    time_to_live= 5000,
                     notification = new
                     {
                         body = mensajeNotificacion.Descripcion,
                         title = mensajeNotificacion.Titulo,
                         badge = 1,
-                        sound = "default",
+                        sound = "default"
+                        //click-action="FMC_PLUGIN_ACTIVITY"
                     },
                     data = new
                     {
                         tipo = mensajeNotificacion.Tipo
                     }
-
                 };
                 string postbody = JsonConvert.SerializeObject(payload).ToString();
                 Byte[] byteArray = Encoding.UTF8.GetBytes(postbody);

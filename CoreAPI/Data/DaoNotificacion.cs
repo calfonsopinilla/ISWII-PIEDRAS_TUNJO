@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilitarios;
 
 namespace Data
 {
@@ -38,6 +39,36 @@ namespace Data
                 }
             }
             
+        }
+
+        private readonly Mapeo db = new Mapeo();
+
+        public List<UNotificacion> obtenerNotificaciones() {
+            try{
+                return db.Notificacion.Where(x => x.Estado == true).Take(50).ToList();
+                
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            
+        }
+
+        public void cambiarEstadoNotifiacion(long id) {
+
+            try {
+                var notificacion = db.Notificacion.Find(id);
+                notificacion.Estado = false;
+                db.SaveChanges();
+            } catch (Exception ex) { throw ex; }
+        }
+        public void eliminarNotificacion(long id) {
+            try  {
+                var notificacion = db.Notificacion.Find(id);
+                db.Notificacion.Remove(notificacion);
+                db.SaveChanges();
+            }
+            catch (Exception ex) { throw ex;}
         }
 
 

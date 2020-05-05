@@ -110,6 +110,7 @@
     <Compile Include="LComentarioEvento.cs" />
     <Compile Include="LComentarioNoticias.cs" />
     <Compile Include="LComentarioPictograma.cs" />
+    <Compile Include="LEnviarNotificaciones.cs" />
     <Compile Include="LGestionTickets.cs" />
     <Compile Include="Lpush.cs" />
     <Compile Include="LRecorrido.cs" />
