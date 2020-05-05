@@ -25,7 +25,9 @@ export class ImagesService {
 
     await fileTransfer
                     .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                  
-                    .then(res => {                      
+                    .then(res => {  
+                      alert(" ----------------- ");
+                      alert(res);
                       return true;
                       /*if (res['ok'] === true) {
                         return true;

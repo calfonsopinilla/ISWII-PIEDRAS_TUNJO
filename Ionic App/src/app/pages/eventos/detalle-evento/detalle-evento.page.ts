@@ -29,6 +29,7 @@ export class DetalleEventoPage implements OnInit {
   comentarioUsuario: ComentarioEvento;  
   listaComentariosEvento: ComentarioEvento[] = [];  
   estado: boolean;  
+  private comentarioAuxiliar: Comentario;
 
   constructor(    
     private router: Router,
@@ -96,8 +97,13 @@ export class DetalleEventoPage implements OnInit {
     }
   }
 
-  async reportarComentario(comentario: ComentarioEvento) {
-    console.log(comentario);
+  async reportarComentario(comentario: any) {    
+    const ok = await this.comentarioService.reportarComentario("evento", 1, comentario);    
+    if (ok == true) {
+      this.presentToast("Comentario reportado correctamente");
+    } else {
+      this.presentToast("ERROR: No se pudo reportar el comentario");
+    }
   }
 
   async leerComentarioUsuario(table: string, objectId: number, userId: number) {

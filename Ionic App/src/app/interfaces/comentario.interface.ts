@@ -9,5 +9,5 @@ export interface Comentario {
     LastModification?: Date;
     Token?: string;
     UsuarioId?: number;
-    Usuario?: Usuario;        
+    Usuario?: Usuario;            
 }

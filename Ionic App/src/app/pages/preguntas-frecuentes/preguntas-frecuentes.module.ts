@@ -13,8 +13,7 @@ import { PreguntasFrecuentesPage } from './preguntas-frecuentes.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PreguntasFrecuentesPageRoutingModule,
-    ComponentsModule
+    PreguntasFrecuentesPageRoutingModule,    
   ],
   declarations: [PreguntasFrecuentesPage]
 })
