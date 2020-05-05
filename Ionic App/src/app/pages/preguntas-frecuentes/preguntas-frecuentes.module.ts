@@ -11,7 +11,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    PreguntasFrecuentesPageRoutingModule,    
+    PreguntasFrecuentesPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [PreguntasFrecuentesPage]
 })

@@ -48,7 +48,7 @@
         </ion-avatar>
         <ion-label>
           <h2>{{ comentarioUsuario.usuario.Nombre }} {{ comentarioUsuario.usuario.Apellido }}</h2>              
-          <p>{{ comentarioUsuario.FechaPublicacion | date: 'MMM d, y'  }}</p>
+          <p>{{ comentarioUsuario.fechaPublicacion | date: 'MMM d, y'  }}</p>
           <form [formGroup]="formUser" (ngSubmit)="actualizarComentario()" *ngIf="formUser">        
             <h5>
               Mi calificación: 

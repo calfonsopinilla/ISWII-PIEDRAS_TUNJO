@@ -1,13 +1,12 @@
 import { Usuario } from './usuario.interface';
 
 export interface Comentario {
-
-    Id?: number;
-    FechaPublicacion?: Date;
-    Descripcion?: string;
-    Calificacion?: number;
-    LastModification?: Date;
-    Token?: string;
-    UsuarioId?: number;
-    Usuario?: Usuario;            
+    id?: number;
+    fechaPublicacion?: Date;
+    descripcion?: string;
+    calificacion?: number;
+    lastModification?: Date;
+    token?: string;
+    usuarioId?: number;
+    usuario?: Usuario;            
 }

@@ -40,6 +40,10 @@ export class FotoDocumentoPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.comprobar();
+  }
+
+  comprobar() {
     this.authService.getUsuario().then(data => {
       this.user = data;
       this.pendingConfirmation = this.user.Imagen_documento !== null;
@@ -70,10 +74,11 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);                               
+    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);
     loading.dismiss();
-    this.presentToast("Imagen subida con exito al servidor");
-    this.router.navigate(['/inicio']);                       
+    this.user.Imagen_documento = this.imgData.split('/').pop();
+    this.presentToast('Imagen subida con exito al servidor');
+    this.router.navigate(['/inicio']);
   }
 
   async presentToast(message: any) {
