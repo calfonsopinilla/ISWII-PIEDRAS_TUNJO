@@ -9,4 +9,10 @@
   <ion-chip id="chip1">
     <ion-label>Puntos de Interés</ion-label>
   </ion-chip>
+
+  <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="obtenerGeolocation()" color="light">
+      <ion-icon name="locate"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

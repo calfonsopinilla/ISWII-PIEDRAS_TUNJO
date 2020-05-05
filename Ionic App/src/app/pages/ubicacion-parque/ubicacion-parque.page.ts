@@ -7,6 +7,7 @@ import { CoordenadasService } from '../../services/coordenadas.service';
 import * as Mapboxgl from 'mapbox-gl';
 import { PuntoInteres } from 'src/app/interfaces/punto-interes.interface';
 import { PuntosInteresService } from '../../services/puntos-interes.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 // declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
@@ -22,12 +23,14 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) map: any;
   mapa: Mapboxgl.Map;
   itemInfo: ItemInfo;
+  flyDone = false;
 
   constructor(
     private infoParqueService: InfoParqueService,
     private route: ActivatedRoute,
     private coordenadasService: CoordenadasService,
-    private puntosIntService: PuntosInteresService
+    private puntosIntService: PuntosInteresService,
+    private geolocation: Geolocation
   ) { }
 
   ngAfterViewInit() {
@@ -103,6 +106,33 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.infoParqueService.obtenerItemInfo(id)
                           .subscribe((resp: any) => this.itemInfo = resp);
+  }
+
+  obtenerGeolocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      const { latitude, longitude } = resp.coords;
+      // console.log(resp.coords);
+      this.flyLocation(longitude, latitude);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+  }
+
+  flyLocation(lng: number, lat: number) {
+    // para no repetir markers
+    if (!this.flyDone) {
+      const popup = new Mapboxgl.Popup({offset: 25}).setText('You');
+      new Mapboxgl.Marker({draggable: false, color: '#000'})
+                  .setLngLat([lng, lat])
+                  .setPopup(popup)
+                  .addTo(this.mapa);
+      this.flyDone = true;
+    }
+    // fly to location
+    this.mapa.flyTo({
+      center: [lng, lat],
+      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
   }
 
 }

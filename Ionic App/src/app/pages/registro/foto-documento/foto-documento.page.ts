@@ -38,6 +38,11 @@ export class FotoDocumentoPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.loginState$.subscribe(res => {
+      if (res === true) {
+        this.comprobar();
+      }
+    });
     this.comprobar();
   }
 

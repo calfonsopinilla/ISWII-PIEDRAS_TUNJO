@@ -161,6 +161,7 @@ export class AuthService {
                   if (res['ok'] === true) {
                     this.storage.clear();
                     this.guardarToken(res['token']);
+                    this.loginState$.emit(true);
                     resolve(true);
                   } else {
                     resolve(false);

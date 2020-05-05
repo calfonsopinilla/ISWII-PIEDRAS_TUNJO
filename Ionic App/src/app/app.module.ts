@@ -18,6 +18,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 // firebase
 import { FCM} from '@ionic-native/fcm/ngx';
 import { Push } from '@ionic-native/push/ngx'; 
@@ -46,6 +47,7 @@ import { IonicRatingModule } from 'ionic4-rating';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
     Camera,
+    Geolocation,
     BarcodeScanner,
     Base64ToGallery,
     TranslateService,
