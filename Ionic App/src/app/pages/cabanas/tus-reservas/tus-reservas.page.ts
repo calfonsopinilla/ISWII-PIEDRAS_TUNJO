@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservaCabanaService } from '../../../services/reserva-cabana.service';
 import { ReservaCabana } from '../../../interfaces/reserva-cabana.interface';
 import { AlertController, ToastController } from '@ionic/angular';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-tus-reservas',
@@ -20,11 +21,17 @@ export class TusReservasPage implements OnInit {
   constructor(
     private reservaCabService: ReservaCabanaService,
     private alertCtrl: AlertController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.reservaCabService.changeReservas$.subscribe(res => {
+      if (res === true) {
+        this.obtenerReservas();
+      }
+    });
+    this.authService.loginState$.subscribe(res => {
       if (res === true) {
         this.obtenerReservas();
       }

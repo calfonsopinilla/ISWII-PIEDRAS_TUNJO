@@ -12,10 +12,15 @@ export class TabsPage implements OnInit {
   showInicio = false;
 
   constructor(
-    private ticketService: TicketsService
+    private ticketService: TicketsService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    // nuevo login emit
+    this.authService.loginState$.subscribe(res => {
+      if (res === true) { this.init(); }
+    });
     this.init();
   }
 

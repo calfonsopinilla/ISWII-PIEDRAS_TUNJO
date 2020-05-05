@@ -32,7 +32,11 @@ export class LoginPage implements OnInit {
       clave: ['', [Validators.required, Validators.minLength(5)]]
     });
 
-    this.authService.loginState$.subscribe(_ => this.loginForm.reset());
+    this.authService.loginState$.subscribe(res => {
+      if (res === false) {
+        this.loginForm.reset();
+      }
+    });
   }
 
   async login() {

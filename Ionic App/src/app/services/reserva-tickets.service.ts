@@ -1,12 +1,14 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 import { ReservaTicket } from '../interfaces/reserva-ticket.interface';
 import { UserLogin } from '../interfaces/user-login.interface';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import {Ticket} from '../interfaces/ticket.interface';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 const apiUrl = environment.servicesAPI;
 
 @Injectable({
@@ -14,19 +16,43 @@ const apiUrl = environment.servicesAPI;
 })
 export class ReservaTicketService {
 
+  private headers: HttpHeaders;
   nuevaReserva$ = new EventEmitter<ReservaTicket>();
   reservaEliminada$ = new EventEmitter<number>();
 
   constructor(
     private http: HttpClient,
-    private auth: AuthService
+    private auth: AuthService,
+    private storage: Storage,
+    private router: Router
   ) { }
 
+  async prepareHeaders() {
+    const token = await this.storage.get('token') || undefined;
+    if (!token) {
+      this.router.navigateByUrl('/login');
+      return false;
+    } else {
+      this.headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      });
+      return true;
+    }
+  }
+
   async getTicketsUser(): Promise<ReservaTicket[]> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     const user = await this.auth.getUsuario();
     return new Promise(resolve => {
       if (user) {
-        this.http.get(`${ apiUrl }/reserva-tickets?userId=${ user.Id }`)
+        this.http.get(`${ apiUrl }/reserva-tickets?userId=${ user.Id }`, { headers: this.headers })
+                  .pipe(
+                    catchError(err => of({ok: false}))
+                  )
                   .subscribe(res => {
                     if (res['ok'] === true) {
                       resolve(res['results']);
@@ -41,12 +67,20 @@ export class ReservaTicketService {
   }
 
   async agregarReserva(reserva: ReservaTicket): Promise<boolean> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
     const user = await this.auth.getUsuario();
     reserva.UUsuarioId = user.Id;
     reserva.NumeroDocumento = user.NumeroDocumento;
     return new Promise(resolve => {
       if (user) {
-        this.http.post(`${ apiUrl }/reserva-tickets/crear`, reserva)
+        this.http.post(`${ apiUrl }/reserva-tickets/crear`, reserva, { headers: this.headers })
+                  .pipe(
+                    catchError(err => of({ok: false}))
+                  )
                   .subscribe(res => {
                     this.nuevaReserva$.emit(reserva);
                     resolve(res['ok']);
@@ -72,9 +106,14 @@ export class ReservaTicketService {
   }
 
   async obtenerPrecio(): Promise<number> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(0);
+    }
     const user = await this.auth.getUsuario();
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/obtenerPrecio?userId=${ user.Id }`)
+      this.http.get(`${ apiUrl }/reserva-tickets/obtenerPrecio?userId=${ user.Id }`, { headers: this.headers })
                 .subscribe(res => {
                   if (res['ok'] === true) {
                     resolve(Number(res['precio']));
@@ -85,9 +124,14 @@ export class ReservaTicketService {
     });
   }
 
-  leerReservaToken(qr: string) : Promise<ReservaTicket> {
+  async leerReservaToken(qr: string): Promise<ReservaTicket> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(undefined);
+    }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`)
+      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`, { headers: this.headers })
         .subscribe(res => {
           if (res['ok'] === true) {
             resolve(res['reserva']);
@@ -96,12 +140,17 @@ export class ReservaTicketService {
           }
         });
     });
-  }  
+  } 
 
   /* Jhonattan Pulido */
   async leerQr(qr: string): Promise<any> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`)
+      this.http.get(`${ apiUrl }/reserva-tickets/leerToken?qr=${ qr }`, { headers: this.headers })
         .subscribe(res => {
           if (res['ok'] === true) {
             resolve(res['reserva']);
@@ -114,8 +163,13 @@ export class ReservaTicketService {
 
   /* Jhonattan Pulido */
   async leerDNI(numeroDocumento: string): Promise<any> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/leerDNI?numeroDocumento=${ numeroDocumento }`)
+      this.http.get(`${ apiUrl }/reserva-tickets/leerDNI?numeroDocumento=${ numeroDocumento }`, { headers: this.headers })
         .subscribe(res => {
           if (res['ok'] === true) {
             resolve(res['reserva']);
@@ -128,8 +182,13 @@ export class ReservaTicketService {
 
   /* Jhonattan Pulido */
   async validarQr(id: number): Promise<boolean> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/validarQr?id=${ id }`)
+      this.http.get(`${ apiUrl }/reserva-tickets/validarQr?id=${ id }`, { headers: this.headers })
         .subscribe(res => {
           if (res['ok'] === true) {
             resolve(true);
@@ -140,44 +199,22 @@ export class ReservaTicketService {
     });
   }
 
-  async validarResidencia():Promise<boolean> {
-    const user = await this.auth.getUsuario();
-    return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-tickets/validarResidencia?userId=${ user.Id }`)
-                .subscribe(res => {
-                  if (res['ok'] === true) {
-                    resolve(Boolean(res['residencia']));
-                  } else {
-                    resolve(false);
-                  }
-                });
-    });
-}
-
-async validarEdad():Promise<boolean> {
-  const user = await this.auth.getUsuario();
-  return new Promise(resolve => {
-    this.http.get(`${ apiUrl }/reserva-tickets/validarEdad?userId=${ user.Id }`)
-              .subscribe(res => {
-                if (res['ok'] === true) {
-                  resolve(Boolean(res['edad']));
-                } else {
-                  
-                }
-              });
-  });
-}
-obtenerTicket( id: number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${ apiUrl }/tickets/${id}`);
-}
-obtenerTickets(): Observable<Ticket[]>{
-  return this.http.get<Ticket[]>(`${ apiUrl }/tickets`);
-}
+  obtenerTicket( id: number): Observable<Ticket> {
+      return this.http.get<Ticket>(`${ apiUrl }/tickets/${id}`);
+  }
+  obtenerTickets(): Observable<Ticket[]>{
+    return this.http.get<Ticket[]>(`${ apiUrl }/tickets`);
+  }
 
   async obtenerFechasDisponibles(): Promise<any[]> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     const user = await this.auth.getUsuario();
     return new Promise(resolve => {
-        return this.http.get(`${ apiUrl }/reserva-tickets/validarFechas?userId=${ user.Id }`)
+        return this.http.get(`${ apiUrl }/reserva-tickets/validarFechas?userId=${ user.Id }`, { headers: this.headers })
                   .subscribe(res => {
                     if (res['ok'] === true) {
                       const dates = [];
@@ -189,48 +226,17 @@ obtenerTickets(): Observable<Ticket[]>{
                   });
     });
    }
- 
- obtenerFechasDisponibles2(): Promise<any[]> {
-  return new Promise(resolve => {
-    this.http.get(`${ apiUrl }/reserva-tickets/validarFechas`)
-              .subscribe(res => {
-                if (res['ok'] === true) {
-                  const dates = [];
-                  res['results'].forEach(x => dates.push(x.split('T')[0]));
-                  resolve(dates);
-                } else {
-                  resolve([]);
-                }
-              });
-  });
-}
-
-async obtenerFechasDisponiblesPorTicket(idTicket : number): Promise<any[]> {
-  const user = await this.auth.getUsuario();
-  return new Promise(resolve => {
-    this.http.get(`${ apiUrl }/reserva-tickets/validarFechasUser?idUser=${user.Id}&idTicket=${idTicket}`)
-              .subscribe(res => {
-                if (res['ok'] === true) {
-                  const dates = [];
-                  res['results'].forEach(x => dates.push(x.split('T')[0]));
-                  resolve(dates);
-                } else {
-                  resolve([]);
-                }
-              });
-  });
-}
 
  getYearValues(dates: any[]) {
-  const yearValues = [];
-  dates.forEach(x => {
-    const year = x.split('-')[0];
-    if (!this.existsInArray(year, yearValues)) {
-      yearValues.push(year);
-    }
-  });
-  return yearValues;
-}
+    const yearValues = [];
+    dates.forEach(x => {
+      const year = x.split('-')[0];
+      if (!this.existsInArray(year, yearValues)) {
+        yearValues.push(year);
+      }
+    });
+    return yearValues;
+  }
 
 getMonthValues(dates: any[]) {
   const monthValues = [];
