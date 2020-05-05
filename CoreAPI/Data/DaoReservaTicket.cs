@@ -154,7 +154,7 @@ namespace Data
 
                 return db.ReservaTickets
                         .Include("UUsuario")
-                        .Where(x => x.Qr == qr && x.EstadoId == 1)
+                        .Where(x => x.Qr == qr && x.EstadoId == 1 && x.FechaIngreso >= DateTime.Today)
                         .FirstOrDefault();
             } catch (Exception ex) {
                 throw ex;
