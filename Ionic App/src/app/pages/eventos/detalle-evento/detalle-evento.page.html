@@ -68,6 +68,9 @@
             <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentario.usuario.Icono_url }}">
         </ion-avatar>
         <ion-label>
+          <ion-button style="float: right;" (click)="reportarComentario(comentario)">
+            <ion-icon name="skull"></ion-icon>
+          </ion-button>
           <h2 style="font-weight: bold;">{{ comentario.usuario.Nombre }} {{ comentario.usuario.Apellido }}</h2>      
           <p>
             <img src="../../../../assets/img/{{ comentario.calificacion }}-star.png" width="26%" style="margin-right: 6px;">

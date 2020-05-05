@@ -103,6 +103,27 @@ export class ComentarioService {
     });           
   }
 
+  async reportarComentario(table: string, objectId: number, comentario: Comentario) : Promise<any> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
+    return new Promise(resolve => {
+      this.http.post(`${ apiUrl }/puntuacion/reportar?table=${ table }&objectId=${ objectId }`, comentario,{ headers: this.headers })
+        .subscribe(res => {
+          console.log(res);
+          if (res['ok'] == true) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        }, (err) => {
+          resolve(false);
+        });
+    });
+  }
+
   async prepareHeaders() {
     const token = await this.storage.get('token') || undefined;
     if (!token) {

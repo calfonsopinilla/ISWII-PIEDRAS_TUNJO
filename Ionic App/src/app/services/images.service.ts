@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { environment } from '../../environments/environment';
+import { resolve } from 'url';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,33 @@ export class ImagesService {
     private fileTransfer: FileTransfer,
   ) { }
 
-  uploadImage(imgData: string, tipo: string) {
+  async uploadDni(imgData: string, id: number) : Promise<any> {
+    const filename = imgData.split('/').pop();
+    const fileTransfer: FileTransferObject = this.fileTransfer.create();
+
+    const options: FileUploadOptions = {
+      fileKey: 'image',
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: 'image/jpg',
+      params: { title: 'title' }
+    };
+
+    await fileTransfer
+                    .upload(imgData, `${environment.servicesAPI}/images/dniImage?id=${ id }`, options)                  
+                    .then(res => {                      
+                      return true;
+                      /*if (res['ok'] === true) {
+                        return true;
+                      } else {
+                        return false;
+                      }*/                      
+                    }, err => {
+                      return false;
+                    });
+  }
+
+  async uploadImage(imgData: string, tipo: string) : Promise<any> {
     const filename = imgData.split('/').pop();
     const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
@@ -23,7 +50,16 @@ export class ImagesService {
     };
 
     // Proceso de carga de imagen
-    return fileTransfer
-                    .upload(imgData, `${environment.servicesAPI}/images/uploadImage?tipo=${ tipo }`, options);
+    await fileTransfer
+                    .upload(imgData, `${environment.servicesAPI}/images/uploadImage?tipo=${ tipo }`, options)                  
+                    .then(res => {                      
+                      if (res['ok'] === true) {
+                        return true;
+                      } else {
+                        return false;
+                      }                      
+                    }, err => {
+                      return false;
+                    });
   }
 }

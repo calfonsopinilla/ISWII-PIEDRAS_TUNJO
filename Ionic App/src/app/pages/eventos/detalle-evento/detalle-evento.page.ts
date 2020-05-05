@@ -96,6 +96,10 @@ export class DetalleEventoPage implements OnInit {
     }
   }
 
+  async reportarComentario(comentario: ComentarioEvento) {
+    console.log(comentario);
+  }
+
   async leerComentarioUsuario(table: string, objectId: number, userId: number) {
     const comentario = await this.comentarioService.leerComentarioUsuario(table,objectId,userId);
     this.comentarioUsuario = comentario;            

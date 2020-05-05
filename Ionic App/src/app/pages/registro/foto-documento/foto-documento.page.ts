@@ -5,6 +5,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
 import { Usuario } from '../../../interfaces/usuario.interface';
+import { Router } from '@angular/router';
 
 declare var window: any;
 
@@ -23,6 +24,7 @@ export class FotoDocumentoPage implements OnInit {
   userAux: Usuario;    
 
   constructor(
+    private router: Router,
     private camera: Camera,
     private imagesService: ImagesService,
     private loadingCtrl: LoadingController,
@@ -62,38 +64,13 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    const answer = await this.imagesService.uploadImage(this.imgData, 'identificacion')
-                      .then(res => {
-                        this.response = res;
-                        loading.dismiss();
-                        this.presentToast(res.response);                        
-                      });      
-
-    if (Boolean(this.response['ok']) == true) {
-                                  
-        this.userAux.Id = this.user['Id'];
-        this.userAux.Nombre = this.user['Nombre'];
-        this.userAux.Apellido = this.user['Apellido'];
-        this.userAux.CorreoElectronico = this.user['CorreoElectronico'];
-        this.userAux.Clave = this.user['Clave'];
-        this.userAux.NumeroDocumento = this.user['NumeroDocumento'];
-        this.userAux.TipoDocumento = this.user['TipoDocumento'];
-        this.userAux.LugarExpedicion = this.user['LugarExpedicion'];
-        this.userAux.Icono_url = this.response['file'];
-        this.userAux.VerificacionCuenta = this.user['VerificacionCuenta'];
-        this.userAux.EstadoCuenta = this.user['EstadoCuenta'];
-        this.userAux.RolId = this.user['RolId'];
-        this.userAux.Imagen_documento = this.user['Imagen_documento'];
-        this.userAux.Token = this.user['Token'];                                                                                                                                                          
-
-        await this.authService.actualizarUsuario(this.userAux)
-          .then(result => {
-            alert("Usuario Actualizado");
-          });
-
+    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);    
+    if (answer == true) {                                        
+        this.presentToast("Imagen subida con exito al servidor");
+        this.router.navigate(['/inicio']);
       } else {
-        alert("Ha ocurrido un error");
-      }      
+        this.presentToast("ERROR: Ha ocurrido un error, intentelo nuevamente");
+      }                      
   }
 
   async presentToast(message: any) {
