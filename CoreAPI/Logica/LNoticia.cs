@@ -18,22 +18,9 @@ namespace Logica
       *Recibe:
       *Retorna:
       */
-        public List<UNoticia> informacionNoticia()
+        public List<UNoticia> ObtenerNoticias()
         {
-            try
-            {
-                List<UNoticia> noticias = new DAONoticia().informacionNoticia();
-                if (noticias.Count < 0){
-                    return null;
-                }
-                else{
-                    return noticias;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return new DAONoticia().ObtenerNoticias();
         }
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
@@ -42,10 +29,10 @@ namespace Logica
        *Recibe: 
        *Retorna: 
        */
-        public bool agregarNoticia(UNoticia noticia)
+        public bool AgregarNoticia(UNoticia noticia)
         {
             noticia.Token = "";
-            return new DAONoticia().agregarNoticias(noticia);
+            return new DAONoticia().AgregarNoticia(noticia);
         }
 
 
@@ -68,34 +55,11 @@ namespace Logica
        *Recibe: 
        *Retorna: 
        */
-        public bool actualizarNoticia(string datosJson)
+        public bool EliminarNoticia(int id)
         {
             try
             {
-                UNoticia datos = JsonConvert.DeserializeObject<UNoticia>(datosJson);
-                DAONoticia noticia = new DAONoticia();
-                noticia.actulizarNoticia(datos);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        /*
-       @Autor: Carlos Alfonso Pinilla Garzon
-       *Fecha de creación: 18/03/2020
-       *Descripcion: 
-       *Recibe: 
-       *Retorna: 
-       */
-        public bool eliminarNoticia(int id)
-        {
-            try
-            {
-                DAONoticia noticia = new DAONoticia();
-                noticia.eliminarNoticia(id);
-                return true;
+                return new DAONoticia().EliminarNoticia(id);
             }
             catch (Exception ex)
             {

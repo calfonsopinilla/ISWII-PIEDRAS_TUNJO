@@ -146,7 +146,7 @@ namespace PiedrasDelTunjo.Controllers
                     return "Usuarios/Avatars";
                 case "reserva-tickets":
                     return "Reserva/Tickets";
-                case "noticias":
+                case "noticia":
                     return "Noticias";
                 case "picto":
                     return "Pictogramas";

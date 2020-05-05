@@ -12,7 +12,7 @@ using System.Web.Http.Cors;
 namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("Noticias")]
+    [RoutePrefix("noticias")]
     public class NoticiaController : ApiController
     {
         /*
@@ -23,13 +23,13 @@ namespace PiedrasDelTunjo.Controllers
        *Retorna: una lista de noticias
        */
         [HttpGet]
-        [Route("noticias")]
-        public IHttpActionResult enviarNoticias()
+        [Route("")]
+        public HttpResponseMessage ObtenerNoticias()
         {
             try
             {
-                var noticias = new LNoticia().informacionNoticia();
-                return Ok(noticias);
+                var noticias = new LNoticia().ObtenerNoticias();
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, noticias });
             }
             catch (Exception ex)
             {
@@ -39,11 +39,11 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("inicio")]
-        public IHttpActionResult enviarNoticiasInicio()
+        public IHttpActionResult ObtenerNoticiasInicio()
         {
             try
             {
-                var noticias = new LNoticia().informacionNoticia().OrderByDescending(x => x.Id).Take(3).ToList();
+                var noticias = new LNoticia().ObtenerNoticias().OrderByDescending(x => x.Id).Take(3).ToList();
                 return Ok(noticias);
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace PiedrasDelTunjo.Controllers
         {
             try
             {
-                var noticias = new LNoticia().informacionNoticia().OrderByDescending(x => x.Id).Take(3).ToList();
+                var noticias = new LNoticia().ObtenerNoticias().OrderByDescending(x => x.Id).Take(3).ToList();
                 return Ok(noticias);
             }
             catch (Exception ex)
@@ -67,8 +67,6 @@ namespace PiedrasDelTunjo.Controllers
                 throw ex;
             }
         }
-
-
 
         /*
        @Autor: Carlos Alfonso Pinilla Garzon
@@ -78,27 +76,31 @@ namespace PiedrasDelTunjo.Controllers
        *Retorna: un true para saber que se agregaron los datos
        */
         [HttpPost]
-        [Route("Agregar")]
-        public HttpResponseMessage Agregar([FromBody]UNoticia noticia)
+        [Authorize]
+        [Route("")]
+        public HttpResponseMessage Agregar([FromBody] UNoticia noticia)
         {
             if (noticia == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "Noticia null" });
             }
-            bool creado = new LNoticia().agregarNoticia(noticia);
+            noticia.FechaPublicacion = DateTime.Now;
+            bool creado = new LNoticia().AgregarNoticia(noticia);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
 
 
         [HttpGet]
         [Route("{id}")]        
-        public IHttpActionResult BuscarNoticia([FromUri] int id)
-        {                      
-            return Ok(new LNoticia().Buscar(id));
+        public HttpResponseMessage BuscarNoticia([FromUri] int id)
+        {
+            var noticia = new LNoticia().Buscar(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = (noticia != null), noticia });
         }
 
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]   
         public HttpResponseMessage ActualizarNoticia([FromUri] int id, [FromBody] UNoticia noticia)
         {
@@ -110,48 +112,18 @@ namespace PiedrasDelTunjo.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
 
-
-        /*
-       @Autor: Carlos Alfonso Pinilla Garzon
-       *Fecha de creación: 18/03/2020
-       *Descripcion: 
-       *Recibe: 
-       *Retorna: 
-       */
-        [HttpGet]
-        [Route("actualizarNoticia")]
-        public bool actualizarNoticia(string datosJson)
+        [HttpDelete]
+        [Authorize]
+        [Route("{id}")]
+        public HttpResponseMessage EliminarNoticia([FromUri] int id)
         {
-            try
+            var noticia = new LNoticia().Buscar(id);
+            if (noticia == null)
             {
-                LNoticia noticia = new LNoticia();
-                return noticia.actualizarNoticia(datosJson);
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = false, message = "bad request" });
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        /*
-       @Autor: Carlos Alfonso Pinilla Garzon
-       *Fecha de creación: 18/03/2020
-       *Descripcion: 
-       *Recibe: 
-       *Retorna: 
-       */
-        [HttpGet]
-        [Route("eliminarNoticia")]
-        public bool eliminarNoticia([FromUri]int id)
-        {
-            try
-            {
-                LNoticia noticia = new LNoticia();
-                return noticia.eliminarNoticia(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            bool deleted = new LNoticia().EliminarNoticia(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = deleted });
         }
     }
 }
