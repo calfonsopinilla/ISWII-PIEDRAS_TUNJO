@@ -12,7 +12,6 @@ namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("recorridos")]
-    [Authorize]
     public class RecorridosController : ApiController
     {
         [HttpGet]
@@ -24,6 +23,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("")]
         public HttpResponseMessage Crear([FromBody] URecorrido recorrido)
         {
@@ -38,6 +38,7 @@ namespace PiedrasDelTunjo.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public HttpResponseMessage Eliminar([FromUri] int id)
         {
