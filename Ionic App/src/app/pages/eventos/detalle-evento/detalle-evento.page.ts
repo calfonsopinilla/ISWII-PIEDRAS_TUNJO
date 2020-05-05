@@ -22,13 +22,13 @@ import { ComentarioEvento } from '../../../interfaces/comentario-evento.interfac
 })
 export class DetalleEventoPage implements OnInit {
     
-  private evento: Evento;
-  private usuario: Usuario;
-  private formUser: FormGroup;  
-  private comentario: Comentario;
-  private comentarioUsuario: ComentarioEvento;  
-  private listaComentariosEvento: ComentarioEvento[] = [];  
-  private estado: boolean;  
+  evento: Evento;
+  usuario: Usuario;
+  formUser: FormGroup;  
+  comentario: Comentario;
+  comentarioUsuario: ComentarioEvento;  
+  listaComentariosEvento: ComentarioEvento[] = [];  
+  estado: boolean;  
 
   constructor(    
     private router: Router,

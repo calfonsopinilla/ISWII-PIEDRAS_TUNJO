@@ -36,19 +36,6 @@ export class MenuComponent implements OnInit {
       icon: 'aperture'
     },
     {
-      label: 'PQR´s',
-      ruta: '/pqr-parque',
-      icon: 'help-circle'
-    },
-    {
-      label: 'Preguntas frecuentes',
-      ruta: '/preguntas-frecuentes',
-      icon: 'help-circle'
-    }
-  ];
-
-  itemsServicios = [
-    {
       label: 'Recorridos',
       ruta: '/recorridos',
       icon: 'compass'
@@ -58,6 +45,19 @@ export class MenuComponent implements OnInit {
       ruta: '/pictogramas',
       icon: 'bonfire'
     },
+    {
+      label: 'Preguntas frecuentes',
+      ruta: '/preguntas-frecuentes',
+      icon: 'help-circle'
+    },
+    {
+      label: 'PQR´s',
+      ruta: '/pqr-parque',
+      icon: 'help-circle'
+    }
+  ];
+
+  itemsServicios = [
     {
       label : 'Promociones',
       ruta : '/promociones',

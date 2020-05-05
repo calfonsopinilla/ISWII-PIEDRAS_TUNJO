@@ -18,9 +18,9 @@ import { Usuario } from '../../interfaces/usuario.interface';
 export class EventosPage implements OnInit {
 
   // Variables
-  private usuario: Usuario;
-  private session: boolean;
-  private eventos: Evento[] = [];    
+  usuario: Usuario;
+  session: boolean;
+  eventos: Evento[] = [];
 
   constructor( // Constructor
     private eventoService: EventoService,

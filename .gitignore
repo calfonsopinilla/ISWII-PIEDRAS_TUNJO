@@ -38,3 +38,6 @@ CoreAPI/WebSite/PiedrasDelTunjo/.vs/PiedrasDelTunjo/v15/.suo
 *.ide-wal
 *.dll
 *.config
+Ionic App/package.json
+Ionic App/package-lock.json
+Ionic App/src/environments/environment.ts

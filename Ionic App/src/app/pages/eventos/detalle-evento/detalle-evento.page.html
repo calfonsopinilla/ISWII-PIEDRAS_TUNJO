@@ -44,19 +44,19 @@
     <div *ngIf="estado == true"> <!-- Actualizar Comentario -->
       <div class="comentario_usuario_cntr" *ngIf="comentarioUsuario">
         <ion-avatar slot="start">
-          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentarioUsuario.usuario.Icono_url }}">
+          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentarioUsuario.Usuario.Icono_url }}">
         </ion-avatar>
         <ion-label>
-          <h2>{{ comentarioUsuario.usuario.Nombre }} {{ comentarioUsuario.usuario.Apellido }}</h2>              
-          <p>{{ comentarioUsuario.fechaPublicacion | date: 'MMM d, y'  }}</p>
+          <h2>{{ comentarioUsuario.Usuario.Nombre }} {{ comentarioUsuario.Usuario.Apellido }}</h2>              
+          <p>{{ comentarioUsuario.FechaPublicacion | date: 'MMM d, y'  }}</p>
           <form [formGroup]="formUser" (ngSubmit)="actualizarComentario()" *ngIf="formUser">        
             <h5>
               Mi calificación: 
-              <span style="font-weight: normal;">{{ comentarioUsuario.calificacion }}/5</span>
+              <span style="font-weight: normal;">{{ comentarioUsuario.Calificacion }}/5</span>
             </h5>
             <rating formControlName="Calificacion" readonly="false" size="small"></rating>
             <h5>Mi comentario:</h5>
-            <ion-textarea color="dark" formControlName="Descripcion" value="{{ comentarioUsuario.descripcion }}"></ion-textarea>
+            <ion-textarea color="dark" formControlName="Descripcion" value="{{ comentarioUsuario.Descripcion }}"></ion-textarea>
             <ion-button id="button-submit" type="submit">Actualizar</ion-button>
           </form>              
         </ion-label>        
@@ -65,18 +65,18 @@
 
     <ion-item *ngFor="let comentario of listaComentariosEvento">
         <ion-avatar slot="start">
-            <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentario.usuario.Icono_url }}">
+            <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentario.Usuario.Icono_url }}">
         </ion-avatar>
         <ion-label>
           <ion-button style="float: right;" (click)="reportarComentario(comentario)">
             <ion-icon name="skull"></ion-icon>
           </ion-button>
-          <h2 style="font-weight: bold;">{{ comentario.usuario.Nombre }} {{ comentario.usuario.Apellido }}</h2>      
+          <h2 style="font-weight: bold;">{{ comentario.usuario.Nombre }} {{ comentario.usuario.Apellido }}</h2>                
           <p>
-            <img src="../../../../assets/img/{{ comentario.calificacion }}-star.png" width="26%" style="margin-right: 6px;">
-            {{ comentario.fechaPublicacion | date: 'MMM d, y'   }}
+            <img src="../../../../assets/img/{{ comentario.Calificacion }}-star.png" width="26%" style="margin-right: 6px;">
+            {{ comentario.FechaPublicacion | date: 'MMM d, y'   }}
           </p>
-          <p>{{ comentario.descripcion }}</p>
+          <p>{{ comentario.Descripcion }}</p>
         </ion-label>
     </ion-item>
 
