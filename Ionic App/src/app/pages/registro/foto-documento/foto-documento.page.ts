@@ -19,9 +19,16 @@ export class FotoDocumentoPage implements OnInit {
 
   imgData: any;
   img: any;
-  response: any;  
+  response: any;
   user: any;
-  userAux: Usuario;    
+  userAux: Usuario;
+
+  // verificar que la imagen esté pendiente de revisión
+  pendingConfirmation = false;
+  slidesOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
 
   constructor(
     private router: Router,
@@ -29,15 +36,14 @@ export class FotoDocumentoPage implements OnInit {
     private imagesService: ImagesService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService,
-    private userService: UserService
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-
     this.authService.getUsuario().then(data => {
       this.user = data;
-    });    
+      this.pendingConfirmation = this.user.Imagen_documento !== null;
+    });
   }
 
   openCamera() {
@@ -64,13 +70,17 @@ export class FotoDocumentoPage implements OnInit {
   async sendImage() {
     const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen' });
     loading.present();
-    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);    
-    if (answer == true) {                                        
-        this.presentToast("Imagen subida con exito al servidor");
+    const answer: boolean = await this.imagesService.uploadDni(this.imgData, this.user['Id']);
+    if (answer === true) {
+      // es necesario actualizar el usuario para obtener el nuevo token con los nuevos datos del user
+      const update = await this.authService.actualizarUsuario(this.user);
+      if (update) {
+        this.presentToast('Imagen subida con exito al servidor');
         this.router.navigate(['/inicio']);
-      } else {
-        this.presentToast("ERROR: Ha ocurrido un error, intentelo nuevamente");
-      }                      
+      }
+    } else {
+      this.presentToast('ERROR: Ha ocurrido un error, intentelo nuevamente');
+    }
   }
 
   async presentToast(message: any) {

@@ -1,6 +1,6 @@
-<app-header titulo="Foto Documento" tipo="back"></app-header>
+<app-header titulo="Foto Documento" tipo="back" [color]="pendingConfirmation?'dark':'tertiary'"></app-header>
 
-<ion-content [fullscreen]>
+<ion-content [fullscreen] *ngIf="!pendingConfirmation">
 
   <ion-item *ngIf="user">
     <ion-label style="display: block; font-weight: bold;">
@@ -34,8 +34,23 @@
     {{ response | json }}
   </p>
   <br>
-  <!-- <br>
-  <p>
-    {{ responseAc | json }}
-  </p> -->
+</ion-content>
+
+<ion-content *ngIf="pendingConfirmation" color="dark" class="ion-padding">
+  <ion-slides [options]="slidesOpts">
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-button expand="full" fill="outline" color="secondary">Pendiente</ion-button>
+          <ion-card-subtitle>Tu documento está siendo revisado</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <img src="/assets/mock-images/reloj.jpg" />
+          <ion-chip color="warning">
+            <ion-label>En las próximas horas tu documento será validado</ion-label>
+          </ion-chip>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
