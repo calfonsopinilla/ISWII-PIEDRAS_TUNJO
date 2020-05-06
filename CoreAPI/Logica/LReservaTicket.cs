@@ -322,10 +322,8 @@ namespace Logica
         }
 
 
-        public List<UReporteTicket> ObtenerVendidos_TicketsFechaYTipo(DateTime fecha, int tipoTicket)
-        {
-           
-
+        public List<UReporteTicket> ObtenerVendidos_TicketsFechaYTipo(DateTime fecha, int tipoTicket, int tipoFiltro)
+        {          
             try
             {
                 List<UReservaTicket> listaTickets = new DaoReservaTicket().ObtenerVendidos_TicketsFechaYTipo(tipoTicket);
@@ -338,36 +336,106 @@ namespace Logica
                     return null;
                 }
                 else
-                {
-                    for (int x = 0; x < listaTickets.Count(); x++)
-                    {
-                        if ((fecha == listaTickets[x].FechaIngreso) && (tipoTicket == listaTickets[x].idTicket))
-                        {
-                            for (int i = 0; i< TiposTicket.Count; i++)
+                {                                                     
+                        //por dia
+                        if (tipoFiltro == 1) {
+                            for (int x = 0; x < listaTickets.Count(); x++)
                             {
-                                if ((tipoTicket == listaTickets[x].idTicket) && (tipoTicket == TiposTicket[i].Id))
+                                if ((fecha == listaTickets[x].FechaIngreso))// && (tipoTicket == listaTickets[x].idTicket)
                                 {
+                                    for (int i = 0; i < TiposTicket.Count; i++)
+                                    {
+                                        if ((tipoTicket == listaTickets[x].idTicket) && (tipoTicket == TiposTicket[i].Id))
+                                        {
 
-                                    UReporteTicket info = new UReporteTicket();
-                                    info.Id = listaTickets[x].Id;
-                                    info.FechaCompra = listaTickets[x].FechaCompra;
-                                    info.FechaIngreso = listaTickets[x].FechaIngreso;
-                                    info.Precio = listaTickets[x].Precio;
-                                    info.Cantidad = listaTickets[x].Cantidad;
-                                    info.Qr = listaTickets[x].Qr;
-                                    info.Token = listaTickets[x].Token;
-                                    info.LastModification = listaTickets[x].LastModification;
-                                    info.EstadoId = listaTickets[x].EstadoId;
-                                    info.tipoTicket = TiposTicket[i].Nombre;
-                                    info.NumeroDocumento = listaTickets[x].NumeroDocumento;
-                                    info.UUsuarioId = listaTickets[x].UUsuarioId;
-                                    info.UUsuario = listaTickets[x].UUsuario;
+                                            UReporteTicket info = new UReporteTicket();
+                                            info.Id = listaTickets[x].Id;
+                                            info.FechaCompra = listaTickets[x].FechaCompra;
+                                            info.FechaIngreso = listaTickets[x].FechaIngreso;
+                                            info.Precio = listaTickets[x].Precio;
+                                            info.Cantidad = listaTickets[x].Cantidad;
+                                            info.Qr = listaTickets[x].Qr;
+                                            info.Token = listaTickets[x].Token;
+                                            info.LastModification = listaTickets[x].LastModification;
+                                            info.EstadoId = listaTickets[x].EstadoId;
+                                            info.tipoTicket = TiposTicket[i].Nombre;
+                                            info.NumeroDocumento = listaTickets[x].NumeroDocumento;
+                                            info.UUsuarioId = listaTickets[x].UUsuarioId;
+                                            info.UUsuario = listaTickets[x].UUsuario;
 
-                                    listadoTickets.Add(info);
+                                            listadoTickets.Add(info);
+                                        }
+                                    }
                                 }
-                            }                                                        
-                        }                        
-                    }                    
+                            }
+                        }//por mes, si es por mes, se necesita que la fecha a introducir sea la fecha de inicio de mes
+                        else if (tipoFiltro == 2)
+                        {
+                            for (int x = 0; x < listaTickets.Count(); x++)
+                            {
+                                if ((fecha.Month == listaTickets[x].FechaIngreso.Month) && (fecha.Year == listaTickets[x].FechaIngreso.Year))
+                                {
+                                    for (int i = 0; i < TiposTicket.Count; i++)
+                                    {
+                                        if ((tipoTicket == listaTickets[x].idTicket) && (tipoTicket == TiposTicket[i].Id))
+                                        {
+
+                                            UReporteTicket info = new UReporteTicket();
+                                            info.Id = listaTickets[x].Id;
+                                            info.FechaCompra = listaTickets[x].FechaCompra;
+                                            info.FechaIngreso = listaTickets[x].FechaIngreso;
+                                            info.Precio = listaTickets[x].Precio;
+                                            info.Cantidad = listaTickets[x].Cantidad;
+                                            info.Qr = listaTickets[x].Qr;
+                                            info.Token = listaTickets[x].Token;
+                                            info.LastModification = listaTickets[x].LastModification;
+                                            info.EstadoId = listaTickets[x].EstadoId;
+                                            info.tipoTicket = TiposTicket[i].Nombre;
+                                            info.NumeroDocumento = listaTickets[x].NumeroDocumento;
+                                            info.UUsuarioId = listaTickets[x].UUsuarioId;
+                                            info.UUsuario = listaTickets[x].UUsuario;
+
+                                            listadoTickets.Add(info);
+                                        }
+                                    }
+                                }
+
+                            }
+                        }//por año, si es por año, solo se mostraran los tickets de hace un año a partir del dia actual
+                        else if (tipoFiltro == 3)
+                        {
+
+                            for (int x = 0; x < listaTickets.Count(); x++)
+                            {
+                                DateTime fechaCubierta = DateTime.Now.AddDays(-365);
+                                if ((listaTickets[x].FechaIngreso >= fechaCubierta) && (listaTickets[x].FechaIngreso <= DateTime.Now))
+                                {
+                                    for (int i = 0; i < TiposTicket.Count; i++)
+                                    {
+                                        if ((tipoTicket == listaTickets[x].idTicket) && (tipoTicket == TiposTicket[i].Id))
+                                        {
+
+                                            UReporteTicket info = new UReporteTicket();
+                                            info.Id = listaTickets[x].Id;
+                                            info.FechaCompra = listaTickets[x].FechaCompra;
+                                            info.FechaIngreso = listaTickets[x].FechaIngreso;
+                                            info.Precio = listaTickets[x].Precio;
+                                            info.Cantidad = listaTickets[x].Cantidad;
+                                            info.Qr = listaTickets[x].Qr;
+                                            info.Token = listaTickets[x].Token;
+                                            info.LastModification = listaTickets[x].LastModification;
+                                            info.EstadoId = listaTickets[x].EstadoId;
+                                            info.tipoTicket = TiposTicket[i].Nombre;
+                                            info.NumeroDocumento = listaTickets[x].NumeroDocumento;
+                                            info.UUsuarioId = listaTickets[x].UUsuarioId;
+                                            info.UUsuario = listaTickets[x].UUsuario;
+
+                                            listadoTickets.Add(info);
+                                        }
+                                    }
+                                }
+                            }
+                        }                                        
                     return listadoTickets;
                 }
             }

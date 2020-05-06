@@ -17,9 +17,9 @@ namespace PiedrasDelTunjo.Controllers
 
         [HttpGet]
         [Route("ReporteTickets")]        
-        public HttpResponseMessage ObtenerInfoTickets([FromUri] DateTime fecha, [FromUri] int tipoTicket)
+        public HttpResponseMessage ObtenerInfoTickets([FromUri] DateTime fecha, [FromUri] int tipoTicket, [FromUri] int tipoFiltro)
         {
-            var ticket = new LReservaTicket().ObtenerVendidos_TicketsFechaYTipo(fecha, tipoTicket);
+            var ticket = new LReservaTicket().ObtenerVendidos_TicketsFechaYTipo(fecha, tipoTicket, tipoFiltro);
             return Request.CreateResponse(HttpStatusCode.OK, ticket);
         }
 
