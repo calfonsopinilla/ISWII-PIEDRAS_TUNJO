@@ -25,7 +25,7 @@ namespace Data
                 try
                 {
                    // return db.Noticias.OrderBy(x => x.Id).ToList();
-                    return db.Noticias.OrderBy(x => x.Id).ToList();
+                    return db.Noticias.OrderByDescending(x => x.Id).ToList();
                 }
                 catch (Exception ex)
                 {
