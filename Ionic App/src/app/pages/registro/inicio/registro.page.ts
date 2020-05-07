@@ -54,9 +54,7 @@ export class RegistroPage implements OnInit {
       ]
     });
     this.tenYearsBefore = new Date();
-    this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);
-    this.tenYearsBefore.toDateString();
-    console.log(this.tenYearsBefore.getFullYear().toString());
+    this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);    
     this.infoParqueService.obtenerItemInfo(8)
                             .subscribe(res => {
                               this.terminosCondiciones = res['descripcion'];
