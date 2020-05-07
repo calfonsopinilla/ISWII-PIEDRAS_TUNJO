@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
-using Microsoft.AspNetCore.Authorization;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -19,6 +18,7 @@ namespace PiedrasDelTunjo.Controllers
     */
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("cabana")]
+    [Authorize]
     public class CabanaController : ApiController
     {
         /*

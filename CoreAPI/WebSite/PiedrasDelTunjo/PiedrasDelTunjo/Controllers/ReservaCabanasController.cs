@@ -12,7 +12,7 @@ namespace PiedrasDelTunjo.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("reserva-cabanas")]
-    // [Authorize]
+    [Authorize]
     public class ReservaCabanasController : ApiController
     {
         [HttpGet]
