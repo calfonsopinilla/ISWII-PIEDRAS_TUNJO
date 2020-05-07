@@ -67,11 +67,11 @@ namespace Data
             }
         }
 
-        public bool Actualizar(int id, UUsuario Usuarios)
+        public bool Actualizar(int id, UUsuario usuario)
         {
             try
             {
-                db.Entry(Usuarios).State = EntityState.Modified;
+                db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
             }

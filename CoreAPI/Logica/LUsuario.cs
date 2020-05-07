@@ -142,9 +142,9 @@ namespace Logica {
             return usuarios.Where(x => x.CorreoElectronico == correo).FirstOrDefault();
         }
 
-        public bool Actualizar(int id, UUsuario usuarios)
+        public bool Actualizar(int id, UUsuario usuario)
         {
-            return new DaoUsuario().Actualizar(id, usuarios);
+            return new DaoUsuario().Actualizar(id, usuario);
         }
 
         public bool Eliminar(int id)

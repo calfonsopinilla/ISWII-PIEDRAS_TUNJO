@@ -11,6 +11,7 @@ namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("Usuarios")]
+    [Authorize]
     public class UsuarioController : ApiController{
 
         /*
@@ -45,7 +46,6 @@ namespace PiedrasDelTunjo.Controllers {
             * Ruta: Usuarios/actualizar/no-verificado
         */
         [HttpPut]
-        //[Authorize]
         [Route("actualizar/no-verificado")]
         public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario) {
 
@@ -67,12 +67,12 @@ namespace PiedrasDelTunjo.Controllers {
 
         [HttpGet]
         [Route("")]
-        public IHttpActionResult ObtenerUsuarios()
+        public HttpResponseMessage ObtenerUsuarios()
         {
             try
             {
-                var informacion = new LUsuario().ObtenerUsuarios();
-                return Ok(informacion);
+                var usuarios = new LUsuario().ObtenerUsuarios();
+                return Request.CreateResponse(HttpStatusCode.OK, usuarios);
             }
             catch (Exception ex)
             {
