@@ -17,7 +17,9 @@ namespace Data
         {
             var reservas = db.ReservaCabanas
                               .Include(x => x.UCabana)
-                             .Where(x => x.FechaReserva >= DateTime.Today).ToList();
+                             //.Where(x => x.FechaReserva >= DateTime.Today)
+                             .OrderBy(x => x.FechaReserva)
+                             .ToList();
             return reservas;
         }
 

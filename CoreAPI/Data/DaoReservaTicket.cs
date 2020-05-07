@@ -52,6 +52,7 @@ namespace Data
             {
                 return db.ReservaTickets
                          .Include("UUsuario")
+                         .OrderBy(x => x.FechaIngreso)
                          .ToList();
             }catch(Exception ex)
             {
