@@ -1,9 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { ReservaCabana } from '../interfaces/reserva-cabana.interface';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 const apiUrl = environment.servicesAPI;
 
@@ -12,15 +16,37 @@ const apiUrl = environment.servicesAPI;
 })
 export class ReservaCabanaService {
 
+  private headers: HttpHeaders;
   changeReservas$ = new EventEmitter<boolean>();
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private router: Router,
+    private storage: Storage
   ) { }
 
+  async prepareHeaders() {
+    const token = await this.storage.get('token') || undefined;
+    if (!token) {
+      this.router.navigateByUrl('/login');
+      return false;
+    } else {
+      this.headers = new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      });
+      return true;
+    }
+  }
+
   async reservar(reserva: any): Promise<boolean> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
+
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     loading.present();
 
@@ -28,6 +54,9 @@ export class ReservaCabanaService {
     reserva['uusuarioId'] = usuario.Id;
     return new Promise(resolve => {
       this.http.post(`${ apiUrl }/reserva-cabanas`, reserva)
+                .pipe(
+                  catchError(err => of({ ok: false }))
+                )
                 .subscribe(res => {
                   this.changeReservas$.emit(res['ok']);
                   resolve(res['ok']);
@@ -36,18 +65,34 @@ export class ReservaCabanaService {
   }
 
   async getReservasByUser(): Promise<ReservaCabana[]> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     const usuario = await this.authService.getUsuario();
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/reserva-cabanas?userId=${ usuario.Id }`)
+               .pipe(
+                 catchError(err => of({ ok: false }))
+               )
                .subscribe(res => {
                  resolve( res['ok'] === true ? res['reservas'] : [] );
                });
     });
   }
 
-  getDiasHabilesCabana(id: number): Promise<any[]> {
+  async getDiasHabilesCabana(id: number): Promise<any[]> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/reserva-cabanas/diasHabiles?id=${ id }`)
+                .pipe(
+                  catchError(err => of({ok: false}))
+                )
                 .subscribe(res => {
                   if (res['ok'] === true) {
                     const dates = [];
@@ -98,9 +143,17 @@ export class ReservaCabanaService {
     return array.find(x => x === value);
   }
 
-  cancelarReservaCabana(id: number) {
+  async cancelarReservaCabana(id: number) {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
     return new Promise(resolve => {
       this.http.delete(`${ apiUrl }/reserva-cabanas/${ id }`)
+                .pipe(
+                  catchError(err => of({ ok: false }))
+                )
                 .subscribe(res => {
                   this.changeReservas$.emit(res['ok']);
                   resolve(res['ok']);

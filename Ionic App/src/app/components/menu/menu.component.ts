@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
       icon: 'location'
     },
     {
-      label: 'Piedras',
+      label: 'Folklore',
       ruta: '/piedras-parque/6',
       icon: 'aperture'
     },

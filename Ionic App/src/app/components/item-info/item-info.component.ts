@@ -58,7 +58,7 @@ export class ItemInfoComponent implements AfterViewInit, OnInit {
   }
 
   esItemPiedras() {
-    return this.itemInfo.property.includes('Piedras');
+    return this.itemInfo.property.includes('Folklore');
   }
 
 }

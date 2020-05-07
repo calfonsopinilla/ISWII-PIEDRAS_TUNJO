@@ -21,7 +21,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 // firebase
 import { FCM} from '@ionic-native/fcm/ngx';
-import { Push } from '@ionic-native/push/ngx'; 
+import { Push } from '@ionic-native/push/ngx';
 
 import { IonicRatingModule } from 'ionic4-rating';
 
@@ -38,7 +38,7 @@ import { IonicRatingModule } from 'ionic4-rating';
     NgxQRCodeModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicRatingModule    
+    IonicRatingModule
   ],
   providers: [
     FCM,

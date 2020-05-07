@@ -6,6 +6,7 @@ import * as Mapboxgl from 'mapbox-gl';
 import { environment } from '../../../environments/environment';
 import { GeometryService } from '../../services/geometry.service';
 import { PuntoInteres } from '../../interfaces/punto-interes.interface';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 const LONGITUD = -74.3459602;
 const LATITUD = 4.8154681;
@@ -20,6 +21,7 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) map: any;
   mapbox: Mapboxgl.Map;
   recorrido: Recorrido = {};
+  flyDone = false;
 
   geojson = {
     type: 'FeatureCollection',
@@ -40,7 +42,8 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private recorridosService: RecorridosService,
-    private geometryService: GeometryService
+    private geometryService: GeometryService,
+    private geolocation: Geolocation
   ) { }
 
   ngOnInit() {
@@ -124,6 +127,33 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
                   .setPopup(popup)
                   .setLngLat([x.Longitud, x.Latitud])
                   .addTo(this.mapbox);
+    });
+  }
+
+  obtenerGeolocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      const { latitude, longitude } = resp.coords;
+      // console.log(resp.coords);
+      this.flyLocation(longitude, latitude);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+  }
+
+  flyLocation(lng: number, lat: number) {
+    // para no repetir markers
+    if (!this.flyDone) {
+      const popup = new Mapboxgl.Popup({offset: 25}).setText('You');
+      new Mapboxgl.Marker({draggable: false, color: '#000'})
+                  .setLngLat([lng, lat])
+                  .setPopup(popup)
+                  .addTo(this.mapbox);
+      this.flyDone = true;
+    }
+    // fly to location
+    this.mapbox.flyTo({
+      center: [lng, lat],
+      essential: true // this animation is considered essential with respect to prefers-reduced-motion
     });
   }
 
