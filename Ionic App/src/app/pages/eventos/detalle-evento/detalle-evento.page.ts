@@ -29,7 +29,7 @@ export class DetalleEventoPage implements OnInit {
   comentarioUsuario: ComentarioEvento;  
   listaComentariosEvento: ComentarioEvento[] = [];  
   estado: boolean;  
-  private comentarioAuxiliar: Comentario;
+  puntuacion: Number;  
 
   constructor(    
     private router: Router,
@@ -49,11 +49,12 @@ export class DetalleEventoPage implements OnInit {
     });    
     const id = this.route.snapshot.paramMap.get('id');    
     this.evento = await this.eventoService.buscarEvento(Number(id));    
-    if (this.evento != null) {
-      await this.leerComentariosId("evento",Number(id));      
+    this.puntuacion = this.evento.Calificacion;
+    if (this.evento != null) {      
       await this.authService.getUsuario().then(user => {
         this.usuario = user;        
-      });
+      });      
+      await this.leerComentariosId("evento",Number(id),this.usuario.Id);            
       await this.leerComentarioUsuario("evento",Number(id),this.usuario.Id);                  
 
     } else {
@@ -72,7 +73,11 @@ export class DetalleEventoPage implements OnInit {
     };        
     const creado = await this.comentarioService.crearComentario("evento",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
-      this.presentToast("Comentario agregado correctamente");      
+      this.evento = await this.eventoService.buscarEvento(Number(this.route.snapshot.paramMap.get('id')));    
+      this.puntuacion = this.evento.Calificacion;
+      this.presentToast("Comentario agregado correctamente");   
+      this.estado = true;   
+      await this.leerComentarioUsuario("evento",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
     } else {
       this.presentToast("ERROR: No se pudó agregar su comentario");
     }    
@@ -91,19 +96,22 @@ export class DetalleEventoPage implements OnInit {
     };      
     const creado = await this.comentarioService.actualizarComentario("evento",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
-      this.presentToast("Comentario actualizado correctamente");      
+      this.presentToast("Comentario actualizado correctamente");          
+      this.evento = await this.eventoService.buscarEvento(Number(this.route.snapshot.paramMap.get('id')));    
+      this.puntuacion = this.evento.Calificacion;
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }
   }
 
   async reportarComentario(comentario: any) {    
-    const ok = await this.comentarioService.reportarComentario("evento", 1, comentario);    
+    const ok = await this.comentarioService.reportarComentario("evento", Number(this.route.snapshot.paramMap.get('id')), comentario);    
     if (ok == true) {
       this.presentToast("Comentario reportado correctamente");
+      await this.leerComentariosId("evento",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);            
     } else {
       this.presentToast("ERROR: No se pudo reportar el comentario");
-    }
+    }    
   }
 
   async leerComentarioUsuario(table: string, objectId: number, userId: number) {
@@ -116,9 +124,15 @@ export class DetalleEventoPage implements OnInit {
     }
   }
 
-  async leerComentariosId(table: string, objectId: number) {
+  async leerComentariosId(table: string, objectId: number, userId: number) {
     const lista = await this.comentarioService.leerComentariosId(table,objectId);        
     this.listaComentariosEvento = lista;    
+    for (let i = 0; i < this.listaComentariosEvento.length; i++) {      
+      const comentario = this.listaComentariosEvento[i];
+      if (comentario['usuarioId'] == userId) {
+        this.listaComentariosEvento.splice(i,1);
+      }
+    }
   }
 
   async presentToast(message: string) {
@@ -128,7 +142,7 @@ export class DetalleEventoPage implements OnInit {
       duration: 3000
     });
     await toast.present();
-  }
+  }  
 
   get calificacion() {    
     return this.formUser.get('calificacion');

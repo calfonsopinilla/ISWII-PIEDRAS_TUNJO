@@ -19,6 +19,7 @@ export class RegistroPage implements OnInit {
   userRegister = new UserRegister();
   avatar = undefined;
   terminosCondiciones: string;
+  tenYearsBefore: Date;
 
   constructor(
     private infoParqueService: InfoParqueService,
@@ -52,6 +53,10 @@ export class RegistroPage implements OnInit {
         ]
       ]
     });
+    this.tenYearsBefore = new Date();
+    this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);
+    this.tenYearsBefore.toDateString();
+    console.log(this.tenYearsBefore.getFullYear().toString());
     this.infoParqueService.obtenerItemInfo(8)
                             .subscribe(res => {
                               this.terminosCondiciones = res['descripcion'];
@@ -72,7 +77,7 @@ export class RegistroPage implements OnInit {
   
       await alert.present();
     }    
-  }
+  }  
 
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({

@@ -24,9 +24,9 @@
         <span class="text-danger" 
                 *ngIf="apellido.touched && apellido.dirty && apellido.errors?.required">El apellido es requerido</span>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="tenYearsBefore">
         <ion-label position="floating">Fecha Nacimiento</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" formControlName="fechaNacimiento"></ion-datetime>
+        <ion-datetime displayFormat="DD MMMM YYYY" min="1960" max="{{ this.tenYearsBefore.getFullYear().toString() }}" formControlName="fechaNacimiento"></ion-datetime>
         
         <span class="text-danger" 
                 *ngIf="fechaNac.touched && fechaNac.dirty && fechaNac.errors?.required">La fecha es requerido</span>
@@ -62,7 +62,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Número Documento</ion-label>
-        <ion-input type="text" (keypress)="keypressNumDoc($event)" formControlName="numeroDocumento"></ion-input>
+        <ion-input type="number" (keypress)="keypressNumDoc($event)" formControlName="numeroDocumento"></ion-input>
 
         <span class="text-danger" 
               *ngIf="numeroDoc.touched && numeroDoc.dirty && numeroDoc.errors?.required">
