@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace PiedrasDelTunjo.Controllers {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("Usuarios")]
+    [RoutePrefix("usuarios")]
     [Authorize]
     public class UsuarioController : ApiController{
 
