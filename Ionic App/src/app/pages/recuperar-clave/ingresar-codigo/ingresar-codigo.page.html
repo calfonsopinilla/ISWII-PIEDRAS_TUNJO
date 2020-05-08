@@ -1,0 +1,51 @@
+<app-header titulo="Ingresar Código" tipo="back"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+
+  <form [formGroup]="formRecuperarClave" (ngSubmit)="cambiarClave()" *ngIf="formRecuperarClave">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <span style="display: block; font-size: 20px; font-weight: bold; text-align: center;">Recuperar Clave</span>
+          <p style="display: block; width: 92%; margin: 15px auto; text-align: center;">Ingresa tu código de 6 dígitos que recibiste en tu correo eléctronico e ingresa tu nueva clave para terminar: </p>    
+        </ion-label>        
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Código</ion-label>
+        <ion-input type="text" formControlName="codigoVerificacion"></ion-input>
+
+        <span style="color: red;" class="text-danger" 
+                *ngIf="codigoVerificacion.touched && codigoVerificacion.dirty && codigoVerificacion.errors?.required">El código es requerido</span>
+        <span style="color: red;" class="text-danger" 
+                *ngIf="codigoVerificacion.touched && codigoVerificacion.dirty && codigoVerificacion.errors?.minlength">
+          El código es de 6 caracteres</span>                 
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nueva clave</ion-label>
+        <ion-input type="password" formControlName="clave"></ion-input>
+
+        <span style="color: red;" class="text-danger" 
+                *ngIf="clave.touched && clave.dirty && clave.errors?.required">La clave es requerida</span>
+        <span style="color: red;" class="text-danger" 
+                *ngIf="clave.touched && clave.dirty && clave.errors?.minlength">
+          La contraseña requiere minimo 5 caracteres</span>        
+      </ion-item>      
+
+      <ion-item>
+        <ion-label position="floating">Confirmar clave</ion-label>
+        <ion-input type="password" formControlName="confirmarClave"></ion-input>
+
+        <span style="color: red;" class="text-danger" 
+                *ngIf="confirmarClave.touched && confirmarClave.dirty && confirmarClave.errors?.required">La confirmación de clave es requerida</span>
+        <span style="color: red;" class="text-danger" 
+                *ngIf="confirmarClave.touched && confirmarClave.dirty && confirmarClave.errors?.minlength">
+          La contraseña requiere minimo 5 caracteres</span>                
+      </ion-item>      
+
+      <ion-button [disabled]="formRecuperarClave.invalid || formRecuperarClave.pending" id="button-submit" type="submit" 
+                  expand="full">Actualizar Clave</ion-button>
+    </ion-list>
+  </form>
+
+</ion-content>

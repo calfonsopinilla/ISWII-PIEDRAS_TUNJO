@@ -1,0 +1,27 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" color="primary">
+
+    <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button><ion-icon name="power-outline"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <!-- tab property = routerLink -->
+    <ion-tab-button tab="recuperar">
+      <ion-icon name="sad"></ion-icon>
+      <ion-label>Recuperar clave</ion-label>
+      <!-- <ion-badge>6</ion-badge> -->
+    </ion-tab-button>
+
+    <ion-tab-button tab="ingresar-codigo">
+      <ion-icon name="key"></ion-icon>
+      <ion-label>Ingresar código</ion-label>
+      <!-- <ion-badge>6</ion-badge> -->
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>

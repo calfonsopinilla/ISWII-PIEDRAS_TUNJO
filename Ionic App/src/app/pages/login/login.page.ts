@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -37,10 +39,14 @@ export class LoginPage implements OnInit {
         this.loginForm.reset();
       }
     });
-  }
+  }  
 
   async login() {
     this.authService.login(this.loginForm.value);
+  }
+
+  async olvideClave() {
+    this.router.navigate(['/recuperar-clave']);
   }
 
   get correo() {

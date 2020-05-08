@@ -191,4 +191,33 @@ export class AuthService {
       resolve(usuario.VerificacionCuenta);
     });
   }
+
+  async recuperarClave(correoElectronico: string, numeroDocumento: string) : Promise<boolean> {
+    return new Promise(resolve => {
+      this.http.get(`${ urlApi }/cuenta/recuperar-clave/generar-codigo?correoElectronico=${ correoElectronico }&numeroDocumento=${ numeroDocumento }`)      
+        .subscribe(res => {
+          console.log(res);
+          if (res['ok'] === true) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        }, err => {
+          console.log(err);
+          resolve(false);
+        });
+    });
+  }
+
+  async cambiarClave(codigoVerificacion: string, clave: string) : Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(`${ urlApi }/cuenta/recuperar-clave/cambiar?codigoVerificacion=${ codigoVerificacion }&clave=${ clave }`)
+        .subscribe(res => {
+          console.log(res);
+          resolve(res);
+        }, err => {          
+          resolve(false);
+        });
+    });
+  }
 }

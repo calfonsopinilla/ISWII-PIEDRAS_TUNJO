@@ -36,11 +36,16 @@
           
                 <ion-button [disabled]="loginForm.invalid" color="success" id="button-submit" type="submit" 
                       expand="full">Ingresar</ion-button>
+                <p style="display: block; margin: 8px 0; text-align: center; color: #000;">ó</p>
+                <ion-button (click)="olvideClave()" color="success" expand="full">
+                  <ion-icon style="color: #fff; margin-right: 6px;" name="key"></ion-icon>
+                  <span style="color: #fff">Olvide mi clave</span>
+                </ion-button>
               </ion-list>
             </form>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid>  
 </ion-content>

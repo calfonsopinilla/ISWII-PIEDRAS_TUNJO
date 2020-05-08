@@ -1,0 +1,41 @@
+<app-header titulo="Recuperar Clave" tipo="back"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">
+
+  <form [formGroup]="formRecuperarClave" (ngSubmit)="recuperarClave()" *ngIf="formRecuperarClave">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <span style="display: block; font-size: 20px; font-weight: bold; text-align: center;">Recuperar Clave</span>
+          <p style="display: block; width: 92%; margin: 15px auto; text-align: center;">1). Ingresa tu correo eléctronico y número de documento con los que te registrasté, se te enviará un código de verificación a tu correo electrónico.</p>    
+          <p style="display: block; width: 92%; margin: 15px auto; text-align: center;">2). Luego dirigete a la pestaña de "Ingresar Código" para terminar</p>
+        </ion-label>        
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" formControlName="correoElectronico"></ion-input>
+
+        <span style="color: red;" class="text-danger" 
+                *ngIf="correoElectronico.touched && correoElectronico.dirty && correoElectronico.errors?.required">El código es requerido</span>
+        <span style="color: red;" class="text-danger" 
+                *ngIf="correoElectronico.touched && correoElectronico.dirty && correoElectronico.errors?.minlength">
+          El correo electrónico es muy corto</span>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número de documento</ion-label>
+        <ion-input type="number" formControlName="numeroDocumento"></ion-input>
+
+        <span style="color: red;" class="text-danger" 
+                *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.required">El número de documento es requerido</span>
+        <span style="color: red;" class="text-danger" 
+                *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.min">
+          El número de documento es de 10 caracteres</span>        
+      </ion-item>            
+
+      <ion-button [disabled]="formRecuperarClave.invalid || formRecuperarClave.pending" id="button-submit" type="submit" 
+                  expand="full">Enviar Código</ion-button>
+    </ion-list>
+  </form>
+
+</ion-content>

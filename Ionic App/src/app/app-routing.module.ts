@@ -115,11 +115,16 @@ const routes: Routes = [
     path: 'pictogramas',
     loadChildren: () => import('./pages/pictogramas/pictogramas.module').then( m => m.PictogramasPageModule)
   },
+  {
+    path: 'recuperar-clave',
+    loadChildren: () => import('./pages/recuperar-clave/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  }
+  },
+
 ];
 
 @NgModule({
