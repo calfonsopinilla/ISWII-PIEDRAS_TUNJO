@@ -30,7 +30,7 @@ namespace Data
                 {
                     return this.db.ReservaTickets
                                .Include("UUsuario")
-                               .Where(x => x.NumeroDocumento == numeroDocumento && x.EstadoId == 1)
+                               .Where(x => x.NumeroDocumento == numeroDocumento && x.EstadoId == 1 && x.FechaIngreso >= DateTime.Today)
                                .FirstOrDefault();
                 }
                 //using (this.db) {
