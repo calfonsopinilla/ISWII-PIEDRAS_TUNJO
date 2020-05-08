@@ -22,6 +22,77 @@ namespace PiedrasDelTunjo.Controllers
     public class ReservaTicketsController : ApiController
     {
 
+        /*
+         * Autor: Jhonattan Pulido
+         * Descripción: Método que funciona para tranferir tickets a otro usuario
+         * Parámetros: Int id:  Identificador de la reserva,
+         *                      String numeroDocumento: Numero de documento de la persona a la que se le va a realizar la transferencia,
+         *                      int cantidadTransferencia: Número de tickets a transferir
+         * Retorna: Booleano
+         * Ruta: .../reserva-tickets/transferir?id=*&numeroDocumento=*&cantidadTransferir=*
+         */
+        [AllowAnonymous] // Quitar esto
+        [HttpGet]
+        [Route("transferir")]
+        public HttpResponseMessage TransferirTickets([FromUri] int id, [FromUri] string numeroDocumento, [FromUri] int cantidadTransferir) {
+
+            UReservaTicket reservaTicket = new LReservaTicket().Buscar(id);
+            if (reservaTicket != null) {
+
+                UUsuario usuario = new LUsuario().BuscarPorNumeroDoc(numeroDocumento);
+                if (usuario != null && !reservaTicket.NumeroDocumento.Equals(usuario.NumeroDocumento)) {
+                    
+                    /// Asignando valores existentes
+                    UReservaTicket nuevaReservaTicket = new UReservaTicket();                    
+                    nuevaReservaTicket.FechaCompra = reservaTicket.FechaCompra;
+                    nuevaReservaTicket.FechaIngreso = reservaTicket.FechaIngreso;
+                    nuevaReservaTicket.idTicket = reservaTicket.idTicket;
+                    nuevaReservaTicket.EstadoId = reservaTicket.EstadoId;
+
+                    // Calculando datos del nuevo ticket
+                    nuevaReservaTicket.Id = 0;
+                    nuevaReservaTicket.Cantidad = cantidadTransferir;
+                    nuevaReservaTicket.LastModification = DateTime.Now;
+                    nuevaReservaTicket.UUsuarioId = usuario.Id;
+                    nuevaReservaTicket.Precio = (reservaTicket.Precio / reservaTicket.Cantidad) * cantidadTransferir;
+                    nuevaReservaTicket.NumeroDocumento = usuario.NumeroDocumento;
+                    nuevaReservaTicket.Token = this.Encriptar(JsonConvert.SerializeObject(nuevaReservaTicket));
+                    nuevaReservaTicket.Qr = this.Encriptar(JsonConvert.SerializeObject(nuevaReservaTicket));
+
+                    if (new LReservaTicket().NuevaReserva(nuevaReservaTicket) == true) {
+
+                        try {
+
+                            QRCodeEncoder encoder = new QRCodeEncoder();
+                            Bitmap img = encoder.Encode(nuevaReservaTicket.Qr);
+                            System.Drawing.Image QR = (System.Drawing.Image)img;
+                            using (MemoryStream ms = new MemoryStream()) {
+                                //opcional;
+                                QR.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                Byte[] imageBytes = ms.ToArray();
+                                //imagen
+                                Image imagen1 = (Bitmap)((new ImageConverter()).ConvertFrom(imageBytes));
+                                imagen1.Save(HttpContext.Current.Server.MapPath($"~/Imagenes/Reserva/Tickets/{ nuevaReservaTicket.Qr }.jpeg"));
+                            }
+
+                        } catch { return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha sucedido un error generando el QR" }); }
+
+                        reservaTicket.Precio = (reservaTicket.Precio / reservaTicket.Cantidad) * (reservaTicket.Cantidad - cantidadTransferir);
+                        reservaTicket.Cantidad = reservaTicket.Cantidad - cantidadTransferir;
+                        reservaTicket.LastModification = DateTime.Now;
+
+                        if (new LReservaTicket().ActualizarReserva(reservaTicket.Id, reservaTicket))
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Transferencia realizada con exito" });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha sucedido un error inesperado" });
+                    } else
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha sucedido un error inesperado" });
+                } else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Número de documento inválido" });
+            } else
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: No se encontro la reserva"});
+        }
+
         [HttpGet]
         [Route("")]
         public HttpResponseMessage ObtenerTodos()

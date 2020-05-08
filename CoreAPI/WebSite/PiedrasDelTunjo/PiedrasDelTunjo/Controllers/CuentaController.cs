@@ -178,7 +178,7 @@ namespace PiedrasDelTunjo.Controllers
 
                 if (usuario != null) {
 
-                    if (new LCuenta().LeerRecuperarUserId(usuario.Id) != null) {
+                    if (new LCuenta().LeerRecuperarUserId(usuario.Id) == null) {
 
                         usuario.Token = new LEncriptar().CodigoVerificacion();
 
@@ -205,7 +205,7 @@ namespace PiedrasDelTunjo.Controllers
             Descripcion: Método que actualiza la contraseña de un usuario
             Parámetros: String codigoVerificacion, String clave
             Retorna: True - Si la contraseña se cambia satisfactoriamente, False - Si ocurrio un error durante la ejecución del método
-            Ruta: .../cuenta/recuperar-clave/generar-codigo?codigoVerificacion=*****&clave=123
+            Ruta: .../cuenta/recuperar-clave/cambiar?codigoVerificacion=*****&clave=123
         */
         [HttpGet]
         [Route("recuperar-clave/cambiar")]

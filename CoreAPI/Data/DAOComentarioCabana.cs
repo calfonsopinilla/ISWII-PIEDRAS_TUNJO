@@ -45,7 +45,7 @@ namespace Data {
             using (this.dataBase) {
 
                 return this.dataBase.ComentarioCabana.Where(
-                        x => x.CabanaId == comentario.CabanaId
+                        x => x.CabanaId == comentario.CabanaId && x.Reportado == false
                     ).ToList();
             }
         }
@@ -64,7 +64,7 @@ namespace Data {
                 return this.dataBase.ComentarioCabana
                     .Include("Usuario")
                     .Where(
-                        x => x.UsuarioId == comentario.UsuarioId
+                        x => x.UsuarioId == comentario.UsuarioId && x.CabanaId == comentario.CabanaId
                     ).FirstOrDefault();
             }
         }

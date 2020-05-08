@@ -45,7 +45,7 @@ namespace Data {
                 return this.dataBase.ComentarioPictograma
                     .Include("Usuario")
                     .Where(
-                        x => x.PictogramaId == comentario.PictogramaId
+                        x => x.PictogramaId == comentario.PictogramaId && x.Reportado == false
                     ).ToList();
             }
         }
@@ -64,7 +64,7 @@ namespace Data {
                 return this.dataBase.ComentarioPictograma
                     .Include("Usuario")
                     .Where(
-                        x => x.UsuarioId == comentario.UsuarioId
+                        x => x.UsuarioId == comentario.UsuarioId && x.PictogramaId == comentario.PictogramaId
                     ).FirstOrDefault();
             }
         }
