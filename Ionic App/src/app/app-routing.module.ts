@@ -79,10 +79,7 @@ const routes: Routes = [
     path: 'noticias',
     loadChildren: () => import('./pages/noticias/noticias.module').then( m => m.NoticiasPageModule)
   },
-  {
-    path: 'ver-noticia',
-    loadChildren: () => import('./pages/ver-noticia/ver-noticia.module').then( m => m.VerNoticiaPageModule)
-  },
+  
   {
     path: 'cabanas',
     canLoad: [ VerifiedAccountGuard, AuthGuard ],
@@ -118,6 +115,10 @@ const routes: Routes = [
   {
     path: 'recuperar-clave',
     loadChildren: () => import('./pages/recuperar-clave/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'ver-noticias/:id',
+    loadChildren: () => import('./pages/noticias/ver-noticias/ver-noticias.module').then( m => m.VerNoticiasPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {

@@ -1,8 +1,5 @@
 
-import {ComentarioNoticia} from '../interfaces/comentario-noticia';
-
 export interface Noticias {
-
     id :  number ;
     titulo : string;
     descripcion :string;
@@ -10,7 +7,5 @@ export interface Noticias {
     imagenesUrl: string;
     listaImagenes  : string[];
     comentariosId : string ; 
-    listaComentariosNoticia  :ComentarioNoticia[];
     calificacion : number;
-
 }

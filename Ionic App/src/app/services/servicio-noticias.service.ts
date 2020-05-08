@@ -25,91 +25,33 @@ export class ServicioNoticiasService {
   ) { }
 
 
-  obtenerInformacionNoticias(): Observable<Noticias[]> {
-    return this.http.get<Noticias[]>(`${urlApi}/comentariosNoticia/noticias`)
-  }
-
-  obtenerNoticiaVer(id): Observable<Noticias> {
-    return this.http.get<Noticias>(`${urlApi}/comentariosNoticia/buscarNoticia1?id=${id}`)
-  }
-
-  async agregarComentario(comentario: any) {
-    const token = await this.storage.get('token');
-    if (!token) {
-      this.router.navigateByUrl('/login');
-    }
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
+  async obtenerNoticias(): Promise<Noticias[]> {
     return new Promise(resolve => {
-      const headers = new HttpHeaders({
-        Authorization: 'Bearer ' + token
+      this.http.get(`${ urlApi }/noticias`)
+      .subscribe(res => {
+        if (res['ok'] === true) {
+          resolve(res['noticias']);
+        } else {
+          resolve(undefined);
+        }
       });
-      this.http.post(`${urlApi}/comentariosNoticia`, comentario, { headers }).pipe(
-        catchError(err => of({ ok: false }))
-      )
-        .subscribe(res => {
-          if (res['ok'] === true) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        }, err => { }, () => loading.dismiss());
+    });    
+  }
+  async buscarNoticia(id: number): Promise<Noticias> {
+    return new Promise(resolve => {
+      this.http.get(`${ urlApi }/noticias/${id}`)
+      .subscribe(res => {
+        if (res['ok'] === true) {
+          resolve(res['noticia']);
+        } else {
+          resolve(undefined);
+        }
+      });
     });
   }
 
-  async eliminarComentario(id:any){
-    const token = await this.storage.get('token');
-    if (!token) {
-      this.router.navigateByUrl('/login');
-    }
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
-    return new Promise<boolean>(resolve => {
-      const headers = new HttpHeaders({
-        Authorization: 'Bearer ' + token
-      });
-      console.log('Este es el token')
-      console.log(headers);
-      this.http.delete(`${urlApi}/comentariosNoticia/${id}`,{headers}).pipe(
-        catchError(err => of({ ok: false }))
-      )
-        .subscribe(res => {
-          if (res['ok'] === true) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        }, err => { }, () => loading.dismiss());
-    });
-  }
+  
 
-  async reportarComentario(id:any){
-    const token = await this.storage.get('token');
-    if (!token) {
-      this.router.navigateByUrl('/login');
-    }
-    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
-    await loading.present();
-    
-    return new Promise<boolean>(resolve => {
-      const headers = new HttpHeaders({
-        Authorization: 'Bearer ' + token
-      });
-      console.log('Este es el token')
-      console.log(headers);
-      //`${urlApi}/comentariosNoticia/${id}`,{headers}
-      this.http.post(`${urlApi}/comentariosNoticia/reportar`,id,{headers}).pipe(
-        catchError(err => of({ ok: false }))
-      )
-        .subscribe(res => {
-          if (res['ok'] === true) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        }, err => { }, () => loading.dismiss());
-    });
-  }
 
   //validar token 
   async validateToken(redirect?: boolean): Promise<boolean> {
