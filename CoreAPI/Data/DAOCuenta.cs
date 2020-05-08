@@ -164,11 +164,12 @@ namespace Data {
 
                 try {
 
-                    db.RecuperarClave.Remove(recuperarClave);
+                    db.RecuperarClave.Attach(recuperarClave);
+                    db.Entry(recuperarClave).State = EntityState.Deleted;
                     db.SaveChanges();
                     return true;
 
-                } catch { return false; }
+                } catch(Exception) { return false; }
             }
         }
     }
