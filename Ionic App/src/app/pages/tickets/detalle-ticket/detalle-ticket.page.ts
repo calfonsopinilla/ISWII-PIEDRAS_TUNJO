@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ReservaTicket } from '../../../interfaces/reserva-ticket.interface';
 import { ReservaTicketService } from '../../../services/reserva-tickets.service';
-import { NavController, AlertController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, AlertController, ToastController } from '@ionic/angular';
+import { TransferirTicketPage } from '../../transferir-ticket/transferir-ticket.page';
 
 @Component({
   selector: 'app-detalle-ticket',
@@ -18,15 +19,15 @@ export class DetalleTicketPage implements OnInit {
     private reservaTicketService: ReservaTicketService,
     private alertCtrl: AlertController,
     private navCtrl: NavController,    
-    private toastCntrl: ToastController
+    private toastCntrl: ToastController,
+    private modalCtrl: ModalController
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.reservaTicketService.buscarReserva(Number(id))
-                            .subscribe(res => {
-                              this.reserva = res['reserva'];                              
-                            });
+    const res = await this.reservaTicketService.buscarReserva(Number(id));
+    this.reserva = res;
+    console.log(this.reserva);
   }
 
   async presentAlertConfirm() {
@@ -62,6 +63,20 @@ export class DetalleTicketPage implements OnInit {
     if (ok) {
       this.navCtrl.navigateForward('/tickets');
     }
+  }
+
+  async transferirTicket() {
+    // modal para el checkout del pago
+    const modal = await this.modalCtrl.create({
+      component: TransferirTicketPage,
+      componentProps: {
+        id: Number(this.route.snapshot.paramMap.get('id')),
+        cantidad: (this.reserva.Cantidad-1)
+      }
+    });
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    console.log(data);
   }
 
   // async downloadQrCode() {

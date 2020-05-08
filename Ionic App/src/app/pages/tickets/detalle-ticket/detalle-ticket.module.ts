@@ -10,14 +10,19 @@ import { DetalleTicketPage } from './detalle-ticket.page';
 import { ComponentsModule } from '../../../components/components.module';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 
+import { TransferirTicketPage } from '../../transferir-ticket/transferir-ticket.page';
+import { TransferirTicketPageModule } from '../../transferir-ticket/transferir-ticket.module';
+
 @NgModule({
+  entryComponents: [TransferirTicketPage],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     DetalleTicketPageRoutingModule,
     ComponentsModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,    
+    TransferirTicketPageModule
   ],
   declarations: [DetalleTicketPage]
 })

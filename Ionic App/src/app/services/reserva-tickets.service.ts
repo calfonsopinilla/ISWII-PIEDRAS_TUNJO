@@ -40,6 +40,22 @@ export class ReservaTicketService {
     }
   }
 
+  async transferirTicket(id: number, numeroDocumento: string, cantidadTransferir: number): Promise<any> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve([]);
+    }
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/transferir?id=${ id }&numeroDocumento=${ numeroDocumento }&cantidadTransferir=${ cantidadTransferir }`, { headers: this.headers })
+        .subscribe(res => {
+          resolve(res['ok']);
+        }, err => {
+          resolve(false);
+        });
+    });
+  }
+
   async getTicketsUser(): Promise<ReservaTicket[]> {
     const prepare = await this.prepareHeaders();
     if (!prepare) {
@@ -91,8 +107,20 @@ export class ReservaTicketService {
     });
   }
 
-  buscarReserva(id: number) {
-    return this.http.get(`${ apiUrl }/reserva-tickets/${ id }`);
+  async buscarReserva(id: number) : Promise<any> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-tickets/${ id }`, { headers: this.headers })
+        .subscribe(res => {          
+          resolve(res['reserva']);
+        }, err => {
+          resolve(false);
+        });
+    });
   }
 
   eliminarReserva(id: number): Promise<boolean> {

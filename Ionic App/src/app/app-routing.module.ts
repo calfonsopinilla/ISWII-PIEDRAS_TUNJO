@@ -119,11 +119,15 @@ const routes: Routes = [
     path: 'recuperar-clave',
     loadChildren: () => import('./pages/recuperar-clave/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'transferir-ticket',
+    loadChildren: () => import('./pages/transferir-ticket/transferir-ticket.module').then( m => m.TransferirTicketPageModule)
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
-  },
+  },  
 
 ];
 
