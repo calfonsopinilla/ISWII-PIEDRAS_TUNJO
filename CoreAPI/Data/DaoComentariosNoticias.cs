@@ -50,7 +50,7 @@ namespace Data
                 return this.db.ComentariosNoticias
                     .Include("Usuario")
                     .Where(
-                        x => x.Noticia_id == comentario.Noticia_id
+                        x => x.Noticia_id == comentario.Noticia_id && x.Reportado == false
                     ).ToList();
             }
         }
@@ -69,7 +69,7 @@ namespace Data
                 return this.db.ComentariosNoticias
                     .Include("Usuario")
                     .Where(
-                        x => x.UsuarioId == comentario.UsuarioId
+                        x => x.UsuarioId == comentario.UsuarioId && x.Noticia_id == comentario.Noticia_id
                     ).FirstOrDefault();
             }
         }
