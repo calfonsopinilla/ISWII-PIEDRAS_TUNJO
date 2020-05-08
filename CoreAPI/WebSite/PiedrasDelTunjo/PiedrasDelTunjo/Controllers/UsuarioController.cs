@@ -103,7 +103,7 @@ namespace PiedrasDelTunjo.Controllers {
         [HttpPost]
         [Route("")]
         // POST: usuarios/
-        public HttpResponseMessage agregarUsuario([FromBody] UUsuario usuario)
+        public HttpResponseMessage AgregarUsuario([FromBody] UUsuario usuario)
         {
             if (usuario == null)
             {
@@ -111,7 +111,7 @@ namespace PiedrasDelTunjo.Controllers {
             }
 
             object respuesta = new LUsuario().Agregar(usuario);
-            return Request.CreateResponse(HttpStatusCode.Created, respuesta);
+            return Request.CreateResponse(HttpStatusCode.OK, respuesta);
         }
 
         [HttpGet]
