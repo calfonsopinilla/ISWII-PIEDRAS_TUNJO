@@ -278,6 +278,7 @@
     <Compile Include="Controllers\ReservaCabanasController.cs" />
     <Compile Include="Controllers\ReservaPromocionController.cs" />
     <Compile Include="Controllers\ReservaTicketsController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StripeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\CabanaController.cs" />

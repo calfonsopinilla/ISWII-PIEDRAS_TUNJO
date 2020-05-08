@@ -1,25 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Utilitarios;
 
-namespace Data {
+namespace Data
+{
+    public class DaoRol
+    {
+        private readonly Mapeo db = new Mapeo();
 
-    public class DAORol {
+        public IEnumerable<URol> ObtenerRoles()
+        {
+            return db.Roles.ToList();
+        }
 
-        // Variables
-        private Mapeo conexionBD;
-
-        /*
-            Autor: Jhonattan Pulido
-            Fecha modificacion: 8/03/2020
-        */
-        public List<URol> LeerRoles() {
-            
-            using (this.conexionBD = new Mapeo()) {
-
-                //return conexionBD.Roles.ToList<URol>();
-                return null;
-            }            
+        public URol Buscar(int id)
+        {
+            return db.Roles.Find(id);
         }
     }
 }

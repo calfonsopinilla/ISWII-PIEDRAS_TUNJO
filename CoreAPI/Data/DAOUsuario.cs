@@ -34,7 +34,9 @@ namespace Data
 
             using (var db = new Mapeo()) {
                 try {
-                    return db.Usuarios.ToList();
+                    return db.Usuarios
+                             .OrderByDescending(x => x.Id)
+                             .ToList();
                 } catch (Exception ex)
                 {
                     throw ex;
