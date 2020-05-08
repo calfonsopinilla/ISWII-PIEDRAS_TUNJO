@@ -138,7 +138,7 @@ export class DetalleEventoPage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
       message,
-      position: 'top',
+      position: 'bottom',
       duration: 3000
     });
     await toast.present();

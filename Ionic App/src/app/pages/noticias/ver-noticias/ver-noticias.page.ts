@@ -10,13 +10,15 @@ import { Comentario } from '../../../interfaces/comentario.interface';
 import {ComentarioNoticia} from '../../../interfaces/comentario-noticia.interface'; 
 import { AuthService } from '../../../services/auth.service';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-ver-noticias',
   templateUrl: './ver-noticias.page.html',
   styleUrls: ['./ver-noticias.page.scss',
-  '../../../../assets/css/comentario.css'],
+              '../../../../assets/css/comentario.css'],
 })
 export class VerNoticiasPage implements OnInit {
+
   formUser: FormGroup;  
   noticia : Noticias;
   usuario : Usuario;
@@ -24,6 +26,8 @@ export class VerNoticiasPage implements OnInit {
   comentarioUsuario: ComentarioNoticia;  
   listaComentariosNoticias: ComentarioNoticia[] = []; 
   estado: boolean;  
+  puntuacion: Number;
+
   constructor(  
     private route: ActivatedRoute, 
     private fb: FormBuilder,
@@ -33,6 +37,7 @@ export class VerNoticiasPage implements OnInit {
     private router : Router,
     private toastCtrl :ToastController
     )  {}
+
   async ngOnInit() {
     this.formUser = this.fb.group({  
       Calificacion: ['', Validators.required],
@@ -40,37 +45,18 @@ export class VerNoticiasPage implements OnInit {
     });   
     const id = this.route.snapshot.paramMap.get('id');
     this.noticia = await this.noticiaServicio.buscarNoticia(Number(id));  
+    this.puntuacion = this.noticia.calificacion;
     this.noticia.listaImagenes = this.getImages(this.noticia.imagenesUrl);
     if (this.noticia != null) {
-      await this.leerComentariosId("noticia",Number(id));      
       await this.authService.getUsuario().then(user => {
         this.usuario = user;
       });
+      await this.leerComentariosId("noticia",Number(id),this.usuario.Id);            
       await this.leerComentarioUsuario("noticia",Number(id),this.usuario.Id);                  
     } else {
       this.router.navigate(['/noticias']);
     }
   }
-
-  async leerComentariosId(table: string, objectId: number) {
-    const lista = await this.comentarioService.leerComentariosId(table,objectId);        
-    this.listaComentariosNoticias = lista;    
-  }
-  async leerComentarioUsuario(table: string, objectId: number, userId: number) {
-    const comentario = await this.comentarioService.leerComentarioUsuario(table,objectId,userId);
-    this.comentarioUsuario = comentario;            
-    if (this.comentarioUsuario == null) {
-      this.estado = false;
-    } else {
-      this.estado = true;
-    }
-  }
-
-  getImages(imagenes :string) {
-    const images = imagenes.split('@');
-    return images;
-  }
-
 
   async crearComentario() {        
     this.comentario = {
@@ -81,16 +67,18 @@ export class VerNoticiasPage implements OnInit {
       LastModification: new Date(),
       Token: "Token",
     };        
-    const creado = await this.comentarioService.crearComentario("evento",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
+    const creado = await this.comentarioService.crearComentario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
       this.presentToast("Comentario agregado correctamente");      
+      this.estado = true;   
+      await this.leerComentarioUsuario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
     } else {
       this.presentToast("ERROR: No se pudó agregar su comentario");
     }    
   }
 
   async actualizarComentario() {    
-    const comentario = await this.comentarioService.leerComentarioUsuario("evento",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
+    const comentario = await this.comentarioService.leerComentarioUsuario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
     this.comentario = {
       ... this.formUser.value,
       Id: comentario['id'],
@@ -100,16 +88,18 @@ export class VerNoticiasPage implements OnInit {
       Token: "Token",
       Reportado: comentario['reportado']
     };      
-    const creado = await this.comentarioService.actualizarComentario("evento",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
+    const creado = await this.comentarioService.actualizarComentario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
       this.presentToast("Comentario actualizado correctamente");      
+      this.noticia = await this.noticiaServicio.buscarNoticia(Number(this.route.snapshot.paramMap.get('id')));    
+      this.puntuacion = this.noticia.calificacion;
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }
   }
 
   async reportarComentario(comentario: any) {    
-    const ok = await this.comentarioService.reportarComentario("evento", 1, comentario);    
+    const ok = await this.comentarioService.reportarComentario("noticia", Number(this.route.snapshot.paramMap.get('id')), comentario);    
     if (ok == true) {
       this.presentToast("Comentario reportado correctamente");
     } else {
@@ -117,10 +107,36 @@ export class VerNoticiasPage implements OnInit {
     }
   }
 
+  async leerComentarioUsuario(table: string, objectId: number, userId: number) {
+    const comentario = await this.comentarioService.leerComentarioUsuario(table,objectId,userId);
+    this.comentarioUsuario = comentario;            
+    if (this.comentarioUsuario == null) {
+      this.estado = false;
+    } else {
+      this.estado = true;
+    }
+  }
+
+  async leerComentariosId(table: string, objectId: number, userId: number) {
+    const lista = await this.comentarioService.leerComentariosId(table,objectId);        
+    this.listaComentariosNoticias = lista; 
+    for (let i = 0; i < this.listaComentariosNoticias.length; i++) {      
+      const comentario = this.listaComentariosNoticias[i];
+      if (comentario['usuarioId'] == userId) {
+        this.listaComentariosNoticias.splice(i,1);
+      }
+    }   
+  }  
+
+  getImages(imagenes :string) {
+    const images = imagenes.split('@');
+    return images;
+  }      
+
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
       message,
-      position: 'top',
+      position: 'bottom',
       duration: 3000
     });
     await toast.present();
