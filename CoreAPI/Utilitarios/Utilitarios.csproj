@@ -131,6 +131,7 @@
     <Compile Include="UPuntuacion.cs" />
     <Compile Include="UPush.cs" />
     <Compile Include="URecorrido.cs" />
+    <Compile Include="URecuperarClave.cs" />
     <Compile Include="URegistroUser.cs" />
     <Compile Include="UReporteTicket.cs" />
     <Compile Include="UReservaCabana.cs" />

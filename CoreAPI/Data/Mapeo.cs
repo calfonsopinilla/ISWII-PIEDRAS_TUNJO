@@ -30,7 +30,7 @@ namespace Data
         //public DbSet<UComentarioPic> ComentarioPic { get; set; }
         public DbSet<UPuntuacion> Puntuacion { get; set; }
         public DbSet<UPQR> PQR { get; set; }
-        public DbSet<UEstadoPQR> EstadoPqr { get; set; }
+        public DbSet<UEstadoPQR> EstadoPqr { get; set; }        
         public DbSet<UTicket> Tickets { get; set; }
         public DbSet<UReservaTicket> ReservaTickets { get; set; }
         public DbSet<UComentarioNoticia> ComentariosNoticias { get; set; }
@@ -48,6 +48,8 @@ namespace Data
         public DbSet<UNotificacion> Notificacion { get; set; }
 
         public DbSet<UPush> Push { get; set; }
+
+        public DbSet<URecuperarClave> RecuperarClave { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.HasDefaultSchema(this.schema);

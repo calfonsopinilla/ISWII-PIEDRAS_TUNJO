@@ -14,6 +14,7 @@ using Utilitarios;
 using Newtonsoft.Json;
 using System.Configuration;
 using System.Web;
+using Logic;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -156,6 +157,85 @@ namespace PiedrasDelTunjo.Controllers
             // GENERAMOS EL TOKEN
             var _token = new JwtSecurityToken(_header, _payload);
             return new JwtSecurityTokenHandler().WriteToken(_token);
+        }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que genera código para recuperar contraseña
+            Parámetros: String correoElectronico, String numeroDocumento
+            Retorna: True - Si el coódigo se envio satisfactoriamente, False - Si ocurrio un error durante la ejecución del método
+            Ruta: .../cuenta/recuperar-clave/generar-codigo?correoElectronico=a@a.com&numeroDocumento=123
+        */
+        [HttpGet]
+        [Route("recuperar-clave/generar-codigo")]
+        public HttpResponseMessage GenerarCodigo([FromUri] string correoElectronico, [FromUri] string numeroDocumento) {
+
+            if (correoElectronico != null && numeroDocumento != null) {
+
+                UUsuario usuario = new LCuenta().LeerUsuario(correoElectronico, numeroDocumento);
+                URecuperarClave recuperarClave = new URecuperarClave();                
+
+                if (usuario != null) {
+
+                    if (new LCuenta().LeerRecuperarUserId(usuario.Id) != null) {
+
+                        usuario.Token = new LEncriptar().CodigoVerificacion();
+
+                        new LCorreo().EnviarToken(usuario.CorreoElectronico, usuario.Token, usuario.Token);
+                        recuperarClave.UserId = usuario.Id;
+                        recuperarClave.Token = usuario.Token;
+                        recuperarClave.LastModification = DateTime.Now;
+                        if (new LCuenta().CrearCodigoRecuperacion(recuperarClave) == true)
+                            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Se ha enviado un código de verificación a su correo electrónico" });
+                        else
+                            return Request.CreateResponse(HttpStatusCode.InternalServerError, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                    } else
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ya se ha generado un codigo de verificación en su correo" });
+                } else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "El correo electronico y/o la contraseña son incorrectos" });
+
+            } else
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "El correo electronico y/o la contraseña son incorrectos" });
+        }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que actualiza la contraseña de un usuario
+            Parámetros: String codigoVerificacion, String clave
+            Retorna: True - Si la contraseña se cambia satisfactoriamente, False - Si ocurrio un error durante la ejecución del método
+            Ruta: .../cuenta/recuperar-clave/generar-codigo?codigoVerificacion=*****&clave=123
+        */
+        [HttpGet]
+        [Route("recuperar-clave/cambiar")]
+        public HttpResponseMessage CambiarClave([FromUri] string codigoVerificacion, [FromUri] string clave) {
+
+            if (codigoVerificacion != null && clave != null) {
+
+                URecuperarClave recuperarClave = new LCuenta().LeerRecuperarClave(codigoVerificacion);
+
+                if (recuperarClave != null) {
+
+                    UUsuario usuario = new LUsuario().Buscar(recuperarClave.UserId);
+
+                    if (usuario != null) {
+
+                        usuario.Clave = clave;
+
+                        if (new LUsuario().Actualizar(usuario.Id, usuario) == true) {
+                            if (new LCuenta().BorrarRecuperarClave(recuperarClave))
+                                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Se actualizo la contraseña correctamente" });
+                            else
+                                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                        } else
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                    } else
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                } else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+            } else
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Los datos no son correctos" });
         }
     }
 }
