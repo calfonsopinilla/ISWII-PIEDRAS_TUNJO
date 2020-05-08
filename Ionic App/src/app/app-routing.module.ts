@@ -79,10 +79,7 @@ const routes: Routes = [
     path: 'noticias',
     loadChildren: () => import('./pages/noticias/noticias.module').then( m => m.NoticiasPageModule)
   },
-  {
-    path: 'ver-noticia',
-    loadChildren: () => import('./pages/ver-noticia/ver-noticia.module').then( m => m.VerNoticiaPageModule)
-  },
+  
   {
     path: 'cabanas',
     canLoad: [ VerifiedAccountGuard, AuthGuard ],
@@ -122,6 +119,9 @@ const routes: Routes = [
   {
     path: 'transferir-ticket',
     loadChildren: () => import('./pages/transferir-ticket/transferir-ticket.module').then( m => m.TransferirTicketPageModule)
+  },
+    path: 'ver-noticias/:id',
+    loadChildren: () => import('./pages/noticias/ver-noticias/ver-noticias.module').then( m => m.VerNoticiasPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {

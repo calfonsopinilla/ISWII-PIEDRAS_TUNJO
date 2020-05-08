@@ -6,14 +6,11 @@ import { NoticiasPageRoutingModule } from './noticias-routing.module';
 import { NoticiasPage } from './noticias.page';
 import { PipesModule } from '../../pipes/pipes.module';
 import { ComponentsModule } from '../../components/components.module';
-import { ModalComentarioPage} from '../../pages/noticias/modal-comentario/modal-comentario.page';
-import {ModalComentarioPageModule} from '../../pages/noticias/modal-comentario/modal-comentario.module';  
+
 
 
 @NgModule({
-  entryComponents:[
-    ModalComentarioPage
-  ], 
+   
   
   imports: [
     CommonModule,
@@ -21,8 +18,7 @@ import {ModalComentarioPageModule} from '../../pages/noticias/modal-comentario/m
     IonicModule,
     NoticiasPageRoutingModule,
     PipesModule,
-    ComponentsModule,
-    ModalComentarioPageModule
+    ComponentsModule
   ],
   declarations: [NoticiasPage]
 })
