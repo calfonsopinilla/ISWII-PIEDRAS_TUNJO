@@ -86,8 +86,50 @@ namespace Logica
             return new DAOCuenta().ExisteNumeroDoc(numeroDoc);
         }
 
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que sirve para buscar usuarios filtrados por correo electrónico y numero de documento
+            Parámetros: String correoElectronico, String numeroDocumento
+            Retorna: Usuario filtrado por correo electrónico y numero de documento
+        */
+        public UUsuario LeerUsuario(string correoElectronico, string numeroDocumento) { return new DAOCuenta().LeerUsuario(correoElectronico, numeroDocumento); }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que sirve para guardar el token en la base de datos
+            Parámetros: URecuperarClave recuperarClave - Objeto con los datos a guardar
+            Retorna: True si la inserción se hace de manera correcto, False si ocurre un error
+        */
+        public bool CrearCodigoRecuperacion(URecuperarClave recuperarClave) { return new DAOCuenta().CrearCodigoRecuperacion(recuperarClave); }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que sirve para leer el token en la base de datos para recuperar contraseña
+            Parámetros: string token - Código de verificación
+            Retorna: Objeto con los datos del recuperar clave
+        */
+        public URecuperarClave LeerRecuperarClave(string token) { return new DAOCuenta().LeerRecuperarClave(token); }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que sirve para borrar el token en la base de datos para recuperar contraseña
+            Parámetros: URecuperarClave recuperarClave - Objeto con los datos a guardar
+            Retorna: True si el borrado fue correcto
+        */
+        public bool BorrarRecuperarClave(URecuperarClave recuperarClave) { return new DAOCuenta().BorrarRecuperarClave(recuperarClave); }
+
+        /*
+            @Autor: Jhonattan Pulido
+            Fecha creación: 07/05/2020
+            Descripcion: Método que sirve para leer el token en la base de datos para recuperar contraseña
+            Parámetros: string token - Código de verificación
+            Retorna: Objeto con los datos del recuperar clave
+        */
+        public URecuperarClave LeerRecuperarUserId(int userId) { return new DAOCuenta().LeerRecuperarUserId(userId); }
     }
-
-
 }
 
