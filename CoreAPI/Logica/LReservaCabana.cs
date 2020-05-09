@@ -57,6 +57,7 @@ namespace Logica
 
         public bool Agregar(UReservaCabana reserva)
         {
+
             return new DaoReservaCabana().Agregar(reserva);
         }
 

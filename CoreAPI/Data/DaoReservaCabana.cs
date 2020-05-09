@@ -38,11 +38,16 @@ namespace Data
             return db.ReservaCabanas.Find(id);
         }
 
-        public bool Agregar(UReservaCabana reserva)
-        {
-            var created = db.ReservaCabanas.Add(reserva);
-            db.SaveChanges();
-            return created != null;
+        public bool Agregar(UReservaCabana reserva){
+
+            int cantidad = db.ReservaCabanas.Where(x => x.UCabanaId == reserva.UCabanaId && x.FechaReserva ==reserva.FechaReserva ).Count();
+            if (cantidad > 0){
+                return false;
+            }else {
+                var created = db.ReservaCabanas.Add(reserva);
+                db.SaveChanges();
+                return true;
+            }            
         }
 
         public bool Actualizar(UReservaCabana reserva, int id)

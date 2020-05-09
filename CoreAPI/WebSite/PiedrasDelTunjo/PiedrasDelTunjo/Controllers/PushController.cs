@@ -22,7 +22,16 @@ namespace PiedrasDelTunjo.Controllers
             bool creado = new Lpush().insertarPush(push);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = creado });
         }
-       
+
+
+        [HttpGet]
+        [Route("prueba")]
+        public HttpResponseMessage pushed([FromBody] UPush push){
+            Lpush pushedd = new Lpush();
+            pushedd.SendNotificationPrueba();
+            return Request.CreateResponse(HttpStatusCode.Created, new { ok = "Notificacion"});
+        }
+
 
     }
 
