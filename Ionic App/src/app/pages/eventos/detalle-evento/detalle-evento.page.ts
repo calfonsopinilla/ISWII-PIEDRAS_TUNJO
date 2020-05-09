@@ -38,7 +38,8 @@ export class DetalleEventoPage implements OnInit {
     private authService: AuthService,
     private eventoService: EventoService,    
     private comentarioService: ComentarioService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController
   ) { }
 
   async ngOnInit() {    
@@ -63,6 +64,8 @@ export class DetalleEventoPage implements OnInit {
   }
 
   async crearComentario() {        
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     this.comentario = {
       ... this.formUser.value,
       UsuarioId: this.usuario.Id,
@@ -81,9 +84,12 @@ export class DetalleEventoPage implements OnInit {
     } else {
       this.presentToast("ERROR: No se pudó agregar su comentario");
     }    
+    loading.dismiss();
   }
 
   async actualizarComentario() {    
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     const comentario = await this.comentarioService.leerComentarioUsuario("evento",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
     this.comentario = {
       ... this.formUser.value,
@@ -102,9 +108,12 @@ export class DetalleEventoPage implements OnInit {
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }
+    loading.dismiss();
   }
 
   async reportarComentario(comentario: any) {    
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     const ok = await this.comentarioService.reportarComentario("evento", Number(this.route.snapshot.paramMap.get('id')), comentario);    
     if (ok == true) {
       this.presentToast("Comentario reportado correctamente");
@@ -112,6 +121,7 @@ export class DetalleEventoPage implements OnInit {
     } else {
       this.presentToast("ERROR: No se pudo reportar el comentario");
     }    
+    loading.dismiss();
   }
 
   async leerComentarioUsuario(table: string, objectId: number, userId: number) {

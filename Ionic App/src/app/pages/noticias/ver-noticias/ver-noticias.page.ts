@@ -35,7 +35,8 @@ export class VerNoticiasPage implements OnInit {
     private comentarioService : ComentarioService,
     private authService: AuthService,
     private router : Router,
-    private toastCtrl :ToastController
+    private toastCtrl :ToastController,
+    private loadingCtrl: LoadingController
     )  {}
 
   async ngOnInit() {
@@ -59,6 +60,8 @@ export class VerNoticiasPage implements OnInit {
   }
 
   async crearComentario() {        
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     this.comentario = {
       ... this.formUser.value,
       UsuarioId: this.usuario.Id,
@@ -69,15 +72,20 @@ export class VerNoticiasPage implements OnInit {
     };        
     const creado = await this.comentarioService.crearComentario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
+      this.noticia = await this.noticiaServicio.buscarNoticia(Number(this.route.snapshot.paramMap.get('id')));    
+      this.puntuacion = this.noticia.calificacion;
       this.presentToast("Comentario agregado correctamente");      
       this.estado = true;   
       await this.leerComentarioUsuario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
     } else {
       this.presentToast("ERROR: No se pudó agregar su comentario");
     }    
+    loading.dismiss();
   }
 
   async actualizarComentario() {    
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     const comentario = await this.comentarioService.leerComentarioUsuario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
     this.comentario = {
       ... this.formUser.value,
@@ -96,15 +104,19 @@ export class VerNoticiasPage implements OnInit {
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }
+    loading.dismiss();
   }
 
   async reportarComentario(comentario: any) {    
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
+    await loading.present();        
     const ok = await this.comentarioService.reportarComentario("noticia", Number(this.route.snapshot.paramMap.get('id')), comentario);    
     if (ok == true) {
       this.presentToast("Comentario reportado correctamente");
     } else {
       this.presentToast("ERROR: No se pudo reportar el comentario");
     }
+    loading.dismiss();
   }
 
   async leerComentarioUsuario(table: string, objectId: number, userId: number) {
