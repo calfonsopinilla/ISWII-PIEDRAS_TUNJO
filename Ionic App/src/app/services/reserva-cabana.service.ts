@@ -53,7 +53,7 @@ export class ReservaCabanaService {
     const usuario = await this.authService.getUsuario();
     reserva['uusuarioId'] = usuario.Id;
     return new Promise(resolve => {
-      this.http.post(`${ apiUrl }/reserva-cabanas`, reserva)
+      this.http.post(`${ apiUrl }/reserva-cabanas`, reserva, { headers: this.headers })
                 .pipe(
                   catchError(err => of({ ok: false }))
                 )
@@ -72,7 +72,7 @@ export class ReservaCabanaService {
     }
     const usuario = await this.authService.getUsuario();
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-cabanas?userId=${ usuario.Id }`)
+      this.http.get(`${ apiUrl }/reserva-cabanas?userId=${ usuario.Id }`, { headers: this.headers })
                .pipe(
                  catchError(err => of({ ok: false }))
                )
@@ -89,7 +89,7 @@ export class ReservaCabanaService {
       return Promise.resolve([]);
     }
     return new Promise(resolve => {
-      this.http.get(`${ apiUrl }/reserva-cabanas/diasHabiles?id=${ id }`)
+      this.http.get(`${ apiUrl }/reserva-cabanas/diasHabiles?id=${ id }`, { headers: this.headers })
                 .pipe(
                   catchError(err => of({ok: false}))
                 )
@@ -150,7 +150,7 @@ export class ReservaCabanaService {
       return Promise.resolve(false);
     }
     return new Promise(resolve => {
-      this.http.delete(`${ apiUrl }/reserva-cabanas/${ id }`)
+      this.http.delete(`${ apiUrl }/reserva-cabanas/${ id }`, { headers: this.headers })
                 .pipe(
                   catchError(err => of({ ok: false }))
                 )

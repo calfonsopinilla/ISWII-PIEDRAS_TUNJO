@@ -32,6 +32,8 @@ export class RegistroPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tenYearsBefore = new Date();
+    this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);    
     this.formUser = this.fb.group({
       correoElectronico: ['', Validators.required,
         [
@@ -52,9 +54,7 @@ export class RegistroPage implements OnInit {
           this.numDocValidator.validate.bind(this.numDocValidator)
         ]
       ]
-    });
-    this.tenYearsBefore = new Date();
-    this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);    
+    });    
     this.infoParqueService.obtenerItemInfo(8)
                             .subscribe(res => {
                               this.terminosCondiciones = res['descripcion'];

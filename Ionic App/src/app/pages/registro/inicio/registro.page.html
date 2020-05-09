@@ -26,7 +26,7 @@
       </ion-item>
       <ion-item *ngIf="tenYearsBefore">
         <ion-label position="floating">Fecha Nacimiento</ion-label>
-        <ion-datetime displayFormat="DD MMMM YYYY" min="1960" max="{{ this.tenYearsBefore.getFullYear().toString() }}-{{ this.tenYearsBefore.getMonth().toString() }}-{{ this.tenYearsBefore.getDay().toString() }}" formControlName="fechaNacimiento"></ion-datetime>
+        <ion-datetime displayFormat="DD MMMM YYYY" min="1960" max="2010" formControlName="fechaNacimiento"></ion-datetime>
         
         <span class="text-danger" 
                 *ngIf="fechaNac.touched && fechaNac.dirty && fechaNac.errors?.required">La fecha es requerido</span>
