@@ -120,7 +120,8 @@ const routes: Routes = [
     path: 'transferir-ticket',
     loadChildren: () => import('./pages/transferir-ticket/transferir-ticket.module').then( m => m.TransferirTicketPageModule)
   },
-    path: 'ver-noticias/:id',
+  {
+    path: 'ver-noticias/:id',    
     loadChildren: () => import('./pages/noticias/ver-noticias/ver-noticias.module').then( m => m.VerNoticiasPageModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
