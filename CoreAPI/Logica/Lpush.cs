@@ -32,7 +32,7 @@ namespace Logica
                 string keyService = "AAAAOwkpcno:APA91bFBQ-bWf461MVHDS8bpMDA0SFVUaQmkaqJMu_WtkXMJu3crJ68bmyGrLtYMKEed1RKaNtJWhDLfPDk9FbmyZ0WjDUbxiTVTAWL5gsiOX6OpoCW4MlrEn0LSCkxe6yEbKKJ-6pqG";
                 string SENDER_ID = "253556781690";
 
-                string idDevice = "ehsjilj4YQ:APA91bHeiE-cn-GfFfDHbpKCe6OwC0RgG5Ft-jb-NQOTz_kBtuqEqTvt7noFX7XtX_sWqU24_nRMC50O3coYLraTKgPLRQSG3ZEXKPhb8YoVmQxZEj9ekEw5ROi6CKK-O1-RAUgHf96W";
+                string idDevice = "e2pAY_ok9T8:APA91bEjU-DovVgumiQ54Dp5j1_i5ZAlNi2KsXKASytvMxUANPl5fLHWLFr0s1iYJxD0mYfRwQBAkNiL1gRWGWu6Sm7RmcpBVQ13TMIyeinWIwXuTpPtcDDMpBc1NpsijkcjalumKXYx";
                 string menssage = "El parque vuelve a cobrar por que el COVID SE ACABO";
 
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");

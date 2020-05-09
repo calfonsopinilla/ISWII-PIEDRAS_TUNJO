@@ -1,102 +1,3 @@
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
-C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
-C:\Users\black\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
@@ -153,184 +54,115 @@ C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Deb
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
+C:\Users\JUEGOS\Desktop\CORE FINAL\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
 C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
-C:\Users\daniel\Desktop\CoreNew\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
-C:\Users\srgab\Downloads\ISWII-PIEDRAS_TUNJO\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll.config
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Logica.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Data.dll.config
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Utilitarios.dll.config
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\EntityFramework6.Npgsql.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\GeoAPI.CoordinateSystems.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\NetTopologySuite.IO.PostGis.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Newtonsoft.Json.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.pdb
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\Npgsql.NetTopologySuite.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
-C:\Users\jhona\Documents\Software\Core\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Buffers.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Memory.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Text.Json.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\bin\Debug\System.ValueTuple.xml
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.dll
+C:\Users\calfo\Desktop\ISWII-PIEDRAS_TUNJO\CoreAPI\Logica\obj\Debug\Logica.pdb

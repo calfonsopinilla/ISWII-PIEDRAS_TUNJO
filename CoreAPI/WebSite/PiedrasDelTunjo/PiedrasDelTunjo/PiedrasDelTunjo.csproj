@@ -298,36 +298,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilitarios\Mapeo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Data.dll" />
     <Content Include="bin\Data.pdb" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
     <Content Include="bin\EntityFramework6.Npgsql.dll" />
-    <Content Include="bin\EntityFramework6.Npgsql.xml" />
     <Content Include="bin\Logica.dll" />
     <Content Include="bin\Logica.pdb" />
     <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.dll" />
-    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.xml" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\Npgsql.dll" />
-    <Content Include="bin\Npgsql.pdb" />
-    <Content Include="bin\Npgsql.xml" />
     <Content Include="bin\PiedrasDelTunjo.dll" />
     <Content Include="bin\PiedrasDelTunjo.pdb" />
     <Content Include="bin\roslyn\csc.exe" />
@@ -367,44 +355,25 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\System.Buffers.dll" />
-    <Content Include="bin\System.Buffers.xml" />
     <Content Include="bin\System.Memory.dll" />
-    <Content Include="bin\System.Memory.xml" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
     <Content Include="bin\System.Numerics.Vectors.dll" />
-    <Content Include="bin\System.Numerics.Vectors.xml" />
     <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
-    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
     <Content Include="bin\System.Text.Encodings.Web.dll" />
-    <Content Include="bin\System.Text.Encodings.Web.xml" />
     <Content Include="bin\System.Text.Json.dll" />
-    <Content Include="bin\System.Text.Json.xml" />
     <Content Include="bin\System.Threading.Tasks.Extensions.dll" />
-    <Content Include="bin\System.Threading.Tasks.Extensions.xml" />
     <Content Include="bin\System.ValueTuple.dll" />
-    <Content Include="bin\System.ValueTuple.xml" />
     <Content Include="bin\System.Web.Cors.dll" />
     <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Http.Cors.dll" />
-    <Content Include="bin\System.Web.Http.Cors.xml" />
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.xml" />
-    <Content Include="bin\System.Web.Http.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\Utilitarios.dll" />
     <Content Include="bin\Utilitarios.pdb" />
     <Content Include="bin\WebGrease.dll" />
@@ -449,9 +418,6 @@
     <Content Include="Imagenes\Usuarios\Avatars\av-3.png" />
     <Content Include="Imagenes\Usuarios\Avatars\av-4.png" />
     <Content Include="Imagenes\Usuarios\Identificaciones\Logo.jpg" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.dll" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.pdb" />
     <Content Include="Plantilla\mailer.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -469,10 +435,6 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\Utilitarios.dll.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.csproj.CopyComplete" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\PiedrasDelTunjo.csprojAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
@@ -496,7 +458,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Cabanas\" />
     <Folder Include="Imagenes\Pictogramas\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

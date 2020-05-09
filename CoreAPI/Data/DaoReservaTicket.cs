@@ -67,7 +67,7 @@ namespace Data
                 return db.ReservaTickets
                           .Include("UUsuario")
                           // donde el userId y la fechaIngreso(al parque) sea mayor o igual al día actual (futuro) y no mostrar tickets pasados
-                          .Where(x => x.UUsuarioId == user_id && x.FechaIngreso >= DateTime.Today)
+                          .Where(x => x.UUsuarioId == user_id && x.FechaIngreso >= DateTime.Today && x.EstadoId == 1)
                           .OrderBy(x => x.FechaIngreso)
                           .ToList();
             }catch(Exception ex)
