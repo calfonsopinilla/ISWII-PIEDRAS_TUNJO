@@ -40,7 +40,7 @@ namespace Data
 
         public bool Agregar(UReservaCabana reserva){
 
-            int cantidad = db.ReservaCabanas.Where(x => x.UCabanaId == reserva.UCabanaId && x.FechaReserva ==reserva.FechaReserva ).Count();
+            int cantidad = db.ReservaCabanas.Where(x => x.UCabanaId == reserva.UCabanaId && x.FechaReserva.Date ==reserva.FechaReserva.Date ).Count();
             if (cantidad > 0){
                 return false;
             }else {
