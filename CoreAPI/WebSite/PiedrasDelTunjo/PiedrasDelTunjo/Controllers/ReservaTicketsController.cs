@@ -31,7 +31,7 @@ namespace PiedrasDelTunjo.Controllers
          * Retorna: Booleano
          * Ruta: .../reserva-tickets/transferir?id=*&numeroDocumento=*&cantidadTransferir=*
          */
-        [AllowAnonymous] // Quitar esto
+        //[AllowAnonymous] // Quitar esto
         [HttpGet]
         [Route("transferir")]
         public HttpResponseMessage TransferirTickets([FromUri] int id, [FromUri] string numeroDocumento, [FromUri] int cantidadTransferir) {
