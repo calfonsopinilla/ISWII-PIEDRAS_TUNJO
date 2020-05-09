@@ -8,7 +8,6 @@ import { map, catchError } from 'rxjs/operators';
 import { OneSignalService } from './one-signal.service';
 
 const urlApi = environment.servicesAPI;
-const redirectUrl = 'http://piedras-tunjo.herokuapp.com/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +17,7 @@ const redirectUrl = 'http://piedras-tunjo.herokuapp.com/usuarios';
         private http: HttpClient,
         private storage: Storage,
         private toastCtrl: ToastController,
-        private loadingCtrl: LoadingController,
-        private oneSignalService: OneSignalService
+        private loadingCtrl: LoadingController
     ) { }
 
     leerUsuario(id: number) {
@@ -35,8 +33,7 @@ const redirectUrl = 'http://piedras-tunjo.herokuapp.com/usuarios';
                     return of( err.error );
                 }))
                 .subscribe(res => {
-                    setTimeout(_ => {}, 2000);
-                    this.oneSignalService.sendNotification('Nuevo usuario registrado', redirectUrl);
+                    setTimeout(_ => {}, 1000);
                     this.presentToast(res['message']);
                 },
                 (err) => {},

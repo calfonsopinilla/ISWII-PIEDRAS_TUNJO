@@ -3,10 +3,11 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ImagesService } from '../../../services/images.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../../../services/auth.service';
-import { UserService } from '../../../services/user.service';
-import { Usuario } from '../../../interfaces/usuario.interface';
 import { Router } from '@angular/router';
+import { OneSignalService } from '../../../services/one-signal.service';
 
+
+const redirectUrl = 'http://piedras-tunjo.herokuapp.com/usuarios-pendientes';
 declare var window: any;
 
 @Component({
@@ -34,7 +35,8 @@ export class FotoDocumentoPage implements OnInit {
     private imagesService: ImagesService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private oneSignalService: OneSignalService
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,9 @@ export class FotoDocumentoPage implements OnInit {
       this.user.Imagen_documento = this.imgData.split('/').pop();
       const update = await this.authService.actualizarUsuario(this.user);
       this.presentToast('La imagen se ha subido exitosamente');
+      // send notification
+      this.oneSignalService.sendNotification('Usuario ha subido foto documento para revisión', redirectUrl);
+      // navigate
       this.router.navigate(['/inicio']);
       loading.dismiss();
     } else {
