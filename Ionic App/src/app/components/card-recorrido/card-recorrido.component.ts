@@ -52,6 +52,8 @@ export class CardRecorridoComponent implements OnInit, AfterViewInit {
     });
 
     this.mapbox.on('load', () => {
+      // resize
+      this.mapbox.resize();
       this.mapbox.addSource('line', {
         type: 'geojson',
         data: this.geojson

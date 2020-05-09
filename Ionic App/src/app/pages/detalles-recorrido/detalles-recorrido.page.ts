@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecorridosService } from '../../services/recorridos.service';
 import { Recorrido } from 'src/app/interfaces/recorrido.interface';
 import * as Mapboxgl from 'mapbox-gl';
@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { GeometryService } from '../../services/geometry.service';
 import { PuntoInteres } from '../../interfaces/punto-interes.interface';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AlertController } from '@ionic/angular';
 
 const LONGITUD = -74.3459602;
 const LATITUD = 4.8154681;
@@ -43,7 +44,9 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private recorridosService: RecorridosService,
     private geometryService: GeometryService,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private alertCtrl: AlertController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -135,8 +138,14 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
       const { latitude, longitude } = resp.coords;
       // console.log(resp.coords);
       this.flyLocation(longitude, latitude);
-     }).catch((error) => {
+     }).catch(async (error) => {
        console.log('Error getting location', error);
+       const alert = await this.alertCtrl.create({
+         header: 'No se pudo obtener tu localización',
+         message: 'Por favor, active la localización del dispositivo y si es necesario reinicie la aplicación',
+         buttons: ['OK']
+       });
+       await alert.present();
      });
   }
 

@@ -35,6 +35,10 @@ export class ItemInfoComponent implements AfterViewInit, OnInit {
         zoom: 15
       });
 
+      this.mapa.on('load', () => {
+        this.mapa.resize();
+      });
+
       // Agregar Popup
       const popup = new Mapboxgl.Popup({ offset: 25 })
                                 .setText('Piedras del Tunjo');
