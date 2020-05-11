@@ -6,7 +6,7 @@
 
 <ion-content>
 
-  <ion-fab vertical="center" horizontal="end" edge slot="fixed" (click)="logout()">
+  <ion-fab vertical="bottom" horizontal="end" edge slot="fixed" (click)="logout()">
     <ion-fab-button>
       <ion-icon name="power-outline"></ion-icon>
     </ion-fab-button>
@@ -35,7 +35,7 @@
     <ion-card-content>      
       <p>N. Documento: {{ reservaTicket.NumeroDocumento }}</p>
       <p>Cantidad: {{ reservaTicket.Cantidad }}</p>  
-      <p>Fecha: {{ reservaTicket.FechaCompra }}</p>   
+      <p>Fecha: {{ reservaTicket.FechaIngreso | date: 'MMM d, y' }}</p>   
     </ion-card-content>    
 
     <ion-card-content style="display: flex; justify-content: center;">

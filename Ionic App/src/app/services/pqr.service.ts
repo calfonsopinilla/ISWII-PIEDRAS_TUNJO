@@ -79,6 +79,7 @@ export class PqrService {
                   if (res['ok'] === true) {
                     this.oneSignalService.sendNotification('Nuevo PQR de usuario', redirectUrl);
                   }
+                  console.log(res);
                   resolve(res['ok']);
                 });
     });
@@ -93,7 +94,7 @@ export class PqrService {
                 .pipe(
                   catchError(err => of({ ok: false }))
                 )
-                .subscribe(res => {
+                .subscribe(res => {                  
                   resolve(res['ok']);
                 });
     });

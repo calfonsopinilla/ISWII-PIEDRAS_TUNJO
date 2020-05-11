@@ -22,6 +22,7 @@ export class ValidarNumeroDocumentoPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.reservaTicket = null;
   }
 
   async logout() {

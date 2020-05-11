@@ -32,6 +32,7 @@ export class RegistroPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.avatar = "av-1.png";
     this.tenYearsBefore = new Date();
     this.tenYearsBefore.setFullYear(this.tenYearsBefore.getFullYear()-10);    
     this.formUser = this.fb.group({

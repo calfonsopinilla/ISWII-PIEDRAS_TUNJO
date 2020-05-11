@@ -209,12 +209,16 @@ export class AuthService {
     });
   }
 
-  async cambiarClave(codigoVerificacion: string, clave: string) : Promise<any> {
+  async cambiarClave(codigoVerificacion: string, clave: string) : Promise<boolean> {
     return new Promise(resolve => {
       this.http.get(`${ urlApi }/cuenta/recuperar-clave/cambiar?codigoVerificacion=${ codigoVerificacion }&clave=${ clave }`)
         .subscribe(res => {
           console.log(res);
-          resolve(res);
+          if (res['ok'] === true) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
         }, err => {          
           resolve(false);
         });

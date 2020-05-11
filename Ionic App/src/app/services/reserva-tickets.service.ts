@@ -49,7 +49,11 @@ export class ReservaTicketService {
     return new Promise(resolve => {
       this.http.get(`${ apiUrl }/reserva-tickets/transferir?id=${ id }&numeroDocumento=${ numeroDocumento }&cantidadTransferir=${ cantidadTransferir }`, { headers: this.headers })
         .subscribe(res => {
-          resolve(res['ok']);
+          if (res['ok'] === true) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
         }, err => {
           resolve(false);
         });

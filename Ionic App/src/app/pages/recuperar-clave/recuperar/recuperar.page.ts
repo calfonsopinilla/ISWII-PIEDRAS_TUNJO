@@ -31,11 +31,13 @@ export class RecuperarPage implements OnInit {
 
   async recuperarClave() {
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
-    await loading.present();
-    console.log(this.formRecuperarClave.get('correoElectronico').value);
-    console.log(this.formRecuperarClave.get('numeroDocumento').value);
-    const ok = await this.authService.recuperarClave(this.formRecuperarClave.get('correoElectronico').value, String(this.formRecuperarClave.get('numeroDocumento').value));    
-    console.log(ok);
+    await loading.present();    
+    const ok = await this.authService.recuperarClave(this.formRecuperarClave.get('correoElectronico').value, String(this.formRecuperarClave.get('numeroDocumento').value));        
+    if (ok == true) {
+      this.presentToast("Datos correctos, el código de verificación se ha generado correctamente");
+    } else {
+      this.presentToast("ERROR: Ha ocurrido un error inesperado, intentelo de nuevo");
+    }
     loading.dismiss();
   }
 

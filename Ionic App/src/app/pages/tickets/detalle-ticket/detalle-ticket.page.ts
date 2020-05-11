@@ -77,6 +77,11 @@ export class DetalleTicketPage implements OnInit {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     console.log(data);
+    if (Boolean(data)) {
+      const id = this.route.snapshot.paramMap.get('id');
+      const res = await this.reservaTicketService.buscarReserva(Number(id));
+      this.reserva = res;
+    }
   }
 
   // async downloadQrCode() {

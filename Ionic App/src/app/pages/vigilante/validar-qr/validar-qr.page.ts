@@ -24,6 +24,7 @@ export class ValidarQrPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.reservaTicket = null;
   }
 
   async logout() {
@@ -31,6 +32,7 @@ export class ValidarQrPage implements OnInit {
   }
 
   async scanCode() {
+    this.reservaTicket = null;
     await this.barCodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;            
     });

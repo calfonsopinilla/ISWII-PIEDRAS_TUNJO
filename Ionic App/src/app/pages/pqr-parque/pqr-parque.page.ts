@@ -103,7 +103,13 @@ export class PqrParquePage implements OnInit {
             // console.log('Confirm Okay');
             const deleted = await this.pqrService.eliminarPqr(pqr.Id);
             if (deleted) {
-              this.pqrs = this.pqrs.filter(x => x.Id !== pqr.Id);
+              this.pqrs = await this.pqrService.getPqrUser();
+              this.pqrsA = [];
+              this.pqrsB = [];
+              await this.pqrs.forEach(val => {
+                if (Number(val['UEstadoPQRId']) == 1) { this.pqrsB.unshift(val); } else { this.pqrsA.unshift(val); }
+              });
+              this.presentToast('Borrado satisfactoriamente');
             } else {
               this.presentToast('Ha ocurrido un error');
             }
@@ -124,7 +130,12 @@ export class PqrParquePage implements OnInit {
     const ok = await this.pqrService.agregarPqr(pqr);
     if (ok) {
       // Refrescar lista
-      this.pqrsB.unshift(pqr);
+      this.pqrs = await this.pqrService.getPqrUser();
+      this.pqrsA = [];
+      this.pqrsB = [];
+      await this.pqrs.forEach(val => {
+        if (Number(val['UEstadoPQRId']) == 1) { this.pqrsB.unshift(val); } else { this.pqrsA.unshift(val); }
+      });
     } else {
       this.presentToast('Ha ocurrido un error');
     }
