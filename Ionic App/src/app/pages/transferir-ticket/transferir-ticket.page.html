@@ -8,7 +8,11 @@
           </ion-card-header>
           <ion-card-content>
 
-            <ion-item> <!-- Numero de documento -->
+            <p *ngIf="cantidad">
+              Puedes transferir {{ cantidad }} tickets
+            </p>
+
+            <ion-item> <!-- Cantidad a transferir -->
               <ion-label position="floating">Cantidad a transferir</ion-label>
               <ion-input type="number" formControlName="cantidadTransferir"></ion-input>      
               <span style="color: red;" class="text-danger" 
@@ -24,7 +28,7 @@
               <span style="color: red;" class="text-danger" 
                       *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.required">El número de documento es requerido</span>
               <span style="color: red;" class="text-danger" 
-                      *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.min">
+                      *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.min || numeroDocumento.errors?.max">
                 El número de documento es de 10 caracteres</span>        
             </ion-item>            
 

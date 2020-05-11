@@ -107,6 +107,7 @@ export class AppComponent {
         }, {
           text: 'Ver eventos',
           handler: () => {
+            this.router.navigateByUrl('/eventos')
           }
         }]
       });

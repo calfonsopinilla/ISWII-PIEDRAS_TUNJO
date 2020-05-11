@@ -31,11 +31,12 @@ export class InicioPage implements OnInit {
     this.reservaTicketService.nuevaReserva$.subscribe((res: ReservaTicket) => {
       this.obtenerReservas();
     });
-
+    this.reservas = [];
     this.obtenerReservas();
   }
 
-  async obtenerReservas() {
+  async obtenerReservas() {    
+    this.reservas = [];
     this.reservas = await this.reservaTicketService.getTicketsUser();
     // console.log(this.reservas);
   }

@@ -26,8 +26,7 @@ export class DetalleTicketPage implements OnInit {
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     const res = await this.reservaTicketService.buscarReserva(Number(id));
-    this.reserva = res;
-    console.log(this.reserva);
+    this.reserva = res;    
   }
 
   async presentAlertConfirm() {
@@ -71,12 +70,12 @@ export class DetalleTicketPage implements OnInit {
       component: TransferirTicketPage,
       componentProps: {
         id: Number(this.route.snapshot.paramMap.get('id')),
-        cantidad: (this.reserva.Cantidad-1)
+        cantidad: (this.reserva.Cantidad-1),
+        numeroDocumentoUsuario: (this.reserva.NumeroDocumento)
       }
     });
     await modal.present();
-    const { data } = await modal.onDidDismiss();
-    console.log(data);
+    const { data } = await modal.onDidDismiss();    
     if (Boolean(data)) {
       const id = this.route.snapshot.paramMap.get('id');
       const res = await this.reservaTicketService.buscarReserva(Number(id));

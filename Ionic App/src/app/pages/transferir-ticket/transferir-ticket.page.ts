@@ -15,6 +15,7 @@ export class TransferirTicketPage implements OnInit {
   transferirForm: FormGroup;
   @Input() cantidad: number; // componentProps
   @Input() id: number; // componentProps
+  @Input() numeroDocumentoUsuario: string; // componentProps
 
   slideOpts = {
     allowSlidePrev: false,
@@ -30,20 +31,22 @@ export class TransferirTicketPage implements OnInit {
 
   ngOnInit() {    
     this.transferirForm = this.fb.group({
-      numeroDocumento: ['', [Validators.required, Validators.min(1000000000)]],
+      numeroDocumento: ['', [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
       cantidadTransferir: ['', [Validators.required, Validators.min(1), Validators.max(this.cantidad)]]
     });
   }
 
-  async onSubmit() {
-    console.log(this.transferirForm.get('numeroDocumento').value);
-    console.log(this.transferirForm.get('cantidadTransferir').value);
-    const ok = this.reservaTicketService.transferirTicket(this.id, String(this.transferirForm.get('numeroDocumento').value), this.transferirForm.get('cantidadTransferir').value);
-    if (ok) {
-      this.presentToast("Ticket transferido satisfactoriamente");
-      this.modalCtrl.dismiss(true);
+  async onSubmit() {    
+    if (String(this.transferirForm.get('numeroDocumento').value).localeCompare(this.numeroDocumentoUsuario) != 0) {
+      const ok = await this.reservaTicketService.transferirTicket(this.id, String(this.transferirForm.get('numeroDocumento').value), this.transferirForm.get('cantidadTransferir').value);          
+      if (Boolean(ok) == true) {
+        this.presentToast("Ticket transferido satisfactoriamente");
+        this.modalCtrl.dismiss(true);
+      } else {
+        this.presentToast("ERROR: Ha ocurrido un error, intentelo de nuevo");
+      }
     } else {
-      this.presentToast("ERROR: Ha ocurrido un error, intentelo de nuevo");
+      this.presentToast("ERROR: No te puedes transferir tickets");
     }
   }
 
