@@ -1,34 +1,39 @@
-<ion-card class="ion-margin-bottom" *ngIf="itemInfo">
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <ion-card class="ion-margin-bottom" *ngIf="itemInfo">
 
-  <!-- Imagen para item que NO es ubicacion ni piedras -->
-  <img *ngIf="!esItemUbicacion() && !esItemPiedras()" 
-              [src]="itemInfo.listaImagenesUrl[0] | imgServer:'info'" 
-              [routerLink]="ruta"
-              width="100%" height="250px"/>
-  
-  <!-- Slide para item que NO es ubicación pero si piedras donde debe mostrar varias imagenes -->
-  <ion-slides *ngIf="!esItemUbicacion() && esItemPiedras()" pager="true" [options]="slidesOptions">
-    <ion-slide [routerLink]="ruta" *ngFor="let image of itemInfo.listaImagenesUrl" class="image-slide"
-                [style]="(image | imgServer: 'info') | domSanitizer" ></ion-slide>
-  </ion-slides>
-
-  <div *ngIf="esItemUbicacion()" id="map" #map ></div>
-
-  <!-- header y content común -->
-  <ion-card-header>
-    <ion-card-title>{{ itemInfo.property }}</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    {{ itemInfo.descripcion | slice:0:100 }}
-    <a *ngIf="itemInfo.descripcion.length > 100" [routerLink]="ruta">
-      Leer más
-    </a>
-    <!-- <ion-button [routerLink]="ruta" expand="full"  color="primary" size="small">Ver más</ion-button> -->
-    <ion-button *ngIf="esItemUbicacion()" [routerLink]="ruta" expand="full"  color="primary" size="small">
-      Ver puntos de interés
-    </ion-button>
-  </ion-card-content>
-  
-
-</ion-card>
+        <!-- Imagen para item que NO es ubicacion ni piedras -->
+        <img *ngIf="!esItemUbicacion() && !esItemPiedras()" 
+                    [src]="itemInfo.listaImagenesUrl[0] | imgServer:'info'" 
+                    [routerLink]="ruta"
+                    width="100%" height="250px"/>
+        
+        <!-- Slide para item que NO es ubicación pero si piedras donde debe mostrar varias imagenes -->
+        <ion-slides *ngIf="!esItemUbicacion() && esItemPiedras()" pager="true" [options]="slidesOptions">
+          <ion-slide [routerLink]="ruta" *ngFor="let image of itemInfo.listaImagenesUrl" class="image-slide"
+                      [style]="(image | imgServer: 'info') | domSanitizer" ></ion-slide>
+        </ion-slides>
+      
+        <!-- para el mapa -->
+        <div *ngIf="esItemUbicacion()" id="map" #map ></div>
+      
+        <!-- header y content común -->
+        <ion-card-header>
+          <ion-card-title>{{ itemInfo.property }}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          {{ itemInfo.descripcion | slice:0:100 }}
+          <a *ngIf="itemInfo.descripcion.length > 100" [routerLink]="ruta">
+            Leer más
+          </a>
+          <!-- <ion-button [routerLink]="ruta" expand="full"  color="primary" size="small">Ver más</ion-button> -->
+          <ion-button *ngIf="esItemUbicacion()" [routerLink]="ruta" expand="full"  color="primary" size="small">
+            Ver puntos de interés
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

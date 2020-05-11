@@ -13,7 +13,7 @@ import { AuthService } from '../../../services/auth.service';
 export class IngresarCodigoPage implements OnInit {
 
   // Variables
-  private formRecuperarClave: FormGroup;
+  formRecuperarClave: FormGroup;
 
   constructor(
     private fb: FormBuilder,

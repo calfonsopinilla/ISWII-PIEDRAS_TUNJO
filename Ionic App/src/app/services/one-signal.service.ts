@@ -4,8 +4,8 @@ import * as uuid from 'uuid';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-const oneSignalAPIKey = 'M2YzNjcyZmYtMThiOC00NDFhLTg3ODItZGFiOTNlNjZmOTI2';
-const oneSignalAppID = '94a25d89-60f4-4c25-a379-96dfc39c61c6';
+const oneSignalAPIKey = 'YjFhYTVjYjQtMDUxMC00YmZkLWJjODgtNDcwYTg4OTY2YzMw';
+const oneSignalAppID = 'ae08d27b-c484-48e5-8601-08bef0e753ef';
 const oneSignalAPI = 'https://onesignal.com/api/v1/notifications';
 
 @Injectable({

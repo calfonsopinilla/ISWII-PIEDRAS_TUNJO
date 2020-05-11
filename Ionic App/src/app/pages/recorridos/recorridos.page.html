@@ -1,9 +1,11 @@
 <app-header titulo="Recorridos" tipo="menu"></app-header>
 
 <ion-content [fullscreen]>
-  <ion-row>
-    <ion-col size="12" *ngFor="let reco of recorridos">
-      <app-card-recorrido [recorrido]="reco"></app-card-recorrido>
-    </ion-col>
-  </ion-row>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" *ngFor="let reco of recorridos">
+        <app-card-recorrido [recorrido]="reco"></app-card-recorrido>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

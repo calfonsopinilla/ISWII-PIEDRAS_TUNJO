@@ -2,12 +2,13 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { InfoParqueService } from '../../services/info-parque.service';
 import { ItemInfo } from '../../interfaces/item-info.interface';
 import { environment } from '../../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoordenadasService } from '../../services/coordenadas.service';
 import * as Mapboxgl from 'mapbox-gl';
 import { PuntoInteres } from 'src/app/interfaces/punto-interes.interface';
 import { PuntosInteresService } from '../../services/puntos-interes.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AlertController } from '@ionic/angular';
 
 // declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
@@ -30,7 +31,9 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private coordenadasService: CoordenadasService,
     private puntosIntService: PuntosInteresService,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private alertCtrl: AlertController,
+    private router: Router
   ) { }
 
   ngAfterViewInit() {
@@ -113,8 +116,14 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
       const { latitude, longitude } = resp.coords;
       // console.log(resp.coords);
       this.flyLocation(longitude, latitude);
-     }).catch((error) => {
-       console.log('Error getting location', error);
+     }).catch(async (error) => {
+        console.log('Error getting location', error);
+        const alert = await this.alertCtrl.create({
+          header: 'No se pudo obtener tu localización',
+          message: 'Por favor, active la localización del dispositivo y si es necesario reinicie la aplicación',
+          buttons: ['OK']
+        });
+        await alert.present();
      });
   }
 
