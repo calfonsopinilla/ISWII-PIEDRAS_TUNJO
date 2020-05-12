@@ -2,10 +2,10 @@ import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/cor
 import * as Mapboxgl from 'mapbox-gl';
 import { Recorrido } from '../../interfaces/recorrido.interface';
 import { GeometryService } from '../../services/geometry.service';
-import { RecorridosService } from '../../services/recorridos.service';
 import { environment } from 'src/environments/environment';
 import { PuntoInteres } from '../../interfaces/punto-interes.interface';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-card-recorrido',
@@ -37,6 +37,7 @@ export class CardRecorridoComponent implements OnInit, AfterViewInit {
 
   constructor(
     private geometryService: GeometryService,
+    private alertCtrl: AlertController,
     private router: Router
   ) { }
 

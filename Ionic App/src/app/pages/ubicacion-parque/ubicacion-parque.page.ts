@@ -111,6 +111,15 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
                           .subscribe((resp: any) => this.itemInfo = resp);
   }
 
+  async presentAlert(message: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Recomendación',
+      message,
+      backdropDismiss: true
+    });
+    await alert.present();
+  }
+
   obtenerGeolocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       const { latitude, longitude } = resp.coords;
@@ -118,12 +127,7 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
       this.flyLocation(longitude, latitude);
      }).catch(async (error) => {
         console.log('Error getting location', error);
-        const alert = await this.alertCtrl.create({
-          header: 'No se pudo obtener tu localización',
-          message: 'Por favor, active la localización del dispositivo y si es necesario reinicie la aplicación',
-          buttons: ['OK']
-        });
-        await alert.present();
+        this.presentAlert('Activa la ubicación del dispositivo para usar la Geolocalización y si es necesario reinicia la aplicación.');
      });
   }
 
