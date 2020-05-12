@@ -1,13 +1,9 @@
 <app-header titulo="Noticias" tipo="menu"></app-header>
 <ion-content [fullscreen] class="ion-padding">
-
     <ion-list *ngIf="noticias.length> 0">
-
         <ion-card *ngFor="let noticia of noticias" >
             <div style="text-align: center ; font-size:20px; font-weight: bold; color: blue; "> {{noticia.titulo}}</div><br>
-                
             <div style="text-align: right;">Fecha : {{ noticia.fechaPublicacion | date:"dd-MM-yyyy" }} </div> 
-        
             <ion-slides [options]="{}" pager="true">
                 <ion-slide *ngFor="let image of noticia.listaImagenes" class="image-slide"
                             [style]="(image | imgServer: 'noticia') | domSanitizer" ></ion-slide>
@@ -19,9 +15,7 @@
             <ion-button color="success" style="display: flex; width: 30%; margin: 0 auto; margin-bottom: 15px;" (click)="verNoticia(noticia.id)">Ver Noticia</ion-button>
         </ion-card>
     </ion-list>
-
     <ion-slide *ngIf="noticias.length == 0">
         <ion-button expand="full" fill="outline" size="large">No hay noticias que ver</ion-button>
     </ion-slide>
-
 </ion-content>

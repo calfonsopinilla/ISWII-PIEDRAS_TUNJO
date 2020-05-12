@@ -10,6 +10,7 @@ import { DetallePictogramaPageRoutingModule } from './detalle-pictograma-routing
 import { DetallePictogramaPage } from './detalle-pictograma.page';
 
 import { IonicRatingModule } from 'ionic4-rating';
+import { PipesModule } from '../../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { IonicRatingModule } from 'ionic4-rating';
     IonicModule,
     DetallePictogramaPageRoutingModule,
     ReactiveFormsModule,
+    PipesModule,
     ComponentsModule,
     IonicRatingModule
   ],

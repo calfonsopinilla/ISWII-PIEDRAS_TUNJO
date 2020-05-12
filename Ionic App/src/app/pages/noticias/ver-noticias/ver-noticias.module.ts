@@ -7,6 +7,7 @@ import { VerNoticiasPageRoutingModule } from './ver-noticias-routing.module';
 import { VerNoticiasPage } from './ver-noticias.page';
 import { PipesModule } from '../../../pipes/pipes.module';
 import { IonicRatingModule } from 'ionic4-rating';
+
 @NgModule({
   imports: [  
     CommonModule,

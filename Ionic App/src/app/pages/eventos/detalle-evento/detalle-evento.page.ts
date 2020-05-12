@@ -21,7 +21,6 @@ import { ComentarioEvento } from '../../../interfaces/comentario-evento.interfac
   ],
 })
 export class DetalleEventoPage implements OnInit {
-    
   evento: Evento;
   usuario: Usuario;
   formUser: FormGroup;  

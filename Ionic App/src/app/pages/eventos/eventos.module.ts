@@ -10,6 +10,7 @@ import { EventosPageRoutingModule } from './eventos-routing.module';
 import { EventosPage } from './eventos.page';
 
 import { IonicRatingModule } from "ionic4-rating";
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { IonicRatingModule } from "ionic4-rating";
     IonicModule,
     EventosPageRoutingModule,
     ComponentsModule,
-    IonicRatingModule
+    IonicRatingModule,
+    PipesModule
   ],
   declarations: [EventosPage]
 })

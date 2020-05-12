@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ImgUrlToArrayPipe implements PipeTransform {
 
   transform(imagenesUrl: string): string[] {
-    return imagenesUrl.split('@');
+    const array = imagenesUrl.split('@');
+    return array.filter(x => x !== '');
   }
 
 }

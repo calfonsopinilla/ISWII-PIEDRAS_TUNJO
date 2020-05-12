@@ -3,8 +3,10 @@
 <ion-content [fullscreen] class="ion-padding">    
 
   <ion-card *ngIf="evento">
-
-    <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=evento&nombre={{ evento.ImagenesUrl }}" />
+    <ion-slides pager="true" [options]="{}">
+      <ion-slide *ngFor="let image of (evento.ImagenesUrl | imgUrlToArray)" class="image-slide"
+                  [style]="(image | imgServer: 'evento') | domSanitizer" ></ion-slide>
+    </ion-slides>
     <ion-card-header>
       <ion-card-subtitle>Fecha: {{ evento.Fecha | date: 'MMM d, y' }}</ion-card-subtitle>
       <ion-card-title>{{ evento.Nombre }}</ion-card-title>
