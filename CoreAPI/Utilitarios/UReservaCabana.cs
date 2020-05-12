@@ -15,11 +15,13 @@ namespace Utilitarios {
         public int ValorTotal { get; set; }
         [Column("last_modification")]
         public DateTime LastModification { get; set; } = DateTime.Now;
-        [Column("usuario_id")]
-        public int UUsuarioId { get; set; }
 
         [Column("cabana_id")]
         public int UCabanaId { get; set; }
         public UCabana UCabana { get; set; }
+
+        [Column("usuario_id")]
+        public int UUsuarioId { get; set; }
+        public UUsuario UUsuario { get; set; }
     }
 }
