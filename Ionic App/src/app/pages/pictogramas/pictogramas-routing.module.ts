@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: PictogramasPage
+  },  {
+    path: 'detalle-pictograma',
+    loadChildren: () => import('./detalle-pictograma/detalle-pictograma.module').then( m => m.DetallePictogramaPageModule)
   }
+
 ];
 
 @NgModule({

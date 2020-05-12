@@ -3,33 +3,32 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
 
-// Servicios
 import { AuthService } from '../../../services/auth.service';
-import { CabanaService } from '../../../services/cabana.service';
+import { PictogramaService } from '../../../services/pictograma.service';
 import { ComentarioService } from '../../../services/comentario.service';
 
-// Interfaces
-import { Cabana } from '../../../interfaces/cabana.interface';
+import { Pictograma } from '../../../interfaces/pictograma.interface';
 import { Usuario } from '../../../interfaces/usuario.interface';
 import { Comentario } from '../../../interfaces/comentario.interface';
-import { ComentarioCabana } from '../../../interfaces/comentario-cabana.interface';
+import { ComentarioPictograma } from '../../../interfaces/comentario-pictograma.interface';
 
 @Component({
-  selector: 'app-detalles-cabana',
-  templateUrl: './detalles-cabana.page.html',
+  selector: 'app-detalle-pictograma',
+  templateUrl: './detalle-pictograma.page.html',
   styleUrls: [
-    './detalles-cabana.page.scss',
+    './detalle-pictograma.page.scss',
     '../../../../assets/css/comentario.css'
   ],
 })
-export class DetallesCabanaPage implements OnInit {
+export class DetallePictogramaPage implements OnInit {
 
-  cabana: Cabana = undefined;
+  pictograma: Pictograma;
   usuario: Usuario;
   formUser: FormGroup;  
   comentario: Comentario;
-  comentarioUsuario: ComentarioCabana;  
-  listaComentariosCabana: ComentarioCabana[] = [];  
+  comentarioUsuario: ComentarioPictograma;  
+  listaComentariosPictograma: ComentarioPictograma[] = [];  
+  lista: Pictograma[] = [];  
   estado: boolean;  
   puntuacion: Number;  
 
@@ -38,37 +37,35 @@ export class DetallesCabanaPage implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private authService: AuthService,
+    private pictogramaService: PictogramaService,    
+    private comentarioService: ComentarioService,
     private toastCtrl: ToastController,
-    private cabanaService: CabanaService,        
-    private loadingCtrl: LoadingController,
-    private comentarioService: ComentarioService
+    private loadingCtrl: LoadingController
   ) { }
 
   async ngOnInit() {
     this.formUser = this.fb.group({  
       Calificacion: ['', Validators.required],
       Descripcion: ['', Validators.required]
-    });   
-    await this.cargarCabana();
-    this.puntuacion = this.cabana.Calificacion;
-    if (this.cabana != null) {      
+    });    
+    const id = this.route.snapshot.paramMap.get('id');    
+    this.lista = await this.pictogramaService.getPictogramas();
+    this.lista.forEach(element => {
+      if (element.Id == Number(id)) {
+        this.pictograma = element;
+      }
+    });
+    this.puntuacion = this.pictograma.Calificacion;
+    if (this.pictograma != null) {      
       await this.authService.getUsuario().then(user => {
         this.usuario = user;        
       });      
-      const id = this.route.snapshot.paramMap.get('id');    
-      await this.leerComentariosId("cabana",Number(id),this.usuario.Id);            
-      await this.leerComentarioUsuario("cabana",Number(id),this.usuario.Id);                  
+      await this.leerComentariosId("pictograma",Number(id),this.usuario.Id);            
+      await this.leerComentarioUsuario("pictograma",Number(id),this.usuario.Id);                  
 
     } else {
-      this.router.navigate(['/cabanas']);
+      this.router.navigate(['/pictogramas']);
     }
-  }
-
-  async cargarCabana() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.cabana = await this.cabanaService.getCabana(Number(id));
-    this.puntuacion = this.cabana.Calificacion;
-    // console.log(this.cabana);
   }
 
   async crearComentario() {        
@@ -82,12 +79,19 @@ export class DetallesCabanaPage implements OnInit {
       LastModification: new Date(),
       Token: "Token",
     };        
-    const creado = await this.comentarioService.crearComentario("cabana",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
+    const creado = await this.comentarioService.crearComentario("pictograma",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
-      this.cargarCabana();      
+      const id = this.route.snapshot.paramMap.get('id');    
+      this.lista = await this.pictogramaService.getPictogramas();
+      this.lista.forEach(element => {
+        if (element.Id == Number(id)) {
+          this.pictograma = element;
+        }
+      });
+      this.puntuacion = this.pictograma.Calificacion;      
       this.presentToast("Comentario agregado correctamente");   
       this.estado = true;   
-      await this.leerComentarioUsuario("cabana",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
+      await this.leerComentarioUsuario("pictograma",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
     } else {
       this.presentToast("ERROR: No se pudó agregar su comentario");
     }    
@@ -97,7 +101,7 @@ export class DetallesCabanaPage implements OnInit {
   async actualizarComentario() {    
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
     await loading.present();        
-    const comentario = await this.comentarioService.leerComentarioUsuario("cabana",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
+    const comentario = await this.comentarioService.leerComentarioUsuario("pictograma",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);        
     this.comentario = {
       ... this.formUser.value,
       Id: comentario['id'],
@@ -107,11 +111,17 @@ export class DetallesCabanaPage implements OnInit {
       Token: "Token",
       Reportado: comentario['reportado']
     };      
-    const creado = await this.comentarioService.actualizarComentario("cabana",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
+    const creado = await this.comentarioService.actualizarComentario("pictograma",Number(this.route.snapshot.paramMap.get('id')),this.comentario);
     if (creado) {
       this.presentToast("Comentario actualizado correctamente");          
-      this.cargarCabana();
-      this.puntuacion = this.cabana.Calificacion;
+      const id = this.route.snapshot.paramMap.get('id');    
+      this.lista = await this.pictogramaService.getPictogramas();
+      this.lista.forEach(element => {
+        if (element.Id == Number(id)) {
+          this.pictograma = element;
+        }
+      });
+      this.puntuacion = this.pictograma.Calificacion;
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }
@@ -121,10 +131,10 @@ export class DetallesCabanaPage implements OnInit {
   async reportarComentario(comentario: any) {    
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor' });
     await loading.present();        
-    const ok = await this.comentarioService.reportarComentario("cabana", Number(this.route.snapshot.paramMap.get('id')), comentario);    
+    const ok = await this.comentarioService.reportarComentario("pictograma", Number(this.route.snapshot.paramMap.get('id')), comentario);    
     if (ok == true) {
       this.presentToast("Comentario reportado correctamente");
-      await this.leerComentariosId("cabana",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);            
+      await this.leerComentariosId("pictograma",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);            
     } else {
       this.presentToast("ERROR: No se pudo reportar el comentario");
     }    
@@ -143,11 +153,11 @@ export class DetallesCabanaPage implements OnInit {
 
   async leerComentariosId(table: string, objectId: number, userId: number) {
     const lista = await this.comentarioService.leerComentariosId(table,objectId);        
-    this.listaComentariosCabana = lista;    
-    for (let i = 0; i < this.listaComentariosCabana.length; i++) {      
-      const comentario = this.listaComentariosCabana[i];
+    this.listaComentariosPictograma = lista;    
+    for (let i = 0; i < this.listaComentariosPictograma.length; i++) {      
+      const comentario = this.listaComentariosPictograma[i];
       if (comentario['usuarioId'] == userId) {
-        this.listaComentariosCabana.splice(i,1);
+        this.listaComentariosPictograma.splice(i,1);
       }
     }
   }

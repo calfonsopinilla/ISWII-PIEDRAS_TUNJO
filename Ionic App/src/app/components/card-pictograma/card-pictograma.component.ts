@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Pictograma } from '../../interfaces/pictograma.interface';
 import * as Mapboxgl from 'mapbox-gl';
@@ -16,7 +17,9 @@ export class CardPictogramaComponent implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) map: any;
   mapboxgl: Mapboxgl.Map;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     // console.log(this.pictograma);
@@ -44,4 +47,7 @@ export class CardPictogramaComponent implements OnInit, AfterViewInit {
     this.mapboxgl.addControl(new Mapboxgl.NavigationControl());
   }
 
+  verDetalles(id: number) {    
+    this.router.navigate(['/detalle-pictograma', id]);
+  }
 }

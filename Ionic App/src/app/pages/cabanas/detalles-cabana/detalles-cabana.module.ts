@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -9,6 +9,7 @@ import { DetallesCabanaPageRoutingModule } from './detalles-cabana-routing.modul
 import { DetallesCabanaPage } from './detalles-cabana.page';
 import { ComponentsModule } from '../../../components/components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
+import { IonicRatingModule } from 'ionic4-rating';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { PipesModule } from '../../../pipes/pipes.module';
     IonicModule,
     DetallesCabanaPageRoutingModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule,
+    IonicRatingModule
   ],
   declarations: [DetallesCabanaPage]
 })

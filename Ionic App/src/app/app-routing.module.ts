@@ -126,6 +126,12 @@ const routes: Routes = [
     path: 'ver-noticias/:id',    
     loadChildren: () => import('./pages/noticias/ver-noticias/ver-noticias.module').then( m => m.VerNoticiasPageModule)
   },
+  {
+    path: 'detalle-pictograma/:id',    
+    loadChildren: () => import('./pages/pictogramas/detalle-pictograma/detalle-pictograma.module').then( m => m.DetallePictogramaPageModule),
+    canLoad: [ VerifiedAccountGuard, AuthGuard ],
+    canActivate: [ AuthGuard ],
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: '**',

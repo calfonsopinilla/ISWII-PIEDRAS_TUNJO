@@ -1,0 +1,112 @@
+<app-header titulo="Detalle Pictograma" tipo="back"></app-header>
+
+<ion-content [fullscreen] class="ion-padding">    
+
+  <ion-card class="ion-margin-bottom" *ngIf="pictograma">
+    <ion-slides pager="true" [options]="{}">
+      <ion-slide *ngFor="let image of (pictograma.ImagenesUrl | imgUrlToArray)" class="image-slide"
+                  [style]="(image | imgServer: 'picto') | domSanitizer" ></ion-slide>
+    </ion-slides>
+  
+    <ion-card-header>
+      <ion-card-title>{{ pictograma.Nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ pictograma.Descripcion }}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <!--<ion-card-content>
+      <div #map id="map"></div>
+      <ion-chip class="chip1" color="primary" mode="ios" outline="true">
+        <ion-label>{{ pictograma.Nombre }}</ion-label>
+      </ion-chip>
+      <ion-button color="success" style="display: flex; width: 30%; margin: 0 auto; margin-bottom: 15px;" (click)="verDetalles(pictograma.Id)">Ver Mas
+      </ion-button>
+    </ion-card-content>-->
+  </ion-card>
+
+  <div *ngIf="puntuacion">
+    <h4 style="display: block; width: 90%; margin: 0 auto; margin-top:20px; font-weight: bold;">
+      Puntuación:
+    </h4>
+    <h1 style="display: flex; align-items: center; justify-content: center; width: 100%">
+      <span style="display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 100%; border: 5px solid #3880ff;">
+        {{ puntuacion }}
+      </span>      
+    </h1>
+    <img src="../../../../assets/img/{{ puntuacion }}-star.png" style="display: block; margin: 0 auto; width: 60%;">    
+  </div>
+
+  <ion-list>
+
+    <ion-list-header style="margin-top: 10px;">
+      <h4 style="display: block; width: 100%; margin: 0 auto; font-weight: bold;">
+        Reseñas:
+      </h4>
+    </ion-list-header>
+
+    <div *ngIf="estado == false"> <!-- Crear Comentario -->
+      <div class="comentario_usuario_cntr" *ngIf="usuario">
+        <ion-avatar slot="start">
+          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ usuario.Icono_url }}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ usuario.Nombre }} {{ usuario.Apellido }}</h2>      
+          <form [formGroup]="formUser" (ngSubmit)="crearComentario()" *ngIf="formUser">
+            <h5>
+              Mi calificación:             
+            </h5>
+            <rating formControlName="Calificacion" readonly="false" size="small"></rating>
+            <h5>Mi comentario:</h5>
+            <ion-textarea color="dark" formControlName="Descripcion"></ion-textarea>
+            <ion-button id="button-submit" type="submit">Comentar</ion-button>            
+          </form>      
+        </ion-label>      
+      </div>
+    </div>
+
+    <div *ngIf="estado"> <!-- Actualizar Comentario -->
+      <div class="comentario_usuario_cntr" *ngIf="comentarioUsuario">
+        <ion-avatar slot="start">
+          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentarioUsuario.usuario.Icono_url }}">
+        </ion-avatar>
+        <ion-label>          
+          <h2>{{ comentarioUsuario.usuario.Nombre }} {{ comentarioUsuario.usuario.Apellido }}</h2>              
+          <p>{{ comentarioUsuario.fechaPublicacion | date: 'MMM d, y'  }}</p>
+          <form [formGroup]="formUser" (ngSubmit)="actualizarComentario()" *ngIf="formUser">        
+            <h5>
+              Mi calificación: 
+              <span style="font-weight: normal;">{{ comentarioUsuario.calificacion }}/5</span>
+            </h5>
+            <rating formControlName="Calificacion" readonly="false" size="small"></rating>
+            <h5>
+              Mi comentario:
+              <ion-icon *ngIf="comentarioUsuario.reportado == true" style="font-size: 20px; float: right; color:red;" name="skull-outline"></ion-icon>
+              <span *ngIf="comentarioUsuario.reportado == true" style="display: block; font-weight: normal; color: red;">Su comentario ha sido marcado como reportado</span>
+            </h5>
+            <ion-textarea color="dark" formControlName="Descripcion" value="{{ comentarioUsuario.descripcion }}"></ion-textarea>
+            <ion-button id="button-submit" type="submit">Actualizar</ion-button>
+          </form>              
+        </ion-label>        
+      </div>  
+    </div>    
+
+    <ion-item *ngFor="let comentario of listaComentariosPictograma">      
+      <ion-avatar slot="start">
+          <img src="http://piedrasdeltunjo.tk/images/getImage?tipo=avatar&nombre={{ comentario.usuario.Icono_url }}">
+      </ion-avatar>
+      <ion-label>
+        <ion-button style="float: right;" (click)="reportarComentario(comentario)">
+          <ion-icon name="skull"></ion-icon>
+        </ion-button>
+        <h2 style="font-weight: bold;">{{ comentario.usuario.Nombre }} {{ comentario.usuario.Apellido }}</h2>                
+        <p>
+          <img src="../../../../assets/img/{{ comentario.calificacion }}-star.png" width="26%" style="margin-right: 6px;">
+          {{ comentario.fechaPublicacion | date: 'MMM d, y'   }}
+        </p>
+        <p>{{ comentario.descripcion }}</p>
+      </ion-label>      
+    </ion-item>    
+
+  </ion-list>
+
+</ion-content>
+
