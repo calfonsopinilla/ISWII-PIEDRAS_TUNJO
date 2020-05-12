@@ -23,18 +23,14 @@ namespace Logica
         {
             return new DaoPush().Tokensnotificaciones().ToList();
         }
-
-
         public void SendNotificationPrueba()
         {
             try
             {
                 string keyService = "AAAAOwkpcno:APA91bFBQ-bWf461MVHDS8bpMDA0SFVUaQmkaqJMu_WtkXMJu3crJ68bmyGrLtYMKEed1RKaNtJWhDLfPDk9FbmyZ0WjDUbxiTVTAWL5gsiOX6OpoCW4MlrEn0LSCkxe6yEbKKJ-6pqG";
                 string SENDER_ID = "253556781690";
-
                 string idDevice = "e2pAY_ok9T8:APA91bEjU-DovVgumiQ54Dp5j1_i5ZAlNi2KsXKASytvMxUANPl5fLHWLFr0s1iYJxD0mYfRwQBAkNiL1gRWGWu6Sm7RmcpBVQ13TMIyeinWIwXuTpPtcDDMpBc1NpsijkcjalumKXYx";
                 string menssage = "El parque vuelve a cobrar por que el COVID SE ACABO";
-
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
                 tRequest.Method = "post";
                 //serverKey - Key from Firebase cloud messaging server  
@@ -56,13 +52,11 @@ namespace Logica
                         sound = "default",
                         //click_action="FCM_PLUGIN_ACTIVITY",
                         icon = "favicon"
-
                     },
                     data = new
                     {
                         tipo = "Noticia"
                     }
-
                 };
                 string postbody = JsonConvert.SerializeObject(payload).ToString();
                 Byte[] byteArray = Encoding.UTF8.GetBytes(postbody);

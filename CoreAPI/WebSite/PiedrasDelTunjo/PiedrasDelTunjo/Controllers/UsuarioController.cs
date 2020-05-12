@@ -52,6 +52,9 @@ namespace PiedrasDelTunjo.Controllers {
             usuario.VerificacionCuenta = true;
             bool actualizado = new LUsuario().Actualizar(usuario.Id, usuario);
             if (actualizado)
+
+
+
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Usuario actualizado correctamente" });
             else
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
