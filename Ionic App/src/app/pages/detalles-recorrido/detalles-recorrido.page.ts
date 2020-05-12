@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 import { GeometryService } from '../../services/geometry.service';
 import { PuntoInteres } from '../../interfaces/punto-interes.interface';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 const LONGITUD = -74.3459602;
 const LATITUD = 4.8154681;
@@ -46,6 +46,7 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
     private geometryService: GeometryService,
     private geolocation: Geolocation,
     private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
     private router: Router
   ) { }
 
@@ -133,15 +134,19 @@ export class DetallesRecorridoPage implements OnInit, AfterViewInit {
     });
   }
 
-  obtenerGeolocation() {
-    this.geolocation.getCurrentPosition().then((resp) => {
+  async obtenerGeolocation() {
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+    await loading.present();
+    this.geolocation.getCurrentPosition({ timeout: 5000 }).then((resp) => {
       const { latitude, longitude } = resp.coords;
       // console.log(resp.coords);
+      loading.dismiss();
       this.flyLocation(longitude, latitude);
      }).catch(async (error) => {
+       loading.dismiss();
        console.log('Error getting location', error);
-       this.presentAlert('Activa la ubicación del dispositivo para usar la Geolocalización y si es necesario reinicia la aplicación.');
-     });
+       this.presentAlert('Activa la ubicación del dispositivo para usar la Geolocalización.');
+    });
   }
 
   async presentAlert(message: string) {
