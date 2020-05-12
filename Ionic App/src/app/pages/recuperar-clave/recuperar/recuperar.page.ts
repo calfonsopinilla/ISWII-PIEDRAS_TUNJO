@@ -35,6 +35,7 @@ export class RecuperarPage implements OnInit {
     const ok = await this.authService.recuperarClave(this.formRecuperarClave.get('correoElectronico').value, String(this.formRecuperarClave.get('numeroDocumento').value));        
     if (ok == true) {
       this.presentToast("Datos correctos, el código de verificación se ha generado correctamente");
+      this.formRecuperarClave.reset();
     } else {
       this.presentToast("ERROR: Ha ocurrido un error inesperado, intentelo de nuevo");
     }

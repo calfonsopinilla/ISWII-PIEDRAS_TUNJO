@@ -114,7 +114,9 @@ const routes: Routes = [
   },
   {
     path: 'recuperar-clave',
-    loadChildren: () => import('./pages/recuperar-clave/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/recuperar-clave/tabs/tabs.module').then( m => m.TabsPageModule),
+    canLoad: [ AnonymousGuard ],
+    canActivate: [ AnonymousGuard ]
   },
   {
     path: 'transferir-ticket',

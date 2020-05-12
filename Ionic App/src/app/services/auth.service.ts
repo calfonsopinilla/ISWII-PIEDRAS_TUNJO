@@ -195,6 +195,9 @@ export class AuthService {
   async recuperarClave(correoElectronico: string, numeroDocumento: string) : Promise<boolean> {
     return new Promise(resolve => {
       this.http.get(`${ urlApi }/cuenta/recuperar-clave/generar-codigo?correoElectronico=${ correoElectronico }&numeroDocumento=${ numeroDocumento }`)      
+        .pipe(          
+          catchError(err => of({ok: false}))
+        )
         .subscribe(res => {
           console.log(res);
           if (res['ok'] === true) {
@@ -202,9 +205,6 @@ export class AuthService {
           } else {
             resolve(false);
           }
-        }, err => {
-          console.log(err);
-          resolve(false);
         });
     });
   }
