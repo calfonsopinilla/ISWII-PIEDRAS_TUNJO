@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +20,8 @@ export class IngresarCodigoPage implements OnInit {
     private fb: FormBuilder,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,8 @@ export class IngresarCodigoPage implements OnInit {
       const res = await this.authService.cambiarClave(this.formRecuperarClave.get('codigoVerificacion').value, this.formRecuperarClave.get('clave').value);
       if (res) {
         this.presentToast("Clave actualizada correctamente");
+        this.formRecuperarClave.reset();
+        this.router.navigateByUrl('/login');
       } else {
         this.presentToast("ERROR: Intentelo nuevamente");
       }      

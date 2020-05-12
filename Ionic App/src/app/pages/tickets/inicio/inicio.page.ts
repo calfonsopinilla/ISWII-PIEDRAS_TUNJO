@@ -30,13 +30,11 @@ export class InicioPage implements OnInit {
     // Nueva reserva
     this.reservaTicketService.nuevaReserva$.subscribe((res: ReservaTicket) => {
       this.obtenerReservas();
-    });
-    this.reservas = [];
+    });    
     this.obtenerReservas();
   }
 
-  async obtenerReservas() {    
-    this.reservas = [];
+  async obtenerReservas() {        
     this.reservas = await this.reservaTicketService.getTicketsUser();
     // console.log(this.reservas);
   }
@@ -45,5 +43,4 @@ export class InicioPage implements OnInit {
     // console.log(id);
     this.router.navigate(['/tickets', 'detalle-ticket', id]);
   }
-
 }
