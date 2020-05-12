@@ -8,7 +8,7 @@ import * as Mapboxgl from 'mapbox-gl';
 import { PuntoInteres } from 'src/app/interfaces/punto-interes.interface';
 import { PuntosInteresService } from '../../services/puntos-interes.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 // declare var mapboxgl: any;
 const LONGITUD = -74.3460000;
@@ -33,7 +33,7 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
     private puntosIntService: PuntosInteresService,
     private geolocation: Geolocation,
     private alertCtrl: AlertController,
-    private router: Router
+    private loadingCtrl: LoadingController
   ) { }
 
   ngAfterViewInit() {
@@ -111,20 +111,28 @@ export class UbicacionParquePage implements OnInit, AfterViewInit {
                           .subscribe((resp: any) => this.itemInfo = resp);
   }
 
-  obtenerGeolocation() {
-    this.geolocation.getCurrentPosition().then((resp) => {
+  async presentAlert(message: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Recomendación',
+      message,
+      backdropDismiss: true
+    });
+    await alert.present();
+  }
+
+  async obtenerGeolocation() {
+    const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
+    await loading.present();
+    this.geolocation.getCurrentPosition({ timeout: 5000 }).then((resp) => {
       const { latitude, longitude } = resp.coords;
       // console.log(resp.coords);
+      loading.dismiss();
       this.flyLocation(longitude, latitude);
      }).catch(async (error) => {
-        console.log('Error getting location', error);
-        const alert = await this.alertCtrl.create({
-          header: 'No se pudo obtener tu localización',
-          message: 'Por favor, active la localización del dispositivo y si es necesario reinicie la aplicación',
-          buttons: ['OK']
-        });
-        await alert.present();
-     });
+       loading.dismiss();
+       console.log('Error getting location', error);
+       this.presentAlert('Activa la ubicación del dispositivo para usar la Geolocalización.');
+    });
   }
 
   flyLocation(lng: number, lat: number) {
