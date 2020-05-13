@@ -14,7 +14,7 @@
 
             <ion-item> <!-- Cantidad a transferir -->
               <ion-label position="floating">Cantidad a transferir</ion-label>
-              <ion-input type="number" formControlName="cantidadTransferir"></ion-input>      
+              <ion-input type="number" formControlName="cantidadTransferir"  pattern="[\s\S]{6,12}$"></ion-input>      
               <span style="color: red;" class="text-danger" 
                       *ngIf="cantidadTransferir.touched && cantidadTransferir.dirty && cantidadTransferir.errors?.required">La cantidad de tickets a transferir es necesario</span>
               <span style="color: red;" class="text-danger" 
