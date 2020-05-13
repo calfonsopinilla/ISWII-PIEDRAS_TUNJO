@@ -87,5 +87,21 @@ namespace Data
         {
             return db.ReservaCabanas.Any(x => x.Id == id);
         }
+
+        public UReservaCabana Verificar(int cabanaId, DateTime fecha)
+        {
+            try
+            {
+                var reservas = db.ReservaCabanas.ToList();
+                var reserva = reservas
+                             .Where(x => x.UCabanaId == cabanaId 
+                                    && x.FechaReserva.ToShortDateString() == fecha.ToShortDateString())
+                             .FirstOrDefault();
+                return reserva;
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

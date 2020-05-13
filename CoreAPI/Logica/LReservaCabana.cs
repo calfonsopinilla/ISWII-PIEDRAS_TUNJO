@@ -260,16 +260,14 @@ namespace Logica
 
                 i = i.AddDays(1);
             }
-
-
             return diashabiles;
+        }
 
+        public UReservaCabana Verificar(int cabanaId, DateTime fecha)
+        {
+            return new DaoReservaCabana().Verificar(cabanaId, fecha);
         }
     }
-
-
-
-
 }
 
 

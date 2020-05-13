@@ -70,5 +70,21 @@ namespace PiedrasDelTunjo.Controllers
             var deleted = new LReservaCabana().Eliminar(id);
             return Request.CreateResponse(HttpStatusCode.Created, new { ok = deleted });
         }
+
+        /*
+         * Steven Cruz
+         * Verificar que la reserva no ha sido realizada durante la compra.
+         */
+        [HttpGet]
+        [Route("verificar")]
+        public HttpResponseMessage Verificar([FromUri] int cabanaId, [FromUri] string fecha)
+        {
+            var reserva = new LReservaCabana().Verificar(cabanaId, Convert.ToDateTime(fecha));
+            if (reserva == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new { ok = false });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, reserva });
+        }
     }
 }
