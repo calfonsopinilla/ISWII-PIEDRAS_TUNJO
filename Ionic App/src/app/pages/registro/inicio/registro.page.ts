@@ -49,7 +49,7 @@ export class RegistroPage implements OnInit {
       tipoDocumento: ['TI', Validators.required],
       numeroDocumento: [
         '',
-        [Validators.required, Validators.minLength(7), Validators.maxLength(10)],
+        [Validators.required, Validators.minLength(6), Validators.maxLength(12)],
         [
           this.numDocValidator.validateToken.bind(this.numDocValidator), // Validar tabla Token Correo
           this.numDocValidator.validate.bind(this.numDocValidator)
