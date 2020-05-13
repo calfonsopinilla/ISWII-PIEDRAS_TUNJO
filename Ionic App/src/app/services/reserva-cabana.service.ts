@@ -40,6 +40,26 @@ export class ReservaCabanaService {
     }
   }
 
+  async verificar(reserva: any): Promise<boolean> {
+    const prepare = await this.prepareHeaders();
+    if (!prepare) {
+      console.log('token not found');
+      return Promise.resolve(false);
+    }
+    const loading = await this.loadingCtrl.create({message: 'Verificando disponibilidad...'});
+    await loading.present();
+    const fechaStr = reserva.fechaReserva.toISOString().split('T')[0];
+    return new Promise(resolve => {
+      this.http.get(`${ apiUrl }/reserva-cabanas/verificar?cabanaId=${reserva.ucabanaId}&fecha=${fechaStr}`, { headers: this.headers })
+                .pipe(
+                  catchError(err => of({ ok: false }))
+                )
+                .subscribe(res => {
+                  resolve(res['ok']);
+                }, err => {}, () => loading.dismiss() );
+    });
+  }
+
   async reservar(reserva: any): Promise<boolean> {
     const prepare = await this.prepareHeaders();
     if (!prepare) {

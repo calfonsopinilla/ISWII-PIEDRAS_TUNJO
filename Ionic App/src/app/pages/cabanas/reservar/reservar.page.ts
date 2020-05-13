@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaCabanaService } from 'src/app/services/reserva-cabana.service';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, AlertController } from '@ionic/angular';
 import { CabanaService } from '../../../services/cabana.service';
 import { Router } from '@angular/router';
 import { CheckoutPage } from '../../checkout/checkout.page';
@@ -27,7 +27,8 @@ export class ReservarPage implements OnInit {
     private reservaCabanaService: ReservaCabanaService,
     private toastCtrl: ToastController,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -68,28 +69,47 @@ export class ReservarPage implements OnInit {
       ucabanaId: this.idCabana,
       valorTotal: this.valorTotal
     };
-
-    // modal para el checkout del pago
-    const modal = await this.modalCtrl.create({
-      component: CheckoutPage,
-      componentProps: {
-        amount: this.valorTotal
-      }
-    });
-    await modal.present();
-    const { data } = await modal.onDidDismiss();
-    // console.log(data);
-    if (data) {
-      this.presentToast(data.message);
-      if (data.ok === true) {
-        // agregar la reserva de cabaña
-        const created = await this.reservaCabanaService.reservar(reserva);
-        if (created) {
-          $('#month')[0].value = this.monthValues[0];
-          this.loadDates();
-          this.router.navigateByUrl('/cabanas/tus-reservas');
+    // primero verificamos que la reserva de la cabaña NO exista ya
+    const existsReserva = await this.reservaCabanaService.verificar(reserva);
+    if (!existsReserva) {
+      // modal para el checkout del pago
+      const modal = await this.modalCtrl.create({
+        component: CheckoutPage,
+        componentProps: {
+          amount: this.valorTotal
+        }
+      });
+      await modal.present();
+      const { data } = await modal.onDidDismiss();
+      // console.log(data);
+      if (data) {
+        this.presentToast(data.message);
+        if (data.ok === true) {
+          // agregar la reserva de cabaña
+          const created = await this.reservaCabanaService.reservar(reserva);
+          if (created) {
+            $('#month')[0].value = this.monthValues[0];
+            this.loadDates();
+            this.router.navigateByUrl('/cabanas/tus-reservas');
+          }
         }
       }
+    } else {
+      // presentar el problema de concurrencia de reserva de cabaña
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: 'La reserva de la cabaña para la fecha seleccionada ya no está disponible',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              console.log('exists!');
+              this.loadDates();
+            }
+          }
+        ]
+      });
+      await alert.present();
     }
   }
 
