@@ -11,19 +11,19 @@ import { of, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PushService {
-  
+
   constructor( private http: HttpClient,
               private toastCtrl :ToastController
     ) { }
 
-  agregarToken(push : any){
-    return this.http.post(`${ apiUrl }/push/crear`,push)
+  agregarToken(push: any) {
+    return this.http.post(`${ apiUrl }/push/crear`, push)
                 .pipe(catchError(err => {
                     return of( err.error );
                 }))
                 .subscribe(res => {
-                    setTimeout(_ => {}, 2000);
-                    this.presentToast(res['message']);
+                    // this.presentToast(res['message']);
+                    console.log(res);
                 },
                 (err) => {},
             );

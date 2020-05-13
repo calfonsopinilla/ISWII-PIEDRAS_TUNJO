@@ -9,6 +9,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/usuario.interface';
 import * as jwt_decode from 'jwt-decode';
+import { PushService } from './push.service';
 
 const urlApi = environment.servicesAPI;
 
@@ -25,11 +26,11 @@ export class AuthService {
     private storage: Storage,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private pushService: PushService
   ) { }
 
   async login(userLogin: UserLogin) {
-
     const loading = await this.loadingCtrl.create({ message: 'Espere por favor...' });
     await loading.present();
 
@@ -57,6 +58,8 @@ export class AuthService {
                       this.presentToast('Tu cuenta ha sido deshabilitada.');
                       return;
                     }
+                    // Actualizar push object
+                    this.updatePush(Number(user['Id']));
                     // Almacenar token
                     this.guardarToken(res['token']);
                     // Redireccionamiento del usuario
@@ -68,6 +71,13 @@ export class AuthService {
                 (err) => {},
                 () => loading.dismiss()
               );
+  }
+
+  async updatePush(userId: number) {
+    const push = await this.storage.get('push');
+    push.UserId = userId;
+    const respuest = this.pushService.agregarToken(push);
+    await this.storage.set('push', push);
   }
 
   async loginNavigate(userLogin: Usuario) {
@@ -101,8 +111,9 @@ export class AuthService {
     return {...this.usuario};
   }
 
-  logout() {
-    this.storage.clear(); // eliminamos el token
+  async logout() {
+    this.updatePush(0);
+    this.storage.remove('token'); // eliminamos el token
     this.loginState$.emit(false);
     this.router.navigate(['/inicio']);
   }
@@ -115,7 +126,6 @@ export class AuthService {
       }
       return Promise.resolve(false);
     }
-
     return new Promise<boolean>(resolve => {
       const headers = new HttpHeaders({
         Authorization: 'Bearer ' + token
@@ -130,7 +140,8 @@ export class AuthService {
                     this.usuario = res['usuario'];
                     resolve(true);
                   } else {
-                    this.storage.clear();
+                    this.updatePush(0);
+                    this.storage.remove('token');
                     this.router.navigateByUrl('/login');
                     resolve(false);
                   }

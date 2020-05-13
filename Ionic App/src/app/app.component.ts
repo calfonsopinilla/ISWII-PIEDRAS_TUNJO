@@ -5,6 +5,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Push, PushObject, PushOptions} from '@ionic-native/push/ngx';
 import {PushService} from '../app/services/push.service';
 import { Router} from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private push: Push,
-    private pushService: PushService
+    private pushService: PushService,
+    private authService: AuthService,
+    private storage: Storage
     ) {
     this.initializeApp();
   }
@@ -32,21 +36,22 @@ export class AppComponent {
       this.pushSetup();
     });
   }
+
   async pushSetup() {
+    console.log('PushSetup');
     const options: PushOptions = {
       android: {
-          senderID: '253556781690',
-          forceShow : true
+        senderID: '253556781690',
+        forceShow : true
       },
       ios: {
-          alert: 'true',
-          badge: true,
-          sound: 'true',
-
+        alert: 'true',
+        badge: true,
+        sound: 'true'
       },
       windows: {},
       browser: {
-          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
       }
    };
 
@@ -73,16 +78,16 @@ export class AppComponent {
 
   async insertarToken(token: string) {
     const push =  {
-        ObjetoPush : token,
-        Fecha : new Date(2000, 1, 1),
-        EstadoId : 1,
-        TokenId : token,
+      ObjetoPush : token,
+      Fecha : new Date(2000, 1, 1),
+      EstadoId : 1,
+      UserId : 0
     };
+    await this.storage.set('push', push);
     const respuest = this.pushService.agregarToken(push);
   }
 
   async action(tipo: string , mensaje: string) {
-
     if (tipo === 'Noticia') {
       const confirmAlert =  await this.alertCtrl.create({
         message: mensaje,
@@ -123,6 +128,17 @@ export class AppComponent {
           text: 'Ver promociones',
           handler: () => {
             this.router.navigateByUrl('/promociones');
+          }
+        }]
+      });
+      confirmAlert.present();
+    } else if (tipo === 'Validado') {
+      const confirmAlert =  await this.alertCtrl.create({
+        message: mensaje,
+        buttons: [{
+          text: 'Iniciar de nuevo sesión',
+          handler: () => {
+            this.authService.logout();
           }
         }]
       });
