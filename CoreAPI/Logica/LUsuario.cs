@@ -146,19 +146,6 @@ namespace Logica {
         {
             bool validar = new DaoUsuario().Actualizar(id, usuario);
             if (validar == true) {
-                // sent notification to app 
-
-                UNotificacion notificacion = new UNotificacion();
-                //obtener token de la persona                
-                notificacion.TokenId = new DaoPush().obtenerTokenUsuario(id);
-                //contruir notificacion
-                notificacion.MensajeNotificacion.Titulo = "Su cuenta ha sido verificada ";
-                notificacion.MensajeNotificacion.Descripcion = "Ya puedes disfrutar al maximo ";
-                notificacion.MensajeNotificacion.Tipo = "Validado";
-                notificacion.Informacion = JsonConvert.SerializeObject(notificacion.MensajeNotificacion);
-                Lpush push = new Lpush();
-                push.SendNotification(notificacion);
-
                 return true;
             }
             else {

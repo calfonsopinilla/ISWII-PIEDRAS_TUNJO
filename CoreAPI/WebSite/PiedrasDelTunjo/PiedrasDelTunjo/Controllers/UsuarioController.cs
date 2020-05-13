@@ -6,6 +6,7 @@ using Utilitarios;
 using Logica;
 using System.Web.Http.Cors;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace PiedrasDelTunjo.Controllers {
 
@@ -29,6 +30,8 @@ namespace PiedrasDelTunjo.Controllers {
 
             try {
                 var informacion = new LUsuario().LeerUsuariosNoVerificados();
+                
+
                 return Ok(informacion);
 
             } catch (Exception ex)
@@ -49,15 +52,26 @@ namespace PiedrasDelTunjo.Controllers {
         [Route("actualizar/no-verificado")]
         public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario) {
 
+            UNotificacion notificacion = new UNotificacion();
             usuario.VerificacionCuenta = true;
             bool actualizado = new LUsuario().Actualizar(usuario.Id, usuario);
             if (actualizado)
-
-
-
-                return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Usuario actualizado correctamente" });
-            else
+            {
+                // sent notification to app 
+                //obtener token de la persona                
+                notificacion.TokenId = new Lpush().tokenUser(usuario.Id);
+                //contruir notificacion
+                notificacion.MensajeNotificacion.Titulo = "Su cuenta ha sido verificada ";
+                notificacion.MensajeNotificacion.Descripcion = "Ya puedes disfrutar al maximo ";
+                notificacion.MensajeNotificacion.Tipo = "Validado";
+                notificacion.Informacion = JsonConvert.SerializeObject(notificacion.MensajeNotificacion);
+                Lpush push = new Lpush();
+                push.SendNotification(notificacion);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
+            }
+            else { 
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
+            }
         }
 
         /*

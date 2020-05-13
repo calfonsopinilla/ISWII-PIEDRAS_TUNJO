@@ -23,6 +23,14 @@ namespace Logica
         {
             return new DaoPush().Tokensnotificaciones().ToList();
         }
+
+
+        public string tokenUser(int id) {
+
+            return new  DaoPush().obtenerTokenUsuario(id);
+        }
+
+
         public void SendNotificationPrueba()
         {
             try
