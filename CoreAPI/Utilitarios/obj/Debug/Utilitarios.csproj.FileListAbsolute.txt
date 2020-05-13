@@ -46,4 +46,3 @@ C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\ob
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.pdb
-C:\Universidad de Cundinamarca\2020-1\ISWII-PIEDRAS_TUNJO\CoreAPI\Utilitarios\obj\Debug\Utilitarios.csprojAssemblyReference.cache
