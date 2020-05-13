@@ -227,13 +227,13 @@ namespace PiedrasDelTunjo.Controllers
                             if (new LCuenta().BorrarRecuperarClave(recuperarClave))
                                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, message = "Se actualizo la contraseña correctamente" });
                             else
-                                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado - 02" }); // No se pudo borrar la petición de la base de datos
                         } else
-                            return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error actualizando la contraseña" });
                     } else
-                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado - 01" }); // Error al traer los datos del usuario
                 } else
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Ha ocurrido un error inesperado" });
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Código de recuperación inválido" });
             } else
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = false, message = "ERROR: Los datos no son correctos" });
         }
