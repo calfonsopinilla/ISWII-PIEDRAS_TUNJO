@@ -27,8 +27,12 @@ export class CheckoutService {
       const user = await this.authService.getUsuario();
       customerInfo.email = user.CorreoElectronico;
       this.http.post(`${ apiUrl }/stripe/payment?userId=${ user.Id }`, customerInfo)
-                .pipe(
-                  catchError(err => of({ ok: false, message: '500 Internal Server Error' })) // Internal Server Error
+                .pipe
+                (
+                  catchError(err => {
+                    console.log(err['error']['message']);
+                    return of({ok: false, message: err['error']['message']});
+                    }) // Internal Server Error
                 )
                 .subscribe(res => {
                   resolve(res);

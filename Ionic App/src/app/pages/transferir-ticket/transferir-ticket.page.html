@@ -29,7 +29,7 @@
                       *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.required">El número de documento es requerido</span>
               <span style="color: red;" class="text-danger" 
                       *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.min || numeroDocumento.errors?.max">
-                El número de documento es de 10 caracteres</span>        
+                El número de documento es de 6 a 12 caracteres</span>        
             </ion-item>            
 
             <ion-button [disabled]="transferirForm.invalid || transferirForm.pending" id="button-submit" type="submit" 

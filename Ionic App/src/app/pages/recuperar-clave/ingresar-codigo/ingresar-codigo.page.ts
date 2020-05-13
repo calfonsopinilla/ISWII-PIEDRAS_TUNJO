@@ -41,9 +41,7 @@ export class IngresarCodigoPage implements OnInit {
         this.presentToast("Clave actualizada correctamente");
         this.formRecuperarClave.reset();
         this.router.navigateByUrl('/login');
-      } else {
-        this.presentToast("ERROR: Intentelo nuevamente");
-      }      
+      } 
     } else {
       this.presentToast("ERROR: Las claves no coinciden");
     }

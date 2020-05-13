@@ -31,7 +31,7 @@ export class TransferirTicketPage implements OnInit {
 
   ngOnInit() {    
     this.transferirForm = this.fb.group({
-      numeroDocumento: ['', [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+      numeroDocumento: ['', [Validators.required, Validators.min(100000), Validators.max(999999999999)]],
       cantidadTransferir: ['', [Validators.required, Validators.min(1), Validators.max(this.cantidad)]]
     });
   }
