@@ -74,6 +74,7 @@ export class VerNoticiasPage implements OnInit {
     if (creado) {
       this.noticia = await this.noticiaServicio.buscarNoticia(Number(this.route.snapshot.paramMap.get('id')));    
       this.puntuacion = this.noticia.calificacion;
+      this.noticia.listaImagenes = this.getImages(this.noticia.imagenesUrl);
       this.presentToast("Comentario agregado correctamente");      
       this.estado = true;   
       await this.leerComentarioUsuario("noticia",Number(this.route.snapshot.paramMap.get('id')),this.usuario.Id);
@@ -101,6 +102,7 @@ export class VerNoticiasPage implements OnInit {
       this.presentToast("Comentario actualizado correctamente");      
       this.noticia = await this.noticiaServicio.buscarNoticia(Number(this.route.snapshot.paramMap.get('id')));    
       this.puntuacion = this.noticia.calificacion;
+      this.noticia.listaImagenes = this.getImages(this.noticia.imagenesUrl);
     } else {
       this.presentToast("ERROR: No se pudó actualizar su comentario");
     }

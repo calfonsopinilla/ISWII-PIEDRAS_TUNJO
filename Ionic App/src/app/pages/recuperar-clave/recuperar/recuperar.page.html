@@ -24,7 +24,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Número de documento</ion-label>
-        <ion-input type="number" formControlName="numeroDocumento"></ion-input>
+        <ion-input type="number" formControlName="numeroDocumento" pattern="[\s\S]{6,12}$"></ion-input>
 
         <span style="color: red;" class="text-danger" 
                 *ngIf="numeroDocumento.touched && numeroDocumento.dirty && numeroDocumento.errors?.required">El número de documento es requerido</span>

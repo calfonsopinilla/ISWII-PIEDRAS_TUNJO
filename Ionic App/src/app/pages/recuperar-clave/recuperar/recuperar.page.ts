@@ -25,7 +25,7 @@ export class RecuperarPage implements OnInit {
   ngOnInit() {
     this.formRecuperarClave = this.fb.group({            
       correoElectronico: ['', [Validators.required, Validators.minLength(4)]],
-      numeroDocumento: ['', [Validators.required, Validators.min(1000000000)]],
+      numeroDocumento: ['', [Validators.required, Validators.min(100000)]],
     });
   }
 
@@ -36,8 +36,6 @@ export class RecuperarPage implements OnInit {
     if (ok == true) {
       this.presentToast("Datos correctos, el código de verificación se ha generado correctamente");
       this.formRecuperarClave.reset();
-    } else {
-      this.presentToast("ERROR: Ha ocurrido un error inesperado, intentelo de nuevo");
     }
     loading.dismiss();
   }

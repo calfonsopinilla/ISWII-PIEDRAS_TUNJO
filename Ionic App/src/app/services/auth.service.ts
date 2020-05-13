@@ -210,7 +210,11 @@ export class AuthService {
     return new Promise(resolve => {
       this.http.get(`${ urlApi }/cuenta/recuperar-clave/generar-codigo?correoElectronico=${ correoElectronico }&numeroDocumento=${ numeroDocumento }`)      
         .pipe(          
-          catchError(err => of({ok: false}))
+          catchError(err => {
+            console.log(err['error']['message']);
+            this.presentToast(err['error']['message']);
+            return of({ok: false});
+          })
         )
         .subscribe(res => {
           console.log(res);
@@ -226,6 +230,12 @@ export class AuthService {
   async cambiarClave(codigoVerificacion: string, clave: string) : Promise<boolean> {
     return new Promise(resolve => {
       this.http.get(`${ urlApi }/cuenta/recuperar-clave/cambiar?codigoVerificacion=${ codigoVerificacion }&clave=${ clave }`)
+        .pipe(          	
+        catchError(err => {	
+          console.log(err['error']['message']);	
+          this.presentToast(err['error']['message']);	
+          return of({ok: false});            	
+        }))
         .subscribe(res => {
           console.log(res);
           if (res['ok'] === true) {
