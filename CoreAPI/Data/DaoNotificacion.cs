@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Newtonsoft.Json;
+using Npgsql;
 using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
@@ -46,14 +47,24 @@ namespace Data
         public List<UNotificacion> obtenerNotificaciones() {
             try{
                 return db.Notificacion.Where(x => x.Estado == true).Take(50).ToList();
-                
             }
             catch (Exception ex) {
                 throw ex;
             }
-            
         }
-
+        public bool insertarNotificacionUsuarioVerificado(UMensajeNotificacion detalleNotificacion,string token) {
+            try{
+                UNotificacion notificacion = new UNotificacion();
+                notificacion.Informacion = JsonConvert.SerializeObject(detalleNotificacion);
+                notificacion.TokenId = token; 
+                notificacion.Estado  = true;
+                db.Notificacion.Add(notificacion);
+                db.SaveChanges();
+                return true;
+            }catch (Exception) {
+                return false;   
+            }
+        }
         public void cambiarEstadoNotifiacion(long id) {
 
             try {
@@ -70,7 +81,5 @@ namespace Data
             }
             catch (Exception ex) { throw ex;}
         }
-
-
     }
 }

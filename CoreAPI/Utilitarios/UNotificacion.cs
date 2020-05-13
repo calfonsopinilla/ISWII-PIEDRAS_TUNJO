@@ -18,6 +18,7 @@ namespace Utilitarios
         private bool estado;
         private UMensajeNotificacion mensajeNotificacion;
 
+
         [Key]
         [Column("id")]
         public long Id { get => id; set => id = value; }

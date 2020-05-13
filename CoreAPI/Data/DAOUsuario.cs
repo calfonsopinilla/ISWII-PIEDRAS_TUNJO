@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -75,6 +76,7 @@ namespace Data
             {
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
+                
                 return true;
             }
             catch (DbUpdateConcurrencyException)

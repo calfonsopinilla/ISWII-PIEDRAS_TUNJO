@@ -17,6 +17,7 @@ namespace Data
         {
             var reservas = db.ReservaCabanas
                               .Include(x => x.UCabana)
+                              .Include(x => x.UUsuario)
                              //.Where(x => x.FechaReserva >= DateTime.Today)
                              .OrderBy(x => x.FechaReserva)
                              .ToList();
@@ -40,14 +41,10 @@ namespace Data
 
         public bool Agregar(UReservaCabana reserva){
 
-            int cantidad = db.ReservaCabanas.Where(x => x.UCabanaId == reserva.UCabanaId && x.FechaReserva.Date ==reserva.FechaReserva.Date ).Count();
-            if (cantidad > 0){
-                return false;
-            }else {
-                var created = db.ReservaCabanas.Add(reserva);
-                db.SaveChanges();
-                return true;
-            }            
+            var created = db.ReservaCabanas.Add(reserva);
+            db.SaveChanges();
+            return true;
+            
         }
 
         public bool Actualizar(UReservaCabana reserva, int id)

@@ -11,15 +11,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Utilitarios {
 
-    [Table("push", Schema = "pushed")] 
+    [Table("push", Schema = "pushed")]
 
     public class UPush {
         private long id;
         private string objetoPush;
         private DateTime fecha;
         private int estadoId;
-        private string tokenId;
-
+        private int userId;
+    
         [Key]
         [Column("id")]
         public long Id { get => id; set => id = value; }
@@ -29,7 +29,10 @@ namespace Utilitarios {
         public DateTime Fecha { get => fecha; set => fecha = value; }
         [Column("estado_id")]
         public int EstadoId { get => estadoId; set => estadoId = value; }
-        [Column("token_id")]
-        public string TokenId { get => tokenId; set => tokenId = value; }
+        [Column("user_id")]
+        public int UserId { get => userId; set => userId = value; }
+
+        
+        
     }
 }

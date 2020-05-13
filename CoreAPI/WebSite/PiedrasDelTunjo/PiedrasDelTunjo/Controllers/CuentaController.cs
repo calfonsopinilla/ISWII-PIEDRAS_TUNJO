@@ -27,14 +27,13 @@ namespace PiedrasDelTunjo.Controllers
               @Autor : Jose Luis Soriano Roa
               *Fecha de creación: 18/03/2020
               *Descripcion : Metodo que trae la informacion del usuario que va a iniciar sesion.
-              *Este metodo recibe : Resive un objeto de tipo Ulogin quien incorpora correoElectronico y clave en json 
+              *Este metodo recibe : Recibe un objeto de tipo Ulogin quien incorpora correoElectronico y clave en json 
       */
         [HttpPost]
         [AllowAnonymous]
         [Route("iniciaSesion")]
         public HttpResponseMessage IniciarSesion([FromBody] UUsuario usuario){
-            try
-            {
+            try{
                 var userLogin = new LCuenta().IniciarSesion(usuario.CorreoElectronico, usuario.Clave);
                 if (userLogin == null) {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new { ok = false, message = "El usuario no existe" });
@@ -50,7 +49,6 @@ namespace PiedrasDelTunjo.Controllers
                 // Se retorna un mensaje satisfactorio y el token JWT
                 return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, token });
             }
-
             catch (Exception ex) {
                 throw ex;
             }

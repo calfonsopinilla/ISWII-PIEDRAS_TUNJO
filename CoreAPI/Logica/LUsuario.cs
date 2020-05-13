@@ -144,7 +144,16 @@ namespace Logica {
 
         public bool Actualizar(int id, UUsuario usuario)
         {
-            return new DaoUsuario().Actualizar(id, usuario);
+            bool validar = new DaoUsuario().Actualizar(id, usuario);
+            if (validar == true) {
+                return true;
+            }
+            else {
+
+                return false;
+            }
+               
+
         }
 
         public bool Eliminar(int id)
