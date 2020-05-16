@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, MenuController } from '@ionic/angular';
 import { ReservaTicket } from '../../../interfaces/reserva-ticket.interface'; 
 import { ReservaTicketService } from '../../../services/reserva-tickets.service';
 import { AuthService } from '../../../services/auth.service';
@@ -18,14 +18,17 @@ export class ValidarNumeroDocumentoPage implements OnInit {
   constructor(
     private reservaTicketService: ReservaTicketService,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private menuCtrl: MenuController
   ) { }
 
   ngOnInit() {
+    this.menuCtrl.enable(false, 'first');
     this.reservaTicket = null;
   }
 
   async logout() {
+    this.menuCtrl.enable(true, 'first');
     await this.authService.logout();
   }
 
