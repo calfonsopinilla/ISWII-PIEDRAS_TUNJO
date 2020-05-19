@@ -49,6 +49,7 @@ namespace Data
         {
             try
             {
+                usuarios.CorreoElectronico = usuarios.CorreoElectronico.Trim();
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return true;
@@ -74,6 +75,7 @@ namespace Data
         {
             try
             {
+                usuario.CorreoElectronico = usuario.CorreoElectronico.Trim();
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 
