@@ -50,28 +50,11 @@ namespace PiedrasDelTunjo.Controllers {
         */
         [HttpPut]
         [Route("actualizar/no-verificado")]
-        public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario) {
-
-            UNotificacion notificacion = new UNotificacion();
+        public HttpResponseMessage ActualizarUsuarioNoVerificado([FromBody] UUsuario usuario)
+        {
             usuario.VerificacionCuenta = true;
             bool actualizado = new LUsuario().Actualizar(usuario.Id, usuario);
-            if (actualizado)
-            {
-                // sent notification to app 
-                //obtener token de la persona                
-                notificacion.TokenId = new Lpush().tokenUser(usuario.Id);
-                //contruir notificacion
-                notificacion.MensajeNotificacion.Titulo = "Su cuenta ha sido verificada ";
-                notificacion.MensajeNotificacion.Descripcion = "Ya puedes disfrutar al maximo ";
-                notificacion.MensajeNotificacion.Tipo = "Validado";
-                notificacion.Informacion = JsonConvert.SerializeObject(notificacion.MensajeNotificacion);
-                Lpush push = new Lpush();
-                push.SendNotification(notificacion);
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
-            }
-            else { 
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { ok = true, message = "ERROR: Ha ocurrido un error inesperado" });
-            }
+            return Request.CreateResponse(HttpStatusCode.OK, new { ok = actualizado });
         }
 
         /*
