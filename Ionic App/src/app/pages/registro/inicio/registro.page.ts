@@ -97,8 +97,11 @@ export class RegistroPage implements OnInit {
       fechaGeneracion: null,
       fechaVencimiento: null,
       rolId: 2,
-      aplicacionId: 1
+      aplicacionId: 1,      
     };    
+
+    this.userRegister.correoElectronico.trim();
+    console.log();
 
     if (this.avatar !== undefined) {
       this.userRegister.iconoUrl = this.avatar;
