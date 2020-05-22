@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/usuario.interface';
 import * as jwt_decode from 'jwt-decode';
@@ -19,6 +19,7 @@ const urlApi = environment.servicesAPI;
 export class AuthService {
 
   private usuario: Usuario;
+  private alertSend = false;
   loginState$ = new EventEmitter<boolean>();
 
   constructor(
@@ -27,7 +28,8 @@ export class AuthService {
     private loadingCtrl: LoadingController,
     private router: Router,
     private toastCtrl: ToastController,
-    private pushService: PushService
+    private pushService: PushService,
+    private alertCtrl: AlertController
   ) { }
 
   async login(userLogin: UserLogin) {
@@ -58,8 +60,6 @@ export class AuthService {
                       this.presentToast('Tu cuenta ha sido deshabilitada.');
                       return;
                     }
-                    // Actualizar push object
-                    this.updatePush(Number(user['Id']));
                     // Almacenar token
                     this.guardarToken(res['token']);
                     // Redireccionamiento del usuario
@@ -71,15 +71,6 @@ export class AuthService {
                 (err) => {},
                 () => loading.dismiss()
               );
-  }
-
-  async updatePush(userId: number) {
-    const push = await this.storage.get('push') || undefined;
-    if (push !== undefined) {
-      push.UserId = userId;
-      const respuest = this.pushService.agregarToken(push);
-      await this.storage.set('push', push);
-    }
   }
 
   async loginNavigate(userLogin: Usuario) {
@@ -104,6 +95,26 @@ export class AuthService {
     await toast.present();
   }
 
+  async presentAlertVerified() {
+    if (this.alertSend === true) {
+      return;
+    }
+    this.alertSend = true;
+    const alert = await this.alertCtrl.create({
+      subHeader: 'Tu cuenta ha sido verificada!',
+      message: 'Por favor, inicia sesión nuevamente',
+      buttons: [{
+        text: 'OK',
+        handler: async () => {
+          this.alertSend = false;
+          await this.logout();
+          this.router.navigateByUrl('/login');
+        }
+      }]
+    });
+    await alert.present();
+  }
+
   async isAuthenticated() {
     return await this.validateToken();
   }
@@ -114,7 +125,6 @@ export class AuthService {
   }
 
   async logout() {
-    this.updatePush(0);
     this.storage.remove('token'); // eliminamos el token
     this.loginState$.emit(false);
     this.router.navigate(['/inicio']);
@@ -138,11 +148,15 @@ export class AuthService {
                   catchError(err => of({ok: false}))
                 )
                 .subscribe(res => {
+                  // console.log(res);
                   if (res['ok'] === true) {
-                    this.usuario = res['usuario'];
-                    resolve(true);
+                    if (res['verified'] && res['verified'] === true) {
+                      this.presentAlertVerified();
+                    } else {
+                      this.usuario = res['usuario'];
+                      resolve(true);
+                    }
                   } else {
-                    this.updatePush(0);
                     this.storage.remove('token');
                     this.router.navigateByUrl('/login');
                     resolve(false);
