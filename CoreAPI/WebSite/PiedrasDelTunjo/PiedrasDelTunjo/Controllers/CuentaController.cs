@@ -67,6 +67,16 @@ namespace PiedrasDelTunjo.Controllers
             var claimsIdentity = HttpContext.Current.User.Identity as ClaimsIdentity;
             var userClaim = claimsIdentity.FindFirst("usuario"); // or FindAll()
             var usuario = JsonConvert.DeserializeObject<UUsuario>(userClaim.Value);
+            // Para informar que la cuenta del usuario ha sido verificada
+            if (usuario.VerificacionCuenta == false)
+            {
+                // Identficar una verificación realizada
+                var user = new LUsuario().Buscar(usuario.Id);
+                if (user.VerificacionCuenta == true)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, verified = true });
+                }
+            }
             return Request.CreateResponse(HttpStatusCode.OK, new { ok = true, usuario });
         }
 
