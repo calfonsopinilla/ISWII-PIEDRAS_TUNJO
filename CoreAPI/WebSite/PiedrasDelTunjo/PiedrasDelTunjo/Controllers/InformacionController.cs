@@ -9,6 +9,8 @@ using Logica;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
 using System.IO;
+using System.Web;
+using System.Diagnostics;
 
 namespace PiedrasDelTunjo.Controllers
 {
@@ -23,13 +25,18 @@ namespace PiedrasDelTunjo.Controllers
          *Este metodo recibe : No resive parametros
          * Retorna: lista de la informacion del parque en formato json, dentro de ese json  si no hay registros retorna un null en string ("null").
          */
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         [HttpGet]
         [Route("informacion")]
         public IHttpActionResult EnviarInformacion() {
             try
             {
+                log4net.Config.XmlConfigurator.Configure(new FileInfo(HttpContext.Current.Server.MapPath("~/log4net.config")));
+                Process currentProcess = Process.GetCurrentProcess();
+                log.Info($"Inicia proceso #  {currentProcess.Id}");
                 var informacion = JsonConvert.DeserializeObject<List<UInformacionParque>>(new LInformacion().informacionParque());
+                log.Info($"Finaliza proceso #  {currentProcess.Id}");
                 return Ok(informacion);
             }
             catch (Exception ex)
